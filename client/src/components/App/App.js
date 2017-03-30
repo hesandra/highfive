@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import { NavBarContainer } from '../../containers';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    //check login status here
+    // check login status here
   }
   render() {
     return (
       <div>
+        <NavBarContainer />
         { this.props.children }
       </div>
     )
