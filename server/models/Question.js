@@ -1,16 +1,16 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const db = require('../db/db');
 
-const question = db.define('question', {
+const Question = db.define('Question', {
   createdAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
   updatedAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
-  id: {type: sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-  type: sequelize.STRING,
-  question: sequelize.STRING
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  type: Sequelize.STRING,
+  question: Sequelize.STRING
 });

@@ -1,16 +1,16 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const db = require('../db/db');
 
-const location = db.define('location', {
+const Location = db.define('Location', {
   createdAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
   updatedAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
-  id: {type: sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-  state: sequelize.STRING,
-  city: sequelize.INTEGER
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  state: Sequelize.STRING,
+  city: Sequelize.INTEGER
 });

@@ -1,18 +1,18 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const db = require('../db/db');
 
-const jobpost = db.define('jobpost', {
+const Jobpost = db.define('Jobpost', {
   createdAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
   updatedAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
-  id: {type: sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-  title: sequelize.STRING,
-  level: sequelize.STRING,
-  description: sequelize.STRING,
-  company_id: sequelize.INTEGER,
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  title: Sequelize.STRING,
+  level: Sequelize.STRING,
+  description: Sequelize.STRING,
+  company_id: Sequelize.INTEGER,
 });

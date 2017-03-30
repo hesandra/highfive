@@ -1,20 +1,20 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const db = require('../db/db');
 
-const company = db.define('company', {
+const Company = db.define('Company', {
   createdAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
   updatedAt: {
-    type: sequelize.DATE,
-    defaultValue: sequelize.NOW,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW,
   },
-  id: {type: sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-  name: sequelize.STRING,
-  profile_img: sequelize.STRING,
-  industry: sequelize.INTEGER,
-  location: sequelize.INTEGER,
-  email: sequelize.STRING,
-  address: sequelize.STRING
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
+  name: Sequelize.STRING,
+  profile_img: Sequelize.STRING,
+  industry: Sequelize.INTEGER,
+  location: Sequelize.INTEGER,
+  email: Sequelize.STRING,
+  address: Sequelize.STRING
 });

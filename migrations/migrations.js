@@ -1,38 +1,38 @@
 module.exports = {
-  up: function(queryInterface, sequelize) {
+  up: function(queryInterface, Sequelize) {
     queryInterface.createTable(
       'company',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         name: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         profile_img: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         industry: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         location: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         email: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         address: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         }
       }
     )
@@ -41,20 +41,20 @@ module.exports = {
       'industry',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         name: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         
       }
     )
@@ -63,29 +63,29 @@ module.exports = {
       'jobpost',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         title: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         level: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         description: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         company_id: {
-          type: sequelize.INTEGER
+          type: Sequelize.INTEGER
         }
       }
     )
@@ -94,23 +94,23 @@ module.exports = {
       'location',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         state: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         city: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         }
       }
     )
@@ -119,23 +119,23 @@ module.exports = {
       'question',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         type: {
-          type: sequelize.INTEGER
+          type: Sequelize.INTEGER
         },
         question: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         }
       }
     )
@@ -144,26 +144,26 @@ module.exports = {
       'submission',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         user_id: {
-          type: sequelize.INTEGER
+          type: Sequelize.INTEGER
         },
         status: {
-          type: sequelize.INTEGER
+          type: Sequelize.INTEGER
         },
         jobpost_id: {
-          type: sequelize.INTEGER
+          type: Sequelize.INTEGER
         }
       }
     )
@@ -172,26 +172,26 @@ module.exports = {
       'user',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         name: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         email: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         profile_img: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         }
       }
     )
@@ -200,35 +200,35 @@ module.exports = {
       'video',
       {
         id: {
-          type: sequelize.INTEGER,
+          type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
         createdAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         updatedAt: {
-          type: sequelize.DATE,
-          defaultValue: sequelize.NOW
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
         },
         href: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         note: {
-          type: sequelize.STRING
+          type: Sequelize.STRING
         },
         submissions_id: {
-          type: sequelize.INTEGER
+          type: Sequelize.INTEGER
         },
         question_id: {
-          type: sequelize.INTEGER
+          type: Sequelize.INTEGER
         }
       }
     )
 
   },
-  down: function(queryInterface, sequelize) {
-
+  down: function(queryInterface, Sequelize) {
+    queryInterface.dropAllTables()
   }
 }
