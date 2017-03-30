@@ -14,3 +14,5 @@ const Submission = db.define('Submission', {
   user_id: Sequelize.INTEGER,
   jobposts: Sequelize.INTEGER,
 });
+
+module.exports = Submission;

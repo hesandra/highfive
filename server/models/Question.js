@@ -14,3 +14,5 @@ const Question = db.define('Question', {
   type: Sequelize.STRING,
   question: Sequelize.STRING
 });
+
+module.exports = Question;

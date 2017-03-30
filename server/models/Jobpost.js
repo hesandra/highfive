@@ -16,3 +16,5 @@ const Jobpost = db.define('Jobpost', {
   description: Sequelize.STRING,
   company_id: Sequelize.INTEGER,
 });
+
+module.exports = Jobpost;

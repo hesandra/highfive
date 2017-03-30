@@ -15,3 +15,5 @@ const Video = db.define('Video', {
   submission_id: Sequelize.INTEGER,
   question_id: Sequelize.INTEGER,
 });
+
+module.exports = Video;

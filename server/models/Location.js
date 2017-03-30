@@ -14,3 +14,5 @@ const Location = db.define('Location', {
   state: Sequelize.STRING,
   city: Sequelize.INTEGER
 });
+
+module.exports = Location;
