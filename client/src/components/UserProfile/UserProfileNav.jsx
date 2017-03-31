@@ -1,9 +1,10 @@
 import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import { Link } from 'react-router';
-import Form from './Form';
+import { Link, hashHistory } from 'react-router';
+import SettingsForm from './SettingsForm';
 
 const UserProfileNav = (props) => {
+  const { onJobPostsClick } = props;
   return (
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
@@ -20,7 +21,7 @@ const UserProfileNav = (props) => {
                 <br />
                 <i className="fa fa-folder-open" aria-hidden="true" />
               </NavItem>
-              <NavItem eventKey="3">
+              <NavItem onClick={onJobPostsClick} eventKey="3">
                 JobPosts
                 <br />
                 <i className="fa fa-laptop" aria-hidden="true" />
@@ -41,8 +42,11 @@ const UserProfileNav = (props) => {
                 Submissions
             </Tab.Pane>
               <Tab.Pane eventKey="3">
-                <Form />
-            </Tab.Pane>
+              </Tab.Pane>
+              <Tab.Pane eventKey="4">
+                <SettingsForm />
+              </Tab.Pane>
+
             </Tab.Content>
           </Col>
         </Row>

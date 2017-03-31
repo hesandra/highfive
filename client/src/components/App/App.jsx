@@ -4,7 +4,6 @@ import { NavBarContainer } from '../../containers';
 class App extends Component {
   constructor(props) {
     super(props);
-
     // check login status here
     this.props.checkUserLogin();
     this.props.checkCompanyLogin();

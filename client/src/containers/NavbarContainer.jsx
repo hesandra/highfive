@@ -15,7 +15,6 @@ const mapStateToProps = (state) => {
       isAuthenticated: state.companyAuth.isAuthenticated,
       profile: state.companyAuth.profile,
       error: state.companyAuth.error
-
     }
   };
 };

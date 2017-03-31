@@ -7,3 +7,4 @@ export NavigationBar from './Navbar/Navbar';
 export Company from './Company/Company';
 export UserProfile from './UserProfile/UserProfile';
 
+

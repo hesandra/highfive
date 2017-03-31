@@ -4,7 +4,7 @@ import UserProfileNav from './UserProfileNav';
 
 const UserProfile = (props) => {
   console.log(props);
-  const { profile } = props;
+  const { profile, onJobPostsClick } = props;
   const profileImg = `${profile.picture}&s=460`;
   const name = profile.name;
   const location = profile.location;
@@ -29,7 +29,9 @@ const UserProfile = (props) => {
           </div>
         </Col>
         <Col xs={6} md={8}>
-          <UserProfileNav />
+          <UserProfileNav
+            onJobPostsClick={onJobPostsClick}
+          />
         </Col>
       </Row>
     </Grid>

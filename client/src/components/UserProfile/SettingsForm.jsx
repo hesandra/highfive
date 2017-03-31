@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Form = (props) => {
+const SettingsForm = (props) => {
   return (
     <div>
       <h1>THIS IS A FORM COMPONENT</h1>
@@ -8,4 +8,4 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default SettingsForm;
