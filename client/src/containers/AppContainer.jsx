@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { App } from '../components';
-import { checkLogin } from '../actions/auth';
+import { checkUserLogin } from '../actions/userAuth';
+import { checkCompanyLogin } from '../actions/companyAuth';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    checkLogin: () => dispatch(checkLogin())
+    checkUserLogin: () => dispatch(checkUserLogin())
   };
 };
 

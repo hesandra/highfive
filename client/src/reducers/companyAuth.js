@@ -1,24 +1,23 @@
 import { routerReducer as routing } from 'react-router-redux';
-import * as ActionTypes from '../actions';
-import AuthService from '../utils/AuthService';
+import { companyAuth as ActionTypes } from '../actions';
+import CompanyAuthService from '../utils/companyAuthService';
 
 export default function authReducer(state = {
-  isAuthenticated: !AuthService.isTokenExpired(),
+  isAuthenticated: !CompanyAuthService.isTokenExpired(),
   isFetching: false,
-  profile: AuthService.getProfile(),
+  profile: CompanyAuthService.getProfile(),
   error: null
 }, action) {
   switch (action.type) {
-    case ActionTypes.LOGIN_REQUEST:
+    case ActionTypes.COMPANY_LOGIN_REQUEST:
       return { ...state, isFetching: true, error: null };
-    case ActionTypes.LOGIN_SUCCESS:
+    case ActionTypes.COMPANY_LOGIN_SUCCESS:
       return { ...state, isFetching: false, isAuthenticated: true, profile: action.profile };
-    case ActionTypes.LOGIN_ERROR:
+    case ActionTypes.COMPANY_LOGIN_ERROR:
       return { ...state, isFetching: false, isAuthenticated: false, profile: {}, error: action.error };
-    case ActionTypes.LOGOUT_SUCCESS:
+    case ActionTypes.COMPANY_LOGOUT_SUCCESS:
       return { ...state, isAuthenticated: false, profile: {} };
     default:
       return state;
   }
 }
-

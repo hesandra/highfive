@@ -3,10 +3,10 @@ import { Route, IndexRoute } from 'react-router';
 import { AppContainer, HomeContainer } from './containers';
 import { Home } from './components';
 
-import AuthService from './utils/AuthService';
+import UserAuthService from './utils/userAuthService';
 
 const requireAuth = (nextState, replace) => {
-  if (!AuthService.loggedIn()) {
+  if (!UserAuthService.loggedIn()) {
     alert('Please log in first!');
     replace({ pathname: '/' });
   }

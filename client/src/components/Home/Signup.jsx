@@ -5,7 +5,6 @@ import { Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 const Signup = (props) => {
-  console.log(props, 'this is props in signup');
   return (
     <div>
       <Grid>
@@ -15,7 +14,7 @@ const Signup = (props) => {
               <h3>Company</h3>
               <p>Company</p>
               <p>
-                <Button onClick={props.onLoginClick} href="#" bsStyle="default">Login</Button>
+                <Button onClick={props.onCompanyLoginClick} href="#" bsStyle="default">Login</Button>
               </p>
             </Thumbnail>
           </Col>
@@ -24,7 +23,7 @@ const Signup = (props) => {
               <h3>Applicant</h3>
               <p>Applicant</p>
               <p>
-                <Button onClick={props.onLoginClick} href="#" bsStyle="default">Login</Button>
+                <Button onClick={props.onUserLoginClick} href="#" bsStyle="default">Login</Button>
               </p>
             </Thumbnail>
           </Col>
