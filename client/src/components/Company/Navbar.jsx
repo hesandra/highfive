@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
+import Profile from './Profile';
 
 const Navbar = (props) => {
   return (
@@ -28,7 +29,7 @@ const Navbar = (props) => {
           <Col sm={12}>
             <Tab.Content animation>
               <Tab.Pane eventKey="first">
-              Company Profile
+                <Profile />
             </Tab.Pane>
               <Tab.Pane eventKey="second">
                Submissions
