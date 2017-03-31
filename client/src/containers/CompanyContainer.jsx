@@ -1,30 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
-import { Home } from '../components';
-import { loginRequest, logoutSuccess } from '../actions/users_auth';
+import { Profile } from '../components';
+import { toProfile, toJobPosts, toSubmissions } from '../actions/company';
 
 const mapStateToProps = (state) => {
-  // const { isAuthenticated, profile, error } = state.auth;
   return {
-    // isAuthenticated,
-    // profile,
-    // error
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoginClick: () => {
-      dispatch(loginRequest());
+    onProfileClick: () => {
+      dispatch(toProfile());
+      hashHistory.push('/cprofile');
+      location.reload();
     },
-    onLogoutClick: () => {
-      dispatch(logoutSuccess());
-      hashHistory.push('/');
+    onJobsClick: () => {
+      dispatch(toJobPosts());
+      hashHistory.push('/jobposts');
+      location.reload();
+    },
+    onSubmissionsClick: () => {
+      dispatch(toSubmissions());
+      hashHistory.push('/submissions');
       location.reload();
     }
   };
 };
 
-const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
-export default HomeContainer;
+const CompanyContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default CompanyContainer;
