@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
+import Form from './Form';
 
 const UserProfileNav = (props) => {
   return (
@@ -9,12 +10,12 @@ const UserProfileNav = (props) => {
         <Row className="clearfix">
           <Col sm={8}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="first">
+              <NavItem eventKey="1">
                 Notifications
                 <br />
                 <i className="fa fa-envelope-open-o" aria-hidden="true" />
               </NavItem>
-              <NavItem eventKey="second">
+              <NavItem eventKey="2">
                 Submissions
                 <br />
                 <i className="fa fa-folder-open" aria-hidden="true" />
@@ -33,23 +34,14 @@ const UserProfileNav = (props) => {
           </Col>
           <Col sm={8}>
             <Tab.Content animation>
-              <Tab.Pane eventKey="first">
+              <Tab.Pane eventKey="1">
                 notifications here
             </Tab.Pane>
-              <Tab.Pane eventKey="second">
+              <Tab.Pane eventKey="2">
                 Submissions
             </Tab.Pane>
-              <Tab.Pane eventKey="3.1">
-                Junior
-            </Tab.Pane>
-              <Tab.Pane eventKey="3.2">
-                Mid
-            </Tab.Pane>
-              <Tab.Pane eventKey="3.3">
-                Senior
-            </Tab.Pane>
-              <Tab.Pane eventKey="3.4">
-                Tab 3.4 content
+              <Tab.Pane eventKey="3">
+                <Form />
             </Tab.Pane>
             </Tab.Content>
           </Col>
