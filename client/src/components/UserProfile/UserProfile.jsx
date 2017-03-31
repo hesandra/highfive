@@ -1,18 +1,17 @@
 import React from 'react';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
+import UserProfileNav from './UserProfileNav';
 
 const UserProfile = (props) => {
   console.log(props);
-
-
   const { profile } = props;
   const profileImg = `${profile.picture}&s=460`;
   const name = profile.name;
   const location = profile.location;
+  const githubLink = profile.html_url;
   return (
-    <Grid>
+    <Grid fluid>
       <Row>
-        <h1 className="text-center"> Profile </h1>
         <hr />
       </Row>
       <Row>
@@ -21,10 +20,16 @@ const UserProfile = (props) => {
           <div className="text-center">
             <Image className="user-profile-img text-center" src={profileImg} circle />
           </div>
-          <small className="text-center"> {location} </small>
+          <div className="text-center">
+            <small className="text-center"> {location} </small>
+            <hr />
+            <a href={githubLink} rel="noopener noreferrer" target="_blank">
+              <i className="fa fa-github" aria-hidden="true" />
+            </a>
+          </div>
         </Col>
         <Col xs={6} md={8}>
-          <p className="text-center">User info here</p>
+          <UserProfileNav />
         </Col>
       </Row>
     </Grid>

@@ -42,7 +42,7 @@ export default class CompanyAuthService {
   static getProfile() {
     // Retrieves the profile data from localStorage
     const profile = localStorage.getItem('profile_company');
-    return profile ? JSON.parse(localStorage.profile) : {};
+    return profile ? JSON.parse(localStorage.profile_company) : {};
   }
 
   static loggedIn() {
