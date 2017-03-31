@@ -2,12 +2,14 @@ import React from 'react';
 import Signup from './Signup';
 
 const Home = (props) => {
-  console.log(props, 'props in home')
   return (
     <div>
       <div>
         <div>
-          <Signup onLoginClick={props.onLoginClick} />
+          <Signup
+            onUserLoginClick={props.onUserLoginClick}
+            onCompanyLoginClick={props.onCompanyLoginClick}
+          />
         </div>
       </div>
     </div>

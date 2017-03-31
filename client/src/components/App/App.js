@@ -6,7 +6,7 @@ class App extends Component {
     super(props);
 
     // check login status here
-    this.props.checkLogin();
+    this.props.checkUserLogin();
   }
   render() {
     return (

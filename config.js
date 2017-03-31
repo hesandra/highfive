@@ -1,1 +1,2 @@
-export const AUTH0_ID = process.env.AUTH0_CLIENT_ID;
+export const USERS_AUTH0_CLIENT_ID = process.env.USERS_AUTH0_CLIENT_ID;
+export const COMPANIES_AUTH0_CLIENT_ID = process.env.COMPANIES_AUTH0_CLIENT_ID;

@@ -2,26 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 import { Home } from '../components';
-import { loginRequest, logoutSuccess } from '../actions/auth';
+import { userLoginRequest, userLogoutSuccess } from '../actions/userAuth';
+import { companyLoginRequest, companyLogoutSuccess } from '../actions/companyAuth';
 
 const mapStateToProps = (state) => {
-  // const { isAuthenticated, profile, error } = state.auth;
+  const { isAuthenticated, profile, error } = state.userAuth;
   return {
-    // isAuthenticated,
-    // profile,
-    // error
+    isAuthenticated,
+    profile,
+    error
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoginClick: () => {
-      dispatch(loginRequest());
+    onUserLoginClick: () => {
+      dispatch(userLoginRequest());
     },
-    onLogoutClick: () => {
-      dispatch(logoutSuccess());
+    onUserLogoutClick: () => {
+      dispatch(userLogoutSuccess());
       hashHistory.push('/');
       location.reload();
+    },
+    onCompanyLoginClick: () => {
+      dispatch(companyLoginRequest());
     }
   };
 };
