@@ -13,7 +13,7 @@ const requireAuth = (nextState, replace) => {
 };
 
 const NotFoundPage = () => {
-  return <h1>HELLO</h1>
+  return (<h1>HELLO</h1>);
 };
 
 export default function createRoutes() {
