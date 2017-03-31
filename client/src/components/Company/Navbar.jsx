@@ -2,8 +2,10 @@ import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-const Profile = (props) => {
+const Navbar = (props) => {
   return (
+    <div>
+  <div>This is the company profile</div>
     <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
       <Row className="clearfix">
         <Col sm={12}>
@@ -15,9 +17,9 @@ const Profile = (props) => {
             Submissions
             </NavItem>
             <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab">
-              <MenuItem eventKey="3.1">Action</MenuItem>
-              <MenuItem eventKey="3.2">Another action</MenuItem>
-              <MenuItem eventKey="3.3">Something else here</MenuItem>
+              <MenuItem eventKey="3.1">Junior</MenuItem>
+              <MenuItem eventKey="3.2">Mid</MenuItem>
+              <MenuItem eventKey="3.3">Senior</MenuItem>
               <MenuItem divider />
               <MenuItem eventKey="3.4">Separated link</MenuItem>
             </NavDropdown>
@@ -26,19 +28,19 @@ const Profile = (props) => {
         <Col sm={12}>
           <Tab.Content animation>
             <Tab.Pane eventKey="first">
-            Tab 1 content
+            Company Profile
             </Tab.Pane>
             <Tab.Pane eventKey="second">
-            Tab 2 content
+            Submissions
             </Tab.Pane>
             <Tab.Pane eventKey="3.1">
-            Tab 3.1 content
+            Junior
             </Tab.Pane>
             <Tab.Pane eventKey="3.2">
-            Tab 3.2 content
+            Mid
             </Tab.Pane>
             <Tab.Pane eventKey="3.3">
-            Tab 3.3 content
+            Senior
             </Tab.Pane>
             <Tab.Pane eventKey="3.4">
             Tab 3.4 content
@@ -47,7 +49,8 @@ const Profile = (props) => {
         </Col>
       </Row>
     </Tab.Container>
+    </div>
   );
 };
 
-export default Profile;
+export default Navbar;

@@ -10,7 +10,7 @@ const Signup = (props) => {
       <Grid>
         <Row>
           <Col xs={6} md={6}>
-            <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+            <Thumbnail src="" alt="242x200">
               <h3>Company</h3>
               <p>Company</p>
               <p>
@@ -19,7 +19,7 @@ const Signup = (props) => {
             </Thumbnail>
           </Col>
           <Col xs={6} md={6}>
-            <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+            <Thumbnail src="" alt="242x200">
               <h3>Applicant</h3>
               <p>Applicant</p>
               <p>

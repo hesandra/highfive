@@ -35,7 +35,7 @@ export function companyLoginRequest() {
   };
 }
 export function companyLoginSuccess(profile) {
-  hashHistory.push('/');
+  hashHistory.push('/company');
   location.reload();
   return {
     type: COMPANY_LOGIN_SUCCESS,

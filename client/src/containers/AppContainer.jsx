@@ -5,7 +5,8 @@ import { checkCompanyLogin } from '../actions/companyAuth';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    checkUserLogin: () => dispatch(checkUserLogin())
+    checkUserLogin: () => dispatch(checkUserLogin()),
+    checkCompanyLogin:() => dispatch(checkCompanyLogin())
   };
 };
 

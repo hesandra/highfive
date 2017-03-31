@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
-import { Profile } from '../components';
+import { Company } from '../components';
 import { toProfile, toJobPosts, toSubmissions } from '../actions/company';
 
 const mapStateToProps = (state) => {
   return {
+   
   };
 };
 
@@ -29,5 +30,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const CompanyContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+const CompanyContainer = connect(mapStateToProps, mapDispatchToProps)(Company);
 export default CompanyContainer;
