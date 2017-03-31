@@ -6,6 +6,7 @@ class App extends Component {
     super(props);
 
     // check login status here
+    this.props.checkLogin();
   }
   render() {
     return (
@@ -13,12 +14,12 @@ class App extends Component {
         <NavBarContainer />
         { this.props.children }
       </div>
-    )
+    );
   }
 }
 
 App.propTypes = {
   children: React.PropTypes.element.isRequired,
-}
+};
 
 export default App;

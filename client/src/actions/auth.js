@@ -1,17 +1,13 @@
 import { hashHistory } from 'react-router';
 import AuthService from '../utils/AuthService';
+import { AUTH0_ID } from '../../../config';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
-// AUTH0_CLIENT_ID=qpfelAKW1EAzyb3RI3pk46SD0deXrJhE
-// AUTH0_CLIENT_SECRET=_pps_7k9PizjlAYup6vI6pUqL2NhSNsttwUQ_F64FwPfSqhLUZXV17I-ocLRpAI9
-// AUTH0_DOMAIN=cvrcle.auth0.com
-
-
-const authService = new AuthService('IlzCSthZWHUlsCK873pORMn0QbgKyln3', 'teamhighfive.auth0.com');
+const authService = new AuthService(AUTH0_ID, 'teamhighfive.auth0.com');
 
 // Listen to authenticated event from AuthService and get the profile of the user
 // Done on every page startup
@@ -19,16 +15,18 @@ export function checkLogin() {
   return (dispatch) => {
     // Add callback for lock's `authenticated` event
     authService.lock.on('authenticated', (authResult) => {
+      console.log('authed');
       authService.lock.getProfile(authResult.idToken, (error, profile) => {
-        if (error)
+        if (error) {
           return dispatch(loginError(error));
-        AuthService.setToken(authResult.idToken); // static method
-        AuthService.setProfile(profile); // static method
+        }
+        AuthService.setToken(authResult.idToken);
+        AuthService.setProfile(profile);
         return dispatch(loginSuccess(profile));
       });
     });
     // Add callback for lock's `authorization_error` event
-    authService.lock.on('authorization_error', (error) => dispatch(loginError(error)));
+    authService.lock.on('authorization_error', error => dispatch(loginError(error)));
   };
 }
 

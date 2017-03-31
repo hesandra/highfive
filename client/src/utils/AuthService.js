@@ -9,7 +9,7 @@ export default class AuthService {
     // Configure Auth0 lock
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:8080',
+        redirectUrl: 'http://localhost:8080/',
         responseType: 'token'
       },
       // theme: {
@@ -34,8 +34,8 @@ export default class AuthService {
 
   logout() {
     // Clear user token and profile data from localStorage
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('profile')
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
   }
 
   // ======================================================
@@ -93,8 +93,8 @@ export default class AuthService {
     const date = AuthService.getTokenExpirationDate(token)
     const offsetSeconds = 0;
     if (date === null) {
-      return false
+      return false;
     }
     return !(date.valueOf() > (new Date().valueOf() + (offsetSeconds * 1000)))
   }
-}
+};

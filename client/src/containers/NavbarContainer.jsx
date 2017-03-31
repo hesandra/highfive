@@ -4,20 +4,20 @@ import { NavigationBar } from '../components';
 import { loginRequest, logoutSuccess } from '../actions/auth';
 
 const mapStateToProps = (state) => {
-  // const { isAuthenticated, profile, error } = state.auth;
+  const { isAuthenticated, profile, error, isFetching } = state.auth;
   return {
-    // isAuthenticated,
-    // profile,
-    // error
+    isAuthenticated,
+    profile,
+    error
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoginClick: () => {
+    onUserLoginClick: () => {
       dispatch(loginRequest());
     },
-    onLogoutClick: () => {
+    onUserLogoutClick: () => {
       dispatch(logoutSuccess());
       hashHistory.push('/');
       location.reload();

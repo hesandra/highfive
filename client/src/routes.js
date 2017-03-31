@@ -12,10 +12,15 @@ const requireAuth = (nextState, replace) => {
   }
 };
 
+const NotFoundPage = () => {
+  return <h1>HELLO</h1>
+};
+
 export default function createRoutes() {
   return (
     <Route path="/" component={AppContainer}>
       <IndexRoute component={Home} />
+      <Route path="*" component={NotFoundPage} />
     </Route>
   );
 }
