@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, hashHistory } from 'react-router';
+import { Router, hashHistory, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
