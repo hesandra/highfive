@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { AppContainer } from './containers';
+import { AppContainer, HomeContainer } from './containers';
 import { Home } from './components';
 
 import AuthService from './utils/AuthService';
@@ -19,8 +19,8 @@ const NotFoundPage = () => {
 export default function createRoutes() {
   return (
     <Route path="/" component={AppContainer}>
-      <IndexRoute component={Home} />
       <Route path="*" component={NotFoundPage} />
+      <IndexRoute component={HomeContainer} />
     </Route>
   );
 }

@@ -1,9 +1,15 @@
 import React from 'react';
+import Signup from './Signup';
 
-const Home = () => {
+const Home = (props) => {
+  console.log(props, 'props in home')
   return (
     <div>
-      <h1>Hi-Five!</h1>
+      <div>
+        <div>
+          <Signup onLoginClick={props.onLoginClick} />
+        </div>
+      </div>
     </div>
   );
 };
