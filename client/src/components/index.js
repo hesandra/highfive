@@ -5,3 +5,5 @@ export App from './App/App';
 export Home from './Home/Home';
 export NavigationBar from './Navbar/Navbar';
 export Company from './Company/Company';
+export UserProfile from './UserProfile/UserProfile';
+

@@ -41,8 +41,8 @@ export default class UserAuthService {
   // ======================================================
   static getProfile() {
     // Retrieves the profile data from localStorage
-    const profile = localStorage.getItem('profile_user')
-    return profile ? JSON.parse(localStorage.profile) : {};
+    const profile = localStorage.getItem('profile_user');
+    return profile ? JSON.parse(localStorage.profile_user) : {};
   }
 
   static loggedIn() {
@@ -56,12 +56,6 @@ export default class UserAuthService {
     localStorage.setItem('profile_user', JSON.stringify(profile));
     // Triggers profile_updated event to update the UI
   }
-
-  // getProfile(){
-  //   // Retrieves the profile data from localStorage
-  //   const profile = localStorage.getItem('profile')
-  //   return profile ? JSON.parse(localStorage.profile) : {}
-  // }
 
   static setToken(idToken) {
     // Saves user token to localStorage
@@ -77,18 +71,18 @@ export default class UserAuthService {
     const token = UserAuthService.getToken();
     const decoded = jwtDecode(token);
     if (!decoded.exp) {
-      return null
+      return null;
     }
 
-    const date = new Date(0) // The 0 here is the key, which sets the date to the epoch
-    date.setUTCSeconds(decoded.exp)
-    return date
+    const date = new Date(0); // The 0 here is the key, which sets the date to the epoch
+    date.setUTCSeconds(decoded.exp);
+    return date;
   }
 
   static isTokenExpired() {
-    const token = UserAuthService.getToken()
+    const token = UserAuthService.getToken();
     if (!token) return true;
-    const date = UserAuthService.getTokenExpirationDate(token)
+    const date = UserAuthService.getTokenExpirationDate(token);
     const offsetSeconds = 0;
     if (date === null) {
       return false;

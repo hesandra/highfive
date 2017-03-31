@@ -34,11 +34,10 @@ export function userLoginRequest() {
   authService.login();
   return {
     type: USER_LOGIN_REQUEST,
-    userType: 'user'
   };
 }
 export function userLoginSuccess(profile) {
-  hashHistory.push('/');
+  hashHistory.push('/user');
   location.reload();
   return {
     type: USER_LOGIN_SUCCESS,

@@ -3,6 +3,7 @@ import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 const NavigationBar = (props) => {
+  const { user, company, onUserLoginClick, onUserLogoutClick } = props;
   return (
     <Navbar inverse>
       <Navbar.Header>
@@ -11,10 +12,10 @@ const NavigationBar = (props) => {
         </Navbar.Brand>
       </Navbar.Header>
       <Nav pullRight>
-
-        <NavItem onClick={props.onUserLoginClick} href="#">Login</NavItem>
-        <NavItem href="#">status: { props.isAuthenticated ? ' loggedin' : ' loggedout' }</NavItem>
-        <NavItem onClick={props.onUserLogoutClick} href="#">Logout</NavItem>
+        { !user.isAuthenticated ?
+          <NavItem onClick={onUserLoginClick}>Login</NavItem> :
+          <NavItem onClick={onUserLogoutClick}>Logout</NavItem>
+        }
       </Nav>
     </Navbar>
   );

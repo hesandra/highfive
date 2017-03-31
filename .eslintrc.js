@@ -26,6 +26,7 @@ module.exports = {
         "no-alert": 0,
         "no-unused-vars": 0,
         "import/prefer-default-export": 0,
+        "import/no-named-default": 0,
         "no-use-before-define": 0
     }
 };
