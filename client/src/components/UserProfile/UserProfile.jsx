@@ -15,7 +15,7 @@ const UserProfile = (props) => {
         <hr />
       </Row>
       <Row>
-        <Col xs={6} md={4}>
+        <Col xs={4} md={4}>
           <h4 className="text-center">{ name } </h4>
           <div className="text-center">
             <Image className="user-profile-img text-center" src={profileImg} circle />
@@ -28,7 +28,7 @@ const UserProfile = (props) => {
             </a>
           </div>
         </Col>
-        <Col xs={6} md={8}>
+        <Col xs={8} md={8}>
           <UserProfileNav
             onJobPostsClick={onJobPostsClick}
           />

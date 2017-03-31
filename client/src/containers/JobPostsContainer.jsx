@@ -4,8 +4,10 @@ import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 
 const mapStateToProps = (state) => {
+  const { isAuthenticated, profile } = state.userAuth;
   return {
-    test: 'test'
+    isAuthenticated,
+    profile
   };
 };
 

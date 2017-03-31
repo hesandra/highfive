@@ -1,10 +1,15 @@
 import React from 'react';
+import { Grid, Row, Col } from 'react-bootstrap';
 
-const JobPosts = () => {
+const JobPosts = (props) => {
   return (
-    <div>
-      <h1>JOB POSTS HERE </h1>
-    </div>
+    <Grid>
+      <Row>
+        <Col xs={12}>
+          <h1>JOB POSTS HERE </h1>
+        </Col>
+      </Row>
+    </Grid>
   );
 };
 
