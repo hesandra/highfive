@@ -3,10 +3,10 @@ import { Card, Image, Icon, Rating, List, Popup, Button } from 'semantic-ui-reac
 import img from '../../../public/images/mock_company_1_hq.jpg';
 
 const CardList = (props) => {
-  const companyData = props.companies;
-  const cardList = companyData.map((company, index) => {
+  const jobPostsData = props.jobPosts;
+  const cardList = jobPostsData.map((jobPost, index) => {
     return (
-      <Card key={company.id} onClick={() => { props.onJobPostClick(company.id); }} href={`/#/jobposts/${company.id}`} color="red" link>
+      <Card key={jobPost.id} onClick={() => { props.onJobPostClick(jobPost.id); }} href={`/#/jobposts/${jobPost.id}`} color="red" link>
         <Image height={200} src={img} />
         <Card.Content>
           <Card.Header className="text-shadow blurry-text">
@@ -22,9 +22,9 @@ const CardList = (props) => {
           </Card.Meta>
           <Card.Description>
             <List>
-              <List.Item icon="globe" content={company.industry} />
-              <List.Item icon="marker" content={company.location} />
-              <List.Item icon="user" content={company.position} />
+              <List.Item icon="globe" content={jobPost.industry} />
+              <List.Item icon="marker" content={jobPost.location} />
+              <List.Item icon="user" content={jobPost.position} />
             </List>
           </Card.Description>
         </Card.Content>

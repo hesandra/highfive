@@ -18,13 +18,11 @@ class App extends Component {
     this.props.checkUserLogin();
     this.props.checkCompanyLogin();
     this.handleDismiss = this.handleDismiss.bind(this);
-    console.log(props);
   }
   componentDidMount() {
     if (!hasGetUserMedia) {
       alert('browser wont work');
     }
-    console.log(hasGetUserMedia);
   //   this.handleDismiss();
   //   this.requestUserMedia();
   //   this.startRecording();

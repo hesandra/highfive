@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { default as swal } from 'sweetalert2';
 import { AppContainer, HomeContainer, UserProfileContainer, CompanyContainer, JobPostsContainer, JobPostContainer } from './containers';
-import { Home, UserProfile } from './components';
 
 import UserAuthService from './utils/userAuthService';
 import CompanyAuthService from './utils/companyAuthService';
