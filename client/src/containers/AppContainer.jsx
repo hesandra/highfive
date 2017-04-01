@@ -3,6 +3,12 @@ import { App } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 
+const mapStateToProps = (state) => {
+  const { isAuthenticated } = state.userAuth;
+  return {
+    isAuthenticated
+  };
+}
 const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),
@@ -10,5 +16,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const AppContainer = connect(null, mapDispatchToProps)(App);
+const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 export default AppContainer;

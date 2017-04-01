@@ -3,7 +3,6 @@ import { Grid, Row, Col, Image } from 'react-bootstrap';
 import UserProfileNav from './UserProfileNav';
 
 const UserProfile = (props) => {
-  console.log(props);
   const { profile, onJobPostsClick } = props;
   const profileImg = `${profile.picture}&s=460`;
   const name = profile.name;

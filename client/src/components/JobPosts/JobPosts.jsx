@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Card, Icon, Image, Rating, Header, List } from 'semantic-ui-react';
+import { Card, Icon, Image, Rating, Header, List, Statistic } from 'semantic-ui-react';
 import img from '../../../public/images/mock_company_1_hq.jpg';
 import CardList from './CardList';
 
@@ -14,11 +14,17 @@ const JobPosts = (props) => {
             Job Postings
             <Icon link name="briefcase" circular />
           </Header>
+          <div className="text-center">
+            <Statistic>
+              <Statistic.Value>{ companies.length } </Statistic.Value>
+              <Statistic.Label>Job Postings </Statistic.Label>
+            </Statistic>
+          </div>
           <hr />
-            <CardList
-              companies={companies}
-              onJobPostClick={onJobPostClick}
-            />
+          <CardList
+            companies={companies}
+            onJobPostClick={onJobPostClick}
+          />
         </Col>
       </Row>
     </Grid>

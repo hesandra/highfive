@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Icon, Rating, List } from 'semantic-ui-react';
+import { Card, Image, Icon, Rating, List, Popup, Button } from 'semantic-ui-react';
 import img from '../../../public/images/mock_company_1_hq.jpg';
 
 const CardList = (props) => {
@@ -10,7 +10,10 @@ const CardList = (props) => {
         <Image height={200} src={img} />
         <Card.Content>
           <Card.Header className="text-shadow blurry-text">
-            <Icon link name="heart" />
+            <Popup
+              trigger={<Icon onClick={() => { console.log('click'); }} name="heart" />}
+              content="Add job to favorites"
+            />
           </Card.Header>
           <Card.Meta>
             <span className="date posted_on">
@@ -30,6 +33,8 @@ const CardList = (props) => {
           <br />
           <Icon name="user" />
             15 applicants
+            <br />
+          <Button fluid>Apply!</Button>
         </Card.Content>
       </Card>
     );
