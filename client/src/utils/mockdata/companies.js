@@ -11,6 +11,12 @@ const companies = [
     location: 'Playa Vista, CA',
     position: 'Senior-Level Engineer'
   },
+  {
+    name: 'Hack Reactor',
+    industry: 'Education',
+    location: 'Playa Vista, CA',
+    position: 'Junior-Level Engineer'
+  }
 ];
 
 export default companies;

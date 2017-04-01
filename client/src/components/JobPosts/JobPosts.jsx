@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Card, Icon, Image, Rating, Header } from 'semantic-ui-react';
+import { Card, Icon, Image, Rating, Header, List } from 'semantic-ui-react';
 import img from '../../../public/images/mock_company_1_hq.jpg';
 
 const JobPosts = (props) => {
@@ -13,7 +13,7 @@ const JobPosts = (props) => {
             <Icon link name="briefcase" circular />
           </Header>
           <hr />
-          <Card color="red" link>
+          <Card href={`/#/jobposts/${1}`} color="red" link>
             <Image height={200} src={img} />
             <Card.Content>
               <Card.Header className="text-shadow blurry-text">
@@ -25,18 +25,18 @@ const JobPosts = (props) => {
                 </span>
               </Card.Meta>
               <Card.Description>
-                industry: Finance
-                <br />
-                location: Los Angeles, Ca
-                <br />
-                position: Mid-Level Engineer
+                <List>
+                  <List.Item icon="globe" content="finance" />
+                  <List.Item icon="marker" content="Los Angeles, CA" />
+                  <List.Item icon="user" content="Mid-Level Engineer" />
+                </List>
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
+              <Rating icon="star" defaultRating={3} maxRating={4} />
+              <br />
               <Icon name="user" />
                 15 applicants
-                <hr />
-                <Rating icon="star" defaultRating={3} maxRating={4} />
             </Card.Content>
           </Card>
         </Col>

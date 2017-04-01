@@ -28,6 +28,7 @@ export default function createRoutes() {
       <Route path="/company" component={CompanyContainer} />
       <Route path="/user" component={UserProfileContainer} onEnter={requireAuth} />
       <Route path="/jobposts" component={JobPostsContainer} onEnter={requireAuth} />
+      <Route path="/jobposts/:id" onEnter={requireAuth} />
       <Route path="*" component={NotFoundPage} />
     </Route>
   );
