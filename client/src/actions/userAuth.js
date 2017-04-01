@@ -38,7 +38,7 @@ export function userLoginRequest() {
 }
 export function userLoginSuccess(profile) {
   hashHistory.push('/user');
-  location.reload();
+  // location.reload(); <--- uneeded ?
   return {
     type: USER_LOGIN_SUCCESS,
     profile
