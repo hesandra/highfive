@@ -27,6 +27,11 @@ const UserProfileNav = (props) => {
                 <i className="fa fa-laptop" aria-hidden="true" />
               </NavItem>
               <NavItem eventKey="4">
+                Edit Profile
+                <br />
+                <i className="fa fa-user" aria-hidden="true" />
+              </NavItem>
+              <NavItem eventKey="5">
                 Settings
                 <br />
                 <i className="fa fa-spin fa-cog" aria-hidden="true" />
@@ -41,12 +46,13 @@ const UserProfileNav = (props) => {
               <Tab.Pane eventKey="2">
                 Submissions
             </Tab.Pane>
-              <Tab.Pane eventKey="3">
-              </Tab.Pane>
+              <Tab.Pane eventKey="3" />
               <Tab.Pane eventKey="4">
+                edit profile form here
+              </Tab.Pane>
+              <Tab.Pane eventKey="5">
                 <SettingsForm />
               </Tab.Pane>
-
             </Tab.Content>
           </Col>
         </Row>
