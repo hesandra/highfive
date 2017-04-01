@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
-import { App } from '../components';
+import { JobPost } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 
 const mapStateToProps = (state) => {
-  const { isAuthenticated } = state.userAuth;
+  const { isAuthenticated, profile } = state.userAuth;
   return {
-    isAuthenticated
+    isAuthenticated,
+    profile
   };
-}
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),
@@ -16,5 +18,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
-export default AppContainer;
+const JobPostsContainer = connect(mapStateToProps, mapDispatchToProps)(JobPost);
+export default JobPostsContainer;

@@ -1,16 +1,28 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { default as swal } from 'sweetalert2';
-import { AppContainer, HomeContainer, UserProfileContainer, CompanyContainer, JobPostsContainer } from './containers';
+import { AppContainer, HomeContainer, UserProfileContainer, CompanyContainer, JobPostsContainer, JobPostContainer } from './containers';
 import { Home, UserProfile } from './components';
 
 import UserAuthService from './utils/userAuthService';
+import CompanyAuthService from './utils/companyAuthService';
 
-const requireAuth = (nextState, replace) => {
+const requireUserAuth = (nextState, replace) => {
   if (!UserAuthService.loggedIn()) {
     swal({
       title: 'Please Login',
-      text: 'Login to access',
+      text: 'Login as a applicant to access',
+      type: 'error'
+    });
+    replace({ pathname: '/' });
+  }
+};
+
+const requireCompanyAuth = (nextState, replace) => {
+  if (!CompanyAuthService.loggedIn()) {
+    swal({
+      title: 'Please Login',
+      text: 'Login as a company to access',
       type: 'error'
     });
     replace({ pathname: '/' });
@@ -25,10 +37,10 @@ export default function createRoutes() {
   return (
     <Route path="/" component={AppContainer}>
       <IndexRoute component={HomeContainer} />
-      <Route path="/company" component={CompanyContainer} />
-      <Route path="/user" component={UserProfileContainer} onEnter={requireAuth} />
-      <Route path="/jobposts" component={JobPostsContainer} onEnter={requireAuth} />
-      <Route path="/jobposts/:id" onEnter={requireAuth} />
+      <Route path="/company" component={CompanyContainer} onEnter={requireCompanyAuth} />
+      <Route path="/profile" component={UserProfileContainer} onEnter={requireUserAuth} />
+      <Route path="/jobposts" component={JobPostsContainer} onEnter={requireUserAuth} />
+      <Route path="/jobposts/:id" component={JobPostContainer} onEnter={requireUserAuth} />
       <Route path="*" component={NotFoundPage} />
     </Route>
   );

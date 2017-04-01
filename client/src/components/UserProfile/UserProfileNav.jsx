@@ -9,7 +9,7 @@ const UserProfileNav = (props) => {
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
         <Row className="clearfix">
-          <Col sm={8}>
+          <Col sm={12}>
             <Nav bsStyle="tabs">
               <NavItem eventKey="1">
                 Notifications
@@ -27,13 +27,18 @@ const UserProfileNav = (props) => {
                 <i className="fa fa-laptop" aria-hidden="true" />
               </NavItem>
               <NavItem eventKey="4">
+                Edit Profile
+                <br />
+                <i className="fa fa-user" aria-hidden="true" />
+              </NavItem>
+              <NavItem eventKey="5">
                 Settings
                 <br />
                 <i className="fa fa-spin fa-cog" aria-hidden="true" />
               </NavItem>
             </Nav>
           </Col>
-          <Col sm={8}>
+          <Col sm={12}>
             <Tab.Content animation>
               <Tab.Pane eventKey="1">
                 notifications here
@@ -41,12 +46,13 @@ const UserProfileNav = (props) => {
               <Tab.Pane eventKey="2">
                 Submissions
             </Tab.Pane>
-              <Tab.Pane eventKey="3">
-              </Tab.Pane>
+              <Tab.Pane eventKey="3" />
               <Tab.Pane eventKey="4">
+                edit profile form here
+              </Tab.Pane>
+              <Tab.Pane eventKey="5">
                 <SettingsForm />
               </Tab.Pane>
-
             </Tab.Content>
           </Col>
         </Row>
