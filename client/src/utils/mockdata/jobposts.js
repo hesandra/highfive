@@ -1,4 +1,4 @@
-const companies = [
+const jobPosts = [
   {
     id: 1,
     name: 'Facebook',
@@ -29,4 +29,4 @@ const companies = [
   }
 ];
 
-export default companies;
+export default jobPosts;

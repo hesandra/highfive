@@ -5,7 +5,7 @@ import img from '../../../public/images/mock_company_1_hq.jpg';
 import CardList from './CardList';
 
 const JobPosts = (props) => {
-  const { onJobPostClick, companies } = props;
+  const { onJobPostClick, jobPosts } = props;
   return (
     <Grid>
       <Row>
@@ -16,13 +16,13 @@ const JobPosts = (props) => {
           </Header>
           <div className="text-center">
             <Statistic>
-              <Statistic.Value>{ companies.length } </Statistic.Value>
+              <Statistic.Value>{ jobPosts.length } </Statistic.Value>
               <Statistic.Label>Job Postings </Statistic.Label>
             </Statistic>
           </div>
           <hr />
           <CardList
-            companies={companies}
+            jobPosts={jobPosts}
             onJobPostClick={onJobPostClick}
           />
         </Col>

@@ -1,17 +1,22 @@
 import { connect } from 'react-redux';
-import { JobPost } from '../components';
+import io from 'socket.io-client';
+import { Interview } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
-import { initJobInterview } from '../actions/jobPost';
-
+import { getUserMedia } from '../actions/interview';
 import jobPosts from '../utils/mockdata/jobposts';
+
+
+// const socket = io();
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;
+  const { stream } = state.interview;
   return {
     isAuthenticated,
     profile,
-    jobPosts
+    jobPosts,
+    stream
   };
 };
 
@@ -19,9 +24,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),
     checkCompanyLogin: () => dispatch(checkCompanyLogin()),
-    onJobInterviewClick: id => dispatch(initJobInterview(id))
+    requestUserMedia: () => dispatch(getUserMedia())
   };
 };
 
-const JobPostsContainer = connect(mapStateToProps, mapDispatchToProps)(JobPost);
-export default JobPostsContainer;
+const InterviewContainer = connect(mapStateToProps, mapDispatchToProps)(Interview);
+export default InterviewContainer;

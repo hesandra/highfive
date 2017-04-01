@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { default as swal } from 'sweetalert2';
-import { AppContainer, HomeContainer, UserProfileContainer, CompanyContainer, JobPostsContainer, JobPostContainer } from './containers';
-import { Home, UserProfile } from './components';
+import { AppContainer, HomeContainer, UserProfileContainer,
+CompanyContainer, JobPostsContainer, JobPostContainer, InterviewContainer } from './containers';
 
 import UserAuthService from './utils/userAuthService';
 import CompanyAuthService from './utils/companyAuthService';
@@ -41,6 +41,7 @@ export default function createRoutes() {
       <Route path="/profile" component={UserProfileContainer} onEnter={requireUserAuth} />
       <Route path="/jobposts" component={JobPostsContainer} onEnter={requireUserAuth} />
       <Route path="/jobposts/:id" component={JobPostContainer} onEnter={requireUserAuth} />
+      <Route path="/interview/:id" component={InterviewContainer} onEnter={requireUserAuth} />
       <Route path="*" component={NotFoundPage} />
     </Route>
   );
