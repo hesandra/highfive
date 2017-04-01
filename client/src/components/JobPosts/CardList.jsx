@@ -7,7 +7,11 @@ const CardList = (props) => {
   const cardList = jobPostsData.map((jobPost, index) => {
     return (
       <Card key={jobPost.id} onClick={() => { props.onJobPostClick(jobPost.id); }} href={`/#/jobposts/${jobPost.id}`} color="red" link>
-        <Image height={200} src={img} />
+        <Image
+          height={200}
+          label={{ color: 'red', content: jobPost.industry, icon: 'globe', ribbon: true }}
+          src={img}
+        />
         <Card.Content>
           <Card.Header className="text-shadow blurry-text">
             <Popup
@@ -34,7 +38,7 @@ const CardList = (props) => {
           <Icon name="user" />
             15 applicants
             <br />
-          <Button fluid>Apply!</Button>
+          <Button color="green" fluid>Apply!</Button>
         </Card.Content>
       </Card>
     );
