@@ -3,15 +3,14 @@ import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootst
 import { Link } from 'react-router';
 import CompanyProfile from './CompanyProfile';
 
-const Navbar = (props) => {
+const CompanyNavbar = (props) => {
   return (
     <div>
-      <div>This is the company profile</div>
-        <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
-          <Row className="clearfix">
-            <Col sm={12}>
-              <Nav bsStyle="tabs">
-                <NavItem eventKey="first">
+      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
+        <Row className="clearfix">
+          <Col sm={12}>
+            <Nav bsStyle="tabs">
+              <NavItem eventKey="first">
                 Notifications
                 </NavItem>
               <NavItem eventKey="second">
@@ -60,4 +59,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default CompanyNavbar;
