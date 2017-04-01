@@ -4,6 +4,7 @@ import { Card, Icon, Image, Rating, Header, List } from 'semantic-ui-react';
 import img from '../../../public/images/mock_company_1_hq.jpg';
 
 const JobPosts = (props) => {
+  const { onJobPostClick } = props;
   return (
     <Grid>
       <Row>
@@ -13,7 +14,7 @@ const JobPosts = (props) => {
             <Icon link name="briefcase" circular />
           </Header>
           <hr />
-          <Card href={`/#/jobposts/${1}`} color="red" link>
+          <Card onClick={onJobPostClick} href={`/#/jobposts/${1}`} color="red" link>
             <Image height={200} src={img} />
             <Card.Content>
               <Card.Header className="text-shadow blurry-text">
