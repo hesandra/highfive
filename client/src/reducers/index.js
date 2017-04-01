@@ -4,13 +4,15 @@ import userAuth from './userAuth';
 import companyAuth from './companyAuth';
 import companyProfile from './company';
 import jobPosts from './jobPosts';
+import interview from './interview';
 
 const rootReducer = combineReducers({
   routing,
   userAuth,
   companyAuth,
   companyProfile,
-  jobPosts
+  jobPosts,
+  interview
 });
 
 export default rootReducer;

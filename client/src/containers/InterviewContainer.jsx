@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
-
 import { Interview } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
+import { getUserMedia } from '../actions/interview';
 import jobPosts from '../utils/mockdata/jobposts';
 
 
@@ -11,17 +11,20 @@ import jobPosts from '../utils/mockdata/jobposts';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;
+  const { stream } = state.interview;
   return {
     isAuthenticated,
     profile,
     jobPosts,
+    stream
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),
-    checkCompanyLogin: () => dispatch(checkCompanyLogin())
+    checkCompanyLogin: () => dispatch(checkCompanyLogin()),
+    requestUserMedia: () => dispatch(getUserMedia())
   };
 };
 

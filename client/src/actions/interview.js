@@ -19,13 +19,24 @@ function requestUserMediaSuccess(mediaStream) {
 
 export const REQUEST_USER_MEDIA = 'REQUEST_USER_MEDIA';
 export function requestUserMedia() {
-  const params = {
-    audio: true,
-    video: true,
+  getUserMedia();
+  return {
+    type: REQUEST_USER_MEDIA
   };
-  navigator.mediaDevices.getUserMedia(params)
-    .then((mediaStream) => {
-      requestUserMediaSuccess(mediaStream);
-    })
-    .catch(e => requestUserMediaError(e));
 }
+
+export function getUserMedia() {
+  return (dispatch) => {
+    dispatch(requestUserMedia());
+    const params = {
+      audio: true,
+      video: true,
+    };
+    navigator.mediaDevices.getUserMedia(params)
+      .then((mediaStream) => {
+        dispatch(requestUserMediaSuccess(mediaStream));
+      })
+      .catch(e => dispatch(requestUserMediaError(e)));
+  };
+}
+
