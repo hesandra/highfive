@@ -1,22 +1,54 @@
 import { Message } from 'semantic-ui-react';
 import React, { Component } from 'react';
+import recordRTC from 'recordrtc';
+import { captureUserMedia } from '../../utils/recordRTCUtils';
 import { NavBarContainer } from '../../containers';
+
+const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+  navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      visible: true
     };
     // check login status here
+    this.requestUserMedia = this.requestUserMedia.bind(this);
     this.props.checkUserLogin();
     this.props.checkCompanyLogin();
     this.handleDismiss = this.handleDismiss.bind(this);
     console.log(props);
   }
   componentDidMount() {
-    this.handleDismiss();
+    if (!hasGetUserMedia) {
+      alert('browser wont work');
+    }
+    console.log(hasGetUserMedia);
+  //   this.handleDismiss();
+  //   this.requestUserMedia();
+  //   this.startRecording();
+  }
+  requestUserMedia() {
+    captureUserMedia((stream) => {
+      console.log(window.URL.createObjectURL(stream));
+    });
+  }
+  startRecording() {
+    captureUserMedia((stream) => {
+      const video = recordRTC(stream, { type: 'video' });
+      video.startRecording();
+      setTimeout(() => {
+        video.stopRecording((vidsrc) => {
+          this.setState({ src: vidsrc });
+        });
+        console.log('this', video);
+        console.log(video.blob);
+      }, 120000);
+    });
+  }
+  stopRecording() {
+
   }
   handleDismiss() {
     setTimeout(() => {
@@ -25,20 +57,9 @@ class App extends Component {
     }, 2000);
   }
   render() {
-    console.log(this.state);
     return (
       <div>
         <NavBarContainer />
-        { this.state.visible ? 
-          <div>
-            <Message
-              onDismiss={this.handleDismiss}
-              header="Logged In Successfully"
-              content="thank-you for logging in"
-              floating
-            />
-            </div>
-            : '' }
         { this.props.children }
       </div>
     );

@@ -9,7 +9,7 @@ const UserProfileNav = (props) => {
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
         <Row className="clearfix">
-          <Col sm={8}>
+          <Col sm={12}>
             <Nav bsStyle="tabs">
               <NavItem eventKey="1">
                 Notifications
@@ -38,7 +38,7 @@ const UserProfileNav = (props) => {
               </NavItem>
             </Nav>
           </Col>
-          <Col sm={8}>
+          <Col sm={12}>
             <Tab.Content animation>
               <Tab.Pane eventKey="1">
                 notifications here
