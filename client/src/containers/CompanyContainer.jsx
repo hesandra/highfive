@@ -5,8 +5,9 @@ import { Company } from '../components';
 import { toProfile, toJobPosts, toSubmissions } from '../actions/company';
 
 const mapStateToProps = (state) => {
+  console.log('state.companyProfile', state.companyProfile)
   return {
-   
+    state: state.companyProfile,
   };
 };
 

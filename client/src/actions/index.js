@@ -3,6 +3,8 @@
  */
 import * as userAuth from './userAuth';
 import * as companyAuth from './companyAuth';
+import * as company from './company';
 
 export { userAuth };
 export { companyAuth };
+export { company };
