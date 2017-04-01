@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
+
 import { Interview } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
-
 import jobPosts from '../utils/mockdata/jobposts';
+
+
+// const socket = io();
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;
   return {
     isAuthenticated,
     profile,
-    jobPosts
+    jobPosts,
   };
 };
 
