@@ -33,9 +33,8 @@ class ApplyConfirm extends Component {
           <Modal.Body>
             <h4>Honor Code: </h4>
             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-           
             <hr />
+            <Button color="blue" attached="bottom">GO!</Button>
           </Modal.Body>
         </Modal>
       </div>

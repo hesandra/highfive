@@ -4,7 +4,7 @@ import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 import { requestJobPost } from '../actions/jobPosts';
 
-import jobPosts from '../utils/mockdata/companies';
+import jobPosts from '../utils/mockdata/jobposts';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;

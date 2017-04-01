@@ -10,3 +10,4 @@ export JobPosts from './JobPosts/JobPosts';
 export JobPost from './JobPost/JobPost';
 export CompanyProfile from './Company/CompanyProfile';
 export CompanyDetails from './Company/CompanyDetails';
+export Interview from './Interview/Interview';

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { JobPost } from '../components';
+import { Interview } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 
@@ -21,5 +21,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const JobPostsContainer = connect(mapStateToProps, mapDispatchToProps)(JobPost);
-export default JobPostsContainer;
+const InterviewContainer = connect(mapStateToProps, mapDispatchToProps)(Interview);
+export default InterviewContainer;
