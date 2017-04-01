@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Well } from 'react-bootstrap';
 import { Button } from 'semantic-ui-react';
 import recordRTC from 'recordrtc';
+import brace from 'brace';
+import AceEditor from 'react-ace';
+
+import 'brace/mode/javascript';
+import 'brace/theme/monokai';
+
 
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
   navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -47,6 +53,18 @@ class Interview extends Component {
               <Button onClick={requestUserMedia} primary>Get STREAM</Button>
               <hr />
               <video src={this.state.src} controls autoPlay />
+            </div>
+            <div>
+            <Well>
+              <AceEditor
+                mode="javascript"
+                theme="monokai"
+                editorProps={{ $blockScrolling: true }}
+                enableBasicAutocompletion
+                tabSize={2}
+                
+              />
+            </Well>
             </div>
           </Col>
         </Row>

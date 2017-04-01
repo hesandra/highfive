@@ -3,11 +3,11 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { Header, Icon, Card, List, Rating, Button, Image, Confirm } from 'semantic-ui-react';
 import img from '../../../public/images/mock_company_1_hq.jpg';
 
-import ApplyConfirm from './ApplyConfirm';
 import ApplyConfirmModal from './ApplyConfirmModal';
 
 const JobPost = (props) => {
   console.log('props passed to jobPost', props);
+  const { onJobInterviewClick } = props;
   const { id } = props.params;
   const { jobPosts } = props;
   const jobPost = jobPosts.filter((post, i) => {
@@ -15,7 +15,6 @@ const JobPost = (props) => {
       return post;
     }
   });
-  console.log(jobPost);
   return (
     <Grid>
       <Row>
@@ -55,7 +54,10 @@ const JobPost = (props) => {
               <br />
             </Card.Content>
           </Card>
-          <ApplyConfirm />
+          <ApplyConfirmModal
+            id={id}
+            onJobInterviewClick={onJobInterviewClick}
+          />
           <p className="text-center">please review our terms and conditions</p>
         </Col>
       </Row>

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { JobPost } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
+import { initJobInterview } from '../actions/jobPost';
 
 import jobPosts from '../utils/mockdata/jobposts';
 
@@ -17,7 +18,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),
-    checkCompanyLogin: () => dispatch(checkCompanyLogin())
+    checkCompanyLogin: () => dispatch(checkCompanyLogin()),
+    onJobInterviewClick: id => dispatch(initJobInterview(id))
   };
 };
 
