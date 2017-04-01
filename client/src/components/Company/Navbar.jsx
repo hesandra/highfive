@@ -1,21 +1,21 @@
 import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
-import Profile from './Profile';
+import CompanyProfile from './CompanyProfile';
 
 const Navbar = (props) => {
   return (
     <div>
       <div>This is the company profile</div>
-      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
-        <Row className="clearfix">
-          <Col sm={12}>
-            <Nav bsStyle="tabs">
-              <NavItem eventKey="first">
-               Profile
-               </NavItem>
+        <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
+          <Row className="clearfix">
+            <Col sm={12}>
+              <Nav bsStyle="tabs">
+                <NavItem eventKey="first">
+                Notifications
+                </NavItem>
               <NavItem eventKey="second">
-               Submissions
+                Submissions
             </NavItem>
               <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab">
                 <MenuItem eventKey="3.1">Junior</MenuItem>
@@ -24,28 +24,34 @@ const Navbar = (props) => {
                 <MenuItem divider />
                 <MenuItem eventKey="3.4">Separated link</MenuItem>
               </NavDropdown>
+              <NavItem eventKey="fourth">
+                Edit Profile
+               </NavItem>
             </Nav>
           </Col>
           <Col sm={12}>
             <Tab.Content animation>
               <Tab.Pane eventKey="first">
-                <Profile />
+                Notifications
             </Tab.Pane>
               <Tab.Pane eventKey="second">
-               Submissions
+                Submissions
             </Tab.Pane>
               <Tab.Pane eventKey="3.1">
-               Junior
+                Junior
             </Tab.Pane>
               <Tab.Pane eventKey="3.2">
-               Mid
+                Mid
             </Tab.Pane>
               <Tab.Pane eventKey="3.3">
-               Senior
+                Senior
             </Tab.Pane>
               <Tab.Pane eventKey="3.4">
-            Tab 3.4 content
+                Tab 3.4 content
             </Tab.Pane>
+              <Tab.Pane eventKey="fourth">
+                <CompanyProfile />
+              </Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
