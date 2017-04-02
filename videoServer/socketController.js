@@ -5,9 +5,7 @@ module.exports = {
     io.on('connection', (socket) => {
       console.log('connection');
 
-
       socket.on('video', (data) => {
-        console.log(data);
         const dataURL = data.split(',').pop();
         const fileBuffer = new Buffer(dataURL, 'base64');
         console.log(fileBuffer);
