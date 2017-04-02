@@ -7,8 +7,9 @@ import { getUserMedia } from '../actions/interview';
 import jobPosts from '../utils/mockdata/jobposts';
 
 
-// const socket = io();
+const socket = io('http://localhost:3001');
 
+socket.emit('yo', 'test');
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;
   const { stream } = state.interview;
@@ -16,7 +17,8 @@ const mapStateToProps = (state) => {
     isAuthenticated,
     profile,
     jobPosts,
-    stream
+    stream,
+    socket
   };
 };
 
