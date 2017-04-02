@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ./server/index.js",
+    "test": "node_modules/.bin/mocha --bail --reporter nyan test/",
     "lint": "eslint . || true",
     "dev": "webpack-dashboard webpack-dev-server --progress --colors",
     "build": "weboack"
@@ -23,6 +23,7 @@
   "dependencies": {
     "auth0-js": "^8.5.0",
     "auth0-lock": "^10.14.0",
+    "aws-sdk": "^2.36.0",
     "axios": "^0.15.3",
     "body-parser": "^1.17.1",
     "brace": "^0.10.0",
@@ -76,6 +77,7 @@
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "react-hot-loader": "^3.0.0-beta.6",
+    "should": "^11.2.1",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.2",
     "webpack-dashboard": "^0.3.0",

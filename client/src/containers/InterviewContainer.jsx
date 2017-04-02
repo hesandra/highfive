@@ -9,7 +9,6 @@ import jobPosts from '../utils/mockdata/jobposts';
 
 const socket = io('http://localhost:3001');
 
-socket.emit('yo', 'test');
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;
   const { stream } = state.interview;
