@@ -8,8 +8,8 @@ module.exports = {
       socket.on('video', (data) => {
         const dataURL = data.split(',').pop();
         const fileBuffer = new Buffer(dataURL, 'base64');
-        console.log(fileBuffer);
         fs.writeFileSync('./t.webm', fileBuffer);
+        console.log('video saved');
       });
     });
   }

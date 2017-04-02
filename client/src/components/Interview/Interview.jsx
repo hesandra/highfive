@@ -8,7 +8,7 @@ import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
 import LoadingModal from './LoadingModal';
-
+import VideoPlayer from './VideoPlayer';
 
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
   navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -20,15 +20,18 @@ class Interview extends Component {
       loaded: false
     };
   }
+  componentWillMount() {
+    const { requestUserMedia } = this.props;
+    requestUserMedia();
+  }
   componentDidMount() {
     if (!hasGetUserMedia) {
       // use sweetalert here
       alert('browser wont work');
     }
-
     setTimeout(() => {
       this.setState({ loaded: true })
-    }, 3000)
+    }, 3000);
   }
   componentDidUpdate(prevProps) {
     if (this.props.stream && !this.state.done) {
@@ -36,30 +39,53 @@ class Interview extends Component {
       this.startRecording(this.props.stream);
     }
   }
+  componentWillUnmount() {
+    // stop media stream if user navigates away while streaming
+    this.state.stream.stop();
+  }
   startRecording(stream) {
-    const video = recordRTC(stream, { 
+    if (stream.active) {
+      this.setState({ stream, done: true });
+      this.stream = stream;
+    }
+    const video = recordRTC(stream, {
       type: 'video',
       mimeType: 'video/webm',
-      bitsPerSecond: 512 * 8 * 1024
     });
     video.startRecording();
     setTimeout(() => {
       video.stopRecording((vidsrc) => {
-        //  this.props.socket.emit('video', vidsrc);
-        this.setState({ src: vidsrc, done: true });
+        if (this.state.stream.active) {
+          this.setState({ src: vidsrc, done: true });
+          stream.stop();
+        }
       });
-      console.log('this', video);
-      console.log(video.blob);
       setTimeout(() => {
         const url = video.getDataURL((dataUrl) => {
           this.props.socket.emit('video', dataUrl);
+          console.log('video sent');
         });
       }, 1000);
-    }, 4000);
+    }, 10000);
   }
   render() {
-    console.log(this.props, 'interview');
     const { requestUserMedia } = this.props;
+    let videoOptions = {};
+    if (this.state.stream) {
+      videoOptions = {
+        height: '300',
+        width: '300',
+        autoPlay: true,
+        controls: true,
+        controlBar: {
+          fullscreenControl: false,
+        },
+        sources: [{
+          src: window.URL.createObjectURL(this.state.stream) || '',
+          type: 'video/webm'
+        }]
+      };
+    }
     return (
       <Grid>
         <Row>
@@ -68,22 +94,22 @@ class Interview extends Component {
             <div className="text-center">
               <Button onClick={requestUserMedia} primary>Get STREAM</Button>
               <hr />
-              <video src={this.state.src} controls autoPlay />
+              { this.state.stream ? 
+                <VideoPlayer {...videoOptions} /> : '' }
+              <hr />
             </div>
             <div>
-              <LoadingModal
-                loaded={this.state.loaded}
-              />
-            <Well>
-              <AceEditor
-                mode="javascript"
-                theme="monokai"
-                editorProps={{ $blockScrolling: true }}
-                enableBasicAutocompletion
-                tabSize={2}
-                
-              />
-            </Well>
+              <Well>
+                <AceEditor
+                  mode="javascript"
+                  theme="monokai"
+                  editorProps={{ $blockScrolling: true }}
+                  enableBasicAutocompletion
+                  tabSize={2}
+                  value={'/* enter your answer below */'}
+                  setOptions={{ cursorStyle: 'wide' }}
+                />
+              </Well>
             </div>
           </Col>
         </Row>

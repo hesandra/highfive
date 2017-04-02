@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ./server/index.js",
+    "test": "node_modules/.bin/mocha --bail --reporter nyan test/",
     "lint": "eslint . || true",
     "dev": "webpack-dashboard webpack-dev-server --progress --colors",
     "build": "weboack"
@@ -23,6 +23,7 @@
   "dependencies": {
     "auth0-js": "^8.5.0",
     "auth0-lock": "^10.14.0",
+    "aws-sdk": "^2.36.0",
     "axios": "^0.15.3",
     "body-parser": "^1.17.1",
     "brace": "^0.10.0",
@@ -64,6 +65,7 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
+    "chai": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.27.3",
     "eslint": "^3.18.0",
@@ -72,8 +74,10 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.11.0",
+    "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "react-hot-loader": "^3.0.0-beta.6",
+    "should": "^11.2.1",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.2",
     "webpack-dashboard": "^0.3.0",
