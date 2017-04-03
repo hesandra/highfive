@@ -19,3 +19,12 @@
 .social-links {
   color: black;
 }
+
+.hideline {
+  clear: both;
+  visibility: hidden;
+}
+
+a {
+  color: black;
+}

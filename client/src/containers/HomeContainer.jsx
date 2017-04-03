@@ -6,9 +6,10 @@ import { userLoginRequest, userLogoutSuccess } from '../actions/userAuth';
 import { companyLoginRequest, companyLogoutSuccess } from '../actions/companyAuth';
 
 const mapStateToProps = (state) => {
-  const { isAuthenticated, profile, error } = state.userAuth;
+  const { profile, error } = state.userAuth;
   return {
-    isAuthenticated,
+    isUserAuthenticated: state.userAuth.isAuthenticated,
+    isCompanyAuthenticated: state.companyAuth.isAuthenticated,
     profile,
     error
   };
@@ -19,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     onUserLoginClick: () => {
       dispatch(userLoginRequest());
     },
+    onAuthedUserLoginClick: () => {
+      hashHistory.push('/profile');
+    },
     onUserLogoutClick: () => {
       dispatch(userLogoutSuccess());
       hashHistory.push('/');
@@ -26,6 +30,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onCompanyLoginClick: () => {
       dispatch(companyLoginRequest());
+    },
+    onAuthedCompanyLoginClick: () => {
+      hashHistory.push('/company');
     }
   };
 };

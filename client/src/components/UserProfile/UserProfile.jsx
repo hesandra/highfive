@@ -4,7 +4,6 @@ import UserProfileNav from './UserProfileNav';
 
 const UserProfile = (props) => {
   const { profile, onJobPostsClick } = props;
-  console.log(profile);
   let profileImage;
   let name;
   let location;
@@ -29,9 +28,6 @@ const UserProfile = (props) => {
   return (
     <Grid fluid>
       <Row>
-        <hr />
-      </Row>
-      <Row>
         <Col xs={4} md={4}>
           <h4 className="text-center">{ name } </h4>
           <div className="text-center">
@@ -39,7 +35,7 @@ const UserProfile = (props) => {
           </div>
           <div className="text-center">
             <small className="text-center"> {location} </small>
-            <hr />
+            <hr className="hideline" />
             <a href={githubLink} className="social-links" rel="noopener noreferrer" target="_blank">
               <i className="fa fa-github" aria-hidden="true" />
             </a>
