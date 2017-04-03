@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Confirm } from 'semantic-ui-react';
 import { Modal, OverlayTrigger } from 'react-bootstrap';
 
+import StepInfo from './StepInfo';
+
 
 class ApplyConfirm extends Component {
   constructor(props) {
@@ -27,13 +29,25 @@ class ApplyConfirm extends Component {
     return (
       <div>
         <Button onClick={this.show} color="green" fluid>Apply!</Button>
-        <Modal show={this.state.showModal} onHide={this.handleClose}>
+        <Modal show={this.state.showModal} onHide={this.handleClose} bsSize="large">
           <Modal.Header closeButton>
-            <Modal.Title>Terms & Conditions</Modal.Title>
+            <Modal.Title></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Honor Code: </h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+            <div className="text-center">
+              <h1>Notice!</h1>
+              <p>You are about to enter an immutable communication experience! Once activated,
+              your submission will be recorded and submitted to the company. Please make sure you are ready to continue</p>
+              <hr />
+
+              <h4>What to expect?</h4>
+              <StepInfo />
+              <hr />
+
+              last but not least...
+              <br />
+              <iframe src="//giphy.com/embed/yoJC2K6rCzwNY2EngA" width="480" height="300.47999999999996" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+            </div>
             <hr />
             <Button onClick={() => { onJobInterviewClick(id); }} color="blue" attached="bottom">GO!</Button>
           </Modal.Body>

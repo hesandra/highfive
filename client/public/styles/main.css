@@ -15,3 +15,20 @@
 .loading-modal {
   height: 700px;
 }
+
+.social-links {
+  color: black;
+}
+
+.hideline {
+  clear: both;
+  visibility: hidden;
+}
+
+a {
+  color: black;
+}
+
+.apply-modal {
+  widht: 90%;
+}

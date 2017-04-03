@@ -4,7 +4,6 @@ import UserProfileNav from './UserProfileNav';
 
 const UserProfile = (props) => {
   const { profile, onJobPostsClick } = props;
-  console.log(profile);
   let profileImage;
   let name;
   let location;
@@ -20,17 +19,14 @@ const UserProfile = (props) => {
       });
       profileImage = `${profile.identities[githubIndex].profileData.picture}&s=460`;
       name = profile.identities[githubIndex].profileData.name;
-      location = profile.identities[githubIndex].location;
-      githubLink = profile.identities[githubIndex].html_url;
+      location = profile.identities[githubIndex].profileData.location;
+      githubLink = profile.identities[githubIndex].profileData.html_url;
     }
   } catch (e) {
     console.log(e);
   }
   return (
     <Grid fluid>
-      <Row>
-        <hr />
-      </Row>
       <Row>
         <Col xs={4} md={4}>
           <h4 className="text-center">{ name } </h4>
@@ -39,9 +35,15 @@ const UserProfile = (props) => {
           </div>
           <div className="text-center">
             <small className="text-center"> {location} </small>
-            <hr />
-            <a href={githubLink} rel="noopener noreferrer" target="_blank">
+            <hr className="hideline" />
+            <a href={githubLink} className="social-links" rel="noopener noreferrer" target="_blank">
               <i className="fa fa-github" aria-hidden="true" />
+            </a>
+            {' '}
+            |
+            {' '}
+            <a rel="noopener noreferrer" className="social-links" target="_blank">
+              <i className="fa fa-linkedin" aria-hidden="true" />
             </a>
           </div>
         </Col>

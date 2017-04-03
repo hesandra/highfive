@@ -26,7 +26,6 @@ const mapDispatchToProps = (dispatch) => {
     onUserLogoutClick: () => {
       dispatch(userLogoutSuccess());
       hashHistory.push('/');
-      location.reload();
     }
   };
 };
