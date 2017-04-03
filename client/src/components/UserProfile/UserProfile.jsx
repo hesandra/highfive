@@ -20,8 +20,9 @@ const UserProfile = (props) => {
       });
       profileImage = `${profile.identities[githubIndex].profileData.picture}&s=460`;
       name = profile.identities[githubIndex].profileData.name;
-      location = profile.identities[githubIndex].location;
-      githubLink = profile.identities[githubIndex].html_url;
+      location = profile.identities[githubIndex].profileData.location;
+      githubLink = profile.identities[githubIndex].profileData.html_url;
+      console.log(location);
     }
   } catch (e) {
     console.log(e);
