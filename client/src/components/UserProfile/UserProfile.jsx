@@ -22,7 +22,6 @@ const UserProfile = (props) => {
       name = profile.identities[githubIndex].profileData.name;
       location = profile.identities[githubIndex].profileData.location;
       githubLink = profile.identities[githubIndex].profileData.html_url;
-      console.log(location);
     }
   } catch (e) {
     console.log(e);
@@ -41,8 +40,14 @@ const UserProfile = (props) => {
           <div className="text-center">
             <small className="text-center"> {location} </small>
             <hr />
-            <a href={githubLink} rel="noopener noreferrer" target="_blank">
+            <a href={githubLink} className="social-links" rel="noopener noreferrer" target="_blank">
               <i className="fa fa-github" aria-hidden="true" />
+            </a>
+            {' '}
+            |
+            {' '}
+            <a rel="noopener noreferrer" className="social-links" target="_blank">
+              <i className="fa fa-linkedin" aria-hidden="true" />
             </a>
           </div>
         </Col>
