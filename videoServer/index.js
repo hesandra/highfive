@@ -3,6 +3,9 @@ const http = require('http');
 const morgan = require('morgan');
 const path = require('path');
 const helmet = require('helmet');
+const dotenv = require('dotenv');
+
+dotenv.load();
 
 const router = require('./routes');
 const socketController = require('./socketController');
@@ -28,5 +31,4 @@ const server = http.createServer(app).listen(port, () => {
 const io = require('socket.io')(server);
 
 socketController.init(io);
-
 module.exports = app;

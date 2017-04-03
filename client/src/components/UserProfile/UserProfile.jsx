@@ -4,10 +4,28 @@ import UserProfileNav from './UserProfileNav';
 
 const UserProfile = (props) => {
   const { profile, onJobPostsClick } = props;
-  const profileImg = `${profile.picture}&s=460`;
-  const name = profile.name;
-  const location = profile.location;
-  const githubLink = profile.html_url;
+  console.log(profile);
+  let profileImage;
+  let name;
+  let location;
+  let githubLink;
+
+  /* If A User logs in with Github */
+  try {
+    if (profile.identities) {
+      const githubIndex = profile.identities.findIndex((ident) => {
+        if (ident.provider === 'github') {
+          return ident;
+        }
+      });
+      profileImage = `${profile.identities[githubIndex].profileData.picture}&s=460`;
+      name = profile.identities[githubIndex].profileData.name;
+      location = profile.identities[githubIndex].location;
+      githubLink = profile.identities[githubIndex].html_url;
+    }
+  } catch (e) {
+    console.log(e);
+  }
   return (
     <Grid fluid>
       <Row>
@@ -17,7 +35,7 @@ const UserProfile = (props) => {
         <Col xs={4} md={4}>
           <h4 className="text-center">{ name } </h4>
           <div className="text-center">
-            <Image className="user-profile-img text-center" src={profileImg} circle />
+            <Image className="user-profile-img text-center" src={profileImage} circle />
           </div>
           <div className="text-center">
             <small className="text-center"> {location} </small>
