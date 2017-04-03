@@ -7,3 +7,9 @@ export function submitProfile(profile) {
     payload: profile,
   };
 }
+
+export function createInterview(){
+  return {
+    type: 'CREATE_INTERVIEW'
+ };
+}

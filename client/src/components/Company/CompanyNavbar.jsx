@@ -2,8 +2,10 @@ import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router';
 import CompanyProfile from './CompanyProfile';
+import Positions from './Positions';
 
 const CompanyNavbar = (props) => {
+  console.log('NAVVVVVBARRRRRR', props)
   return (
     <div>
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
@@ -37,13 +39,13 @@ const CompanyNavbar = (props) => {
                 Submissions
             </Tab.Pane>
               <Tab.Pane eventKey="3.1">
-                Junior
+                <Positions />
             </Tab.Pane>
               <Tab.Pane eventKey="3.2">
-                Mid
+                <Positions />
             </Tab.Pane>
               <Tab.Pane eventKey="3.3">
-                Senior
+                <Positions />
             </Tab.Pane>
               <Tab.Pane eventKey="3.4">
                 Tab 3.4 content

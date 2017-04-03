@@ -1,5 +1,5 @@
 let initialState = {
-
+  createButton: false, 
 }
 
 export default function (state = initialState, action) {
@@ -8,6 +8,11 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         companyProfile: action.payload,
     });
+    case 'CREATE_INTERVIEW':
+      return Object.assign({}, state, {
+        createButton: true,
+    });
   }
   return state;
 }
+
