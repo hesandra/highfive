@@ -64,9 +64,15 @@ class Interview extends Component {
         const url = video.getDataURL((dataUrl) => {
           this.props.socket.emit('video', dataUrl);
           console.log('video sent');
+          this.listenForS3Link();
         });
       }, 1000);
-    }, 10000);
+    }, 4000);
+  }
+  listenForS3Link() {
+    this.props.socket.on('ready', (url) => {
+      console.log(url);
+    });
   }
   render() {
     const { requestUserMedia } = this.props;

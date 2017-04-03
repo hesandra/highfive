@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node_modules/.bin/mocha --bail --reporter nyan test/",
     "lint": "eslint . || true",
+    "video": "nodemon ./videoServer/index.js",
     "dev": "webpack-dashboard webpack-dev-server --progress --colors",
     "build": "weboack"
   },
