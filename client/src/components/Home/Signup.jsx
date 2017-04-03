@@ -5,7 +5,6 @@ import { Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 const Signup = (props) => {
-  console.log(props);
   return (
     <div>
       <Grid>
