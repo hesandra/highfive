@@ -8,7 +8,7 @@
     "lint": "eslint . || true",
     "video": "nodemon ./videoServer/index.js",
     "dev": "webpack-dashboard webpack-dev-server --progress --colors",
-    "build": "weboack"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,11 @@
     "helmet": "^3.5.0",
     "jquery": "^3.2.1",
     "jwt-decode": "^2.2.0",
+    "knex": "^0.12.9",
     "lodash": "^4.17.4",
     "morgan": "^1.8.1",
+    "mysql": "^2.13.0",
+    "objection": "^0.7.11",
     "react": "^15.4.2",
     "react-ace": "^4.1.6",
     "react-bootstrap": "^0.30.8",
@@ -50,7 +53,6 @@
     "redux-logger": "^3.0.0",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.67.2",
-    "sequelize": "^3.30.4",
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3",
     "sweetalert2": "^6.4.4"

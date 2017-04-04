@@ -1,22 +1,65 @@
-const Sequelize = require('sequelize');
-const db = require('../db/db');
+const Model = require('objection').Model;
 
-const User = db.define('User', {
-  createdAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
-  },
-  updatedAt: {
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW,
-  },
-  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-  name: Sequelize.STRING,
-  profile_img: Sequelize.STRING,
-  industry: Sequelize.INTEGER,
-  location: Sequelize.INTEGER,
-  email: Sequelize.STRING,
-  address: Sequelize.STRING
-});
+const Location = require('./Location')
+const Industry = require('./Industry')
+const Submission = require('./Submission')
+
+class User extends Model {
+  static get tableName() {
+    return 'user'
+  }
+
+  static get jsonSchema () {
+    return {
+      type: 'object',
+      required: [ 'name', 'email', 'location_id' ],
+      properties: {
+        id:              { type: 'integer' },
+        name:            { type: 'string' },
+        email:           { type: 'string' },
+        location_id:     { type: 'string' },
+        profile_img:     { type: 'string' }
+      }
+    };
+  }
+
+  static get relationMappings() {
+    return {
+      
+      rel1: {
+        relation: Model.HasOneRelation,
+        modelClass: Location,
+        join: {
+          from: 'user.location_id',
+          to: 'location.id'
+        }
+      },
+
+      rel2: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Industry,
+        join: {
+          from: 'user.id',
+          through: {
+            from: "user_industry.user_id",
+            to: "user_industry.industry_id"
+          },
+          to: 'industry.id'
+        }
+      },
+
+      rel3: {
+        relation: Model.HasManyRelation,
+        modelClass: Submission,
+        join: {
+          from: 'user.id',
+          to: 'submission.user_id'
+        }
+      }
+
+    }
+  }
+
+}
 
 module.exports = User;

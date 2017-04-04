@@ -1,23 +1,52 @@
-// const db = require('../db/db');
-const Sequelize = require('sequelize')
-const Company = require('./Company')
-const User_Industry = require('./UserIndustry')
+const Model = require('objection').Model;
 
-const Industry = db.define('Industy', {
-  // createdAt: {
-  //   type: Sequelize.DATE,
-  //   defaultValue: Sequelize.NOW,
-  // },
-  // updatedAt: {
-  //   type: Sequelize.DATE,
-  //   defaultValue: Sequelize.NOW,
-  // },
-  name: Sequelize.STRING,
-});
+const Company = require('./Jobpost')
+const User = require('./User')
 
-Industry.hasOne(Company)
-Industry.hasOne(User_Industry)
+class Industry extends Model {
+  static get tableName() {
+    return 'industry'
+  }
 
-Industry.sync()
+  static get jsonSchema () {
+    return {
+      type: 'object',
+      required: [ 'name' ],
+      properties: {
+        id:               { type: 'integer' },
+        name:             { type: 'string' },
+      }
+    };
+  }
+
+  static get relationMappings() {
+    return {
+      
+      rel1: {
+        relation: Model.HasOneRelation,
+        modelClass: Company,
+        join: {
+          from: 'industry.id',
+          to: 'company.industry_id'
+        }
+      },
+
+      rel2: {
+        relation: Model.ManyToManyRelation,
+        modelClass: User,
+        join: {
+          from: 'industry.id',
+          through: {
+            from: 'user_industry.industry_id',
+            to: 'user_industry.user_id'
+          },
+          to: 'user.id'
+        }
+      }
+
+    }
+  }
+
+}
 
 module.exports = Industry;
