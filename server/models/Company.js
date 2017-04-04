@@ -1,18 +1,18 @@
 const Model = require('objection').Model;
 
-const Jobpost = require('./Jobpost')
-const Industry = require('./Industry')
-const Location = require('./Location')
+const Jobpost = require('./Jobpost');
+const Industry = require('./Industry');
+const Location = require('./Location');
 
 class Company extends Model {
   static get tableName() {
-    return 'company'
+    return 'company';
   }
 
-  static get jsonSchema () {
+  static get jsonSchema() {
     return {
       type: 'object',
-      required: [ 'name', 'industry', 'location_id' ],
+      required: ['name', 'industry', 'location_id'],
 
       properties: {
         id:               { type: 'integer' },
@@ -27,7 +27,6 @@ class Company extends Model {
 
   static get relationMappings() {
     return {
-      
       rel1: {
         relation: Model.HasManyRelation,
         modelClass: Jobpost,
@@ -40,7 +39,6 @@ class Company extends Model {
 
       rel2: {
         relation: Model.BelongsToOneRelation,
-        // modelClass: __dirname + '/User',
         modelClass: Industry,
         join: {
           from: 'company.industry_id',
@@ -57,8 +55,7 @@ class Company extends Model {
           to: 'location.id'
         }
       }
-
-    }
+    };
   }
 
 }

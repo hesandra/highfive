@@ -22,8 +22,8 @@ exports.seed = function (knex, Promise) {
           id: 3,
           name: 'Netflix',
           email: 'info@netflix.com',
-          industry_id: 3,
-          location_id: 3
+          industry_id: 2,
+          location_id: 2
         }
       ]);
     });

@@ -1,17 +1,17 @@
 const Model = require('objection').Model;
 
-const Company = require('./Jobpost')
-const User = require('./User')
+const Company = require('./Jobpost');
+const User = require('./User');
 
 class Industry extends Model {
   static get tableName() {
-    return 'industry'
+    return 'industry';
   }
 
-  static get jsonSchema () {
+  static get jsonSchema() {
     return {
       type: 'object',
-      required: [ 'name' ],
+      required: ['name'],
       properties: {
         id:               { type: 'integer' },
         name:             { type: 'string' },
@@ -21,7 +21,6 @@ class Industry extends Model {
 
   static get relationMappings() {
     return {
-      
       rel1: {
         relation: Model.HasOneRelation,
         modelClass: Company,
@@ -43,10 +42,8 @@ class Industry extends Model {
           to: 'user.id'
         }
       }
-
-    }
+    };
   }
-
 }
 
 module.exports = Industry;

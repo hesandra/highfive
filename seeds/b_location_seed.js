@@ -5,11 +5,13 @@ exports.seed = function (knex, Promise) {
       // Inserts seed entries
       return knex('location').insert([{
         id: 1,
-        name: 'Los Angeles'
+        city: 'Los Angeles',
+        state: 'CA'
       },
       {
         id: 2,
-        name: 'Portland'
+        city: 'Portland',
+        state: 'OR'
       }
       ]);
     });
