@@ -11,3 +11,8 @@ export JobPost from './JobPost/JobPost';
 export CompanyProfile from './Company/CompanyProfile';
 export CompanyDetails from './Company/CompanyDetails';
 export Interview from './Interview/Interview';
+export CompanyNavbar from './Company/CompanyNavbar';
+export Positions from './Company/Positions';
+export InterviewForm from './Company/InterviewCreation';
+
+

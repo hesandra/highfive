@@ -1,5 +1,5 @@
 import React from 'react';
-import CompanyNavbar from './Navbar';
+import CompanyNavbar from './CompanyNavbar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitProfile } from '../../actions/company';

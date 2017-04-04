@@ -1,15 +1,15 @@
 import React from 'react';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
-import CompanyNavbar from './Navbar';
+import CompanyNavbar from './CompanyNavbar';
 import CompanyDetails from './CompanyDetails';
 
 const Company = (props) => {
   console.log('props.state.COMPANY', props.state.companyProfile);
   return (
-    <Grid fluid >
+    <Grid fluid>
       <Row>
         <Col xs={6} md={4}>
-          <CompanyDetails {...props.state.companyProfile} />
+          <CompanyDetails {...props.state.companyProfile}/>
         </Col>
         <Col xs={6} md={8}>
           <CompanyNavbar
