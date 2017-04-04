@@ -8,6 +8,8 @@ const UserProfile = (props) => {
   let name;
   let location;
   let githubLink;
+  let linkedinLink;
+  console.log(profile);
 
   /* If A User logs in with Github */
   try {
@@ -17,10 +19,27 @@ const UserProfile = (props) => {
           return ident;
         }
       });
-      profileImage = `${profile.identities[githubIndex].profileData.picture}&s=460`;
-      name = profile.identities[githubIndex].profileData.name;
-      location = profile.identities[githubIndex].profileData.location;
-      githubLink = profile.identities[githubIndex].profileData.html_url;
+
+      const linkedinIndex = profile.identities.find((ident) => {
+        if (ident.provider === 'linkedin') {
+          return ident;
+        }
+      });
+      if (githubIndex) {
+        profileImage = `${profile.identities[githubIndex].profileData.picture}&s=460`;
+        name = profile.identities[githubIndex].profileData.name;
+        location = profile.identities[githubIndex].profileData.location;
+        githubLink = profile.identities[githubIndex].profileData.html_url;
+      } else {
+        if (linkedinIndex) {
+          profileImage = profile.picture;
+          name = profile.name;
+          location = `${profile.location.name} ${profile.location.country.code}`;
+          linkedinLink = profile.publicProfileUrl;
+        } else {
+          // use e-mail info if avail
+        }
+      }
     }
   } catch (e) {
     console.log(e);
@@ -42,7 +61,7 @@ const UserProfile = (props) => {
             {' '}
             |
             {' '}
-            <a rel="noopener noreferrer" className="social-links" target="_blank">
+            <a href={linkedinLink} rel="noopener noreferrer" className="social-links" target="_blank">
               <i className="fa fa-linkedin" aria-hidden="true" />
             </a>
           </div>

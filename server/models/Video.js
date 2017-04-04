@@ -1,22 +1,22 @@
 const Model = require('objection').Model;
 
-const Submission = require('./Submission')
-const Question = require('./Question')
+const User = require('./User');
+const Question = require('./Question');
 
 class Video extends Model {
   static get tableName() {
-    return 'video'
+    return 'video';
   }
 
   static get jsonSchema () {
     return {
       type: 'object',
-      required: [ 'href', 'note', 'submission_id', 'question_id' ],
+      required: [ 'href', 'note', 'submitter_id', 'question_id' ],
       properties: {
         id:                { type: 'integer' },
         href:              { type: 'string' },
         note:              { type: 'string' },
-        submission_id:     { type: 'integer' },
+        submitter_id:      { type: 'integer' },
         question_id:       { type: 'integer' }
       }
     };
@@ -24,7 +24,6 @@ class Video extends Model {
 
   static get relationMappings() {
     return {
-      
       rel1: {
         relation: Model.HasManyRelation,
         modelClass: Question,
@@ -33,16 +32,14 @@ class Video extends Model {
           to: 'question.id'
         }
       },
-
       rel2: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Submission,
+        modelClass: User,
         join: {
-          from: 'video.submission_id',
-          to: 'submission.id'
+          from: 'video.submitter_id',
+          to: 'user.id'
         }
       }
-
     }
   }
 

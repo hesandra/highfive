@@ -1,13 +1,12 @@
-const objection = require('objection')
-
-const Company = require('./models/Company')
-const Industry = require('./models/Industry')
-const Jobpost = require('./models/Jobpost')
-const Location = require('./models/Location')
-const Question = require('./models/Question')
-const Submission = require('./models/Submission')
-const User = require('./models/User')
-const Video = require('./models/Video')
+const objection = require('objection');
+const Company = require('./models/Company');
+const Industry = require('./models/Industry');
+const Jobpost = require('./models/Jobpost');
+const Location = require('./models/Location');
+const Question = require('./models/Question');
+const Submission = require('./models/Submission');
+const User = require('./models/User');
+const Video = require('./models/Video');
 
 module.exports = function (app) {
   app.post('/test', function (req, res, next) {
@@ -25,5 +24,4 @@ module.exports = function (app) {
     error.statusCode = 404;
     throw error;
   }
-
-}
+};
