@@ -12,5 +12,5 @@ exports.seed = function (knex, Promise) {
         name: 'Portland'
       }
       ]);
-    })
+    });
 };

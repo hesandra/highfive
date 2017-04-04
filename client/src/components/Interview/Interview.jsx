@@ -100,7 +100,7 @@ class Interview extends Component {
             <div className="text-center">
               <Button onClick={requestUserMedia} primary>Get STREAM</Button>
               <hr />
-              { this.state.stream ? 
+              { this.state.stream ?
                 <VideoPlayer {...videoOptions} /> : '' }
               <hr />
             </div>
