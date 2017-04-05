@@ -1,30 +1,60 @@
 const models = require('../models');
 
-
 module.exports = {
   users: {
     get: (req, res, next) => {
-      
-      // use node style callback, error first style
       models.users.get((err, users) => {
-        if (err) {
-          return next(err);
+        console.log("get");
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          users
         }
-        // respond back to client with users
-        res.status(200).end(users);
+        res.send(payload)
       });
     },
     getById: (req, res, next) => {
-      // grabs user by id
-
+      
     },
     put: (req, res, next) => {
-      // updates a user
 
     },
     post: (req, res, next) => {
-      // creates a user
 
     }
-  }
+  },
+  company: {
+    get: (req, res, next) => {
+      models.company.get((err, company) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          company
+        }
+        res.send(payload)
+      });
+    },
+    getById: (req, res, next) => {
+      models.company.get((err, company) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          company
+        }
+        res.send(payload)
+      });
+    },
+    getJobPosts: () => {
+      models.company.get((err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        }
+        res.send(payload)
+      });
+    }
+  },
+
+
 };

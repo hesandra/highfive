@@ -1,6 +1,6 @@
 const Model = require('objection').Model;
 
-const Submission = require('./Submission')
+// const Submission = require('./Submission')
 const Question = require('./Question')
 const Company = require('./Company')
 
@@ -26,7 +26,7 @@ class Jobpost extends Model {
   static get relationMappings() {
     return {
       
-      rel1: {
+      company: {
         relation: Model.BelongsToOneRelation,
         modelClass: Company,
         join: {
@@ -35,16 +35,16 @@ class Jobpost extends Model {
         }
       },
 
-      rel2: {
-        relation: Model.HasManyRelation,
-        modelClass: Submission,
-        join: {
-          from: 'jobpost.id',
-          to: 'submission.jobpost_id'
-        }
-      },
+      // rel2: {
+      //   relation: Model.HasManyRelation,
+      //   modelClass: Submission,
+      //   join: {
+      //     from: 'jobpost.id',
+      //     to: 'submission.jobpost_id'
+      //   }
+      // },
 
-      rel3: {
+      question: {
         relation: Model.HasManyRelation,
         modelClass: Question,
         join: {

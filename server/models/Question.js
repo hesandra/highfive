@@ -23,7 +23,7 @@ class Question extends Model {
   static get relationMappings() {
     return {
       
-      rel1: {
+      video: {
         relation: Model.BelongsToOneRelation,
         modelClass: Video,
         join: {
@@ -32,7 +32,7 @@ class Question extends Model {
         }
       },
 
-      rel2: {
+      jobpost: {
         relation: Model.BelongsToOneRelation,
         modelClass: Jobpost,
         join: {

@@ -4,7 +4,6 @@ const Industry = require('./Industry');
 const Jobpost = require('./Jobpost');
 const Location = require('./Location');
 const Question = require('./Question');
-const Submission = require('./Submission');
 const User = require('./User');
 const Video = require('./Video');
 
@@ -13,19 +12,49 @@ const Video = require('./Video');
 module.exports = {
   users: {
     get: (cb) => {
-      // grab all users here
-      const fakeUser = JSON.stringify({ name: 'Josh' });
-      cb(null, fakeUser);
+      User
+        .query()
+        .then((users) => { cb(null, users) })
+        .catch(err => { console.log(err) })
     },
     getById: () => {
-      // grab one user here
+
     },
     put: () => {
       // update user here
     },
     post: () => {
       // create a user here
+      
     }
-  }
+  },
+  company: {
+    get: (cb) => {
+      Company
+        .query()
+        .then((companies) => { cb(null, companies) })
+        .catch(err => { console.log(err) })
+    },
+    getById: (cb) => {
+      Company
+        .query()
+        .then((company) => { cb(null, company) })
+        .catch(err => { console.log(err) })
+    },
+    getJobPosts: (cb) => {
+      Company
+        .query()
+        .then((jobposts) => { cb(null, jobposts) })
+        .catch(err => { console.log(err) })
+    },
+    post: () => {
+      
+    },
+    put: () => {
+
+    }
+  },
+
+
 };
 
