@@ -3,6 +3,11 @@ const Model = require('objection').Model;
 const Video = require('./Video')
 const Jobpost = require('./Jobpost')
 
+//Class Variables
+const Jr = 0;
+const Mid = 1;
+const Sr = 2;
+
 class Question extends Model {
   static get tableName() {
     return 'question'
@@ -14,8 +19,10 @@ class Question extends Model {
       required: [ 'id', 'type', 'question' ],
       properties: {
         id:               { type: 'integer' },
+        level:            { type: 'integer' },
         type:             { type: 'string' },
-        question:         { type: 'string' }
+        question:         { type: 'string' },
+        jobpost_id:       { type: 'integer' }
       }
     };
   }
