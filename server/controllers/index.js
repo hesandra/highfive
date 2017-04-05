@@ -67,6 +67,16 @@ module.exports = {
       });
     }
   },
-
-
+  questions: {
+    get: (req, res, next) => {
+      models.question.get((err, question) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          question
+        }
+        res.send(payload)
+      });
+    }, 
+  }
 };
