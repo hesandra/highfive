@@ -21,8 +21,26 @@ module.exports = {
     put: () => {
       // update user here
     },
-    post: ({ name, email, auth0Id, picture }, cb) => {
-      // create a user here   
+    /**
+     * Posts a user to the db using async/await
+     */
+    post: async ({ name, email, auth0_id, profile_img }, cb) => {
+      const user = {
+        name,
+        email,
+        auth0_id,
+        profile_img
+      };
+
+      const userAlreadyExists = await User.query().where(user);
+      console.log(userAlreadyExists);
+      if (!userAlreadyExists.length) {
+        await User
+          .query()
+          .insert(user)
+          .then((insertedUser) => { cb(insertedUser, null); })
+          .catch(err => console.log(err));
+      }
     }
   },
   company: {
