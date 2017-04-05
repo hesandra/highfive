@@ -8,10 +8,10 @@ const Company = (props) => {
   return (
     <Grid fluid>
       <Row>
-        <Col xs={6} md={4}>
+        <Col xs={3} md={3}>
           <CompanyDetails {...props.state.companyProfile}/>
         </Col>
-        <Col xs={6} md={8}>
+        <Col xs={9} md={9}>
           <CompanyNavbar
             onProfileClick={props.onProfileClick}
             onJobsClick={props.onJobsClick}

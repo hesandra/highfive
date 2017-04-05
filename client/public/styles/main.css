@@ -32,3 +32,30 @@ a {
 .apply-modal {
   widht: 90%;
 }
+
+.scroll {
+    background-color: black;
+    color: white;
+    width: 400px;
+    height: 200px;
+    overflow: scroll;
+    text-align: center;
+    border-radius: 25px;
+    position: relative; 
+    text-align: center;
+}
+
+.questions {
+  border: 2px;
+  border-color: cornflowerblue;
+  margin: 30px;
+}
+
+.spaceQ {
+  height: 15px
+}
+
+.company-img {
+  height: 200px; 
+  width: 180px;
+}

@@ -13,6 +13,6 @@ export CompanyDetails from './Company/CompanyDetails';
 export Interview from './Interview/Interview';
 export CompanyNavbar from './Company/CompanyNavbar';
 export Positions from './Company/Positions';
-export InterviewForm from './Company/InterviewCreation';
-
-
+export InterviewFormJun from './Company/InterviewCreationJun';
+export InterviewFormMid from './Company/InterviewCreationMid';
+export InterviewFormSen from './Company/InterviewCreationSen';

@@ -55,7 +55,7 @@ class CompanyProfile extends React.Component {
       <Form horizontal onSubmit={this.handleSubmit}>
         <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={3}>
+          <Col componentClass={ControlLabel} sm={1}>
             Name
         </Col>
           <Col sm={8}>
@@ -64,7 +64,7 @@ class CompanyProfile extends React.Component {
         </FormGroup>
         <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={3}>
+          <Col componentClass={ControlLabel} sm={1}>
             Profile Video
         </Col>
           <Col sm={8}>
@@ -73,7 +73,7 @@ class CompanyProfile extends React.Component {
         </FormGroup>
         <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={3}>
+          <Col componentClass={ControlLabel} sm={1}>
             Industry
         </Col>
           <Col sm={8}>
@@ -89,7 +89,7 @@ class CompanyProfile extends React.Component {
         </FormGroup>
         <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={3}>
+          <Col componentClass={ControlLabel} sm={1}>
             Location
         </Col>
           <Col sm={8}>
@@ -105,7 +105,7 @@ class CompanyProfile extends React.Component {
         </FormGroup>
         <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={3}>
+          <Col componentClass={ControlLabel} sm={1}>
             Email
         </Col>
           <Col sm={8}>
@@ -114,7 +114,7 @@ class CompanyProfile extends React.Component {
         </FormGroup>
         <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={3}>
+          <Col componentClass={ControlLabel} sm={1}>
             Address
         </Col>
           <Col sm={8}>

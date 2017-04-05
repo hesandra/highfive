@@ -3,31 +3,40 @@ import { Grid, Row, Col, Image, Button, FormGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createInterview } from '../../actions/company';
-import InterviewForm from './InterviewCreation';
+import InterviewFormJun from './InterviewCreationJun';
+import InterviewFormSen from './InterviewCreationSen';
+import InterviewFormMid from './InterviewCreationMid';
+import PositionsLevel from './PositionsLevel';
+
 
 class Positions extends React.Component {
   //renderPositions() {
-    //map over get and render all positions for company id and position id
- // }
+  //map over get and render all positions for company id and position id
+  // }
   render() {
-    console.log(this.props.companyProfile.createButton, '++++++++++++++++++++++++++++++')
+    console.log(this.props.companyProfile.createButton, '++++++++++++++++++++++++++++++');
+    console.log('companyProfile', this.props.companyProfile)
     return (
       <div>
-        <div>Here are the job posts</div>
-          <FormGroup>
-            <Col smOffset={3} sm={8}>
-              <Button onClick={() => this.props.createInterview()} type="submit" value="Submit">
-              Create new Interview
-              </Button>
-              <div>
-              { this.props.companyProfile.createButton ?
-                <InterviewForm /> : ''}
-              </div>
-            </Col>
-          </FormGroup>
-          </div>
+        <div>
+        {this.props.companyProfile.createButton === false ?
+            <PositionsLevel /> : ''}
+        </div>
+        <div>
+          {this.props.companyProfile.createButton && this.props.companyProfile.junior ?
+            <InterviewFormJun /> : ''}
+        </div>
+        <div>
+          {this.props.companyProfile.createButton && this.props.companyProfile.senior ?
+            <InterviewFormSen /> : ''}
+        </div>
+        <div>
+          {this.props.companyProfile.createButton && this.props.companyProfile.mid ?
+            <InterviewFormMid /> : ''}
+        </div>
+      </div>
     );
- }
+  }
 }
 
 
