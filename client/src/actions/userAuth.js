@@ -1,4 +1,5 @@
 import { hashHistory } from 'react-router';
+import axios from 'axios';
 import UserAuthService from '../utils/userAuthService';
 import { USERS_AUTH0_CLIENT_ID } from '../../../config';
 
@@ -21,6 +22,18 @@ export function checkUserLogin() {
         }
         UserAuthService.setToken(authResult.idToken);
         UserAuthService.setProfile(profile);
+        axios.post('http://localhost:3000/users', {
+          name: profile.name,
+          email: profile.email,
+          auth0Id: profile.user_id,
+          picture: profile.picture
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
         return dispatch(userLoginSuccess(profile));
       });
     });

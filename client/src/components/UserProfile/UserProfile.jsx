@@ -38,6 +38,10 @@ const UserProfile = (props) => {
           linkedinLink = profile.publicProfileUrl;
         } else {
           // use e-mail info if avail
+          profileImage = profile.picture;
+          name = profile.name;
+          location = profile.location || '';
+          githubLink = profile.html_url;
         }
       }
     }
