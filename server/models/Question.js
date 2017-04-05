@@ -1,22 +1,22 @@
 const Model = require('objection').Model;
 
-const Video = require('./Video')
-const Jobpost = require('./Jobpost')
+const Video = require('./Video');
+const Jobpost = require('./Jobpost');
 
-//Class Variables
+// Class Variables
 const Jr = 0;
 const Mid = 1;
 const Sr = 2;
 
 class Question extends Model {
   static get tableName() {
-    return 'question'
+    return 'question';
   }
 
-  static get jsonSchema () {
+  static get jsonSchema() {
     return {
       type: 'object',
-      required: [ 'id', 'type', 'question' ],
+      required: ['id', 'type', 'question'],
       properties: {
         id:               { type: 'integer' },
         level:            { type: 'integer' },
@@ -29,7 +29,6 @@ class Question extends Model {
 
   static get relationMappings() {
     return {
-      
       video: {
         relation: Model.BelongsToOneRelation,
         modelClass: Video,
@@ -38,7 +37,6 @@ class Question extends Model {
           to: 'video.question_id'
         }
       },
-
       jobpost: {
         relation: Model.BelongsToOneRelation,
         modelClass: Jobpost,
@@ -51,10 +49,8 @@ class Question extends Model {
           to: 'jobpost.id'
         }
       }
-
-    }
+    };
   }
-
 }
 
 module.exports = Question;

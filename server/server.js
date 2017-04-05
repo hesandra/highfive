@@ -12,7 +12,7 @@ const router = require('./routes');
 
 const port = process.env.PORT || 3000;
 
-dotenv.load()
+dotenv.load();
 
 const knex = Knex(knexConfig.development);
 Model.knex(knex);
