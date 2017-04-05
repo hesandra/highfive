@@ -6,12 +6,16 @@ exports.seed = function (knex, Promise) {
       return knex('question').insert([{
         id: 1,
         type: 'Data Structure',
-        question: 'What is a data structure?'
+        level: 1,
+        question: 'What is a data structure?',
+        jobpost_id: 1
       },
       {
         id: 2,
         type: 'Algorithm',
-        question: 'What is the reverse of 2+2?'
+        level: 2,
+        question: 'What is the reverse of 2+2?',
+        jobpost_id: 1
       }
       ]);
     })

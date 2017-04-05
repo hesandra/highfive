@@ -4,7 +4,6 @@ module.exports = {
   users: {
     get: (req, res, next) => {
       models.users.get((err, users) => {
-        console.log("get");
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -35,7 +34,9 @@ module.exports = {
       });
     },
     getById: (req, res, next) => {
-      models.company.get((err, company) => {
+      const { id } = req.params;
+
+      models.company.getById(id, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -44,8 +45,8 @@ module.exports = {
         res.send(payload)
       });
     },
-    getJobPosts: () => {
-      models.company.get((err, jobposts) => {
+    getJobPosts: (req, res, next) => {
+      models.company.getJobPosts((err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),

@@ -36,8 +36,9 @@ exports.up = function(knex, Promise) {
     .createTable('question', (table) => {
       table.increments('id').primary()
       table.string('type')
+      table.integer('level')
       table.string('question')
-      table.integer('job_id').unsigned().references('id').inTable('jobpost')
+      table.integer('jobpost_id').unsigned().references('id').inTable('jobpost')
     })
     // .createTable('submission', (table) => {
       // table.increments('id').primary()

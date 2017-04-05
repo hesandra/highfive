@@ -35,9 +35,10 @@ module.exports = {
         .then((companies) => { cb(null, companies) })
         .catch(err => { console.log(err) })
     },
-    getById: (cb) => {
+    getById: (id, cb) => {
       Company
         .query()
+        .where('id', id)
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
