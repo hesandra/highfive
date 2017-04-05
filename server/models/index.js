@@ -7,8 +7,6 @@ const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
 
-
-
 module.exports = {
   users: {
     get: (cb) => {
@@ -23,9 +21,26 @@ module.exports = {
     put: () => {
       // update user here
     },
-    post: () => {
-      // create a user here
-      
+    /**
+     * Posts a user to the db using async/await
+     */
+    post: async ({ name, email, auth0_id, profile_img }, cb) => {
+      const user = {
+        name,
+        email,
+        auth0_id,
+        profile_img
+      };
+
+      const userAlreadyExists = await User.query().where(user);
+      console.log(userAlreadyExists);
+      if (!userAlreadyExists.length) {
+        await User
+          .query()
+          .insert(user)
+          .then((insertedUser) => { cb(insertedUser, null); })
+          .catch(err => console.log(err));
+      }
     }
   },
   company: {
@@ -53,6 +68,9 @@ module.exports = {
     },
     put: () => {
 
+      // const person = await User
+      //   .query()
+      //   .then((users) => { console.log(users); });
     }
   },
 

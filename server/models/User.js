@@ -12,11 +12,12 @@ class User extends Model {
   static get jsonSchema () {
     return {
       type: 'object',
-      required: [ 'name', 'email', 'location_id' ],
+      required: ['name', 'email'],
       properties: {
         id:              { type: 'integer' },
         name:            { type: 'string' },
         email:           { type: 'string' },
+        auth0_id:        { type: 'string' },
         location_id:     { type: 'string' },
         profile_img:     { type: 'string' }
       }
@@ -25,7 +26,6 @@ class User extends Model {
 
   static get relationMappings() {
     return {
-      
       location: {
         relation: Model.HasOneRelation,
         modelClass: Location,
