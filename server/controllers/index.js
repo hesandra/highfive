@@ -20,7 +20,17 @@ module.exports = {
 
     },
     post: (req, res, next) => {
-
+      // creates a user
+      const { name, email, auth0Id, picture } = req.body;
+      const user = req.body;
+      models.users.post(user, (err, id) => {
+        const payload = {
+          success: err ? true : false,
+          id,
+          err
+        };
+        res.status(201).end(JSON.stringify(payload));
+      });
     }
   },
   company: {

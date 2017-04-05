@@ -5,6 +5,7 @@ const path = require('path');
 //users
 router.get('/users', controller.users.get);
 router.get('/users/:id', controller.users.getById);
+router.post('/users', controller.users.post);
 
 //companies
 router.get('/companies', controller.company.get);

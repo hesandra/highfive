@@ -7,8 +7,6 @@ const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
 
-
-
 module.exports = {
   users: {
     get: (cb) => {
@@ -23,9 +21,8 @@ module.exports = {
     put: () => {
       // update user here
     },
-    post: () => {
-      // create a user here
-      
+    post: ({ name, email, auth0Id, picture }, cb) => {
+      // create a user here   
     }
   },
   company: {
@@ -52,6 +49,9 @@ module.exports = {
     },
     put: () => {
 
+      // const person = await User
+      //   .query()
+      //   .then((users) => { console.log(users); });
     }
   },
 
