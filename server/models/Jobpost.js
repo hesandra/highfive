@@ -6,13 +6,13 @@ const Company = require('./Company')
 
 class Jobpost extends Model {
   static get tableName() {
-    return 'jobpost'
+    return 'jobpost';
   }
 
-  static get jsonSchema () {
+  static get jsonSchema() {
     return {
       type: 'object',
-      required: [ 'title', 'level', 'description', 'company_id' ],
+      required: ['title', 'level', 'description', 'company_id'],
       properties: {
         id:                { type: 'integer' },
         title:             { type: 'string' },
@@ -25,7 +25,6 @@ class Jobpost extends Model {
 
   static get relationMappings() {
     return {
-      
       company: {
         relation: Model.BelongsToOneRelation,
         modelClass: Company,
@@ -34,7 +33,6 @@ class Jobpost extends Model {
           to: 'company.id'
         }
       },
-
       // rel2: {
       //   relation: Model.HasManyRelation,
       //   modelClass: Submission,
@@ -43,7 +41,6 @@ class Jobpost extends Model {
       //     to: 'submission.jobpost_id'
       //   }
       // },
-
       question: {
         relation: Model.HasManyRelation,
         modelClass: Question,
@@ -56,10 +53,8 @@ class Jobpost extends Model {
           to: 'question.id'
         }
       }
-
-    }
+    };
   }
-
 }
 
 module.exports = Jobpost;

@@ -5,13 +5,13 @@ const User = require('./User')
 
 class Location extends Model {
   static get tableName() {
-    return 'location'
+    return 'location';
   }
 
-  static get jsonSchema () {
+  static get jsonSchema() {
     return {
       type: 'object',
-      required: [ 'state', 'city' ],
+      required: ['state', 'city'],
       properties: {
         id:                { type: 'integer' },
         state:             { type: 'string' },
@@ -22,7 +22,6 @@ class Location extends Model {
 
   static get relationMappings() {
     return {
-      
       user: {
         relation: Model.HasManyRelation,
         modelClass: User,
@@ -31,7 +30,6 @@ class Location extends Model {
           to: 'user.location_id'
         }
       },
-
       company: {
         relation: Model.HasManyRelation,
         modelClass: Company,
@@ -40,10 +38,8 @@ class Location extends Model {
           to: 'company.location_id'
         }
       }
-
-    }
+    };
   }
-
 }
 
 module.exports = Location;

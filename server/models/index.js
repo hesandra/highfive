@@ -31,9 +31,7 @@ module.exports = {
         auth0_id,
         profile_img
       };
-
       const userAlreadyExists = await User.query().where(user);
-      console.log(userAlreadyExists);
       if (!userAlreadyExists.length) {
         await User
           .query()

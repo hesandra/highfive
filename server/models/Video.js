@@ -8,10 +8,10 @@ class Video extends Model {
     return 'video';
   }
 
-  static get jsonSchema () {
+  static get jsonSchema() {
     return {
       type: 'object',
-      required: [ 'href', 'note', 'submitter_id', 'question_id' ],
+      required: ['href', 'note', 'submitter_id', 'question_id'],
       properties: {
         id:                { type: 'integer' },
         href:              { type: 'string' },
@@ -40,7 +40,7 @@ class Video extends Model {
           to: 'user.id'
         }
       }
-    }
+    };
   }
 
 }

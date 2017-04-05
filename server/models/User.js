@@ -1,15 +1,12 @@
 const Model = require('objection').Model;
-
-const Location = require('./Location')
-const Industry = require('./Industry')
-// const Submission = require('./Submission')
+const Location = require('./Location');
+const Industry = require('./Industry');
 
 class User extends Model {
   static get tableName() {
-    return 'user'
+    return 'user';
   }
-
-  static get jsonSchema () {
+  static get jsonSchema() {
     return {
       type: 'object',
       required: ['name', 'email'],
@@ -41,8 +38,8 @@ class User extends Model {
         join: {
           from: 'user.id',
           through: {
-            from: "user_industry.user_id",
-            to: "user_industry.industry_id"
+            from: 'user_industry.user_id',
+            to: 'user_industry.industry_id'
           },
           to: 'industry.id'
         }
@@ -56,8 +53,7 @@ class User extends Model {
       //     to: 'submission.user_id'
       //   }
       // }
-
-    }
+    };
   }
 
 }
