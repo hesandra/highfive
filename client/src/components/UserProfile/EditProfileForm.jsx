@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, FormControl, Col, ControlLabel, Button } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, Col, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import axios from 'axios';
+import IndustriesMultiSelect from './IndustriesMultiSelect';
+import LocationsMultiSelect from './LocationMultiSelect';
 
 class EditProfileForm extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class EditProfileForm extends Component {
             Location
           </Col>
           <Col sm={10}>
-            <FormControl name="locationValue" onChange={this.handleInputChange} type="text" placeholder="Los Angeles..." />
+            <LocationsMultiSelect />
           </Col>
         </FormGroup>
         <FormGroup>
@@ -33,7 +35,7 @@ class EditProfileForm extends Component {
             Industries
           </Col>
           <Col sm={10}>
-            <FormControl name="industries" onChange={this.handleInputChange} type='text' placeholder='name' />
+            <IndustriesMultiSelect />
           </Col>
         </FormGroup>
         <FormGroup>
@@ -41,7 +43,7 @@ class EditProfileForm extends Component {
             Github
           </Col>
           <Col sm={10}>
-            <FormControl name='typeValue' onChange={this.handleInputChange} type='text' placeholder='type' />
+            <FormControl name="typeValue" onChange={this.handleInputChange} type="text" placeholder="Github" />
           </Col>
         </FormGroup>
         <FormGroup>
@@ -49,14 +51,15 @@ class EditProfileForm extends Component {
             LinkedIn
           </Col>
           <Col sm={10}>
-            <FormControl type='text' name='imageValue' onChange={this.handleInputChange} placeholder='imageUrl' />
+            <FormControl type="text" name="githubValue" onChange={this.handleInputChange} placeholder="LinkedIn" />
           </Col>
           <Col sm={4} smOffset={5}>
-            <Button className='text-center' bsStyle='primary' type="submit">Create</Button>
+            <hr />
+            <Button className="text-center" bsStyle="primary" type="submit">Submit</Button>
           </Col>
         </FormGroup>
       </Form>
-    )
+    );
   }
 }
 
