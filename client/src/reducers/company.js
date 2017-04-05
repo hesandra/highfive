@@ -21,6 +21,7 @@ export default function (state = initialState, action) {
         junior: false,
         mid: false,
         createButton: false,
+        level: 2
     });
     case 'JUNIOR':
       return Object.assign({}, state, {
@@ -28,7 +29,7 @@ export default function (state = initialState, action) {
         senior: false, 
         mid: false,
         createButton: false,
-        questionsType: 'junior',
+        level: 0
     });
     case 'MID':
       return Object.assign({}, state, {
@@ -36,6 +37,7 @@ export default function (state = initialState, action) {
         junior: false, 
         senior: false,
         createButton: false,
+        level: 1
     });
     case 'JOBTITLE':
       return Object.assign({}, state, {
@@ -45,7 +47,7 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         question: action.payload,
     });
-    case 'GET_JUNQ':
+    case 'GET_QUESTIONS':
       return Object.assign({}, state, {
         questions: action.payload,
     });

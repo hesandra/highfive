@@ -69,11 +69,11 @@ module.exports = {
   },
   questions: {
     get: (req, res, next) => {
-      models.question.get((err, question) => {
+      models.questions.get((err, questions) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
-          question
+          questions
         }
         res.send(payload)
       });

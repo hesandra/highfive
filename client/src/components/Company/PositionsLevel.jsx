@@ -2,9 +2,14 @@ import React from 'react';
 import { Grid, Row, Col, Image, Button, FormGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createInterview } from '../../actions/company';
+import { createInterview, getQuestions } from '../../actions/company';
 
 class PositionsLevel extends React.Component {
+  componentDidMount(){
+    console.log('-------------------------')
+    console.log('*******************************', this.props)
+    this.props.getQuestions()
+}
    render() {
      console.log('this.props.companyprofile', this.props.companyProfile)
     return (
@@ -29,7 +34,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createInterview }, dispatch);
+  return bindActionCreators({ createInterview, getQuestions }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PositionsLevel);

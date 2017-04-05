@@ -33,47 +33,71 @@ class InterviewFormMid extends React.Component {
     event.preventDefault();
   }
 
-  render() {
+  renderAll() {
     return (
       <div>
-      <div>MID-Level</div>
-      <Form horizontal onSubmit={this.handleSubmit}>
-        <br />
-        <FormGroup>
-          <Col componentClass={ControlLabel} sm={1}>
-            JobTitle
+      <div>
+        <div>
+          <div>MID-Level</div>
+          <Form horizontal onSubmit={this.handleSubmit}>
+            <br />
+            <FormGroup>
+              <Col componentClass={ControlLabel} sm={1}>
+                JobTitle
         </Col>
-          <Col sm={5}>
-            <FormControl name="name" type="text" value={this.state.jobTitel} onChange={this.handleChange} />
-          </Col>
-        </FormGroup>
-        </Form>
-      <div className="spaceQ"></div>
-      <div className="scroll">
-        <div className="questions">Here are questions to select from - algorithms</div>
-        <div className="questions">Here are questions to select from - algorithms</div>        
-        <div className="questions">Here are questions to select from - algorithms</div>       
-        <div className="questions">Here are questions to select from - algorithms</div>
-        <div className="questions">Here are questions to select from - algorithms</div>
+              <Col sm={4}>
+                <FormControl name="name" type="text" value={this.state.jobTitel} onChange={this.handleChange} />
+              </Col>
+            </FormGroup>
+          </Form>
+          <div className="spaceQ"></div>
+          <h3>Select 3-5 Algorithm Questions</h3>
+          <div className="scroll">
+            <div className="questions" >
+          {this.props.companyProfile.questions.map((item, idx) => {
+            if (item.type === 'algorithm' && item.level === this.props.companyProfile.level){
+            return (
+              <div key={idx}>{item.question}</div>
+           )}
+          })
+        }
+            </div>
+          </div>
+          <div className="spaceQ"></div>
+          <h3>Select 3-5 System Design Questions</h3>
+          <div className="scroll">
+            <div className="questions" >
+          {this.props.companyProfile.questions.map((item, idx) => {
+            if (item.type === 'data structure' && item.level === this.props.companyProfile.level){
+            return (
+              <div key={idx}>{item.question}</div>
+           )}
+          })
+        }
+        </div>
+        </div>
+          <div className="spaceQ"></div>
+          <h3>Select 3-5 System Behavioral Questions</h3>
+           <div className="scroll">
+            <div className="questions" >
+          {this.props.companyProfile.questions.map((item, idx) => {
+            if (item.type === 'behavioral' && item.level === this.props.companyProfile.level){
+            return (
+              <div key={idx}>{item.question}</div>
+           )}
+          })
+        }
+          </div>
+         </div>
+        </div>
       </div>
-      <div className="spaceQ"></div>
-      <div className="scroll">
-        <div className="questions">Here are questions to select from - system designs</div>
-        <div className="questions">Here are questions to select from - system designs</div>        
-        <div className="questions">Here are questions to select from - system designs</div>        
-        <div className="questions">Here are questions to select from - system designs</div>
-        <div className="questions">Here are questions to select from - system designs</div>
-      </div>
-      <div className="spaceQ"></div>      
-      <div className="scroll">
-        <div className="questions">Here are questions to select from - behavioral</div>
-        <div className="questions">Here are questions to select from - behavioral</div>
-        <div className="questions">Here are questions to select from - behavioral</div>
-        <div className="questions">Here are questions to select from - behavioral</div>
-        <div className="questions">Here are questions to select from - behavioral</div>
-      </div>
-      </div>
-      /*</ScrollArea>*/
+    </div>
+    )
+  }
+
+  render(){
+    return (
+    <div>{this.renderAll()}</div>
     )
   }
 }
