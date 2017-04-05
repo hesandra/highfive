@@ -23,7 +23,7 @@ class Location extends Model {
   static get relationMappings() {
     return {
       
-      rel1: {
+      user: {
         relation: Model.HasManyRelation,
         modelClass: User,
         join: {
@@ -32,7 +32,7 @@ class Location extends Model {
         }
       },
 
-      rel2: {
+      company: {
         relation: Model.HasManyRelation,
         modelClass: Company,
         join: {

@@ -24,7 +24,7 @@ class Video extends Model {
 
   static get relationMappings() {
     return {
-      rel1: {
+      question: {
         relation: Model.HasManyRelation,
         modelClass: Question,
         join: {
@@ -32,7 +32,7 @@ class Video extends Model {
           to: 'question.id'
         }
       },
-      rel2: {
+      user: {
         relation: Model.BelongsToOneRelation,
         modelClass: User,
         join: {

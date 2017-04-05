@@ -2,7 +2,7 @@ const Model = require('objection').Model;
 
 const Location = require('./Location')
 const Industry = require('./Industry')
-const Submission = require('./Submission')
+// const Submission = require('./Submission')
 
 class User extends Model {
   static get tableName() {
@@ -26,7 +26,7 @@ class User extends Model {
   static get relationMappings() {
     return {
       
-      rel1: {
+      location: {
         relation: Model.HasOneRelation,
         modelClass: Location,
         join: {
@@ -35,7 +35,7 @@ class User extends Model {
         }
       },
 
-      rel2: {
+      industry: {
         relation: Model.BelongsToOneRelation,
         modelClass: Industry,
         join: {
@@ -48,14 +48,14 @@ class User extends Model {
         }
       },
 
-      rel3: {
-        relation: Model.HasManyRelation,
-        modelClass: Submission,
-        join: {
-          from: 'user.id',
-          to: 'submission.user_id'
-        }
-      }
+      // rel3: {
+      //   relation: Model.HasManyRelation,
+      //   modelClass: Submission,
+      //   join: {
+      //     from: 'user.id',
+      //     to: 'submission.user_id'
+      //   }
+      // }
 
     }
   }

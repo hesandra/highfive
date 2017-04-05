@@ -21,7 +21,7 @@ class Industry extends Model {
 
   static get relationMappings() {
     return {
-      rel1: {
+      company: {
         relation: Model.HasOneRelation,
         modelClass: Company,
         join: {
@@ -30,7 +30,7 @@ class Industry extends Model {
         }
       },
 
-      rel2: {
+      user: {
         relation: Model.ManyToManyRelation,
         modelClass: User,
         join: {

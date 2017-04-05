@@ -27,17 +27,16 @@ class Company extends Model {
 
   static get relationMappings() {
     return {
-      rel1: {
+      jobpost: {
         relation: Model.HasManyRelation,
         modelClass: Jobpost,
-        // modelClass: __dirname + '/Itinerary',
         join: {
           from: 'company.id',
           to: 'jobpost.company_id'
         }
       },
 
-      rel2: {
+      industry: {
         relation: Model.BelongsToOneRelation,
         modelClass: Industry,
         join: {
@@ -46,9 +45,8 @@ class Company extends Model {
         }
       },
 
-      rel3: {
+      location: {
         relation: Model.BelongsToOneRelation,
-        // modelClass: __dirname + '/User',
         modelClass: Location,
         join: {
           from: 'company.location_id',

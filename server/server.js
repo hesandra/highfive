@@ -4,11 +4,11 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const knexConfig = require('../knexfile');
-// const registerApi = require('./api');
 
 const Model = require('objection').Model;
 const cors = require('cors');
 const paths = require('path');
+const router = require('./routes');
 
 const port = process.env.PORT || 3000;
 
@@ -17,16 +17,12 @@ dotenv.load()
 const knex = Knex(knexConfig.development);
 Model.knex(knex);
 
-const router = require('./routes');
-
 const app = express()
   .use(cors())
   .use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: true }))
   .set('json spaces', 2);
-
-// registerApi(app);
 
 // pass all request to router
 app.use('/', router);
