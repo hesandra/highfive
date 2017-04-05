@@ -46,3 +46,23 @@ export function saveQuestion(question){
     payload: question,
  };
 }
+
+export function getAll(data) {
+  return {
+    type: 'GET_JUNQ',
+    payload: data,
+  };
+}
+
+export function getJunQuestions(questionType){
+  console.log('companyProfile.QUESTIONTYPE----------', questionType);
+  return (dispatch) => {
+    axios.get('api/getJunQuestions', questionType)
+      .then((questions) => {
+        dispatch(getAll(questions));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+}

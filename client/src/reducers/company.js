@@ -28,6 +28,7 @@ export default function (state = initialState, action) {
         senior: false, 
         mid: false,
         createButton: false,
+        questionsType: 'junior',
     });
     case 'MID':
       return Object.assign({}, state, {
@@ -43,6 +44,10 @@ export default function (state = initialState, action) {
     case 'SELECT_QUESTION':
       return Object.assign({}, state, {
         question: action.payload,
+    });
+    case 'GET_JUNQ':
+      return Object.assign({}, state, {
+        questions: action.payload,
     });
   }
   return state;

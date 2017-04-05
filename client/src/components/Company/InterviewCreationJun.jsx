@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Image, Button, FormGroup, Form, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { submitTitle, saveQuestion } from '../../actions/company';
+import { submitTitle, saveQuestion, getJunQuestions } from '../../actions/company';
 
 import ReactDOM from 'react-dom';
 
@@ -30,6 +30,13 @@ class InterviewFormJun extends React.Component {
   handleSubmit(event) {
     this.props.submitTitle(this.state);
     event.preventDefault();
+  }
+  
+  ComponentWillMount(){
+    console.log('-----------------------')
+    this.props.dispatch(
+      getJunQuestions(this.props.companyProfile.questionsType)
+   );
   }
 
   render() {
@@ -88,7 +95,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitTitle, saveQuestion }, dispatch);
+  return bindActionCreators({ submitTitle, saveQuestion, getJunQuestions }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewFormJun);
