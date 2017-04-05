@@ -5,7 +5,7 @@ import CompanyProfile from './CompanyProfile';
 import Positions from './Positions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { junPos, senPos, midPos } from '../../actions/company';
+import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
 
 const CompanyNavbar = (props) => {
   console.log('NAVVVVVBARRRRRR', props)
@@ -71,7 +71,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ junPos, senPos, midPos }, dispatch);
+  return bindActionCreators({ junPos, senPos, midPos, getJunQuestions }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyNavbar);

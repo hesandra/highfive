@@ -47,19 +47,21 @@ export function saveQuestion(question){
  };
 }
 
-export function getAll(data) {
+export function getAll(questions) {
   return {
-    type: 'GET_JUNQ',
-    payload: data,
+    type: 'GET_QUESTIONS',
+    payload: questions,
   };
 }
 
-export function getJunQuestions(questionType){
-  console.log('companyProfile.QUESTIONTYPE----------', questionType);
+export function getQuestions(){
+  console.log('in QUESTIONS');
   return (dispatch) => {
-    axios.get('api/getJunQuestions', questionType)
-      .then((questions) => {
-        dispatch(getAll(questions));
+    console.log('below dispatch')
+    axios.get('http://localhost:3000/api/questions')
+      .then((result) => {
+        console.log(result.data.questions, 'QUESSSSSSSTIONSSSSSSSSSSSSSSSSSSSS');
+        dispatch(getAll(result.data.questions));
       })
       .catch((err) => {
         console.error(err);

@@ -71,7 +71,13 @@ module.exports = {
       //   .then((users) => { console.log(users); });
     }
   },
-
-
-};
+  questions: { 
+    get: (cb) => {
+      Question
+        .query()
+        .then((questions) => { cb(null, questions) })
+        .catch(err => { console.log(err) })
+    }
+ }
+}
 

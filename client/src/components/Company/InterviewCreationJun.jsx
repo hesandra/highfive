@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Image, Button, FormGroup, Form, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { submitTitle, saveQuestion, getJunQuestions } from '../../actions/company';
+import { submitTitle, saveQuestion } from '../../actions/company';
 
 import ReactDOM from 'react-dom';
 
@@ -31,16 +31,11 @@ class InterviewFormJun extends React.Component {
     this.props.submitTitle(this.state);
     event.preventDefault();
   }
-  
-  ComponentWillMount(){
-    console.log('-----------------------')
-    this.props.dispatch(
-      getJunQuestions(this.props.companyProfile.questionsType)
-   );
-  }
 
-  render() {
+  renderAll() {
+    console.log(this.props.companyProfile.questions, '!!!!!!!!!!!!!!!!!!!')
     return (
+      <div>
       <div>
         <div>
           <div>JUNIOR-Level</div>
@@ -58,32 +53,51 @@ class InterviewFormJun extends React.Component {
           <div className="spaceQ"></div>
           <h3>Select 3-5 Algorithm Questions</h3>
           <div className="scroll">
-            <div className="questions" onClick={() => this.props.saveQuestion(question)}>Here are questions to select from - algorithms</div>
-            <div className="questions" onClick={() => this.saveQuestion()}>Here are questions to select from - algorithms</div>
-            <div className="questions" onClick={() => this.saveQuestion()}>Here are questions to select from - algorithms</div>
-            <div className="questions" onClick={() => this.saveQuestion()}>Here are questions to select from - algorithms</div>
-            <div className="questions" onClick={() => this.saveQuestion()}>Here are questions to select from - algorithms</div>
+            <div className="questions" >
+          {this.props.companyProfile.questions.map((item, idx) => {
+            if (item.type === 'algorithm' && item.level === this.props.companyProfile.level){
+            return (
+              <div key={idx}>{item.question}</div>
+           )}
+          })
+        }
+            </div>
           </div>
           <div className="spaceQ"></div>
           <h3>Select 3-5 System Design Questions</h3>
           <div className="scroll">
-            <div className="questions">Here are questions to select from - system designs</div>
-            <div className="questions">Here are questions to select from - system designs</div>
-            <div className="questions">Here are questions to select from - system designs</div>
-            <div className="questions">Here are questions to select from - system designs</div>
-            <div className="questions">Here are questions to select from - system designs</div>
-          </div>
+            <div className="questions" >
+          {this.props.companyProfile.questions.map((item, idx) => {
+            if (item.type === 'data structure' && item.level === this.props.companyProfile.level){
+            return (
+              <div key={idx}>{item.question}</div>
+           )}
+          })
+        }
+        </div>
+        </div>
           <div className="spaceQ"></div>
           <h3>Select 3-5 System Behavioral Questions</h3>
-          <div className="scroll">
-            <div className="questions">Here are questions to select from - behavioral</div>
-            <div className="questions">Here are questions to select from - behavioral</div>
-            <div className="questions">Here are questions to select from - behavioral</div>
-            <div className="questions">Here are questions to select from - behavioral</div>
-            <div className="questions">Here are questions to select from - behavioral</div>
+           <div className="scroll">
+            <div className="questions" >
+          {this.props.companyProfile.questions.map((item, idx) => {
+            if (item.type === 'behavioral' && item.level === this.props.companyProfile.level){
+            return (
+              <div key={idx}>{item.question}</div>
+           )}
+          })
+        }
           </div>
+         </div>
         </div>
       </div>
+    </div>
+    )
+  }
+
+  render(){
+    return (
+    <div>{this.renderAll()}</div>
     )
   }
 }
@@ -95,7 +109,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitTitle, saveQuestion, getJunQuestions }, dispatch);
+  return bindActionCreators({ submitTitle, saveQuestion }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewFormJun);

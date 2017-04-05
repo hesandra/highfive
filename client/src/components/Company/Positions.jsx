@@ -7,12 +7,14 @@ import InterviewFormJun from './InterviewCreationJun';
 import InterviewFormSen from './InterviewCreationSen';
 import InterviewFormMid from './InterviewCreationMid';
 import PositionsLevel from './PositionsLevel';
+import { getJunQuestions } from '../../actions/company';
 
 
 class Positions extends React.Component {
   //renderPositions() {
   //map over get and render all positions for company id and position id
   // }
+
   render() {
     console.log(this.props.companyProfile.createButton, '++++++++++++++++++++++++++++++');
     console.log('companyProfile', this.props.companyProfile)
@@ -47,7 +49,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createInterview }, dispatch);
+  return bindActionCreators({ createInterview, getJunQuestions }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Positions);

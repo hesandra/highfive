@@ -17,6 +17,8 @@ router.get('/companies/:id/jobposts');
 
 // questions
 // router.get('/')
+//questions
+router.get('/api/questions', controller.questions.get);
 // router.get('/')
 
 // videos
