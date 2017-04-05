@@ -2,6 +2,7 @@ import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link, hashHistory } from 'react-router';
 import SettingsForm from './SettingsForm';
+import EditProfileForm from './EditProfileForm';
 
 const UserProfileNav = (props) => {
   const { onJobPostsClick } = props;
@@ -48,7 +49,7 @@ const UserProfileNav = (props) => {
             </Tab.Pane>
               <Tab.Pane eventKey="3" />
               <Tab.Pane eventKey="4">
-                edit profile form here
+                <EditProfileForm />
               </Tab.Pane>
               <Tab.Pane eventKey="5">
                 <SettingsForm />
