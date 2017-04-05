@@ -25,8 +25,8 @@ export function checkUserLogin() {
         axios.post('http://localhost:3000/users', {
           name: profile.name,
           email: profile.email,
-          auth0Id: profile.user_id,
-          picture: profile.picture
+          auth0_id: profile.user_id,
+          profile_img: profile.picture
         })
         .then((response) => {
           console.log(response);

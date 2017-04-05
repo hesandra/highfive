@@ -21,9 +21,10 @@ module.exports = {
     },
     post: (req, res, next) => {
       // creates a user
-      const { name, email, auth0Id, picture } = req.body;
+      const { name, email, auth0_id, profile_img } = req.body;
       const user = req.body;
       models.users.post(user, (err, id) => {
+        console.log(id);
         const payload = {
           success: err ? true : false,
           id,
