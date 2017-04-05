@@ -3,6 +3,9 @@ import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootst
 import { Link } from 'react-router';
 import CompanyProfile from './CompanyProfile';
 import Positions from './Positions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { junPos, senPos, midPos } from '../../actions/company';
 
 const CompanyNavbar = (props) => {
   console.log('NAVVVVVBARRRRRR', props)
@@ -19,11 +22,11 @@ const CompanyNavbar = (props) => {
                 Submissions
             </NavItem>
               <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab">
-                <MenuItem eventKey="3.1">Junior</MenuItem>
-                <MenuItem eventKey="3.2">Mid</MenuItem>
-                <MenuItem eventKey="3.3">Senior</MenuItem>
+                <MenuItem eventKey="3.1" onClick={() => props.junPos()}>Junior</MenuItem>
+                <MenuItem eventKey="3.2" onClick={() => props.midPos()}>Mid</MenuItem>
+                <MenuItem eventKey="3.3" onClick={() => props.senPos()}>Senior</MenuItem>
                 <MenuItem divider />
-                <MenuItem eventKey="3.4">Separated link</MenuItem>
+                <MenuItem eventKey="3.4">Show all positions</MenuItem>
               </NavDropdown>
               <NavItem eventKey="fourth">
                 Edit Profile
@@ -48,7 +51,7 @@ const CompanyNavbar = (props) => {
                 <Positions />
             </Tab.Pane>
               <Tab.Pane eventKey="3.4">
-                Tab 3.4 content
+                Show all positions posted by company
             </Tab.Pane>
               <Tab.Pane eventKey="fourth">
                 <CompanyProfile />
@@ -61,4 +64,14 @@ const CompanyNavbar = (props) => {
   );
 };
 
-export default CompanyNavbar;
+function mapStateToProps(state) {
+  return {
+    companyProfile: state.companyProfile
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ junPos, senPos, midPos }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyNavbar);

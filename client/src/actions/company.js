@@ -13,3 +13,36 @@ export function createInterview(){
     type: 'CREATE_INTERVIEW'
  };
 }
+
+export function senPos(){
+  return {
+    type: 'SENIOR'
+ };
+}
+
+export function junPos(){
+  return {
+    type: 'JUNIOR'
+ };
+}
+
+export function midPos(){
+  return {
+    type: 'MID'
+ };
+}
+
+export function submitTitle(title){
+  return {
+    type: 'JOBTITLE',
+    payload: title,
+ };
+}
+
+export function saveQuestion(question){
+  console.log('question', question)
+  return {
+    type: 'SELECT_QUESTION',
+    payload: question,
+ };
+}
