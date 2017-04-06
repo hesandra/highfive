@@ -1,5 +1,5 @@
 import { routerReducer as routing } from 'react-router-redux';
-import { userAuth, userProfile as ActionTypes } from '../actions';
+import { userAuth as ActionTypes } from '../actions';
 import userAuthService from '../utils/userAuthService';
 
 export default function authReducer(state = {
@@ -17,7 +17,7 @@ export default function authReducer(state = {
     case ActionTypes.USER_LOGIN_ERROR:
       return { ...state, isFetching: false, isAuthenticated: false, profile: {}, error: action.error };
     case ActionTypes.USER_LOGOUT_SUCCESS:
-      return { ...state, isAuthenticated: false, profile: {}, backend_profile: null };
+      return { ...state, isAuthenticated: false, profile: {}, backend_profile: {} };
     case ActionTypes.USER_TOKEN_RETRIEVED:
       return { ...state, backend_profile: action.profile };
     case ActionTypes.UPDATE_USER_PROFILE:
