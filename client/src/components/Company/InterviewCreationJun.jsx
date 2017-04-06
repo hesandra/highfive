@@ -57,7 +57,7 @@ class InterviewFormJun extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'algorithm' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
+                      <div key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</div>
                     )
                   }
                 })
@@ -71,7 +71,7 @@ class InterviewFormJun extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'data structure' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
+                      <div key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</div>
                     )
                   }
                 })
@@ -84,8 +84,9 @@ class InterviewFormJun extends React.Component {
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'behavioral' && item.level === this.props.companyProfile.level) {
+                    console.log('selectedQ in interviewCreationJun', this.props.companyProfile.selectedQuestion);
                     return (
-                      <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
+                      <div key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</div>
                     )
                   }
                 })
