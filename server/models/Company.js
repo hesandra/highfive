@@ -29,7 +29,7 @@ class Company extends Model {
     return {
       jobpost: {
         relation: Model.HasManyRelation,
-        modelClass: Jobpost,
+        modelClass: `${__dirname}/Jobpost`,
         join: {
           from: 'company.id',
           to: 'jobpost.company_id'
@@ -38,7 +38,7 @@ class Company extends Model {
 
       industry: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Industry,
+        modelClass: `${__dirname}/Industry`,
         join: {
           from: 'company.industry_id',
           to: 'industry.id'
@@ -47,7 +47,7 @@ class Company extends Model {
 
       location: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Location,
+        modelClass: `${__dirname}/Location`,
         join: {
           from: 'company.location_id',
           to: 'location.id'

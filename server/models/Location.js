@@ -24,7 +24,7 @@ class Location extends Model {
     return {
       user: {
         relation: Model.HasManyRelation,
-        modelClass: User,
+        modelClass: `${__dirname}/User`,
         join: {
           from: 'location.id',
           through: {
@@ -36,7 +36,7 @@ class Location extends Model {
       },
       company: {
         relation: Model.HasManyRelation,
-        modelClass: Company,
+        modelClass: `${__dirname}/Company`,
         join: {
           from: 'location.id',
           to: 'company.location_id'

@@ -31,7 +31,7 @@ class Question extends Model {
     return {
       video: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Video,
+        modelClass: `${__dirname}/Video`,
         join: {
           from: 'question.id',
           to: 'video.question_id'
@@ -39,7 +39,7 @@ class Question extends Model {
       },
       jobpost: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Jobpost,
+        modelClass: `${__dirname}/Jobpost`,
         join: {
           from: 'question.id',
           through: {
