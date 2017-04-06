@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, Col, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import axios from 'axios';
+import { getLocationId } from '../../utils/Mappings/locationMappings';
+import { getIndustryId } from '../../utils/Mappings/industryMappings';
 
 import IndustriesMultiSelect from './IndustriesMultiSelect';
 import LocationsMultiSelect from './LocationMultiSelect';
@@ -47,19 +49,15 @@ class EditProfileForm extends Component {
   }
   handleSubmit(e) {
     const { id, onUpdateUserProfile } = this.props;
-    console.log('this is id', id);
     e.preventDefault();
     const { locationValue, industriesValue, linkedInLink } = this.state;
-    const locationMappings = {
-      'Los Angeles, CA': 1,
-      'Portland, OR': 2
-    };
-    const getLocationId = (location) => {
-      return locationMappings[location];
-    };
+    const industries = industriesValue.map((industry) => {
+      return getIndustryId(industry.label);
+    });
+    console.log(industries);
     const data = {
       location: getLocationId(locationValue),
-      industries: industriesValue,
+      industries,
       linkedin_url: linkedInLink,
     };
     axios({
@@ -117,7 +115,7 @@ class EditProfileForm extends Component {
           </Col>
           <Col sm={4} smOffset={5}>
             <hr />
-            <Button className="text-center" bsStyle="primary" type="submit">Submit</Button>
+            <Button className="text-center" type="submit">Submit</Button>
           </Col>
         </FormGroup>
       </Form>

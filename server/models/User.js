@@ -35,7 +35,7 @@ class User extends Model {
       },
 
       industry: {
-        relation: Model.BelongsToOneRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Industry,
         join: {
           from: 'user.id',

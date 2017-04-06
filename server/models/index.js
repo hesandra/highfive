@@ -23,6 +23,9 @@ module.exports = {
     get: (cb) => {
       User
         .query()
+        .allowEager('[industry]')
+        .eager('industry')
+        .skipUndefined()
         .then((users) => { cb(null, users) })
         .catch(err => { console.log(err) })
     },
@@ -56,14 +59,23 @@ module.exports = {
         cb(null, userAlreadyExists[0]);
       }
     },
-    updateById: async ({ location, linkedin_url, id }, cb) => {
+    updateById: async ({ location, linkedin_url, id, industries }, cb) => {
+      console.log(industries, 'here inside model');
+      /* Patch User (async/await) */
       const user = await User
         .query()
         .patchAndFetchById(id, { location_id: location, linkedin_url })
         .where({ id })
         .then((usr) => cb(null, usr))
         .catch(e => cb(e, null));
+
+      /* insert into location/user table, each location, each id */
+      industries.map((indId) => {
+
+      })
     }
+
+
   },
 
   companies: {

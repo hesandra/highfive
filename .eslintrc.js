@@ -28,6 +28,8 @@ module.exports = {
         "import/prefer-default-export": 0,
         "import/no-named-default": 0,
         "no-use-before-define": 0,
-        "key-spacing": 0
+        "key-spacing": 0,
+        "linebreak-style": 0,
+        "no-path-concat": 0
     }
 };

@@ -1,7 +1,6 @@
 const models = require('../models');
 
 module.exports = {
-
   users: {
     get: (req, res, next) => {
       models.users.get((err, users) => {
@@ -20,7 +19,6 @@ module.exports = {
 
     },
     post: async (req, res, next) => {
-      // creates a user
       const { name, email, auth0_id, profile_img, github_url } = req.body;
       const user = req.body;
 
@@ -35,13 +33,12 @@ module.exports = {
       });
     },
     updateById: async (req, res, next) => {
-      const { location, linkedin_url } = req.body;
+      const { location, linkedin_url, industries } = req.body;
       const { id } = req.params;
-      console.log(req.params);
-      console.log(req.body);
       const data = {
         id,
         location,
+        industries,
         linkedin_url
       };
       models.users.updateById(data, (err, user) => {

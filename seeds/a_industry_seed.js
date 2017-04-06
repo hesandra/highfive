@@ -15,6 +15,14 @@ exports.seed = function (knex, Promise) {
         {
           id: 3,
           name: 'Fashion',
+        },
+        {
+          id: 4,
+          name: 'Ad-Tech'
+        },
+        {
+          id: 5,
+          name: 'Education'
         }
       ]);
     });

@@ -62,6 +62,7 @@
 }
 
 .hideline {
+  margin: 5px;
   clear: both;
   visibility: hidden;
 }
