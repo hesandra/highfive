@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 import { UserProfile } from '../components';
-import { checkUserLogin } from '../actions/userAuth';
+import { checkUserLogin, updateUserProfile } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
-import { requestJobPosts, updateUserProfile } from '../actions/userProfile';
+import { requestJobPosts } from '../actions/userProfile';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, backend_profile } = state.userAuth;
