@@ -25,6 +25,7 @@ const app = express()
   .set('json spaces', 2);
 
 app.options('*', cors());
+
 // pass all request to router
 app.use('/', router);
 

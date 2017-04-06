@@ -90,10 +90,10 @@ module.exports = {
         res.send(payload)
       });
     },
-    updateById: (req, res, next) => {
-      const { id } = req.params;
+    updateCompany: (req, res, next) => {
+      const body = req.body;
 
-      models.companies.updateById(id, (err, company) => {
+      models.companies.updateCompany(body, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -102,10 +102,10 @@ module.exports = {
         res.send(payload)
       });
     },
-    deleteById: (req, res, next) => {
+    deleteCompany: (req, res, next) => {
       const { id } = req.params;
 
-      models.companies.deleteById(id, (err, company) => {
+      models.companies.deleteCompany(id, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),

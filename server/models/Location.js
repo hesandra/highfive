@@ -27,6 +27,10 @@ class Location extends Model {
         modelClass: User,
         join: {
           from: 'location.id',
+          through: {
+            from: 'user_location.location_id',
+            to: 'user_location.user_id',
+          },
           to: 'user.location_id'
         }
       },

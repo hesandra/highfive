@@ -5,39 +5,41 @@ const path = require('path');
 
 router.options('*', cors());
 // users
-router.get('/users', controller.users.get);
-router.get('/users/:id', controller.users.getById);
-router.put('/users/:id', controller.users.updateById);
-router.post('/users', controller.users.post);
+router.get('/api/users', controller.users.get);
+router.get('/api/users/:id', controller.users.getById);
+router.put('/api/users/:id', controller.users.updateById);
+router.post('/api/users', controller.users.post);
 
 //companies
-router.get('/companies', controller.companies.getAll);
-router.get('/companies/:id', controller.companies.getById);
-router.post('/companies', controller.companies.createOne);
-router.put('/companies/:id', controller.companies.updateById);
-router.delete('/companies/:id', controller.companies.deleteById);
+router.get('/api/companies', controller.companies.getAll);
+router.get('/api/companies/:id', controller.companies.getById);
+router.post('/api/companies', controller.companies.createOne);
+router.put('/api/companies/:id', controller.companies.updateCompany);
+router.delete('/api/companies/:id', controller.companies.deleteCompany);
+// router.get('/api/companies/jobposts', controller.companies.getJobPosts)
+// router.get('/api/companies/questions', controller.companies.getQuestions)
 
 //jobposts
-router.get('/jobposts');
-router.get('/jobposts/:id');
-router.post('/jobpost', controller.companies.createOne);
+router.get('/api/jobposts');
+router.get('/api/jobposts/:id');
+router.post('/api/jobpost', controller.companies.createOne);
 
 //questions
-router.get('/questions')
+router.get('/api/questions')
 router.get('/api/questions', controller.questions.get);
-router.post('/questions')
+router.post('/api/questions')
 
 //videos
-router.get('/videos')
-router.post('/videos')
+router.get('/api/videos')
+router.post('/api/videos')
 
 //locations
-router.get('/locations')
-router.post('/locations')
+router.get('/api/locations')
+router.post('/api/locations')
 
 //industries
-router.get('/industries')
-router.post('/industries')
+router.get('/api/industries')
+router.post('/api/industries')
 
 module.exports = router;
 
