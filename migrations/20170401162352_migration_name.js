@@ -7,12 +7,14 @@ exports.up = function(knex, Promise) {
       table.string('city')
     })
     .createTable('user', (table) => {
-      table.increments('id').primary()
-      table.string('name')
-      table.string('email')
-      table.string('auth0_id')
+      table.increments('id').primary();
+      table.string('name');
+      table.string('email');
+      table.string('auth0_id');
       table.integer('location_id').unsigned().references('id').inTable('location')
-      table.string('profile_img')
+      table.string('profile_img');
+      table.string('github_url');
+      table.string('linkedin_url');
     })
     .createTable('industry', (table) => {
       table.increments('id').primary()

@@ -1,10 +1,13 @@
 const controller = require('./controllers');
+const cors = require('cors');
 const router = require('express').Router();
 const path = require('path');
 
+router.options('*', cors());
 // users
 router.get('/users', controller.users.get);
 router.get('/users/:id', controller.users.getById);
+router.put('/users/:id', controller.users.updateById);
 router.post('/users', controller.users.post);
 
 // companies

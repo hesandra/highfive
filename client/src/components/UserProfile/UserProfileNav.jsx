@@ -2,9 +2,10 @@ import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link, hashHistory } from 'react-router';
 import SettingsForm from './SettingsForm';
+import EditProfileForm from './EditProfileForm';
 
 const UserProfileNav = (props) => {
-  const { onJobPostsClick } = props;
+  const { onJobPostsClick, githubLink, id, location, linkedinLink, onUpdateUserProfile } = props;
   return (
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
@@ -48,7 +49,13 @@ const UserProfileNav = (props) => {
             </Tab.Pane>
               <Tab.Pane eventKey="3" />
               <Tab.Pane eventKey="4">
-                edit profile form here
+                <EditProfileForm
+                  onUpdateUserProfile={onUpdateUserProfile}
+                  githubLink={githubLink}
+                  id={id}
+                  location={location}
+                  linkedinLink={linkedinLink}
+                />
               </Tab.Pane>
               <Tab.Pane eventKey="5">
                 <SettingsForm />

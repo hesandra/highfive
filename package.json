@@ -1,7 +1,7 @@
 {
   "name": "highfive",
   "version": "0.0.1",
-  "description": "",
+  "description": "thesis project",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/server.js",
@@ -42,6 +42,7 @@
     "objection": "^0.7.11",
     "react": "^15.4.2",
     "react-ace": "^4.1.6",
+    "react-addons-shallow-compare": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-bootstrap-select": "^0.14.0",
     "react-dom": "^15.4.2",
@@ -51,9 +52,11 @@
     "react-router-redux": "^4.0.8",
     "react-scroll-area": "^0.1.2",
     "react-scrollbar": "^0.5.1",
+    "react-selectize": "^2.1.0",
     "recordrtc": "^5.4.1",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.0",
+    "redux-persist": "^4.6.0",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.67.2",
     "socket.io": "^1.7.3",

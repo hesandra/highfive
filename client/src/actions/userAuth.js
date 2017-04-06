@@ -7,6 +7,7 @@ export const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
+export const USER_TOKEN_RETRIEVED = 'USER_TOKEN_RETRIEVED';
 
 const authService = new UserAuthService(USERS_AUTH0_CLIENT_ID, 'teamhighfive.auth0.com', 'Applicant Sign-In');
 
@@ -22,19 +23,22 @@ export function checkUserLogin() {
         }
         UserAuthService.setToken(authResult.idToken);
         UserAuthService.setProfile(profile);
-        axios.post('http://localhost:3000/users', {
+        return axios.post('http://localhost:3000/users', {
           name: profile.name,
           email: profile.email,
           auth0_id: profile.user_id,
-          profile_img: profile.picture
+          profile_img: profile.picture,
+          github_url: profile.html_url,
         })
         .then((response) => {
-          console.log(response);
+          if (response.status === 201) {
+            dispatch(setUserBackEndProfile(response.data.fetchedUser));
+            dispatch(userLoginSuccess(profile));
+          }
         })
         .catch((err) => {
           console.log(err);
         });
-        return dispatch(userLoginSuccess(profile));
       });
     });
     // Add callback for lock's `authorization_error` event
@@ -50,7 +54,6 @@ export function userLoginRequest() {
 }
 export function userLoginSuccess(profile) {
   hashHistory.push('/profile');
-  // location.reload(); <--- uneeded ?
   return {
     type: USER_LOGIN_SUCCESS,
     profile
@@ -66,5 +69,12 @@ export function userLogoutSuccess() {
   authService.logout();
   return {
     type: USER_LOGOUT_SUCCESS
+  };
+}
+function setUserBackEndProfile(profile) {
+  UserAuthService.setBackEndProfile(profile);
+  return {
+    type: USER_TOKEN_RETRIEVED,
+    profile
   };
 }
