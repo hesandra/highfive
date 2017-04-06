@@ -6,36 +6,29 @@ import { Link } from 'react-router';
 
 const Signup = (props) => {
   return (
-    <div>
-      <Grid>
-        <Row>
-          <Col xs={6} md={6}>
-            <Thumbnail src="" alt="242x200">
-              <h3>Company</h3>
-              <p>Company</p>
-              <p>
+    <Grid>
+      <Row className="signup-box col-xs-3">
+        <div className="text-center">
+          <Col>
+              <div className="btn-container">
                 { props.isCompanyAuthed ?
-                  <Button onClick={props.onAuthedCompanyLoginClick} href="#" bsStyle="default">Login</Button> :
-                  <Button onClick={props.onCompanyLoginClick} href="#" bsStyle="default">Login</Button>
+                  <Button onClick={props.onAuthedCompanyLoginClick} href="#" bsStyle="primary">I'm a Company</Button> :
+                  <Button onClick={props.onCompanyLoginClick} href="#" bsStyle="primary">I'm a Company</Button>
                 }
-              </p>
-            </Thumbnail>
+              </div>
           </Col>
-          <Col xs={6} md={6}>
-            <Thumbnail src="" alt="242x200">
-              <h3>Applicant</h3>
-              <p>Applicant</p>
-              <p>
+          <h3 className="signup-or">or</h3>
+          <Col>
+              <div className="btn-container">
                 { props.isUserAuthed ?
-                  <Button onClick={props.onAuthedUserLoginClick} href="#" bsStyle="default">Login</Button> :
-                  <Button onClick={props.onUserLoginClick} href="#" bsStyle="default">Login</Button>
+                  <Button onClick={props.onAuthedUserLoginClick} href="#" bsStyle="primary">I'm an Applicant</Button> :
+                  <Button onClick={props.onUserLoginClick} href="#" bsStyle="primary">I'm an Applicant</Button>
                 }
-              </p>
-            </Thumbnail>
+              </div>
           </Col>
-        </Row>
-      </Grid>
-    </div>
+        </div>
+      </Row>
+    </Grid>
   );
 };
 

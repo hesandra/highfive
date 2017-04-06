@@ -10,25 +10,34 @@ router.get('/users/:id', controller.users.getById);
 router.put('/users/:id', controller.users.updateById);
 router.post('/users', controller.users.post);
 
-// companies
-router.get('/companies', controller.company.get);
-router.get('/companies/:id', controller.company.getById);
+//companies
+router.get('/companies', controller.companies.getAll);
+router.get('/companies/:id', controller.companies.getById);
+router.post('/companies', controller.companies.createOne);
+router.put('/companies/:id', controller.companies.updateById);
+router.delete('/companies/:id', controller.companies.deleteById);
 
-// jobposts
-router.get('/companies/:id/jobposts');
-// get jobpost by userid
+//jobposts
+router.get('/jobposts');
+router.get('/jobposts/:id');
+router.post('/jobpost', controller.companies.createOne);
 
-// questions
-// router.get('/')
 //questions
+router.get('/questions')
 router.get('/api/questions', controller.questions.get);
-// router.get('/')
+router.post('/questions')
 
-// videos
-// router.get('/')
-// router.get('/')
+//videos
+router.get('/videos')
+router.post('/videos')
 
-// location, industry?
+//locations
+router.get('/locations')
+router.post('/locations')
+
+//industries
+router.get('/industries')
+router.post('/industries')
 
 module.exports = router;
 
