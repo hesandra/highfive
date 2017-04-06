@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, Col, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import axios from 'axios';
+
 import IndustriesMultiSelect from './IndustriesMultiSelect';
 import LocationsMultiSelect from './LocationMultiSelect';
 
@@ -8,16 +9,72 @@ class EditProfileForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      locationValue: '',
-      industryValue: null,
-      githubLink: '',
+      locationValue: props.location,
+      industriesValue: [],
+      githubLink: props.githubLink,
       linkedInLink: '',
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+
+    this.setState((prevState, props) => {
+      return {
+        [name]: value
+      };
+    });
+  }
+  handleSelectChange(payload) {
+    const { property, data } = payload;
+    if (property === 'industriesValue') {
+      this.setState((prevState, props) => {
+        const industries = data;
+        return {
+          [property]: industries
+        };
+      });
+    }
+    if (property === 'locationValue') {
+      this.setState({
+        [property]: data.value
+      });
+    }
+  }
+  handleSubmit(e) {
+    const { id, onUpdateUserProfile } = this.props;
+    console.log('this is id', id);
+    e.preventDefault();
+    const { locationValue, industriesValue, linkedInLink } = this.state;
+    const locationMappings = {
+      'Los Angeles, CA': 1,
+      'Portland, OR': 2
+    };
+    const getLocationId = (location) => {
+      return locationMappings[location];
+    };
+    const data = {
+      location: getLocationId(locationValue),
+      industries: industriesValue,
+      linkedin_url: linkedInLink,
+    };
+    axios({
+      method: 'PUT',
+      url: `http://localhost:3000/users/${id}`,
+      data,
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    })
+    .then((response) => {
+      onUpdateUserProfile(response.data);
+
+    })
+    .catch(err => console.log(err));
   }
   render() {
     return (
@@ -27,7 +84,10 @@ class EditProfileForm extends Component {
             Location
           </Col>
           <Col sm={10}>
-            <LocationsMultiSelect />
+            <LocationsMultiSelect
+              onSelectChange={this.handleSelectChange}
+              location={this.state.locationValue}
+            />
           </Col>
         </FormGroup>
         <FormGroup>
@@ -35,7 +95,9 @@ class EditProfileForm extends Component {
             Industries
           </Col>
           <Col sm={10}>
-            <IndustriesMultiSelect />
+            <IndustriesMultiSelect
+              onSelectChange={this.handleSelectChange}
+            />
           </Col>
         </FormGroup>
         <FormGroup>
@@ -43,7 +105,7 @@ class EditProfileForm extends Component {
             Github
           </Col>
           <Col sm={10}>
-            <FormControl name="typeValue" onChange={this.handleInputChange} type="text" placeholder="Github" />
+            <FormControl readOnly value={this.props.githubLink} name="typeValue" type="text" placeholder="Github" />
           </Col>
         </FormGroup>
         <FormGroup>
@@ -51,7 +113,7 @@ class EditProfileForm extends Component {
             LinkedIn
           </Col>
           <Col sm={10}>
-            <FormControl type="text" name="githubValue" onChange={this.handleInputChange} placeholder="LinkedIn" />
+            <FormControl defaultValue={this.props.linkedinLink} type="text" name="linkedInLink" onChange={this.handleInputChange} placeholder="LinkedIn" />
           </Col>
           <Col sm={4} smOffset={5}>
             <hr />

@@ -3,21 +3,25 @@ import ReactSelectize from 'react-selectize';
 
 const SimpleSelect = ReactSelectize.SimpleSelect;
 
-const LocationsMultiSelect = () => {
+const LocationsMultiSelect = ({ onSelectChange, location }) => {
+  const locationItem = { label: location, value: location };
   return (
     <div>
       <SimpleSelect
-        className="location-dropdown-select"
         theme="bootstrap"
-        placeholder="Select A Location"
-        onValueChange={(value) => {
-          console.log(value);
+        defaultValue={locationItem}
+        placeholder="Select location"
+        onValueChange={(selection) => {
+          if (selection) {
+            onSelectChange({
+              property: 'locationValue',
+              data: selection
+            });
+          }
         }}
       >
-        <option value="select">Los Angeles, CA</option>
-        <option value="select">New York, NY</option>
-        <option value="select">Portland, OR</option>
-        <option value="select">San Fransisco, CA</option>
+        <option value="Los Angeles, CA">Los Angeles, CA</option>
+        <option value="Portland, OR">Portland, OR</option>
       </SimpleSelect>
     </div>
   );

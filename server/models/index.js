@@ -24,21 +24,34 @@ module.exports = {
     /**
      * Posts a user to the db using async/await
      */
-    post: async ({ name, email, auth0_id, profile_img }, cb) => {
+    post: async ({ name, email, auth0_id, profile_img, github_url }, cb) => {
       const user = {
         name,
         email,
         auth0_id,
-        profile_img
+        profile_img,
+        github_url
       };
       const userAlreadyExists = await User.query().where(user);
+      console.log(userAlreadyExists);
       if (!userAlreadyExists.length) {
         await User
           .query()
-          .insert(user)
-          .then((insertedUser) => { cb(insertedUser, null); })
+          .insertAndFetch(user)
+          .then((insertedUser) => { cb(null, insertedUser); })
           .catch(err => console.log(err));
+      } else {
+        console.log('here yo');
+        cb(null, userAlreadyExists[0]);
       }
+    },
+    updateById: async ({ location, linkedin_url, id }, cb) => {
+      const user = await User
+        .query()
+        .patchAndFetchById(id, { location_id: location, linkedin_url })
+        .where({ id })
+        .then((usr) => cb(null, usr))
+        .catch(e => cb(e, null));
     }
   },
   company: {

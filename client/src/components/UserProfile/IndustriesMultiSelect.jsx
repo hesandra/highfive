@@ -1,23 +1,26 @@
 import React from 'react';
 import ReactSelectize from 'react-selectize';
 
-const SimpleSelect = ReactSelectize.SimpleSelect;
+const MultiSelect = ReactSelectize.MultiSelect;
 
-const IndustriesMultiSelect = () => {
+const IndustriesMultiSelect = ({ onSelectChange }) => {
   return (
     <div>
-      <SimpleSelect
+      <MultiSelect
         theme="bootstrap"
-        placeholder="Select A Location"
-        onValueChange={(value) => {
-          console.log(value);
+        placeholder="Select industries"
+        onValuesChange={(value) => {
+          onSelectChange({
+            property: 'industriesValue',
+            data: value
+          });
         }}
       >
-        <option value="apple">apple</option>
-        <option value="mango">mango</option>
-        <option value="orange">orange</option>
-        <option value="banana">banana</option>
-      </SimpleSelect>
+        <option value="E-Sports">E-Sports</option>
+        <option value="Finance">Finance</option>
+        <option value="Education">Education</option>
+        <option value="Transportation">Transporation</option>
+      </MultiSelect>
     </div>
   );
 };

@@ -34,6 +34,7 @@ export default class UserAuthService {
     // Clear user token and profile data from localStorage
     localStorage.removeItem('id_token_user');
     localStorage.removeItem('profile_user');
+    localStorage.removeItem('backend_profile');
   }
 
   // ======================================================
@@ -55,6 +56,15 @@ export default class UserAuthService {
     // Saves profile data to localStorage
     localStorage.setItem('profile_user', JSON.stringify(profile));
     // Triggers profile_updated event to update the UI
+  }
+
+  static setBackEndProfile(user) {
+    localStorage.setItem('backend_profile', JSON.stringify(user));
+  }
+
+  static getBackEndProfile() {
+    const id = localStorage.getItem('backend_profile');
+    return id ? JSON.parse(localStorage.backend_profile) : null;
   }
 
   static setToken(idToken) {

@@ -9,14 +9,16 @@ class User extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['name', 'email'],
+      required: ['name', 'email', 'auth0_id', 'github_url'],
       properties: {
         id:              { type: 'integer' },
         name:            { type: 'string' },
         email:           { type: 'string' },
         auth0_id:        { type: 'string' },
-        location_id:     { type: 'string' },
-        profile_img:     { type: 'string' }
+        location_id:     { type: 'integer' },
+        profile_img:     { type: 'string' },
+        github_url:      { type: 'string' },
+        linkedin_url:    { type: 'string' }
       }
     };
   }
