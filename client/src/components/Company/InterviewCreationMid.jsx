@@ -6,6 +6,7 @@ import ScrollArea from 'react-scrollbar';
 import ScrollbarWrapper from 'react-scrollbar';
 import ReactDOM from 'react-dom';
 import { submitTitle, saveQuestion } from '../../actions/company';
+import InterviewForm from './InterviewForm';
 
 class InterviewFormMid extends React.Component {
   constructor(props) {
@@ -97,7 +98,11 @@ class InterviewFormMid extends React.Component {
 
   render(){
     return (
+    <div>
     <div>{this.renderAll()}</div>
+    <div className="spaceQ" />
+    <div><InterviewForm /></div>
+    </div>
     )
   }
 }

@@ -3,6 +3,7 @@ let initialState = {
   senior: false, 
   junior: false, 
   mid: false,
+  selectedQuestion: [],
 }
 
 export default function (state = initialState, action) {
@@ -43,9 +44,13 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         jobTitle: action.payload,
     });
-    case 'SELECT_QUESTION':
+/*    case 'SELECT_QUESTION':
       return Object.assign({}, state, {
         selectedQuestion: action.payload,
+    });*/
+    case 'SELECT_QUESTION':
+      return Object.assign({}, state, {
+        selectedQuestion: state.selectedQuestion.concat(action.payload)
     });
     case 'GET_QUESTIONS':
       return Object.assign({}, state, {
