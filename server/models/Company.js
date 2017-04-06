@@ -12,7 +12,7 @@ class Company extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['name', 'industry', 'location_id'],
+      required: ['name', 'industry_id', 'location_id'],
 
       properties: {
         id:               { type: 'integer' },

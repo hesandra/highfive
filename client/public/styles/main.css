@@ -1,3 +1,44 @@
+#test {
+  background: url(../images/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.signup-box {
+  border: 1px solid #fff;
+  margin: auto;
+  float: none;
+  border-radius: 5px;
+  position: absolute;
+  height: 245px;
+  top: -40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.signup-or {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.navbar {
+  margin-bottom: 0px;
+  border-radius: initial;
+}
+
+.btn-primary {
+  width: 90%;
+  font-size: 18px;
+}
+
+.btn-container {
+  margin: 35px;
+}
+
 .user-profile-img {
   height: 200px;
 }

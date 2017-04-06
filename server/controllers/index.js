@@ -1,6 +1,7 @@
 const models = require('../models');
 
 module.exports = {
+
   users: {
     get: (req, res, next) => {
       models.users.get((err, users) => {
@@ -22,6 +23,7 @@ module.exports = {
       // creates a user
       const { name, email, auth0_id, profile_img, github_url } = req.body;
       const user = req.body;
+
       models.users.post(user, (err, fetchedUser) => {
         console.log('id should be here', fetchedUser);
         const payload = {
@@ -52,9 +54,10 @@ module.exports = {
       });
     }
   },
-  company: {
-    get: (req, res, next) => {
-      models.company.get((err, company) => {
+
+  companies: {
+    getAll: (req, res, next) => {
+      models.companies.getAll((err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -66,7 +69,43 @@ module.exports = {
     getById: (req, res, next) => {
       const { id } = req.params;
 
-      models.company.getById(id, (err, company) => {
+      models.companies.getById(id, (err, company) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          company
+        }
+        res.send(payload)
+      });
+    },
+    createOne: (req, res, next) => {
+      const body = req.body;
+
+      models.companies.createOne(body, (err, company) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          company
+        }
+        res.send(payload)
+      });
+    },
+    updateById: (req, res, next) => {
+      const { id } = req.params;
+
+      models.companies.updateById(id, (err, company) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          company
+        }
+        res.send(payload)
+      });
+    },
+    deleteById: (req, res, next) => {
+      const { id } = req.params;
+
+      models.companies.deleteById(id, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -74,9 +113,24 @@ module.exports = {
         };
         res.send(payload)
       });
+    }
+  },
+
+  jobposts: {
+    get: (req, res, next) => {
+      models.jobposts.get((err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        }
+        res.send(payload)
+      });
     },
-    getJobPosts: (req, res, next) => {
-      models.company.getJobPosts((err, jobposts) => {
+    getById: (req, res, next) => {
+      const { id } = req.params;
+
+      models.jobposts.getById(id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -84,8 +138,10 @@ module.exports = {
         };
         res.send(payload)
       });
-    }
+    },
   },
+
+  //questions
   questions: {
     get: (req, res, next) => {
       models.questions.get((err, questions) => {
@@ -96,6 +152,21 @@ module.exports = {
         }
         res.send(payload)
       });
-    },
+    }, 
+  },
+  
+  //videos
+  videos: {
+
+  },
+
+  //locations
+  locations: {
+
+  },
+
+  //industries
+  industries: {
+
   }
 };

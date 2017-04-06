@@ -54,8 +54,9 @@ module.exports = {
         .catch(e => cb(e, null));
     }
   },
-  company: {
-    get: (cb) => {
+
+  companies: {
+    getAll: (cb) => {
       Company
         .query()
         .then((companies) => { cb(null, companies) })
@@ -68,21 +69,71 @@ module.exports = {
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
-    getJobPosts: (cb) => {
+    createOne: (body, cb) => {
+
+      const formatted = {
+        id: parseInt(body.id),
+        name: body.name,
+        email: body.email,
+        profile_img: body.profile_img,
+        industry_id: parseInt(body.industry_id),
+        location_id: parseInt(body.location_id)
+      }
+
       Company
         .query()
-        .then((jobposts) => { cb(null, jobposts) })
+        .insertAndFetch(formatted)
+        .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
-    post: () => {
-      
+    updateById: (id, cb) => {
+      Company
+        .query()
+        .where('id', id)
+        .updateAndFetch(req.body)
+        .then((company) => { cb(null, company) })
+        .catch(err => { console.log(err) })
     },
-    put: () => {
-
-      // const person = await User
-      //   .query()
-      //   .then((users) => { console.log(users); });
+    deleteById: (id, cb) => {
+      Company
+        .query()
+        .deleteById(id)
+        .then((deleted) => { cb(null, deleted) })
+        .catch(err => { console.log(err) })
     }
+  },
+
+  jobposts: {
+    get: (cb) => {
+      Jobpost
+        .query()
+        .then((jobposts) => { cb(null, jobposts) })
+        .catch( err => { console.log(err) })
+    },
+    getById: (id, cb) => {
+      Jobpost
+        .query()
+        .where('id', id)
+        .then((jobposts) => { cb(null, jobposts) })
+        .catch( err => { console.log(err) })
+    },
+    // post: (cb) => {
+    //   Jobpost
+    //     .query()
+    //     .insertAndFetch(req.body)
+    //     .then((jobpost) => { cb(null, jobpost) })
+    //     .catch(err => { console.log(err) })
+    // },
+    // updateById: (cb) => {
+    //   Jobpost
+    //     .query()
+    //     .updateAndFetch(req.body)
+    //     .then((jobpost) => { cb(null, jobpost) })
+    //     .catch(err => { console.log(err) })
+    // },
+    // deleteById: () => {
+
+    // }
   },
   questions: { 
     get: (cb) => {
@@ -91,6 +142,71 @@ module.exports = {
         .then((questions) => { cb(null, questions) })
         .catch(err => { console.log(err) })
     }
- }
-}
+ },
+  // videos: {
+  //   get: (cb) => {
+  //     Jobpost
+  //       .query()
+  //       .then((jobposts) => { cb(null, jobposts) })
+  //       .catch( err => { console.log(err) })
+  //   },
+  //   getById: (id, cb) => {
+  //     Jobpost
+  //       .query()
+  //       .where('id', id)
+  //       .then((jobposts) => { cb(null, jobposts) })
+  //       .catch( err => { console.log(err) })
+  //   },
+  //   post: (cb) => {
+  //     Jobpost
+  //       .query()
+  //       .insertAndFetch(req.body)
+  //       .then((jobpost) => { cb(null, jobpost) })
+  //       .catch(err => { console.log(err) })
+  //   },
+  //   updateById: (cb) => {
+  //     Jobpost
+  //       .query()
+  //       .updateAndFetch(req.body)
+  //       .then((jobpost) => { cb(null, jobpost) })
+  //       .catch(err => { console.log(err) })
+  //   },
+  //   deleteById: () => {
+
+  //   }
+  // },
+  // questions: {
+  //   get: (cb) => {
+  //     Jobpost
+  //       .query()
+  //       .then((jobposts) => { cb(null, jobposts) })
+  //       .catch( err => { console.log(err) })
+  //   },
+  //   getById: (id, cb) => {
+  //     Jobpost
+  //       .query()
+  //       .where('id', id)
+  //       .then((jobposts) => { cb(null, jobposts) })
+  //       .catch( err => { console.log(err) })
+  //   },
+  //   post: (cb) => {
+  //     Jobpost
+  //       .query()
+  //       .insertAndFetch(req.body)
+  //       .then((jobpost) => { cb(null, jobpost) })
+  //       .catch(err => { console.log(err) })
+  //   },
+  //   updateById: (cb) => {
+  //     Jobpost
+  //       .query()
+  //       .updateAndFetch(req.body)
+  //       .then((jobpost) => { cb(null, jobpost) })
+  //       .catch(err => { console.log(err) })
+  //   },
+  //   deleteById: () => {
+
+  //   }
+  // }
+
+};
 
