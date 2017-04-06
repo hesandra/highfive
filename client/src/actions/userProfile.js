@@ -1,5 +1,3 @@
-import UserAuthService from '../utils/userAuthService';
-
 export const REQUEST_JOB_POSTS = 'REQUEST_JOB_POSTS';
 export const requestJobPosts = () => {
   return {
@@ -7,12 +5,3 @@ export const requestJobPosts = () => {
   };
 };
 
-
-export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
-export const updateUserProfile = (profile) => {
-  UserAuthService.setBackEndProfile(profile);
-  return {
-    type: UPDATE_USER_PROFILE,
-    profile
-  };
-};

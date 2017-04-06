@@ -78,3 +78,11 @@ function setUserBackEndProfile(profile) {
     profile
   };
 }
+export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
+export const updateUserProfile = (profile) => {
+  UserAuthService.setBackEndProfile(profile);
+  return {
+    type: UPDATE_USER_PROFILE,
+    profile
+  };
+};
