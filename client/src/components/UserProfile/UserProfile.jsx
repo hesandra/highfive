@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
+import { Icon, Label } from 'semantic-ui-react';
 import UserProfileNav from './UserProfileNav';
 import { getLocationName } from '../../utils/Mappings/locationMappings';
 
@@ -73,6 +74,12 @@ class UserProfile extends Component {
             </div>
             <div className="text-center">
               <small className="text-center"> {location} </small>
+              <br />
+              <small className="text-center"> looking for work in</small>
+              <br />
+              <Label color="blue" size="small">Finance<Icon name='delete' /></Label>
+              <Label color="blue" size="small">Education<Icon name='delete' /></Label>
+              <Label color="blue" size="small">Ad-Tech<Icon name='delete' /></Label>
               <hr className="hideline" />
               <a href={githubLink} className="social-links" rel="noopener noreferrer" target="_blank">
                 <i className="fa fa-github" aria-hidden="true" />

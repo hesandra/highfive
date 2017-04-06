@@ -23,7 +23,7 @@ class Industry extends Model {
     return {
       company: {
         relation: Model.HasOneRelation,
-        modelClass: Company,
+        modelClass: `${__dirname}/Company`,
         join: {
           from: 'industry.id',
           to: 'company.industry_id'
@@ -32,7 +32,7 @@ class Industry extends Model {
 
       user: {
         relation: Model.ManyToManyRelation,
-        modelClass: User,
+        modelClass: `${__dirname}/User`,
         join: {
           from: 'industry.id',
           through: {

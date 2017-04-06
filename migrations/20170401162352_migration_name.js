@@ -59,14 +59,17 @@ return knex.raw('SET foreign_key_checks = 0;')
         table.integer('question_id').unsigned().references('id').inTable('question')
         table.integer('submitter_id').unsigned().references('id').inTable('user')
       })
-      .createTable('user_location', () => {
-        
+      .createTable('user_industry', function(table) {
+        table.increments('id').primary();
+        table.integer('user_id').unsigned().references('id').inTable('user').onDelete('CASCADE');
+        table.integer('industry_id').unsigned().references('id').inTable('industry').onDelete('CASCADE');
       })
   })
 };
 
 exports.down = function(knex, Promise) {
   return knex.schema
+    .dropTableIfExists('user_industry')
     .dropTableIfExists('company')
     .dropTableIfExists('industry')
     .dropTableIfExists('jobpost')
@@ -74,5 +77,5 @@ exports.down = function(knex, Promise) {
     .dropTableIfExists('question')
     // .dropTableIfExists('submission')
     .dropTableIfExists('user')
-    .dropTableIfExists('video')
+    .dropTableIfExists('video');
 };
