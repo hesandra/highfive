@@ -38,12 +38,12 @@ export function submitTitle(title){
     payload: title,
  };
 }
-
+//const allQuestions = [];
 export function saveQuestion(question){
-  console.log('question', question)
+  //allQuestions.push(question)
   return {
     type: 'SELECT_QUESTION',
-    payload: question,
+    payload: question
  };
 }
 

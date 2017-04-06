@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import ScrollArea from 'react-scrollbar';
 import ScrollbarWrapper from 'react-scrollbar';
 import ReactDOM from 'react-dom';
-import { submitTitle } from '../../actions/company';
+import { submitTitle, saveQuestion } from '../../actions/company';
+import InterviewForm from './InterviewForm';
 
 class InterviewFormSen extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class InterviewFormSen extends React.Component {
               <FormGroup>
                 <Col componentClass={ControlLabel} sm={1}>
                   JobTitle
-        </Col>
+                </Col>
                 <Col sm={4}>
                   <FormControl name="name" type="text" value={this.state.jobTitel} onChange={this.handleChange} />
                 </Col>
@@ -56,7 +57,7 @@ class InterviewFormSen extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'algorithm' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx}>{item.question}</div>
+                      <div key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</div>
                     )
                   }
                 })
@@ -70,7 +71,7 @@ class InterviewFormSen extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'data structure' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx}>{item.question}</div>
+                      <div key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</div>
                     )
                   }
                 })
@@ -84,7 +85,7 @@ class InterviewFormSen extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'behavioral' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx}>{item.question}</div>
+                      <div key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</div>
                     )
                   }
                 })
@@ -99,7 +100,11 @@ class InterviewFormSen extends React.Component {
 
   render() {
     return (
-      <div>{this.renderAll()}</div>
+      <div>
+        <div>{this.renderAll()}</div>
+        <div className="spaceQ" />
+        <div><InterviewForm /></div>
+      </div>
     )
   }
 }
@@ -112,7 +117,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitTitle }, dispatch);
+  return bindActionCreators({ submitTitle, saveQuestion }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewFormSen);

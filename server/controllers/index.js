@@ -96,6 +96,6 @@ module.exports = {
         }
         res.send(payload)
       });
-    }, 
+    },
   }
 };
