@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
     });
     case 'SELECT_QUESTION':
       return Object.assign({}, state, {
-        question: action.payload,
+        selectedQuestion: action.payload,
     });
     case 'GET_QUESTIONS':
       return Object.assign({}, state, {

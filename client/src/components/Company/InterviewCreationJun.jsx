@@ -3,6 +3,7 @@ import { Grid, Row, Col, Image, Button, FormGroup, Form, ControlLabel, FormContr
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitTitle, saveQuestion } from '../../actions/company';
+import InterviewForm from './InterviewForm';
 
 import ReactDOM from 'react-dom';
 
@@ -57,7 +58,7 @@ class InterviewFormJun extends React.Component {
           {this.props.companyProfile.questions.map((item, idx) => {
             if (item.type === 'algorithm' && item.level === this.props.companyProfile.level){
             return (
-              <div key={idx}>{item.question}</div>
+              <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
            )}
           })
         }
@@ -70,7 +71,7 @@ class InterviewFormJun extends React.Component {
           {this.props.companyProfile.questions.map((item, idx) => {
             if (item.type === 'data structure' && item.level === this.props.companyProfile.level){
             return (
-              <div key={idx}>{item.question}</div>
+              <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
            )}
           })
         }
@@ -83,7 +84,7 @@ class InterviewFormJun extends React.Component {
           {this.props.companyProfile.questions.map((item, idx) => {
             if (item.type === 'behavioral' && item.level === this.props.companyProfile.level){
             return (
-              <div key={idx}>{item.question}</div>
+              <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
            )}
           })
         }
@@ -97,7 +98,11 @@ class InterviewFormJun extends React.Component {
 
   render(){
     return (
+    <div>
     <div>{this.renderAll()}</div>
+    <div className="spaceQ"></div>
+    <div><InterviewForm /></div>
+    </div>
     )
   }
 }

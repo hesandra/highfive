@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import ScrollArea from 'react-scrollbar';
 import ScrollbarWrapper from 'react-scrollbar';
 import ReactDOM from 'react-dom';
-import { submitTitle } from '../../actions/company';
+import { submitTitle, saveQuestion } from '../../actions/company';
 
 class InterviewFormSen extends React.Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class InterviewFormSen extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'algorithm' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx}>{item.question}</div>
+                      <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
                     )
                   }
                 })
@@ -70,7 +70,7 @@ class InterviewFormSen extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'data structure' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx}>{item.question}</div>
+                      <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
                     )
                   }
                 })
@@ -84,7 +84,7 @@ class InterviewFormSen extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'behavioral' && item.level === this.props.companyProfile.level) {
                     return (
-                      <div key={idx}>{item.question}</div>
+                      <div key={idx} onClick={(question) => this.props.saveQuestion(item)}>{item.question}</div>
                     )
                   }
                 })
@@ -112,7 +112,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitTitle }, dispatch);
+  return bindActionCreators({ submitTitle, saveQuestion }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewFormSen);
