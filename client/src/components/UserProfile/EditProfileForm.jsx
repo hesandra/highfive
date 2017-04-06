@@ -62,7 +62,7 @@ class EditProfileForm extends Component {
     };
     axios({
       method: 'PUT',
-      url: `http://localhost:3000/users/${id}`,
+      url: `http://localhost:3000/api/users/${id}`,
       data,
       headers: {
         'Content-Type' : 'application/json'
