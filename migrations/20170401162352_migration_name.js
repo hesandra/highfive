@@ -59,6 +59,9 @@ return knex.raw('SET foreign_key_checks = 0;')
         table.integer('question_id').unsigned().references('id').inTable('question')
         table.integer('submitter_id').unsigned().references('id').inTable('user')
       })
+      .createTable('user_location', () => {
+        
+      })
   })
 };
 

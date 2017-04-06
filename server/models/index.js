@@ -7,6 +7,17 @@ const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
 
+const formatBody = (body) => {
+  return {
+    id: parseInt(body.id),
+    name: body.name,
+    email: body.email,
+    profile_img: body.profile_img,
+    industry_id: parseInt(body.industry_id),
+    location_id: parseInt(body.location_id)
+  }
+}
+
 module.exports = {
   users: {
     get: (cb) => {
@@ -70,31 +81,21 @@ module.exports = {
         .catch(err => { console.log(err) })
     },
     createOne: (body, cb) => {
-
-      const formatted = {
-        id: parseInt(body.id),
-        name: body.name,
-        email: body.email,
-        profile_img: body.profile_img,
-        industry_id: parseInt(body.industry_id),
-        location_id: parseInt(body.location_id)
-      }
-
       Company
         .query()
-        .insertAndFetch(formatted)
+        .insertAndFetch(formatBody(body))
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
-    updateById: (id, cb) => {
+    updateCompany: (id, cb) => {
       Company
         .query()
         .where('id', id)
-        .updateAndFetch(req.body)
+        .updateAndFetch(formatBody(body))
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
-    deleteById: (id, cb) => {
+    deleteCompany: (id, cb) => {
       Company
         .query()
         .deleteById(id)
