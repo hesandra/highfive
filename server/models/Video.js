@@ -26,7 +26,7 @@ class Video extends Model {
     return {
       question: {
         relation: Model.HasManyRelation,
-        modelClass: Question,
+        modelClass: `${__dirname}/Question`,
         join: {
           from: 'video.question_id',
           to: 'question.id'
@@ -34,7 +34,7 @@ class Video extends Model {
       },
       user: {
         relation: Model.BelongsToOneRelation,
-        modelClass: User,
+        modelClass: `${__dirname}/User`,
         join: {
           from: 'video.submitter_id',
           to: 'user.id'

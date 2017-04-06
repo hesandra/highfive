@@ -1,6 +1,5 @@
 const Model = require('objection').Model;
 
-// const Submission = require('./Submission')
 const Question = require('./Question')
 const Company = require('./Company')
 
@@ -27,7 +26,7 @@ class Jobpost extends Model {
     return {
       company: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Company,
+        modelClass: `${__dirname}/Company`,
         join: {
           from: 'jobpost.company_id',
           to: 'company.id'
@@ -43,7 +42,7 @@ class Jobpost extends Model {
       // },
       question: {
         relation: Model.HasManyRelation,
-        modelClass: Question,
+        modelClass: `${__dirname}/Question`,
         join: {
           from: 'jobpost.id',
           through: {

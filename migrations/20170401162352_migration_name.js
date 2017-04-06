@@ -44,14 +44,6 @@ return knex.raw('SET foreign_key_checks = 0;')
         table.string('question')
         table.integer('jobpost_id').unsigned().references('id').inTable('jobpost')
       })
-      // .createTable('submission', (table) => {
-        // table.increments('id').primary()
-          // .unsigned()
-          // .references('submission_id').inTable('video')
-      //   table.integer('user_id').unsigned().references('id').inTable('user')
-      //   table.integer('status')
-      //   table.integer('jobpost_id').unsigned().references('id').inTable('jobpost')
-      // })
       .createTable('video', (table) => {
         table.increments('id').primary()
         table.string('href')
@@ -75,7 +67,6 @@ exports.down = function(knex, Promise) {
     .dropTableIfExists('jobpost')
     .dropTableIfExists('location')
     .dropTableIfExists('question')
-    // .dropTableIfExists('submission')
     .dropTableIfExists('user')
     .dropTableIfExists('video');
 };
