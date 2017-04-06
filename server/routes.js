@@ -16,13 +16,13 @@ router.get('/api/companies/:id', controller.companies.getById);
 router.post('/api/companies', controller.companies.createOne);
 router.put('/api/companies/:id', controller.companies.updateCompany);
 router.delete('/api/companies/:id', controller.companies.deleteCompany);
-// router.get('/api/companies/jobposts', controller.companies.getJobPosts)
-// router.get('/api/companies/questions', controller.companies.getQuestions)
+router.get('/api/companies/:id/jobposts', controller.companies.getJobPosts)
 
 //jobposts
-router.get('/api/jobposts');
-router.get('/api/jobposts/:id');
-router.post('/api/jobpost', controller.companies.createOne);
+router.get('/api/jobposts', controller.jobposts.getAll);
+router.get('/api/jobposts/:id', controller.jobposts.getById);
+router.post('/api/jobpost', controller.jobposts.createOne);
+router.get('/api/jobposts/:id/questions', controller.jobposts.getPostQuestions);
 
 //questions
 router.get('/api/questions')
@@ -34,12 +34,12 @@ router.get('/api/videos')
 router.post('/api/videos')
 
 //locations
-router.get('/api/locations')
-router.post('/api/locations')
+// router.get('/api/locations')
+// router.post('/api/locations')
 
 //industries
-router.get('/api/industries')
-router.post('/api/industries')
+// router.get('/api/industries')
+// router.post('/api/industries')
 
 module.exports = router;
 

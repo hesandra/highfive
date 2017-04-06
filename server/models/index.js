@@ -7,9 +7,9 @@ const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
 
-const formatBody = (body) => {
+const formatCompanyBody = (body) => {
   return {
-    id: parseInt(body.id),
+    // id: parseInt(body.id),
     name: body.name,
     email: body.email,
     profile_img: body.profile_img,
@@ -30,7 +30,7 @@ module.exports = {
         .catch(err => { console.log(err) })
     },
     getById: () => {
-
+      
     },
     put: () => {
       // update user here
@@ -74,8 +74,6 @@ module.exports = {
 
       })
     }
-
-
   },
 
   companies: {
@@ -95,15 +93,15 @@ module.exports = {
     createOne: (body, cb) => {
       Company
         .query()
-        .insertAndFetch(formatBody(body))
+        .insertAndFetch(formatCompanyBody(body))
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
-    updateCompany: (id, cb) => {
+    updateCompany: (body, cb) => {
       Company
         .query()
-        .where('id', id)
-        .updateAndFetch(formatBody(body))
+        .update(formatCompanyBody(body))
+        .where('id', body.id)
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
@@ -112,6 +110,16 @@ module.exports = {
         .query()
         .deleteById(id)
         .then((deleted) => { cb(null, deleted) })
+        .catch(err => { console.log(err) })
+    },
+    getJobPosts: (id, cb) => {
+      Company
+        .query()
+        .allowEager('[jobposts]')
+        .eager('jobposts')
+        .where('id', id)
+        .skipUndefined()
+        .then((companyPosts) => { cb(null, companyPosts) })
         .catch(err => { console.log(err) })
     }
   },
