@@ -69,10 +69,24 @@ module.exports = {
         .then((usr) => cb(null, usr))
         .catch(e => cb(e, null));
 
+      const addedIndustry = await objection.transaction(User, async(User) => {
+        const user2 = await User
+          .query()
+          .findById(id);
+
+          if (!user2) {
+            console.log('no user');
+          } else {
+            return user2
+              .$relatedQuery('industry')
+              .insert(industries[0]);
+          }
+      });
       /* insert into location/user table, each location, each id */
       industries.map((indId) => {
-
-      })
+        user.$relatedQuery('industry')
+        .insert(indId);
+      });
     }
   },
 
