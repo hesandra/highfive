@@ -110,11 +110,23 @@ module.exports = {
         };
         res.send(payload)
       });
+    },
+    getJobPosts: (req, res, next) => {
+      const { id } = req.params; 
+      
+      models.companies.getJobPosts(id, (err, companyPosts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          companyPosts
+        };
+        res.send(payload)
+      });
     }
   },
 
   jobposts: {
-    get: (req, res, next) => {
+    getAll: (req, res, next) => {
       models.jobposts.get((err, jobposts) => {
         const payload = {
           success: err ? false : true,
@@ -125,6 +137,30 @@ module.exports = {
       });
     },
     getById: (req, res, next) => {
+      const { id } = req.params;
+
+      models.jobposts.getById(id, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
+    createOne: (req, res, next) => {
+      const { id } = req.params;
+
+      models.jobposts.getById(id, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
+    getPostQuestions: (req, res, next) => {
       const { id } = req.params;
 
       models.jobposts.getById(id, (err, jobposts) => {

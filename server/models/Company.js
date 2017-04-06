@@ -27,7 +27,7 @@ class Company extends Model {
 
   static get relationMappings() {
     return {
-      jobpost: {
+      jobposts: {
         relation: Model.HasManyRelation,
         modelClass: `${__dirname}/Jobpost`,
         join: {

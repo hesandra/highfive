@@ -32,14 +32,6 @@ class Jobpost extends Model {
           to: 'company.id'
         }
       },
-      // rel2: {
-      //   relation: Model.HasManyRelation,
-      //   modelClass: Submission,
-      //   join: {
-      //     from: 'jobpost.id',
-      //     to: 'submission.jobpost_id'
-      //   }
-      // },
       question: {
         relation: Model.HasManyRelation,
         modelClass: `${__dirname}/Question`,
