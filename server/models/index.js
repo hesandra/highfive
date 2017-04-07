@@ -179,8 +179,6 @@ module.exports = {
         .catch(err => { console.log(err) })
     },
     updateCompany: (body, cb) => {
-      console.log("body", body);
-
       Company
         .query()
         .update(body)
@@ -193,13 +191,6 @@ module.exports = {
         .query()
         .deleteById(id)
         .then((deleted) => { cb(null, deleted) })
-        .catch(err => { console.log(err) })
-    },
-    createJobPost: (cb) => {
-      Jobpost
-        .query()
-        .insertAndFetch()
-        .then((post) => { cb(null, post) })
         .catch(err => { console.log(err) })
     }
   },
@@ -218,6 +209,13 @@ module.exports = {
         .then((jobposts) => { cb(null, jobposts) })
         .catch( err => { console.log(err) })
     },
+    createOne: () => {
+      Jobpost
+        .query()
+        .where('company_id', cid)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
+    },
     getAllCompanyJobs: (companyId, cb) => {
       Jobpost
         .query()
@@ -226,84 +224,26 @@ module.exports = {
         .catch( err => { console.log(err) })
     },
     getCompanyJobsById: () => {
-
-    },
-    createOne: () => {
-
+      Jobpost
+        .query()
+        .where('company_id', cid)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
     }
   },
+
   questions: { 
-    get: (cb) => {
-      Question
-        .query()
-        .then((questions) => { cb(null, questions) })
-        .catch(err => { console.log(err) })
-    }
- },
-  // videos: {
-  //   get: (cb) => {
-  //     Jobpost
-  //       .query()
-  //       .then((jobposts) => { cb(null, jobposts) })
-  //       .catch( err => { console.log(err) })
-  //   },
-  //   getById: (id, cb) => {
-  //     Jobpost
-  //       .query()
-  //       .where('id', id)
-  //       .then((jobposts) => { cb(null, jobposts) })
-  //       .catch( err => { console.log(err) })
-  //   },
-  //   post: (cb) => {
-  //     Jobpost
-  //       .query()
-  //       .insertAndFetch(req.body)
-  //       .then((jobpost) => { cb(null, jobpost) })
-  //       .catch(err => { console.log(err) })
-  //   },
-  //   updateById: (cb) => {
-  //     Jobpost
-  //       .query()
-  //       .updateAndFetch(req.body)
-  //       .then((jobpost) => { cb(null, jobpost) })
-  //       .catch(err => { console.log(err) })
-  //   },
-  //   deleteById: () => {
+    // get: (cb) => {
+    //   Question
+    //     .query()
+    //     .then((questions) => { cb(null, questions) })
+    //     .catch(err => { console.log(err) })
+    // }
+  },
 
-  //   }
-  // },
-  // questions: {
-  //   get: (cb) => {
-  //     Jobpost
-  //       .query()
-  //       .then((jobposts) => { cb(null, jobposts) })
-  //       .catch( err => { console.log(err) })
-  //   },
-  //   getById: (id, cb) => {
-  //     Jobpost
-  //       .query()
-  //       .where('id', id)
-  //       .then((jobposts) => { cb(null, jobposts) })
-  //       .catch( err => { console.log(err) })
-  //   },
-  //   post: (cb) => {
-  //     Jobpost
-  //       .query()
-  //       .insertAndFetch(req.body)
-  //       .then((jobpost) => { cb(null, jobpost) })
-  //       .catch(err => { console.log(err) })
-  //   },
-  //   updateById: (cb) => {
-  //     Jobpost
-  //       .query()
-  //       .updateAndFetch(req.body)
-  //       .then((jobpost) => { cb(null, jobpost) })
-  //       .catch(err => { console.log(err) })
-  //   },
-  //   deleteById: () => {
+  videos: {
 
-  //   }
-  // }
+  }
 
 };
 

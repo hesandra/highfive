@@ -19,20 +19,23 @@ router.put('/api/companies/:id', controller.companies.updateCompany);
 router.delete('/api/companies/:id', controller.companies.deleteCompany);
 
 //jobposts
-// router.post('/api/jobposts/:company_id', controller.jobposts.createOne)
-// router.get('/api/jobposts', controller.jobposts.getAll);
-// router.get('/api/jobposts/:id', controller.jobposts.getById);
-// router.get('/api/jobposts/:company_id', controller.jobposts.getAllCompanyJobs)
-// router.get('/api/jobposts/:post_id/:company_id', controller.jobposts.getCompanyJobById)
+router.get('/api/jobposts', controller.jobposts.getAll);
+router.get('/api/jobposts/:id', controller.jobposts.getById);
+router.post('/api/jobposts/:company_id', controller.jobposts.createOne)
+router.get('/api/jobposts/:company_id', controller.jobposts.getAllCompanyJobs)
+router.get('/api/jobposts/:post_id/:company_id', controller.jobposts.getCompanyPostById)
 
 //questions
-// router.get('/api/questions')
-// router.get('/api/questions', controller.questions.get);
-// router.post('/api/questions')
+
+//eager load all questions belonging to jobpost_id?
+// router.get('/api/questions', controller.questions.getAll);
+// router.get('/api/questions/:job_id', controller.questions.getByJobId);
+// router.post('/api/questions/:job_id', controller.questions.createOne);
 
 //videos
-// router.get('/api/videos')
-// router.post('/api/videos')
+// router.get('/api/videos/', controller.videos.getAll)
+// router.get('/api/videos/:user_id', controller.videos.getUserVideos)
+// router.post('/api/videos/:question_id', controller.videos.createOne)
 
 //locations
 // router.get('/api/locations')
