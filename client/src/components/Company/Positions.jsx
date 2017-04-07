@@ -16,8 +16,6 @@ class Positions extends React.Component {
   // }
 
   render() {
-    console.log(this.props.companyProfile.createButton, '++++++++++++++++++++++++++++++');
-    console.log('companyProfile', this.props.companyProfile)
     return (
       <div>
         <div>

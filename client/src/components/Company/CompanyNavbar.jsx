@@ -8,7 +8,6 @@ import { bindActionCreators } from 'redux';
 import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
 
 const CompanyNavbar = (props) => {
-  console.log('NAVVVVVBARRRRRR', props)
   return (
     <div>
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">

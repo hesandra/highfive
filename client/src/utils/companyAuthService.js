@@ -16,8 +16,8 @@ export default class CompanyAuthService {
       },
       languageDictionary: {
         title: type
-      }
-    })
+       }
+    });
     // binds login functions to keep this context
     this.login = this.login.bind(this);
   }
@@ -31,9 +31,10 @@ export default class CompanyAuthService {
   }
 
   logout() {
-    // Clear user token and profile data from localStorage
+    // Clear company token and profile data from localStorage
     localStorage.removeItem('id_token_company');
     localStorage.removeItem('profile_company');
+    localStorage.removeItem('company_backend_profile');
   }
 
   // ======================================================
@@ -47,7 +48,7 @@ export default class CompanyAuthService {
 
   static loggedIn() {
     // Checks if there is a saved token and it's still valid
-    const token = CompanyAuthService.getToken()
+    const token = CompanyAuthService.getToken();
     return !!token && !CompanyAuthService.isTokenExpired(token);
   }
 
@@ -57,19 +58,22 @@ export default class CompanyAuthService {
     // Triggers profile_updated event to update the UI
   }
 
-  // getProfile(){
-  //   // Retrieves the profile data from localStorage
-  //   const profile = localStorage.getItem('profile')
-  //   return profile ? JSON.parse(localStorage.profile) : {}
-  // }
+  static setCompanyBackEndProfile(company) {
+    localStorage.setItem('company_backend_profile', JSON.stringify(company));
+  }
+
+  static getBackEndProfile() {
+    const id = localStorage.getItem('company_backend_profile');
+    return id ? JSON.parse(localStorage.company_backend_profile) : null;
+  }
 
   static setToken(idToken) {
-    // Saves user token to localStorage
+    // Saves company token to localStorage
     localStorage.setItem('id_token_company', idToken);
   }
 
   static getToken() {
-    // Retrieves the user token from localStorage
+    // Retrieves the company token from localStorage
     return localStorage.getItem('id_token_company');
   }
 
@@ -86,7 +90,7 @@ export default class CompanyAuthService {
   }
 
   static isTokenExpired() {
-    const token = CompanyAuthService.getToken()
+    const token = CompanyAuthService.getToken();
     if (!token) return true;
     const date = CompanyAuthService.getTokenExpirationDate(token);
     const offsetSeconds = 0;

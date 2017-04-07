@@ -15,7 +15,7 @@ router.delete('/api/users/:id/industry/:industryId', controller.users.deleteIndu
 //companies
 router.get('/api/companies', controller.companies.getAll);
 router.get('/api/companies/:id', controller.companies.getById);
-router.post('/api/companies', controller.companies.createOne);
+router.post('/api/companies', controller.companies.post);
 router.put('/api/companies/:id', controller.companies.updateCompany);
 router.delete('/api/companies/:id', controller.companies.deleteCompany);
 

@@ -3,7 +3,6 @@ import React from 'react';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
 
 const CompanyDetails = (props) => {
-  console.log('props in CompanyDetails', props);
   return (
     <div>
       <Grid fluid>
