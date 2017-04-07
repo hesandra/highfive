@@ -69,7 +69,7 @@ export function companyLoginError(error) {
 export function companyLogoutSuccess() {
   authService.logout();
   return {
-    type: COMPANY_LOGOUT_SUCCESS
+    type: COMPANY_LOGOUT_SUCCESS,
   };
 }
 function setCompanyBackEndProfile(profile) {
