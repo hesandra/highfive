@@ -9,4 +9,5 @@ export UserProfileContainer from './UserProfileContainer';
 export JobPostsContainer from './JobPostsContainer';
 export JobPostContainer from './JobPostContainer';
 export InterviewContainer from './InterviewContainer';
+export BrowseContainer from './BrowseContainer';
 

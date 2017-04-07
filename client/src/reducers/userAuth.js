@@ -1,4 +1,3 @@
-import { routerReducer as routing } from 'react-router-redux';
 import { userAuth as ActionTypes } from '../actions';
 import userAuthService from '../utils/userAuthService';
 
