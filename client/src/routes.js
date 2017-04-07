@@ -3,7 +3,6 @@ import { Route, IndexRoute } from 'react-router';
 import { default as swal } from 'sweetalert2';
 import { AppContainer, HomeContainer, UserProfileContainer,
 CompanyContainer, JobPostsContainer, JobPostContainer, InterviewContainer, BrowseContainer } from './containers';
-
 import UserAuthService from './utils/userAuthService';
 import CompanyAuthService from './utils/companyAuthService';
 
