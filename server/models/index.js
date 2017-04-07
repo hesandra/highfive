@@ -46,11 +46,16 @@ module.exports = {
         profile_img,
         github_url
       };
-      const userAlreadyExists = await User.query().where(user);
-      console.log(userAlreadyExists);
+      const userAlreadyExists = await User
+        .query()
+        .allowEager('[industry]')
+        .eager('industry')
+        .where(user);
       if (!userAlreadyExists.length) {
         await User
           .query()
+          .allowEager('[industry]')
+          .eager('industry')
           .insertAndFetch(user)
           .then((insertedUser) => { cb(null, insertedUser); })
           .catch(err => console.log(err));
@@ -60,36 +65,109 @@ module.exports = {
       }
     },
     updateById: async ({ location, linkedin_url, id, industries }, cb) => {
-      console.log(industries, 'here inside model');
+      const industriesLength = industries.length;
       /* Patch User (async/await) */
-      const user = await User
+      await User
         .query()
         .patchAndFetchById(id, { location_id: location, linkedin_url })
         .where({ id })
-        .then((usr) => cb(null, usr))
+        .then((updatedUser) => {
+          if (!industriesLength) {
+            cb(null, updatedUser);
+          }
+        })
         .catch(e => cb(e, null));
 
-      const addedIndustry = await objection.transaction(User, async(User) => {
-        const user2 = await User
+      /* Patch User's industrys */
+      await industries.map(async (industryId, index) => {
+        const industry = await Industry
           .query()
-          .findById(id);
+          .findById(industryId);
 
-          if (!user2) {
-            console.log('no user');
-          } else {
-            return user2
-              .$relatedQuery('industry')
-              .insert(industries[0]);
-          }
+        if (!industry) {
+          console.log('no industry under that name');
+          return;
+        }
+        await industry
+          .$relatedQuery('user')
+          .where({ user_id: id })
+          .skipUndefined()
+          .then((relationExists) => {
+            if (relationExists.length) {
+              if (index === industriesLength - 1) {
+            console.log('already exists', relationExists);
+            console.log(index, industriesLength);
+                User
+                  .query()
+                  .findById(id)
+                  .allowEager('[industry]')
+                  .eager('industry')
+                  .skipUndefined()
+                  .then((updatedUser) => {
+                    return cb(null, updatedUser);
+                  });
+              }
+              console.log('industry already saved, skip');
+              if (industriesLength === 1) {
+                User
+                  .query()
+                  .findById(id)
+                  .allowEager('[industry]')
+                  .eager('industry')
+                  .skipUndefined()
+                  .then((updatedUser) => {
+                    return cb(null, updatedUser);
+                  });
+              }
+              return;
+            }
+            industry
+              .$relatedQuery('user')
+              .relate(id)
+              .then(async (usrId) => {
+                await User
+                  .query()
+                  .findById(usrId)
+                  .allowEager('[industry]')
+                  .eager('industry')
+                  .skipUndefined()
+                  .then((updatedUser) => {
+                    if (index === industriesLength - 1) {
+                      console.log('index', index);
+                      cb(null, updatedUser);
+                    }
+                  });
+              });
+          });
       });
-      /* insert into location/user table, each location, each id */
-      industries.map((indId) => {
-        user.$relatedQuery('industry')
-        .insert(indId);
-      });
+    },
+    deleteIndustryById: async ({ id, industryId }, cb) => {
+      await User
+        .query()
+        .where('id', id)
+        .first()
+        .then((user) => {
+          return user
+            .$relatedQuery('industry')
+            .unrelate()
+            .where('id', industryId)
+            .catch(e => cb(e, null));
+        })
+        .then(() => {
+          User
+            .query()
+            .allowEager('[industry]')
+            .eager('industry')
+            .where('id', id)
+            .first()
+            .then((updatedUser) => {
+              cb(null, updatedUser);
+            })
+            .catch(err => cb(err, null));
+        })
+        .catch(e => cb(e, null));
     }
   },
-
   companies: {
     getAll: (cb) => {
       Company

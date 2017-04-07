@@ -32,7 +32,8 @@ module.exports = {
         res.status(201).end(JSON.stringify(payload));
       });
     },
-    updateById: async (req, res, next) => {
+    updateById: (req, res, next) => {
+      console.log('here');
       const { location, linkedin_url, industries } = req.body;
       const { id } = req.params;
       const data = {
@@ -42,12 +43,24 @@ module.exports = {
         linkedin_url
       };
       models.users.updateById(data, (err, user) => {
+        console.log(user, ' this is user');
         const payload = {
           success: err ? false : true,
           user,
           err
         };
-        res.status(201).send(JSON.stringify(user));
+        res.status(201).send(JSON.stringify(payload));
+      });
+    },
+    deleteIndustryById: (req, res, next) => {
+      console.log(req.params);
+      models.users.deleteIndustryById(req.params, (err, user) => {
+        const payload = {
+          success: err ? false : true,
+          user,
+          err
+        };
+        res.status(201).send(JSON.stringify(payload));
       });
     }
   },

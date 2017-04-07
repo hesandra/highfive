@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, Col, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import axios from 'axios';
 import { getLocationId } from '../../utils/Mappings/locationMappings';
-import { getIndustryId } from '../../utils/Mappings/industryMappings';
+import { getIndustryId, industryToIdMappings } from '../../utils/Mappings/industryMappings';
+
 
 import IndustriesMultiSelect from './IndustriesMultiSelect';
 import LocationsMultiSelect from './LocationMultiSelect';
@@ -36,6 +37,7 @@ class EditProfileForm extends Component {
     if (property === 'industriesValue') {
       this.setState((prevState, props) => {
         const industries = data;
+        
         return {
           [property]: industries
         };
@@ -52,14 +54,17 @@ class EditProfileForm extends Component {
     e.preventDefault();
     const { locationValue, industriesValue, linkedInLink } = this.state;
     const industries = industriesValue.map((industry) => {
-      return getIndustryId(industry.label);
+      console.log('here', industry);
+      return industryToIdMappings[industry.label];
     });
     console.log(industries);
+    console.log(this.props.industries, 'to update');
     const data = {
       location: getLocationId(locationValue),
       industries,
       linkedin_url: linkedInLink,
     };
+    console.log('THIS IS DATA', data);
     axios({
       method: 'PUT',
       url: `http://localhost:3000/api/users/${id}`,
@@ -69,12 +74,14 @@ class EditProfileForm extends Component {
       }
     })
     .then((response) => {
-      onUpdateUserProfile(response.data);
+      onUpdateUserProfile(response.data.user);
 
     })
     .catch(err => console.log(err));
   }
   render() {
+    console.log(this.state);
+    const { industries } = this.props;
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
         <FormGroup>
@@ -95,6 +102,7 @@ class EditProfileForm extends Component {
           <Col sm={10}>
             <IndustriesMultiSelect
               onSelectChange={this.handleSelectChange}
+              industries={industries}
             />
           </Col>
         </FormGroup>

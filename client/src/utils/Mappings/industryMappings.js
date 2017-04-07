@@ -1,4 +1,4 @@
-const industryToIdMappings = {
+export const industryToIdMappings = {
   Sports: 1,
   Finance: 2,
   Fashion: 3,

@@ -5,7 +5,7 @@ import SettingsForm from './SettingsForm';
 import EditProfileForm from './EditProfileForm';
 
 const UserProfileNav = (props) => {
-  const { onJobPostsClick, githubLink, id, location, linkedinLink, onUpdateUserProfile } = props;
+  const { onJobPostsClick, githubLink, id, location, linkedinLink, onUpdateUserProfile, industries } = props;
   return (
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
@@ -55,6 +55,7 @@ const UserProfileNav = (props) => {
                   id={id}
                   location={location}
                   linkedinLink={linkedinLink}
+                  industries={industries}
                 />
               </Tab.Pane>
               <Tab.Pane eventKey="5">
