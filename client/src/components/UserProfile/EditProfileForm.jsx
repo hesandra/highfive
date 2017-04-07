@@ -54,11 +54,9 @@ class EditProfileForm extends Component {
     e.preventDefault();
     const { locationValue, industriesValue, linkedInLink } = this.state;
     const industries = industriesValue.map((industry) => {
-      console.log('here', industry);
       return industryToIdMappings[industry.label];
     });
     console.log(industries);
-    console.log(this.props.industries, 'to update');
     const data = {
       location: getLocationId(locationValue),
       industries,
