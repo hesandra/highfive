@@ -29,7 +29,7 @@ module.exports = {
     put: (req, res, next) => {
 
     },
-    post: async (req, res, next) => {
+    post: (req, res, next) => {
       const { name, email, auth0_id, profile_img, github_url } = req.body;
       const user = req.body;
 
