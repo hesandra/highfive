@@ -7,17 +7,6 @@ const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
 
-const formatCompanyBody = (body) => {
-  return {
-    // id: parseInt(body.id),
-    name: body.name,
-    email: body.email,
-    profile_img: body.profile_img,
-    industry_id: parseInt(body.industry_id),
-    location_id: parseInt(body.location_id)
-  }
-}
-
 module.exports = {
   users: {
     get: (cb) => {
@@ -30,7 +19,7 @@ module.exports = {
         .catch(err => { console.log(err) })
     },
     getById: () => {
-      
+
     },
     put: () => {
       // update user here
@@ -93,14 +82,16 @@ module.exports = {
     createOne: (body, cb) => {
       Company
         .query()
-        .insertAndFetch(formatCompanyBody(body))
+        .insertAndFetch(body)
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
     updateCompany: (body, cb) => {
+      console.log("body", body);
+
       Company
         .query()
-        .update(formatCompanyBody(body))
+        .update(body)
         .where('id', body.id)
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
@@ -112,20 +103,17 @@ module.exports = {
         .then((deleted) => { cb(null, deleted) })
         .catch(err => { console.log(err) })
     },
-    getJobPosts: (id, cb) => {
-      Company
+    createJobPost: (cb) => {
+      Jobpost
         .query()
-        .allowEager('[jobposts]')
-        .eager('jobposts')
-        .where('id', id)
-        .skipUndefined()
-        .then((companyPosts) => { cb(null, companyPosts) })
+        .insertAndFetch()
+        .then((post) => { cb(null, post) })
         .catch(err => { console.log(err) })
     }
   },
 
   jobposts: {
-    get: (cb) => {
+    getAll: (cb) => {
       Jobpost
         .query()
         .then((jobposts) => { cb(null, jobposts) })
@@ -138,23 +126,19 @@ module.exports = {
         .then((jobposts) => { cb(null, jobposts) })
         .catch( err => { console.log(err) })
     },
-    // post: (cb) => {
-    //   Jobpost
-    //     .query()
-    //     .insertAndFetch(req.body)
-    //     .then((jobpost) => { cb(null, jobpost) })
-    //     .catch(err => { console.log(err) })
-    // },
-    // updateById: (cb) => {
-    //   Jobpost
-    //     .query()
-    //     .updateAndFetch(req.body)
-    //     .then((jobpost) => { cb(null, jobpost) })
-    //     .catch(err => { console.log(err) })
-    // },
-    // deleteById: () => {
+    getAllCompanyJobs: (companyId, cb) => {
+      Jobpost
+        .query()
+        .where('company_id', cid)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
+    },
+    getCompanyJobsById: () => {
 
-    // }
+    },
+    createOne: () => {
+
+    }
   },
   questions: { 
     get: (cb) => {
