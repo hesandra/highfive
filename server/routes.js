@@ -17,22 +17,22 @@ router.get('/api/companies/:id', controller.companies.getById);
 router.post('/api/companies', controller.companies.createOne);
 router.put('/api/companies/:id', controller.companies.updateCompany);
 router.delete('/api/companies/:id', controller.companies.deleteCompany);
-router.get('/api/companies/:id/jobposts', controller.companies.getJobPosts)
 
 //jobposts
-router.get('/api/jobposts', controller.jobposts.getAll);
-router.get('/api/jobposts/:id', controller.jobposts.getById);
-router.post('/api/jobpost', controller.jobposts.createOne);
-router.get('/api/jobposts/:id/questions', controller.jobposts.getPostQuestions);
+// router.post('/api/jobposts/:company_id', controller.jobposts.createOne)
+// router.get('/api/jobposts', controller.jobposts.getAll);
+// router.get('/api/jobposts/:id', controller.jobposts.getById);
+// router.get('/api/jobposts/:company_id', controller.jobposts.getAllCompanyJobs)
+// router.get('/api/jobposts/:post_id/:company_id', controller.jobposts.getCompanyJobById)
 
 //questions
-router.get('/api/questions')
-router.get('/api/questions', controller.questions.get);
-router.post('/api/questions')
+// router.get('/api/questions')
+// router.get('/api/questions', controller.questions.get);
+// router.post('/api/questions')
 
 //videos
-router.get('/api/videos')
-router.post('/api/videos')
+// router.get('/api/videos')
+// router.post('/api/videos')
 
 //locations
 // router.get('/api/locations')

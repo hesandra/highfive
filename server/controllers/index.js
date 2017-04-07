@@ -1,5 +1,16 @@
 const models = require('../models');
 
+const formatCompanyBody = (body) => {
+  return {
+    id: parseInt(body.id),
+    name: body.name,
+    email: body.email,
+    profile_img: body.profile_img,
+    industry_id: parseInt(body.industry_id),
+    location_id: parseInt(body.location_id)
+  }
+}
+
 module.exports = {
   users: {
     get: (req, res, next) => {
@@ -101,7 +112,7 @@ module.exports = {
       });
     },
     updateCompany: (req, res, next) => {
-      const body = req.body;
+      const body = formatCompanyBody(req.body);
 
       models.companies.updateCompany(body, (err, company) => {
         const payload = {
@@ -124,14 +135,38 @@ module.exports = {
         res.send(payload)
       });
     },
-    getJobPosts: (req, res, next) => {
+    getAllJobPosts: (req, res, next) => {
       const { id } = req.params; 
       
-      models.companies.getJobPosts(id, (err, companyPosts) => {
+      models.companies.getAllJobPosts(id, (err, companyPosts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
           companyPosts
+        };
+        res.send(payload)
+      });
+    },
+    getJobPostById: (req, res, next) => {
+      const { id, pid } = req.params;
+
+      models.companies.getJobPostById(id, pid, (err, jobPost) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobPost
+        };
+        res.send(payload)
+      });
+    },
+    createJobPost: (req, res, next) => {
+      const { id } = req.params;
+
+      models.companies.getJobPostById(id, (err, jobPost) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobPost
         };
         res.send(payload)
       });
@@ -140,7 +175,7 @@ module.exports = {
 
   jobposts: {
     getAll: (req, res, next) => {
-      models.jobposts.get((err, jobposts) => {
+      models.jobposts.getAll((err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -161,10 +196,34 @@ module.exports = {
         res.send(payload)
       });
     },
+    getAllCompanyJobs: (req, res, next) => {
+      const { company_id } = req.params;
+
+      models.jobposts.getAllCompanyJobs(id, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
+    getCompanyJobsById: (req, res, next) => {
+      const { post_id, company_id } = req.params;
+
+      models.jobposts.getCompanyJobsById(post_id, company_id, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
     createOne: (req, res, next) => {
-      const { id } = req.params;
+      const body = req.body;
 
-      models.jobposts.getById(id, (err, jobposts) => {
+      models.jobposts.createOne(body, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -172,19 +231,31 @@ module.exports = {
         };
         res.send(payload)
       });
-    },
-    getPostQuestions: (req, res, next) => {
-      const { id } = req.params;
+    }
+    // createOne: (req, res, next) => {
+    //   const { id } = req.params;
 
-      models.jobposts.getById(id, (err, jobposts) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobposts
-        };
-        res.send(payload)
-      });
-    },
+    //   models.jobposts.getById(id, (err, jobposts) => {
+    //     const payload = {
+    //       success: err ? false : true,
+    //       err: JSON.stringify(err),
+    //       jobposts
+    //     };
+    //     res.send(payload)
+    //   });
+    // },
+    // getPostQuestions: (req, res, next) => {
+    //   const { id } = req.params;
+
+    //   models.jobposts.getById(id, (err, jobposts) => {
+    //     const payload = {
+    //       success: err ? false : true,
+    //       err: JSON.stringify(err),
+    //       jobposts
+    //     };
+    //     res.send(payload)
+    //   });
+    // },
   },
 
   //questions
