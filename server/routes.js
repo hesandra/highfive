@@ -6,9 +6,10 @@ const path = require('path');
 router.options('*', cors());
 // users
 router.get('/api/users', controller.users.get);
+router.post('/api/users', controller.users.post);
 router.get('/api/users/:id', controller.users.getById);
 router.put('/api/users/:id', controller.users.updateById);
-router.post('/api/users', controller.users.post);
+router.delete('/api/users/:id/industry/:industryId', controller.users.deleteIndustryById);
 
 //companies
 router.get('/api/companies', controller.companies.getAll);

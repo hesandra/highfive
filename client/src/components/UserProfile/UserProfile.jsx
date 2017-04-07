@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
 import { Icon, Label } from 'semantic-ui-react';
 import UserProfileNav from './UserProfileNav';
+import IndustryList from './IndustryList';
 import { getLocationName } from '../../utils/Mappings/locationMappings';
 
 class UserProfile extends Component {
@@ -10,6 +12,19 @@ class UserProfile extends Component {
     this.state = {
 
     };
+    this.deleteUserIndustry = this.deleteUserIndustry.bind(this);
+  }
+  deleteUserIndustry(industryId) {
+    const { onUpdateUserProfile } = this.props;
+    const userId= this.id;
+    axios.delete(`http://localhost:3000/api/users/${userId}/industry/${industryId}`)
+      .then((response) => {
+        if (response.status === 201) {
+          console.log(response);
+          onUpdateUserProfile(response.data.user);
+        }
+      })
+      .catch(e => console.log(e));
   }
   render() {
     const { profile, onJobPostsClick, backend_profile, onUpdateUserProfile } = this.props;
@@ -19,10 +34,13 @@ class UserProfile extends Component {
     let id;
     let githubLink;
     let linkedinLink;
+    let industries;
 
     if (backend_profile) {
       location = getLocationName(backend_profile.location_id);
       id = backend_profile.id;
+      this.id = id;
+      industries = backend_profile.industry;
       if (backend_profile.linkedin_url) {
         linkedinLink = backend_profile.linkedin_url;
       }
@@ -77,9 +95,11 @@ class UserProfile extends Component {
               <br />
               <small className="text-center"> looking for work in</small>
               <br />
-              <Label color="blue" size="small">Finance<Icon name='delete' /></Label>
-              <Label color="blue" size="small">Education<Icon name='delete' /></Label>
-              <Label color="blue" size="small">Ad-Tech<Icon name='delete' /></Label>
+              { industries ?
+                <IndustryList
+                  industries={industries}
+                  onUserDeleteIndustry={this.deleteUserIndustry}
+                /> : '' }
               <hr className="hideline" />
               <a href={githubLink} className="social-links" rel="noopener noreferrer" target="_blank">
                 <i className="fa fa-github" aria-hidden="true" />
@@ -98,6 +118,7 @@ class UserProfile extends Component {
               onUpdateUserProfile={onUpdateUserProfile}
               githubLink={profile.html_url}
               linkedinLink={linkedinLink}
+              industries={industries}
               id={id}
               location={location}
             />

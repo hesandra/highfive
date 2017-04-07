@@ -2,10 +2,21 @@ import React from 'react';
 import ReactSelectize from 'react-selectize';
 
 const MultiSelect = ReactSelectize.MultiSelect;
-const IndustriesMultiSelect = ({ onSelectChange }) => {
+const IndustriesMultiSelect = ({ onSelectChange, industries }) => {
+  let defaultIndustries = industries;
+  if (industries) {
+    defaultIndustries = industries.map((ind) => {
+      return {
+        label: ind.name,
+        value: ind.name
+      };
+    });
+  }
+  console.log(defaultIndustries, industries);
   return (
     <div>
       <MultiSelect
+        defaultValues={defaultIndustries}
         theme="bootstrap"
         placeholder="Select industries"
         onValuesChange={(value) => {
