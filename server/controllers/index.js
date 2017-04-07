@@ -145,9 +145,15 @@ module.exports = {
       });
     },
     createOne: (req, res, next) => {
-      const body = req.body;
 
-      models.jobposts.createOne(body, (err, jobposts) => {
+      var formatted = {
+        title: req.body.title,
+        level: req.body.level,
+        description: req.body.description,
+        company_id: parseInt(req.body.company_id)
+      }
+
+      models.jobposts.createOne(formatted, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -156,10 +162,10 @@ module.exports = {
         res.send(payload)
       });
     },
-    getAllCompanyJobs: (req, res, next) => {
+    getAllCompanyPosts: (req, res, next) => {
       const { company_id } = req.params;
 
-      models.jobposts.getAllCompanyJobs(id, (err, jobposts) => {
+      models.jobposts.getAllCompanyPosts(company_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -179,10 +185,40 @@ module.exports = {
         };
         res.send(payload)
       });
+    },
+    deleteCompanyPost: (req, res, next) => {
+      const { post_id, company_id } = req.params;
+
+      models.jobposts.deleteCompanyPost(post_id, company_id, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
+    updateCompanyPost: (req, res, next) => {
+
+      var formatted = {
+        id: parseInt(req.body.id),
+        title: req.body.title,
+        level: req.body.level,
+        description: req.body.description,
+        company_id: parseInt(req.body.company_id)
+      }
+
+      models.jobposts.updateCompanyPost(formatted, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
     }
   },
 
-  //questions
   questions: {
     // get: (req, res, next) => {
     //   models.questions.get((err, questions) => {
@@ -196,17 +232,14 @@ module.exports = {
     // }, 
   },
   
-  //videos
   videos: {
 
   },
 
-  //locations
   locations: {
 
   },
 
-  //industries
   industries: {
 
   }

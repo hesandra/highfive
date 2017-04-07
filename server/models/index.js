@@ -117,24 +117,41 @@ module.exports = {
         .then((jobposts) => { cb(null, jobposts) })
         .catch( err => { console.log(err) })
     },
-    createOne: () => {
+    createOne: (body, cb) => {
       Jobpost
         .query()
-        .where('company_id', cid)
+        .insertAndFetch(body)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     },
-    getAllCompanyJobs: (companyId, cb) => {
+    getAllCompanyPosts: (companyId, cb) => {
       Jobpost
         .query()
-        .where('company_id', cid)
+        .where('company_id', companyId)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     },
-    getCompanyJobsById: () => {
+    getCompanyPostById: (postId, companyId, cb) => {
       Jobpost
         .query()
-        .where('company_id', cid)
+        .where('id', postId)
+        .where('company_id', companyId)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
+    },
+    deleteCompanyPost: (postId, companyId, cb) => {
+      Jobpost
+        .query()
+        .deleteById(postId)
+        .where('company_id', companyId)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
+    },
+    updateCompanyPost: (body, cb) => {
+      Jobpost
+        .query()
+        .update(body)
+        .where('id', body.id)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     }
