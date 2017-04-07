@@ -95,105 +95,105 @@ exports.seed = function (knex, Promise) {
           type: 'data structure',
           level: 1,
           question: 'What is the reverse of 532+2?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 14,
           type: 'algorithm',
           level: 1,
           question: 'What is the reverse of 2+4322?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 15,
           type: 'behavioral',
           level: 1,
           question: 'What is the reverse of 4322+2?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 16,
           type: 'data structure',
           level: 2,
           question: 'What is the reverse of 2+2432?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 17,
           type: 'algorithm',
           level: 2,
           question: 'What is the reverse of 2+55552?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 18,
           type: 'behavioral',
           level: 2,
           question: 'What is the reverse of 23434+2?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 19,
           type: 'data structure',
           level: 0,
           question: 'What is a data structure * 10?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 20,
           type: 'algorithm',
           level: 0,
           question: 'What is the reverse of 2rewqrq+2?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 21,
           type: 'behavioral',
           level: 0,
           question: 'What is the reverse of 2zzzzz+2?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 22,
           type: 'data structure',
           level: 1,
           question: 'What is the reverse of 2+rrrr2?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 23,
           type: 'algorithm',
           level: 1,
           question: 'What is the reverse of wwww2+2?',
-          jobpost_id: 1
+          jobpost_id: 2
         },
         {
           id: 24,
           type: 'behavioral',
           level: 1,
           question: 'What is the reverse of 2twew+2?',
-          jobpost_id: 1
+          jobpost_id: 3
         },
         {
           id: 25,
           type: 'data structure',
           level: 2,
           question: 'What is the reverse of 2rewew+2?',
-          jobpost_id: 1
+          jobpost_id: 3
         },
         {
           id: 26,
           type: 'algorithm',
           level: 2,
           question: 'What is the reverse of 2rewrew+2?',
-          jobpost_id: 1
+          jobpost_id: 3
         },
         {
           id: 27,
           type: 'behavioral',
           level: 2,
           question: 'What is the reverse of 2reww+2?',
-          jobpost_id: 1
+          jobpost_id: 3
         }
         ]);
       })

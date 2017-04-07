@@ -16,7 +16,7 @@ class Question extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['id', 'type', 'question'],
+      required: ['type', 'question'],
       properties: {
         id:               { type: 'integer' },
         level:            { type: 'integer' },

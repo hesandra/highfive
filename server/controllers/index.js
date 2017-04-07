@@ -220,16 +220,77 @@ module.exports = {
   },
 
   questions: {
-    // get: (req, res, next) => {
-    //   models.questions.get((err, questions) => {
-    //     const payload = {
-    //       success: err ? false : true,
-    //       err: JSON.stringify(err),
-    //       questions
-    //     }
-    //     res.send(payload)
-    //   });
-    // }, 
+    getAll: (req, res, next) => {
+      models.questions.getAll((err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    }, 
+    getByPostId: (req, res, next) => {
+      const { post_id } = req.params;
+
+      models.questions.getByPostId(post_id, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    }, 
+    createOne: (req, res, next) => {
+      
+      const formatted = {
+        type: req.body.type,
+        level: parseInt(req.body.level),
+        question: req.body.question,
+        jobpost_id: parseInt(req.body.post_id)
+      }
+
+      models.questions.createOne(formatted, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    },
+    updateQuestion: (req, res, next) => {
+
+      const formatted = {
+        id: parseInt(req.body.q_id),
+        type: req.body.type,
+        level: parseInt(req.body.level),
+        question: req.body.question,
+        jobpost_id: parseInt(req.body.post_id)
+      }
+
+      models.questions.updateQuestion(formatted, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    },
+    deleteQuestion: (req, res, next) => {
+      const { q_id } = req.params;
+
+      models.questions.deleteQuestion(q_id, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    }
   },
   
   videos: {

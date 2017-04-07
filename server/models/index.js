@@ -158,12 +158,41 @@ module.exports = {
   },
 
   questions: { 
-    // get: (cb) => {
-    //   Question
-    //     .query()
-    //     .then((questions) => { cb(null, questions) })
-    //     .catch(err => { console.log(err) })
-    // }
+    getAll: (cb) => {
+      Question
+        .query()
+        .then((questions) => { cb(null, questions) })
+        .catch(err => { console.log(err) })
+    },
+    getByPostId: (id, cb) => {
+      Question
+        .query()
+        .where('jobpost_id', id)
+        .then((questions) => { cb(null, questions) })
+        .catch(err => { console.log(err) })
+    },
+    createOne: (body, cb) => {
+      Question
+        .query()
+        .insertAndFetch(body)
+        .then((question) => { cb(null, question) })
+        .catch( err => { console.log(err) })
+    },
+    updateQuestion: (body, cb) => {
+      Question
+        .query()
+        .update(body)
+        .where('id', body.id)
+        .then((question) => { cb(null, question) })
+        .catch( err => { console.log(err) })
+    },
+    deleteQuestion: (q_id, cb) => {
+      Question
+        .query()
+        .deleteById(q_id)
+        .then((question) => { cb(null, question) })
+        .catch( err => { console.log(err) })
+    }
   },
 
   videos: {
