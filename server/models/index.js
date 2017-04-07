@@ -158,6 +158,36 @@ module.exports = {
     }
   },
   companies: {
+    post: async ({ name, email, auth0_id, profile_img }, cb) => {
+      const company = {
+        name,
+        email,
+        auth0_id,
+        profile_img
+       };
+       console.log('company in compaines post', company);
+      const companyAlreadyExists = await Company.query().where(company);
+      console.log(companyAlreadyExists);
+      if (!companyAlreadyExists.length) {
+        await Company
+          .query()
+          .insertAndFetch(company)
+          .then((insertedCompany) => { cb(null, insertedCompany); })
+          .catch(err => console.log(err));
+      } else {
+        console.log('here yo');
+        cb(null, companyAlreadyExists[0]);
+      }
+    },
+/*    updateById: async ({ name, location, industry, profile_img }, cb) => {
+      const company = await Company
+        .query()
+        .patchAndFetchById(id, { location, industry, profile_img })
+        .where({ id })
+        .then((company) => cb(null, usr))
+        .catch(e => cb(e, null));
+    }
+  },*/
     getAll: (cb) => {
       Company
         .query()

@@ -9,7 +9,6 @@ const behavioral = [];
 
 class InterviewForm extends React.Component {
   renderAll() {
-    console.log(algorithm, 'ARRRAAAAAAYYYYYYYYYY')
     return this.props.companyProfile.selectedQuestion.map((item) => {
       //console.log('in render all map', algorithm, 'selected questions', this.props.companyProfile.selectedQuestion, 'item', item)
       if (item.type === 'algorithm' && (algorithm.findIndex((el)=>el.id===item.id)) === -1) {
@@ -33,27 +32,31 @@ class InterviewForm extends React.Component {
     return false;
   }*/
   render() {
+    console.log('this.props.companyProfile in Interview Form', this.props.companyProfile);
     if (this.props.companyProfile.selectedQuestion) {
       this.renderAll()
       return (
         <div>
-        <div><h2>selected algorithm questions</h2>
+        <div><h3 className="selectedQ">Selected algorithm questions</h3>
         <div>{algorithm.map((item) => {
           return(
           <div>{item.question}</div>)
         })}
         </div>
-        <h2>selected system design questions</h2>
+        <h3 className="selectedQ">Selected system design questions</h3>
         <div>{system.map((item) => {
           return (
           <div>{item.question}</div>)
         })}
         </div>
-        <h2>selected behavioral questions</h2>
+        <h3 className="selectedQ">Selected behavioral questions</h3>
        <div>{behavioral.map((item) => {
          return(
           <div>{item.question}</div>)
         })}
+        <div className="space"></div>
+        <Button>Save</Button>
+        <div className="space"></div>
         </div>
         </div>
         </div>

@@ -16,7 +16,7 @@ class App extends Component {
     // check login status here
     this.requestUserMedia = this.requestUserMedia.bind(this);
     this.props.checkUserLogin();
-    // this.props.checkCompanyLogin();
+    this.props.checkCompanyLogin();
     this.handleDismiss = this.handleDismiss.bind(this);
   }
   componentDidMount() {

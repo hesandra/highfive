@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 import { NavigationBar } from '../components';
 import { userLoginRequest, userLogoutSuccess } from '../actions/userAuth';
+import { companyLoginRequest, companyLogoutSuccess } from '../actions/userAuth';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, error, isFetching } = state.userAuth;
@@ -25,6 +26,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     onUserLogoutClick: () => {
       dispatch(userLogoutSuccess());
+      hashHistory.push('/');
+    },
+    onCompanyLoginClick: () => {
+      dispatch(companyLoginRequest());
+    },
+    onCompanyLogoutClick: () => {
+      dispatch(companyLogoutSuccess());
       hashHistory.push('/');
     }
   };

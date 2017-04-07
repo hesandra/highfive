@@ -91,6 +91,7 @@ a {
   border: 2px;
   border-color: cornflowerblue;
   margin: 30px;
+  padding-bottom: 30px;
 }
 
 .spaceQ {
@@ -104,4 +105,12 @@ a {
 
 .react-selectize.root-node {
   width: 100%
+}
+
+.selectedQ {
+  color: cornflowerblue
+}
+
+.space {
+  height: 50px
 }

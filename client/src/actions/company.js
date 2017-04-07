@@ -60,7 +60,6 @@ export function getQuestions(){
     console.log('below dispatch')
     axios.get('http://localhost:3000/api/questions')
       .then((result) => {
-        console.log(result.data.questions, 'QUESSSSSSSTIONSSSSSSSSSSSSSSSSSSSS');
         dispatch(getAll(result.data.questions));
       })
       .catch((err) => {

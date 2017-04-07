@@ -66,6 +66,20 @@ module.exports = {
   },
 
   companies: {
+    post: async (req, res, next) => {
+      // creates a company
+      const { name, email, auth0_id, profile_img } = req.body;
+      const company = req.body;
+      models.companies.post(company, (err, fetchedCompany) => {
+        console.log('id should be here', fetchedCompany);
+        const payload = {
+          success: err ? true : false,
+          fetchedCompany,
+          err
+        };
+        res.status(201).end(JSON.stringify(payload));
+      });
+    },
     getAll: (req, res, next) => {
       models.companies.getAll((err, company) => {
         const payload = {

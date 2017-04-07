@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
   return {
     isAuthenticated
   };
-}
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),

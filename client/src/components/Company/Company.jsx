@@ -4,7 +4,6 @@ import CompanyNavbar from './CompanyNavbar';
 import CompanyDetails from './CompanyDetails';
 
 const Company = (props) => {
-  console.log('props.state.COMPANY', props.state.companyProfile);
   return (
     <Grid fluid>
       <Row>

@@ -30,7 +30,6 @@ class CompanyProfile extends React.Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-
     this.setState({
       [name]: value,
       //industry: value,
@@ -39,13 +38,6 @@ class CompanyProfile extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('name', this.state.name);
-    console.log('industry', this.state.industry);
-    console.log('email', this.state.email);
-    console.log('profileVideo', this.state.profileVideo);
-    console.log('address', this.state.address);
-    console.log('location', this.state.location);
-    console.log('this.state', this.state);
     this.props.submitProfile(this.state);
     event.preventDefault();
   }
@@ -80,6 +72,7 @@ class CompanyProfile extends React.Component {
             <FormGroup controlId="formControlsSelect">
               <FormControl componentClass="select" placeholder="select" name="industry" value={this.state.industry} onChange={this.handleChange}>
                 <option value="select">select</option>
+                <option >Social Media</option>
                 <option >Finance</option>
                 <option >Fashion</option>
                 <option >Food</option>
@@ -98,6 +91,7 @@ class CompanyProfile extends React.Component {
                 <option value="select">select</option>
                 <option >San Francisco</option>
                 <option >Los Angeles</option>
+                <option >New York</option>
                 <option >Seattle</option>
               </FormControl>
             </FormGroup>

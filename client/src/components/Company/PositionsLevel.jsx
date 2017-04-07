@@ -6,12 +6,9 @@ import { createInterview, getQuestions } from '../../actions/company';
 
 class PositionsLevel extends React.Component {
   componentDidMount(){
-    console.log('-------------------------')
-    console.log('*******************************', this.props)
     this.props.getQuestions()
 }
    render() {
-     console.log('this.props.companyprofile', this.props.companyProfile)
     return (
       <div>
         <div>Here are the job posts</div>
