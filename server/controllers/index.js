@@ -158,9 +158,15 @@ module.exports = {
       });
     },
     createOne: (req, res, next) => {
-      const body = req.body;
 
-      models.jobposts.createOne(body, (err, jobposts) => {
+      var formatted = {
+        title: req.body.title,
+        level: req.body.level,
+        description: req.body.description,
+        company_id: parseInt(req.body.company_id)
+      }
+
+      models.jobposts.createOne(formatted, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -169,10 +175,10 @@ module.exports = {
         res.send(payload)
       });
     },
-    getAllCompanyJobs: (req, res, next) => {
+    getAllCompanyPosts: (req, res, next) => {
       const { company_id } = req.params;
 
-      models.jobposts.getAllCompanyJobs(id, (err, jobposts) => {
+      models.jobposts.getAllCompanyPosts(company_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -192,34 +198,122 @@ module.exports = {
         };
         res.send(payload)
       });
+    },
+    deleteCompanyPost: (req, res, next) => {
+      const { post_id, company_id } = req.params;
+
+      models.jobposts.deleteCompanyPost(post_id, company_id, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
+    updateCompanyPost: (req, res, next) => {
+
+      var formatted = {
+        id: parseInt(req.body.id),
+        title: req.body.title,
+        level: req.body.level,
+        description: req.body.description,
+        company_id: parseInt(req.body.company_id)
+      }
+
+      models.jobposts.updateCompanyPost(formatted, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
     }
   },
 
-  //questions
   questions: {
-    // get: (req, res, next) => {
-    //   models.questions.get((err, questions) => {
-    //     const payload = {
-    //       success: err ? false : true,
-    //       err: JSON.stringify(err),
-    //       questions
-    //     }
-    //     res.send(payload)
-    //   });
-    // }, 
+    getAll: (req, res, next) => {
+      models.questions.getAll((err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    }, 
+    getByPostId: (req, res, next) => {
+      const { post_id } = req.params;
+
+      models.questions.getByPostId(post_id, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    }, 
+    createOne: (req, res, next) => {
+      
+      const formatted = {
+        type: req.body.type,
+        level: parseInt(req.body.level),
+        question: req.body.question,
+        jobpost_id: parseInt(req.body.post_id)
+      }
+
+      models.questions.createOne(formatted, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    },
+    updateQuestion: (req, res, next) => {
+
+      const formatted = {
+        id: parseInt(req.body.q_id),
+        type: req.body.type,
+        level: parseInt(req.body.level),
+        question: req.body.question,
+        jobpost_id: parseInt(req.body.post_id)
+      }
+
+      models.questions.updateQuestion(formatted, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    },
+    deleteQuestion: (req, res, next) => {
+      const { q_id } = req.params;
+
+      models.questions.deleteQuestion(q_id, (err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload)
+      });
+    }
   },
   
-  //videos
   videos: {
 
   },
 
-  //locations
   locations: {
 
   },
 
-  //industries
   industries: {
 
   }

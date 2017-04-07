@@ -209,36 +209,82 @@ module.exports = {
         .then((jobposts) => { cb(null, jobposts) })
         .catch( err => { console.log(err) })
     },
-    createOne: () => {
+    createOne: (body, cb) => {
       Jobpost
         .query()
-        .where('company_id', cid)
+        .insertAndFetch(body)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     },
-    getAllCompanyJobs: (companyId, cb) => {
+    getAllCompanyPosts: (companyId, cb) => {
       Jobpost
         .query()
-        .where('company_id', cid)
+        .where('company_id', companyId)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     },
-    getCompanyJobsById: () => {
+    getCompanyPostById: (postId, companyId, cb) => {
       Jobpost
         .query()
-        .where('company_id', cid)
+        .where('id', postId)
+        .where('company_id', companyId)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
+    },
+    deleteCompanyPost: (postId, companyId, cb) => {
+      Jobpost
+        .query()
+        .deleteById(postId)
+        .where('company_id', companyId)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
+    },
+    updateCompanyPost: (body, cb) => {
+      Jobpost
+        .query()
+        .update(body)
+        .where('id', body.id)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     }
   },
 
   questions: { 
-    // get: (cb) => {
-    //   Question
-    //     .query()
-    //     .then((questions) => { cb(null, questions) })
-    //     .catch(err => { console.log(err) })
-    // }
+    getAll: (cb) => {
+      Question
+        .query()
+        .then((questions) => { cb(null, questions) })
+        .catch(err => { console.log(err) })
+    },
+    getByPostId: (id, cb) => {
+      Question
+        .query()
+        .where('jobpost_id', id)
+        .then((questions) => { cb(null, questions) })
+        .catch(err => { console.log(err) })
+    },
+    createOne: (body, cb) => {
+      Question
+        .query()
+        .insertAndFetch(body)
+        .then((question) => { cb(null, question) })
+        .catch( err => { console.log(err) })
+    },
+    updateQuestion: (body, cb) => {
+      Question
+        .query()
+        .update(body)
+        .where('id', body.id)
+        .then((question) => { cb(null, question) })
+        .catch( err => { console.log(err) })
+    },
+    deleteQuestion: (q_id, cb) => {
+      Question
+        .query()
+        .deleteById(q_id)
+        .then((question) => { cb(null, question) })
+        .catch( err => { console.log(err) })
+    }
   },
 
   videos: {
