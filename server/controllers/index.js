@@ -1,16 +1,5 @@
 const models = require('../models');
 
-const formatCompanyBody = (body) => {
-  return {
-    id: parseInt(body.id),
-    name: body.name,
-    email: body.email,
-    profile_img: body.profile_img,
-    industry_id: parseInt(body.industry_id),
-    location_id: parseInt(body.location_id)
-  }
-}
-
 module.exports = {
   users: {
     get: (req, res, next) => {
@@ -99,9 +88,17 @@ module.exports = {
       });
     },
     updateCompany: (req, res, next) => {
-      const body = formatCompanyBody(req.body);
+      
+      const formatted = {
+        id: parseInt(req.body.id),
+        name: req.body.name,
+        email: req.body.email,
+        profile_img: req.body.profile_img,
+        industry_id: parseInt(req.body.industry_id),
+        location_id: parseInt(req.body.location_id)
+      }
 
-      models.companies.updateCompany(body, (err, company) => {
+      models.companies.updateCompany(formatted, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -118,42 +115,6 @@ module.exports = {
           success: err ? false : true,
           err: JSON.stringify(err),
           company
-        };
-        res.send(payload)
-      });
-    },
-    getAllJobPosts: (req, res, next) => {
-      const { id } = req.params; 
-      
-      models.companies.getAllJobPosts(id, (err, companyPosts) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          companyPosts
-        };
-        res.send(payload)
-      });
-    },
-    getJobPostById: (req, res, next) => {
-      const { id, pid } = req.params;
-
-      models.companies.getJobPostById(id, pid, (err, jobPost) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobPost
-        };
-        res.send(payload)
-      });
-    },
-    createJobPost: (req, res, next) => {
-      const { id } = req.params;
-
-      models.companies.getJobPostById(id, (err, jobPost) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobPost
         };
         res.send(payload)
       });
@@ -183,6 +144,18 @@ module.exports = {
         res.send(payload)
       });
     },
+    createOne: (req, res, next) => {
+      const body = req.body;
+
+      models.jobposts.createOne(body, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
     getAllCompanyJobs: (req, res, next) => {
       const { company_id } = req.params;
 
@@ -195,22 +168,10 @@ module.exports = {
         res.send(payload)
       });
     },
-    getCompanyJobsById: (req, res, next) => {
+    getCompanyPostById: (req, res, next) => {
       const { post_id, company_id } = req.params;
 
-      models.jobposts.getCompanyJobsById(post_id, company_id, (err, jobposts) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobposts
-        };
-        res.send(payload)
-      });
-    },
-    createOne: (req, res, next) => {
-      const body = req.body;
-
-      models.jobposts.createOne(body, (err, jobposts) => {
+      models.jobposts.getCompanyPostById(post_id, company_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -219,44 +180,20 @@ module.exports = {
         res.send(payload)
       });
     }
-    // createOne: (req, res, next) => {
-    //   const { id } = req.params;
-
-    //   models.jobposts.getById(id, (err, jobposts) => {
-    //     const payload = {
-    //       success: err ? false : true,
-    //       err: JSON.stringify(err),
-    //       jobposts
-    //     };
-    //     res.send(payload)
-    //   });
-    // },
-    // getPostQuestions: (req, res, next) => {
-    //   const { id } = req.params;
-
-    //   models.jobposts.getById(id, (err, jobposts) => {
-    //     const payload = {
-    //       success: err ? false : true,
-    //       err: JSON.stringify(err),
-    //       jobposts
-    //     };
-    //     res.send(payload)
-    //   });
-    // },
   },
 
   //questions
   questions: {
-    get: (req, res, next) => {
-      models.questions.get((err, questions) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          questions
-        }
-        res.send(payload)
-      });
-    }, 
+    // get: (req, res, next) => {
+    //   models.questions.get((err, questions) => {
+    //     const payload = {
+    //       success: err ? false : true,
+    //       err: JSON.stringify(err),
+    //       questions
+    //     }
+    //     res.send(payload)
+    //   });
+    // }, 
   },
   
   //videos
