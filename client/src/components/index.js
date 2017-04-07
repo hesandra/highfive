@@ -16,3 +16,4 @@ export Positions from './Company/Positions';
 export InterviewFormJun from './Company/InterviewCreationJun';
 export InterviewFormMid from './Company/InterviewCreationMid';
 export InterviewFormSen from './Company/InterviewCreationSen';
+export Browse from './Browse/Browse';

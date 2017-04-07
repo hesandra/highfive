@@ -5,6 +5,7 @@ import companyAuth from './companyAuth';
 import companyProfile from './company';
 import jobPosts from './jobPosts';
 import interview from './interview';
+import browse from './browse';
 
 const rootReducer = combineReducers({
   routing,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   companyAuth,
   companyProfile,
   jobPosts,
-  interview
+  interview,
+  browse
 });
 
 export default rootReducer;
