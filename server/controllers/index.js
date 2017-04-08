@@ -65,11 +65,11 @@ module.exports = {
   },
 
   companies: {
-    post: async (req, res, next) => {
+    createOne: async (req, res, next) => {
       // creates a company
       const { name, email, auth0_id, profile_img } = req.body;
       const company = req.body;
-      models.companies.post(company, (err, fetchedCompany) => {
+      models.companies.createOne(company, (err, fetchedCompany) => {
         console.log('id should be here', fetchedCompany);
         const payload = {
           success: err ? true : false,
@@ -93,18 +93,6 @@ module.exports = {
       const { id } = req.params;
 
       models.companies.getById(id, (err, company) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          company
-        }
-        res.send(payload)
-      });
-    },
-    createOne: (req, res, next) => {
-      const body = req.body;
-
-      models.companies.createOne(body, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),

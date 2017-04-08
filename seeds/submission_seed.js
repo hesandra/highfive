@@ -11,6 +11,7 @@ exports.seed = function (knex, Promise) {
           user_id: 1,
           jobpost_id: 1,
           status: null,
+          completed: 0,
           notes: ''
         },
         {
@@ -18,6 +19,7 @@ exports.seed = function (knex, Promise) {
           user_id: 1,
           jobpost_id: 1,
           status: 'passed',
+          completed: 1,
           notes: ''
         },
         {
@@ -25,6 +27,7 @@ exports.seed = function (knex, Promise) {
           user_id: 2,
           jobpost_id: 2,
           status: 'viewed',
+          completed: 0,
           notes: ''
         },
         {
@@ -32,6 +35,7 @@ exports.seed = function (knex, Promise) {
           user_id: 2,
           jobpost_id: 2,
           status: 'failed',
+          completed: 1,
           notes: ''
         },
         {
@@ -39,6 +43,7 @@ exports.seed = function (knex, Promise) {
           user_id: 3,
           jobpost_id: 3,
           status: null,
+          completed: 0,
           notes: ''
         },
         {
@@ -46,6 +51,7 @@ exports.seed = function (knex, Promise) {
           user_id: 3,
           jobpost_id: 3,
           status: 'passed',
+          completed: 1,
           notes: ''
         }
       ]);
