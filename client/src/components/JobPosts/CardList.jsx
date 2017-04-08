@@ -12,10 +12,10 @@ const CardList = (props) => {
     const industry = getIndustryName(jobPost.industry_id);
     const position = getPositionName(jobPost.level);
     return (
-      <Card key={jobPost.id} onClick={() => { props.onJobPostClick(jobPost.id); }} href={`/#/jobposts/${jobPost.id}`} color="red" link>
+      <Card key={jobPost.id} href={`/#/jobposts/${jobPost.id}`} color="red" link>
         <Image
           height={200}
-          label={{ color: 'red', content: industry, icon: 'globe', ribbon: true }}
+          label={{ color: 'blue', content: industry, icon: 'globe', ribbon: true }}
           src={jobPost.company.profile_img}
         />
         <Card.Content>

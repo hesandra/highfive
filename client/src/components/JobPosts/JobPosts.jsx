@@ -16,7 +16,7 @@ class JobPosts extends Component {
     requestJobPosts();
   }
   render() {
-    const { onJobPostClick, jobPosts } = this.props;
+    const { jobPosts } = this.props;
     return (
       <Grid>
         <Row>
@@ -37,7 +37,6 @@ class JobPosts extends Component {
             { jobPosts ?
               <CardList
                 jobPosts={jobPosts}
-                onJobPostClick={onJobPostClick}
               />
             : '' }
           </Col>

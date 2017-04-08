@@ -1,20 +1,25 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Header, Icon, Card, List, Rating, Button, Image, Confirm } from 'semantic-ui-react';
-import img from '../../../public/images/mock_company_1_hq.jpg';
+import { getLocationName } from '../../utils/Mappings/locationMappings';
+import { getIndustryName } from '../../utils/Mappings/industryMappings';
+import { getPositionName } from '../../utils/Mappings/positionMappings';
 
 import ApplyConfirmModal from './ApplyConfirmModal';
 
 const JobPost = (props) => {
-  console.log('props passed to jobPost', props);
-  const { onJobInterviewClick } = props;
+  const { onJobInterviewClick, jobPosts } = props;
   const { id } = props.params;
-  const { jobPosts } = props;
   const jobPost = jobPosts.filter((post, i) => {
     if (post.id === Number(id)) {
       return post;
     }
   });
+  const location = getLocationName(jobPost[0].location_id);
+  const industry = getIndustryName(jobPost[0].industry_id);
+  const position = getPositionName(jobPost[0].level);
+
+  console.log(jobPost);
   return (
     <Grid>
       <Row>
@@ -29,7 +34,10 @@ const JobPost = (props) => {
       <Row>
         <Col xs={12} md={6} mdOffset={3}>
           <Card color="red" centered>
-            <Image height={200} src={img} />
+            <Image height={200}
+              src={jobPost[0].company.profile_img}
+              label={{ color: 'blue', content: industry, icon: 'globe', ribbon: true }}
+            />
             <Card.Content>
               <Card.Header className="text-shadow blurry-text">
               </Card.Header>
@@ -40,9 +48,9 @@ const JobPost = (props) => {
               </Card.Meta>
               <Card.Description>
                 <List>
-                  <List.Item icon="globe" content={jobPost[0].industry} />
-                  <List.Item icon="marker" content={jobPost[0].location} />
-                  <List.Item icon="user" content={jobPost[0].position} />
+                  <List.Item icon="globe" content={industry} />
+                  <List.Item icon="marker" content={location} />
+                  <List.Item icon="user" content={position} />
                 </List>
               </Card.Description>
             </Card.Content>

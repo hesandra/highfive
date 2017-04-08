@@ -30,8 +30,17 @@ exports.seed = function (knex, Promise) {
             description: 'Looking for Mid Dev.',
             industry_id: 3,
             location_id: 3
+          },
+          {
+            id: 4,
+            company_id: 2,
+            title: 'Hack Reactor HIR',
+            level: 0,
+            description: 'Looking for Junior Dev for HIR position',
+            industry_id: 5,
+            location_id: 1
           }
         ]);
       })
-  })
+  });
 };

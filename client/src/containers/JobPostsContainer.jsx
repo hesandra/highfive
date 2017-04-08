@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch) => {
     requestJobPosts: () => dispatch(fetchJobPostsData()),
     checkUserLogin: () => dispatch(checkUserLogin()),
     checkCompanyLogin: () => dispatch(checkCompanyLogin()),
-    onJobPostClick: id => dispatch(requestJobPost(id))
   };
 };
 
