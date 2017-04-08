@@ -6,7 +6,7 @@ import CompanyAuth from './CompanyAuth';
 const CompanyDetails = (props, state) => {
   console.log(props, 'IN COMPANY DETAILS')
   console.log(state.companyAuth, 'this.props.companyProfile in COMPANY DETAILS*********************')
-  console.log( 'IN COMPANY DETAILS')
+  console.log('IN COMPANY DETAILS')
   return (
     <div>
       <Grid fluid>

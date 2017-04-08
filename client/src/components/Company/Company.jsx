@@ -9,7 +9,7 @@ const Company = (props) => {
     <Grid fluid>
       <Row>
         <Col xs={3} md={3}>
-          <CompanyDetails {...props.state}/>
+          <CompanyDetails {...props.state.companyProfile}/>
         </Col>
         <Col xs={9} md={9}>
           <CompanyNavbar

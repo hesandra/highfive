@@ -20,8 +20,7 @@ class CompanyProfile extends React.Component {
       industry: '',
       location: '',
       email: '',
-      address: '',
-
+      address: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -46,7 +45,7 @@ class CompanyProfile extends React.Component {
 
   render() {
      console.log(this.props, 'this.props.companyProfile in COMPANY PROFILE#######################')
-     console.log(this.state, 'this.props in COMPANY PROFILE#########################')
+     console.log(this.state, 'this.props in COMPANY PROFILE')
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
         <br />

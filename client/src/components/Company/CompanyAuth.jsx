@@ -2,25 +2,34 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
 import { Icon, Label } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { getLocationName } from '../../utils/Mappings/locationMappings';
 
 class CompanyAuth extends Component {
-  constructor(props) {
+constructor(props) {
     super(props);
     this.state = {
+       }}
 
-    };  
-  }
- 
- 
+   
   render() {
-    const company_backend_profile = this.props;
-    console.log(this.props, this.state, company_backend_profile, 'props in cpmpanyAuth')
+    console.log(this.props.companyAuth, 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq')
    return (
-     <div>This could work</div>
-   )
-          } 
+     <div>{this.props.companyAuth.company_backend_profile.name}</div>
+    )
+  } 
 }
 
-export default CompanyAuth;
+function mapStateToProps(state) {
+  return {
+    companyAuth: state.companyAuth
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyAuth);
