@@ -215,11 +215,11 @@ module.exports = {
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },
-    updateCompany: (body, cb) => {
+    updateCompany: (id, body, cb) => {
       Company
         .query()
         .update(body)
-        .where('id', body.id)
+        .where('id', id)
         .then((company) => { cb(null, company) })
         .catch(err => { console.log(err) })
     },

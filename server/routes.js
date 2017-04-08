@@ -25,6 +25,7 @@ router.delete('/api/companies/:id', controller.companies.deleteCompany);
 router.post('/api/jobposts/company', controller.jobposts.createOne);
 
 router.get('/api/jobposts', controller.jobposts.getAll);
+
 //get jobposts by company id
 router.get('/api/jobposts/company/:company_id', controller.jobposts.getAllCompanyPosts);
 

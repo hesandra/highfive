@@ -67,26 +67,25 @@ module.exports = {
   companies: {
     createOne: async (req, res, next) => {
       // creates a company
-      const { name, email, auth0_id, profile_img } = req.body;
-      const company = req.body;
-      models.companies.createOne(company, (err, fetchedCompany) => {
-        console.log('id should be here', fetchedCompany);
+    
+      const formatted = {
+        id: parseInt(req.body.id),
+        name: req.body.name,
+        email: req.body.email,
+        profile_img: req.body.profile_img,
+        address: req.body.address,
+        auth0_id: req.body.auth0_id,
+        industry_id: parseInt(req.body.industry_id),
+        location_id: parseInt(req.body.location_id)
+      }
+
+      models.companies.createOne(formatted, (err, fetchedCompany) => {
         const payload = {
           success: err ? true : false,
           fetchedCompany,
           err
         };
         res.status(201).end(JSON.stringify(payload));
-      });
-    },
-    getAll: (req, res, next) => {
-      models.companies.getAll((err, company) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          company
-        }
-        res.send(payload)
       });
     },
     getById: (req, res, next) => {
@@ -102,17 +101,20 @@ module.exports = {
       });
     },
     updateCompany: (req, res, next) => {
-      
+      const { id } = req.params;
+
       const formatted = {
-        id: parseInt(req.body.id),
+        id: parseInt(id),
         name: req.body.name,
         email: req.body.email,
         profile_img: req.body.profile_img,
+        address: req.body.address,
+        auth0_id: req.body.auth0_id,
         industry_id: parseInt(req.body.industry_id),
         location_id: parseInt(req.body.location_id)
       }
 
-      models.companies.updateCompany(formatted, (err, company) => {
+      models.companies.updateCompany(id, formatted, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
