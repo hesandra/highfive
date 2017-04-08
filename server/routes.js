@@ -40,16 +40,16 @@ router.delete('/api/questions/:q_id', controller.questions.deleteQuestion);
 
 //videos
 //eager load all videos associated with jobpost?
-router.get('/api/videos', controller.videos.getAll)
+// router.get('/api/videos', controller.videos.getAll)
 // router.get('/api/videos/:user_id', controller.videos.getPostVideos)
 // router.post('/api/videos/:question_id', controller.videos.createOne)
 
 //locations
-router.get('/api/locations', controller.locations.getAll)
+// router.get('/api/locations', controller.locations.getAll)
 // router.post('/api/locations')
 
 //industries
-router.get('/api/industries', controller.industries.getAll)
+// router.get('/api/industries', controller.industries.getAll)
 // router.post('/api/industries')
 
 module.exports = router;
