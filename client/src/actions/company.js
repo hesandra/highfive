@@ -1,12 +1,24 @@
 import axios from 'axios';
 
 export function submitProfile(profile) {
-  console.log('profile in submitLoc actions', profile);
+  console.log('profile in submitProfile actions???????????????', profile);
   return {
     type: 'PROFILE_SUBMITTED',
     payload: profile,
   };
 }
+
+/*export function submitProfile(profile){
+  return (dispatch) => {
+    axios.put('http://localhost:3000/api/companies')
+      .then((result) => {
+        dispatch(updateCompany(result));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+}*/
 
 export function createInterview(){
   return {

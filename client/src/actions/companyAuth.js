@@ -24,18 +24,17 @@ export function checkCompanyLogin() {
         CompanyAuthService.setToken(authResult.idToken);
         CompanyAuthService.setProfile(profile);
         return axios.post('http://localhost:3000/api/companies', {
-          name: profile.name,
+          name: profile.nickname,
           email: profile.email,
           auth0_id: profile.user_id,
           profile_img: profile.picture,
         })
         .then((response) => {
           if (response.status === 201) {
-            console.log(response);
-            console.log(response.data.company, 'this is the company');
-            dispatch(setCompanyBackEndProfile(response.data.company));
-            console.log('RESPONSE DATA', response.data )
+            dispatch(setCompanyBackEndProfile(response.data.fetchedCompany));
+            console.log('RESPONSE DATA', response.data.fetchedCompany)
             dispatch(companyLoginSuccess(profile));
+            console.log('PROFILE IN COMPANYAUTH', profile)
           }
         })
         .catch((err) => {

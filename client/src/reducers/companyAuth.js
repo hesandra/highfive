@@ -6,7 +6,7 @@ export default function authReducer(state = {
   isAuthenticated: !CompanyAuthService.isTokenExpired(),
   isFetching: false,
   profile: CompanyAuthService.getProfile(),
-  company_backend_profile: CompanyAuthService.setCompanyBackEndProfile(),
+  company_backend_profile: CompanyAuthService.getCompanyBackEndProfile(),
   error: null
 }, action) {
   switch (action.type) {

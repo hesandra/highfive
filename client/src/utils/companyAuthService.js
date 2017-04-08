@@ -9,6 +9,7 @@ export default class CompanyAuthService {
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
         redirectUrl: 'http://localhost:8080/',
+        redirect: true,
         responseType: 'token'
       },
       theme: {
@@ -59,11 +60,13 @@ export default class CompanyAuthService {
   }
 
   static setCompanyBackEndProfile(company) {
-    console.log(company);
+    console.log('inCompanyBackEndProfile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    console.log(company, 'company in setCompanyBackEndProfile++++++++++')
     localStorage.setItem('company_backend_profile', JSON.stringify(company));
+    console.log(this.props, 'this props in setcompanybackendprofile')
   }
 
-  static getBackEndProfile() {
+  static getCompanyBackEndProfile() {
     const id = localStorage.getItem('company_backend_profile');
     return id ? JSON.parse(localStorage.company_backend_profile) : null;
   }

@@ -10,4 +10,5 @@ export JobPostsContainer from './JobPostsContainer';
 export JobPostContainer from './JobPostContainer';
 export InterviewContainer from './InterviewContainer';
 export BrowseContainer from './BrowseContainer';
+export CompanyProfileContainer from './CompanyProfileContainer';
 
