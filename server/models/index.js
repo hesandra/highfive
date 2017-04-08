@@ -25,7 +25,7 @@ module.exports = {
       // update user here
     },
     /**
-     * Posts a user to the db using async/await
+     * Posts a user to the db using async/await (Ready for Testing)
      */
     post: async ({ name, email, auth0_id, profile_img, github_url }, cb) => {
       const user = {
@@ -38,97 +38,140 @@ module.exports = {
       const userAlreadyExists = await User
         .query()
         .allowEager('[industry]')
+        .first()
         .eager('industry')
         .where(user);
-      if (!userAlreadyExists.length) {
-        await User
+
+      if (!userAlreadyExists) {
+        const newUser = await User
           .query()
           .allowEager('[industry]')
           .eager('industry')
           .insertAndFetch(user)
-          .then((insertedUser) => { cb(null, insertedUser); })
-          .catch(err => console.log(err));
+          .catch((err) => {
+            return cb(err, null);
+          });
+        cb(null, newUser);
       } else {
-        console.log('here yo');
-        cb(null, userAlreadyExists[0]);
+        cb(null, userAlreadyExists);
       }
     },
     updateById: async ({ location, linkedin_url, id, industries }, cb) => {
       const industriesLength = industries.length;
       /* Patch User (async/await) */
-      await User
+      const updatedUser = await User
         .query()
         .patchAndFetchById(id, { location_id: location, linkedin_url })
-        .where({ id })
-        .then((updatedUser) => {
-          if (!industriesLength) {
-            cb(null, updatedUser);
-          }
-        })
-        .catch(e => cb(e, null));
+        .first()
+        .catch((e) => {
+          return cb(e, null);
+        });
 
+      if (!industriesLength) {
+        cb(null, updatedUser);
+      }
+
+      if (industriesLength) {
       /* Patch User's industrys */
-      await industries.map(async (industryId, index) => {
-        const industry = await Industry
-          .query()
-          .findById(industryId);
+        industries.map(async (industryId, index) => {
+          const industry = await Industry
+            .query()
+            .findById(industryId);
 
-        if (!industry) {
-          console.log('no industry under that name');
-          return;
-        }
-        await industry
-          .$relatedQuery('user')
-          .where({ user_id: id })
-          .skipUndefined()
-          .then((relationExists) => {
-            if (relationExists.length) {
-              if (index === industriesLength - 1) {
-            console.log('already exists', relationExists);
-            console.log(index, industriesLength);
-                User
-                  .query()
-                  .findById(id)
-                  .allowEager('[industry]')
-                  .eager('industry')
-                  .skipUndefined()
-                  .then((updatedUser) => {
-                    return cb(null, updatedUser);
-                  });
-              }
-              console.log('industry already saved, skip');
-              if (industriesLength === 1) {
-                User
-                  .query()
-                  .findById(id)
-                  .allowEager('[industry]')
-                  .eager('industry')
-                  .skipUndefined()
-                  .then((updatedUser) => {
-                    return cb(null, updatedUser);
-                  });
-              }
-              return;
+          if (!industry) {
+            console.log('no industry under that name');
+            return;
+          }
+          const relationExists = await industry
+            .$relatedQuery('user')
+            .where({ user_id: id })
+            .first()
+            .skipUndefined()
+
+          if (relationExists) {
+            if (index === industriesLength - 1) {
+              console.log('already related, skip');
+              console.log(index, industriesLength);
+              const userToReturn = await User
+                .query()
+                .findById(id)
+                .allowEager('[industry]')
+                .eager('industry')
+                .skipUndefined()
+                .catch((e) => {
+                  return cb(e, null);
+                });
+              cb(null, userToReturn);
             }
-            industry
+          } else {
+            const industryToRelate = await industry
               .$relatedQuery('user')
               .relate(id)
-              .then(async (usrId) => {
-                await User
-                  .query()
-                  .findById(usrId)
-                  .allowEager('[industry]')
-                  .eager('industry')
-                  .skipUndefined()
-                  .then((updatedUser) => {
-                    if (index === industriesLength - 1) {
-                      console.log('index', index);
-                      cb(null, updatedUser);
-                    }
-                  });
+              .catch((e) => {
+                cb(e, null);
               });
-          });
+            const userToReturn = await User
+              .query()
+              .findById(id)
+              .allowEager('[industry]')
+              .eager('industry')
+              .skipUndefined()
+              .catch((e) => {
+                return cb(e, null);
+              });
+
+            cb(null, userToReturn);
+          }
+
+          // .then((relationExists) => {
+          //   if (relationExists.length) {
+          //     if (index === industriesLength - 1) {
+          //   console.log('already exists', relationExists);
+          //   console.log(index, industriesLength);
+          //       User
+          //         .query()
+          //         .findById(id)
+          //         .allowEager('[industry]')
+          //         .eager('industry')
+          //         .skipUndefined()
+          //         .then((updatedUser) => {
+          //           return cb(null, updatedUser);
+          //         });
+          //     }
+          //     console.log('industry already saved, skip');
+          //     if (industriesLength === 1) {
+          //       User
+          //         .query()
+          //         .findById(id)
+          //         .allowEager('[industry]')
+          //         .eager('industry')
+          //         .skipUndefined()
+          //         .then((updatedUser) => {
+          //           return cb(null, updatedUser);
+          //         });
+          //     }
+          //     return;
+          //   }
+            // industry
+            //   .$relatedQuery('user')
+            //   .relate(id)
+            //   .then(async (usrId) => {
+            //     await User
+            //       .query()
+            //       .findById(usrId)
+            //       .allowEager('[industry]')
+            //       .eager('industry')
+            //       .skipUndefined()
+            //       .then((updatedUser) => {
+            //         if (index === industriesLength - 1) {
+            //           console.log('index', index);
+            //           cb(null, updatedUser);
+            //         }
+            //       });
+            //   });
+          // });
       });
+      }
     },
     deleteIndustryById: async ({ id, industryId }, cb) => {
       await User
@@ -158,36 +201,6 @@ module.exports = {
     }
   },
   companies: {
-    post: async ({ name, email, auth0_id, profile_img }, cb) => {
-      const company = {
-        name,
-        email,
-        auth0_id,
-        profile_img
-       };
-       console.log('company in compaines post', company);
-      const companyAlreadyExists = await Company.query().where(company);
-      console.log(companyAlreadyExists);
-      if (!companyAlreadyExists.length) {
-        await Company
-          .query()
-          .insertAndFetch(company)
-          .then((insertedCompany) => { cb(null, insertedCompany); })
-          .catch(err => console.log(err));
-      } else {
-        console.log('here yo');
-        cb(null, companyAlreadyExists[0]);
-      }
-    },
-/*    updateById: async ({ name, location, industry, profile_img }, cb) => {
-      const company = await Company
-        .query()
-        .patchAndFetchById(id, { location, industry, profile_img })
-        .where({ id })
-        .then((company) => cb(null, usr))
-        .catch(e => cb(e, null));
-    }
-  },*/
     getAll: (cb) => {
       Company
         .query()

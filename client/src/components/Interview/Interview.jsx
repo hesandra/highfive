@@ -67,7 +67,7 @@ class Interview extends Component {
           this.listenForS3Link();
         });
       }, 1000);
-    }, 4000);
+    }, 10000);
   }
   listenForS3Link() {
     this.props.socket.on('ready', (url) => {

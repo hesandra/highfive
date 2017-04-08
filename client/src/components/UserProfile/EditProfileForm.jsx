@@ -78,7 +78,6 @@ class EditProfileForm extends Component {
     .catch(err => console.log(err));
   }
   render() {
-    console.log(this.state);
     const { industries } = this.props;
     return (
       <Form horizontal onSubmit={this.handleSubmit}>

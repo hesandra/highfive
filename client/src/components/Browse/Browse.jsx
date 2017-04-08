@@ -3,6 +3,8 @@ import { Card, Icon, Image, Rating, Header, List, Statistic } from 'semantic-ui-
 import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
+import BrowseCardList from './BrowseCardList';
+
 
 class Browse extends Component {
   constructor(props) {
@@ -25,15 +27,21 @@ class Browse extends Component {
             <Icon link name="user" circular />
             </Header>
             <div className="text-center">
-            { this.props.users ? 
-              <Statistic>
-                <Statistic.Value>{ this.props.users.length } </Statistic.Value>
-                <Statistic.Label>Total Users</Statistic.Label>
-              </Statistic>
-              : '' }
+              { this.props.users ?
+                <Statistic>
+                  <Statistic.Value>{ this.props.users.length } </Statistic.Value>
+                  <Statistic.Label>Total Users</Statistic.Label>
+                </Statistic>
+                : '' }
             </div>
             <hr />
           </Col>
+        </Row>
+        <Row>
+          { this.props.users ?
+            <BrowseCardList
+              users={this.props.users}
+            /> : '' }
         </Row>
       </Grid>
     );

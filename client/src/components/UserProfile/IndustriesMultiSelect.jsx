@@ -12,7 +12,6 @@ const IndustriesMultiSelect = ({ onSelectChange, industries }) => {
       };
     });
   }
-  console.log(defaultIndustries, industries);
   return (
     <div>
       <MultiSelect

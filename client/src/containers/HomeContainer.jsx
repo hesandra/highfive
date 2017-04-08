@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 import { Home } from '../components';
-import { userLoginRequest, userLogoutSuccess } from '../actions/userAuth';
+import { userLoginRequest, userLogoutSuccess, checkUserLogin } from '../actions/userAuth';
 import { companyLoginRequest, companyLogoutSuccess } from '../actions/companyAuth';
 
 const mapStateToProps = (state) => {

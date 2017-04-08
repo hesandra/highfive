@@ -9,6 +9,7 @@ export default class UserAuthService {
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
         redirectUrl: 'http://localhost:8080/',
+        redirect: true,
         responseType: 'token'
       },
       theme: {
