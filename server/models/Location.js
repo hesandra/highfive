@@ -1,8 +1,5 @@
 const Model = require('objection').Model;
 
-const Company = require('./Company')
-const User = require('./User')
-
 class Location extends Model {
   static get tableName() {
     return 'location';
@@ -11,7 +8,7 @@ class Location extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['state', 'city'],
+      required: [],
       properties: {
         id:                { type: 'integer' },
         state:             { type: 'string' },
@@ -27,10 +24,6 @@ class Location extends Model {
         modelClass: `${__dirname}/User`,
         join: {
           from: 'location.id',
-          through: {
-            from: 'user_location.location_id',
-            to: 'user_location.user_id',
-          },
           to: 'user.location_id'
         }
       },

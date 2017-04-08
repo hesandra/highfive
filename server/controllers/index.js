@@ -294,14 +294,44 @@ module.exports = {
   },
   
   videos: {
+    getAll: (req, res, next) => {
+      models.videos.getAll((err, videos) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          videos
+        }
+        res.send(payload)
+      });
+    },
+    // getUserVideos: () => {
 
+    // }
   },
 
   locations: {
-
+    getAll: (req, res, next) => {
+      models.locations.getAll((err, locations) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          locations
+        }
+        res.send(payload)
+      });
+    }
   },
 
   industries: {
-
+    getAll: (req, res, next) => {
+      models.industries.getAll((err, industries) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          industries
+        }
+        res.send(payload)
+      });
+    }
   }
 };

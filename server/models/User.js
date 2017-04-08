@@ -1,6 +1,4 @@
 const Model = require('objection').Model;
-const Location = require('./Location');
-const Industry = require('./Industry');
 
 class User extends Model {
   static get tableName() {
@@ -9,7 +7,7 @@ class User extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['name', 'email', 'auth0_id', 'github_url'],
+      required: [],
       properties: {
         id:              { type: 'integer' },
         name:            { type: 'string' },
@@ -47,14 +45,14 @@ class User extends Model {
         }
       },
 
-      // rel3: {
-      //   relation: Model.HasManyRelation,
-      //   modelClass: Submission,
-      //   join: {
-      //     from: 'user.id',
-      //     to: 'submission.user_id'
-      //   }
-      // }
+      submission: {
+        relation: Model.HasManyRelation,
+        modelClass: `${__dirname}/Submission`,
+        join: {
+          from: 'user.id',
+          to: 'submission.user_id'
+        }
+      }
     };
   }
 

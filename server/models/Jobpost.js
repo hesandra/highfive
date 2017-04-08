@@ -14,10 +14,13 @@ class Jobpost extends Model {
       required: ['title', 'level', 'description', 'company_id'],
       properties: {
         id:                { type: 'integer' },
-        title:             { type: 'string' },
-        level:             { type: 'string' },
-        description:       { type: 'string' },
         company_id:        { type: 'integer' },
+        title:             { type: 'string' },
+        level:             { type: 'integer' },
+        description:       { type: 'string' },
+        type:              { type: 'string' },
+        industry_id:       { type: 'integer' },
+        location_id:       { type: 'integer' }
       }
     };
   }
@@ -39,7 +42,7 @@ class Jobpost extends Model {
           from: 'jobpost.id',
           through: {
             from: 'jobpost_question.jobpost_id',
-            to: 'jobpost_question.questions_id'
+            to: 'jobpost_question.question_id'
           },
           to: 'question.id'
         }

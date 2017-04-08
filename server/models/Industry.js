@@ -1,8 +1,5 @@
 const Model = require('objection').Model;
 
-const Company = require('./Jobpost');
-const User = require('./User');
-
 class Industry extends Model {
   static get tableName() {
     return 'industry';
@@ -14,7 +11,7 @@ class Industry extends Model {
       required: ['name'],
       properties: {
         id:               { type: 'integer' },
-        name:             { type: 'string' },
+        name:             { type: 'string' }
       }
     };
   }
@@ -22,7 +19,7 @@ class Industry extends Model {
   static get relationMappings() {
     return {
       company: {
-        relation: Model.HasOneRelation,
+        relation: Model.HasManyRelation,
         modelClass: `${__dirname}/Company`,
         join: {
           from: 'industry.id',

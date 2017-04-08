@@ -16,11 +16,13 @@ class Company extends Model {
 
       properties: {
         id:               { type: 'integer' },
-        name:             { type: 'string' },
-        email:            { type: 'string' },
-        profile_img:      { type: 'string', maxLength: 255 },
         industry_id:      { type: 'integer' },
-        location_id:      { type: 'integer' }
+        location_id:      { type: 'integer' },
+        name:             { type: 'string' },
+        profile_img:      { type: 'string' },
+        email:            { type: 'string' },
+        address:          { type: 'string' },
+        auth0_id:         { type: 'string' }
       }
     };
   }
