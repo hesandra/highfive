@@ -17,7 +17,7 @@ exports.seed = function (knex, Promise) {
             id: 2,
             company_id: 1,
             title: 'Sr Dev',
-            level: 3,
+            level: 2,
             description: 'Looking for Sr Dev.',
             industry_id: 1,
             location_id: 1
@@ -26,7 +26,7 @@ exports.seed = function (knex, Promise) {
             id: 3,
             company_id: 2,
             title: 'Mid Dev',
-            level: 2,
+            level: 1,
             description: 'Looking for Mid Dev.',
             industry_id: 3,
             location_id: 3

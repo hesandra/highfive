@@ -130,7 +130,7 @@ module.exports = {
           err: JSON.stringify(err),
           company
         };
-        res.send(payload)
+        res.send(payload);
       });
     }
   },
@@ -142,8 +142,8 @@ module.exports = {
           success: err ? false : true,
           err: JSON.stringify(err),
           jobposts
-        }
-        res.send(payload)
+        };
+        res.send(payload);
       });
     },
     getById: (req, res, next) => {

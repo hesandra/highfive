@@ -1,16 +1,22 @@
 import React from 'react';
 import { Card, Image, Icon, Rating, List, Popup, Button } from 'semantic-ui-react';
 import img from '../../../public/images/mock_company_1_hq.jpg';
+import { getLocationName } from '../../utils/Mappings/locationMappings';
+import { getIndustryName } from '../../utils/Mappings/industryMappings';
+import { getPositionName } from '../../utils/Mappings/positionMappings';
 
 const CardList = (props) => {
   const jobPostsData = props.jobPosts;
   const cardList = jobPostsData.map((jobPost, index) => {
+    const location = getLocationName(jobPost.location_id);
+    const industry = getIndustryName(jobPost.industry_id);
+    const position = getPositionName(jobPost.level);
     return (
       <Card key={jobPost.id} onClick={() => { props.onJobPostClick(jobPost.id); }} href={`/#/jobposts/${jobPost.id}`} color="red" link>
         <Image
           height={200}
-          label={{ color: 'red', content: jobPost.industry, icon: 'globe', ribbon: true }}
-          src={img}
+          label={{ color: 'red', content: industry, icon: 'globe', ribbon: true }}
+          src={jobPost.company.profile_img}
         />
         <Card.Content>
           <Card.Header className="text-shadow blurry-text">
@@ -26,9 +32,9 @@ const CardList = (props) => {
           </Card.Meta>
           <Card.Description>
             <List>
-              <List.Item icon="globe" content={jobPost.industry} />
-              <List.Item icon="marker" content={jobPost.location} />
-              <List.Item icon="user" content={jobPost.position} />
+              <List.Item icon="globe" content={industry} />
+              <List.Item icon="marker" content={location} />
+              <List.Item icon="user" content={position} />
             </List>
           </Card.Description>
         </Card.Content>

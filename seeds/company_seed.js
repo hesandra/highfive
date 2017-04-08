@@ -11,7 +11,7 @@ exports.seed = function (knex, Promise) {
             industry_id: 1,
             location_id: 1,
             name: 'Google',
-            profile_img: '',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
             email: 'info@google.com',
             address: '',
             auth0_id: ''
@@ -21,7 +21,7 @@ exports.seed = function (knex, Promise) {
             industry_id: 2,
             location_id: 2,
             name: 'Microsoft',
-            profile_img: '',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
             email: 'info@microsoft.com',
             address: '',
             auth0_id: ''
@@ -31,12 +31,12 @@ exports.seed = function (knex, Promise) {
             industry_id: 2,
             location_id: 2,
             name: 'Hackreactor',
-            profile_img: '',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
             email: 'info@hr.com',
             address: '',
             auth0_id: ''
           }
         ]);
       });
-  })
+  });
 };

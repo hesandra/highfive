@@ -9,6 +9,10 @@ export default function jobPostsReducer(state = {
   switch (action.type) {
     case ActionTypes.REQUEST_JOB_POST:
       return { ...state, isFetching: true, error: null };
+    case ActionTypes.REQUEST_JOB_POSTS_SUCCESS:
+      return { ...state, isFetching: false, jobPosts: action.jobposts };
+    case ActionTypes.REQUEST_JOB_POSTS_ERROR:
+      return { ...state, isFetching: false, error: action.error };
     default:
       return state;
   }
