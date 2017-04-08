@@ -28,7 +28,7 @@ router.get('/api/jobposts/company/:company_id/post/:post_id', controller.jobpost
 router.put('/api/jobposts/company/:company_id/post/:post_id', controller.jobposts.updateCompanyPost);
 router.delete('/api/jobposts/company/:post_id', controller.jobposts.deleteCompanyPost);
 
-router.get('/api/jobposts/company/:post_id/', controller.jobposts.getSubmissions)
+// router.get('/api/jobposts/company/:post_id/', controller.jobposts.getSubmissions)
 
 //questions
 //eager load all questions belonging to jobpost_id?

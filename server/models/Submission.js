@@ -47,7 +47,6 @@ class Submission extends Model {
       }
     };
   }
-
 }
 
-module.exports = Video;
+module.exports = Submission;
