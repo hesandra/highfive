@@ -59,6 +59,7 @@ export default class CompanyAuthService {
   }
 
   static setCompanyBackEndProfile(company) {
+    console.log(company);
     localStorage.setItem('company_backend_profile', JSON.stringify(company));
   }
 

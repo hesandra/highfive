@@ -31,7 +31,9 @@ export function checkCompanyLogin() {
         })
         .then((response) => {
           if (response.status === 201) {
-            dispatch(setCompanyBackEndProfile(response.data.fetchedCompany));
+            console.log(response);
+            console.log(response.data.company, 'this is the company');
+            dispatch(setCompanyBackEndProfile(response.data.company));
             console.log('RESPONSE DATA', response.data )
             dispatch(companyLoginSuccess(profile));
           }
