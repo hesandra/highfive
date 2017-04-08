@@ -242,8 +242,12 @@ module.exports = {
     getAll: (cb) => {
       Jobpost
         .query()
-        .then((jobposts) => { cb(null, jobposts) })
-        .catch( err => { console.log(err) })
+        .allowEager('[company]')
+        .eager('company')
+        .then((jobposts) => { cb(null, jobposts); })
+        .catch((err) => { 
+          cb(err, null);
+        });
     },
     getById: (id, cb) => {
       Jobpost
