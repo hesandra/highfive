@@ -201,12 +201,6 @@ module.exports = {
     }
   },
   companies: {
-    getAll: (cb) => {
-      Company
-        .query()
-        .then((companies) => { cb(null, companies) })
-        .catch(err => { console.log(err) })
-    },
     getById: (id, cb) => {
       Company
         .query()

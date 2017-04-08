@@ -18,6 +18,8 @@ router.post('/api/companies', controller.companies.createOne);
 router.put('/api/companies/:id', controller.companies.updateCompany);
 router.delete('/api/companies/:id', controller.companies.deleteCompany);
 
+
+
 //jobposts
 //create a jobpost by company id
 router.post('/api/jobposts/company', controller.jobposts.createOne);
@@ -31,11 +33,14 @@ router.get('/api/jobposts/company/:company_id', controller.jobposts.getAllCompan
 router.put('/api/jobposts/company/:company_id/post/:post_id', controller.jobposts.updateCompanyPost);
 router.delete('/api/jobposts/company/:post_id', controller.jobposts.deleteCompanyPost);
 
+
 //grab jobposts by jobpost id
 router.get('/api/jobposts/:id', controller.jobposts.getById);
 //grab all jobposts
 //figure out how to put timestamps in db
 //for a jobpost, eagerly load all questions
+
+// router.get('/api/jobposts/company/:post_id/', controller.jobposts.getSubmissions)
 
 //questions
 //eager load all questions belonging to jobpost_id?
