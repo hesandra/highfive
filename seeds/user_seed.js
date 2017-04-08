@@ -12,7 +12,7 @@ exports.seed = function (knex, Promise) {
             email: 'a@a.com',
             auth0_id: 'adssa',
             location_id: 1,
-            profile_img: 'profile_img_here',
+            profile_img: 'http://vignette3.wikia.nocookie.net/superman/images/2/27/Superman-dcuo.jpg/revision/latest?cb=20110901025125',
             github_url: 'https://github.com/andrewjyi',
             linkedin_url: 'https://www.linkedin.com/in/josh-hickman-3b6a2051/'
           },
@@ -33,7 +33,7 @@ exports.seed = function (knex, Promise) {
             email: 's@s.com',
             auth0_id: 'asdas',
             location_id: 2,
-            profile_img: 'profile_img_here',
+            profile_img: 'http://vignette3.wikia.nocookie.net/superman/images/2/27/Superman-dcuo.jpg/revision/latest?cb=20110901025125',
             github_url: 'https://github.com/hesandra',
             linkedin_url: 'https://www.linkedin.com/in/josh-hickman-3b6a2051/'
           },
@@ -43,7 +43,7 @@ exports.seed = function (knex, Promise) {
             email: 's@s.com',
             auth0_id: '123123123',
             location_id: 3,
-            profile_img: 'profile_img_here',
+            profile_img: 'http://vignette3.wikia.nocookie.net/superman/images/2/27/Superman-dcuo.jpg/revision/latest?cb=20110901025125',
             github_url: 'https://github.com/superman',
             linkedin_url: 'https://www.linkedin.com/in/superman/'
           }
