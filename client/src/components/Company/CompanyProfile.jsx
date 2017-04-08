@@ -21,7 +21,6 @@ class CompanyProfile extends React.Component {
       location: '',
       email: '',
       address: '',
-
     };
 
     this.handleChange = this.handleChange.bind(this);
