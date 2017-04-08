@@ -1,8 +1,12 @@
 
 import React from 'react';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
+import CompanyAuth from './CompanyAuth';
 
-const CompanyDetails = (props) => {
+const CompanyDetails = (props, state) => {
+  console.log(props, 'IN COMPANY DETAILS')
+  console.log(state.companyAuth, 'this.props.companyProfile in COMPANY DETAILS*********************')
+  console.log( 'IN COMPANY DETAILS')
   return (
     <div>
       <Grid fluid>
@@ -15,6 +19,7 @@ const CompanyDetails = (props) => {
           </Col>
         </Row>
       </Grid>
+      <div><CompanyAuth /></div>
     </div>
   );
 };

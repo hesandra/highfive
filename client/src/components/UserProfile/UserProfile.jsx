@@ -28,6 +28,7 @@ class UserProfile extends Component {
   }
   render() {
     const { profile, onJobPostsClick, backend_profile, onUpdateUserProfile } = this.props;
+    console.log(this.props, 'USSSEEEERRRR')
     let profileImage;
     let name;
     let location;
