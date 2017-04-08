@@ -23,7 +23,7 @@ module.exports = {
       const user = req.body;
 
       models.users.post(user, (err, fetchedUser) => {
-        console.log('id should be here', fetchedUser);
+        console.log(fetchedUser, 'this was fetched');
         const payload = {
           success: err ? true : false,
           fetchedUser,
@@ -33,7 +33,6 @@ module.exports = {
       });
     },
     updateById: (req, res, next) => {
-      console.log('here');
       const { location, linkedin_url, industries } = req.body;
       const { id } = req.params;
       const data = {

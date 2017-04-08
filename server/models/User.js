@@ -1,6 +1,12 @@
 const Model = require('objection').Model;
 
 class User extends Model {
+  $beforeUpdate() {
+    this.updatedAt = new Date().toISOString();
+  }
+  $beforeInsert() {
+    this.createdAt = new Date().toISOString();
+  }
   static get tableName() {
     return 'user';
   }
