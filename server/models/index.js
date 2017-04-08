@@ -328,7 +328,6 @@ module.exports = {
       
     }
   },
-
   locations: {
     getAll: (cb) => {
       Location
