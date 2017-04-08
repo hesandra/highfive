@@ -8,24 +8,33 @@ exports.seed = function (knex, Promise) {
         return knex('company').insert([
           {
             id: 1,
-            name: 'Google',
-            email: 'info@google.com',
             industry_id: 1,
-            location_id: 1
+            location_id: 1,
+            name: 'Google',
+            profile_img: '',
+            email: 'info@google.com',
+            address: '',
+            auth0_id: ''
           },
           {
             id: 2,
-            name: 'Microsoft',
-            email: 'info@microsoft.com',
             industry_id: 2,
-            location_id: 2
+            location_id: 2,
+            name: 'Microsoft',
+            profile_img: '',
+            email: 'info@microsoft.com',
+            address: '',
+            auth0_id: ''
           },
           {
             id: 3,
-            name: 'Netflix',
-            email: 'info@netflix.com',
             industry_id: 2,
-            location_id: 2
+            location_id: 2,
+            name: 'Hackreactor',
+            profile_img: '',
+            email: 'info@hr.com',
+            address: '',
+            auth0_id: ''
           }
         ]);
       });

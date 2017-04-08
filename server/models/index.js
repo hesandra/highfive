@@ -318,7 +318,33 @@ module.exports = {
   },
 
   videos: {
+    getAll: (cb) => {
+      Video
+        .query()
+        .then((videos) => { cb(null, videos) })
+        .catch( err => { console.log(err) })
+    },
+    getUserVideos: () => {
+      
+    }
+  },
 
+  locations: {
+    getAll: (cb) => {
+      Location
+        .query()
+        .then((location) => { cb(null, location) })
+        .catch( err => { console.log(err) })
+    }
+  },
+
+  industries: {
+    getAll: (cb) => {
+      Industry
+        .query()
+        .then((industry) => { cb(null, industry) })
+        .catch( err => { console.log(err) })
+    }
   }
 
 };

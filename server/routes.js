@@ -28,6 +28,8 @@ router.get('/api/jobposts/company/:company_id/post/:post_id', controller.jobpost
 router.put('/api/jobposts/company/:company_id/post/:post_id', controller.jobposts.updateCompanyPost);
 router.delete('/api/jobposts/company/:post_id', controller.jobposts.deleteCompanyPost);
 
+router.get('/api/jobposts/company/:post_id/', controller.jobposts.getSubmissions)
+
 //questions
 //eager load all questions belonging to jobpost_id?
 router.get('/api/questions', controller.questions.getAll);
@@ -37,16 +39,17 @@ router.put('/api/questions/:q_id/', controller.questions.updateQuestion);
 router.delete('/api/questions/:q_id', controller.questions.deleteQuestion);
 
 //videos
-// router.get('/api/videos/', controller.videos.getAll)
-// router.get('/api/videos/:user_id', controller.videos.getUserVideos)
+//eager load all videos associated with jobpost?
+router.get('/api/videos', controller.videos.getAll)
+// router.get('/api/videos/:user_id', controller.videos.getPostVideos)
 // router.post('/api/videos/:question_id', controller.videos.createOne)
 
 //locations
-// router.get('/api/locations')
+router.get('/api/locations', controller.locations.getAll)
 // router.post('/api/locations')
 
 //industries
-// router.get('/api/industries')
+router.get('/api/industries', controller.industries.getAll)
 // router.post('/api/industries')
 
 module.exports = router;

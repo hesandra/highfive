@@ -1,13 +1,5 @@
 const Model = require('objection').Model;
 
-const Video = require('./Video');
-const Jobpost = require('./Jobpost');
-
-// Class Variables
-const Jr = 0;
-const Mid = 1;
-const Sr = 2;
-
 class Question extends Model {
   static get tableName() {
     return 'question';
@@ -22,21 +14,13 @@ class Question extends Model {
         level:            { type: 'integer' },
         type:             { type: 'string' },
         question:         { type: 'string' },
-        jobpost_id:       { type: 'integer' }
+        title:            { type: 'string' }
       }
     };
   }
 
   static get relationMappings() {
     return {
-      video: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: `${__dirname}/Video`,
-        join: {
-          from: 'question.id',
-          to: 'video.question_id'
-        }
-      },
       jobpost: {
         relation: Model.BelongsToOneRelation,
         modelClass: `${__dirname}/Jobpost`,
@@ -47,6 +31,15 @@ class Question extends Model {
             to: 'jobpost_question.jobpost_id'
           },
           to: 'jobpost.id'
+        }
+      },
+
+      video: {
+        relation: Model.HasManyRelation,
+        modelClass: `${__dirname}/Video`,
+        join: {
+          from: 'question.id',
+          to: 'video.question_id'
         }
       }
     };

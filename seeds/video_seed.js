@@ -8,44 +8,44 @@ exports.seed = function (knex, Promise) {
         return knex('video').insert([
           {
             id: 1,
-            href: 'href_here',
-            note: 'video notes',
-            submitter_id: 1,
+            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
+            answer: 'video answers',
+            submission_id: 1,
             question_id: 1
           },
           {
             id: 2,
-            href: 'href_here',
-            note: 'video notes2',
-            submitter_id: 2,
+            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
+            answer: 'video answers2',
+            submission_id: 2,
             question_id: 2
           },
           {
             id: 3,
-            href: 'href_here',
-            note: 'video notes',
-            submitter_id: 3,
+            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
+            answer: 'video answers',
+            submission_id: 3,
             question_id: 3
           },
           {
             id: 4,
-            href: 'href_here',
-            note: 'video notes2',
-            submitter_id: 1,
+            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
+            answer: 'video answers2',
+            submission_id: 1,
             question_id: 1
           },
           {
             id: 5,
-            href: 'href_here',
-            note: 'video notes',
-            submitter_id: 2,
+            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
+            answer: 'video answers',
+            submission_id: 2,
             question_id: 2
           },
           {
             id: 6,
-            href: 'href_here',
-            note: 'video notes2',
-            submitter_id: 3,
+            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
+            answer: 'video answers2',
+            submission_id: 3,
             question_id: 3
           }
         ]);
