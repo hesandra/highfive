@@ -18,7 +18,6 @@ class Jobpost extends Model {
         title:             { type: 'string' },
         level:             { type: 'integer' },
         description:       { type: 'string' },
-        type:              { type: 'string' },
         industry_id:       { type: 'integer' },
         location_id:       { type: 'integer' }
       }

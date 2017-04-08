@@ -10,7 +10,6 @@ exports.seed = function (knex, Promise) {
             title: 'Jr Dev',
             level: 0,
             description: 'Looking for Jr Dev.',
-            type: 'algorithm',
             industry_id: 1,
             location_id: 1
           },
@@ -20,7 +19,6 @@ exports.seed = function (knex, Promise) {
             title: 'Sr Dev',
             level: 3,
             description: 'Looking for Sr Dev.',
-            type: 'system design',
             industry_id: 1,
             location_id: 1
           },
@@ -30,7 +28,6 @@ exports.seed = function (knex, Promise) {
             title: 'Mid Dev',
             level: 2,
             description: 'Looking for Mid Dev.',
-            type: 'behavioral',
             industry_id: 3,
             location_id: 3
           }
