@@ -6,15 +6,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 class CompanyDetails extends React.Component {
-constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
        }
     }
 
-  render (){
-  //console.log(this.props, 'IN COMPANY DETAILS')
-  //console.log('IN COMPANY DETAILS')
+render (){
+  console.log(this.props, 'PROPS IN COMPANY DETAILS')
+  console.log(this.state, 'PROPS IN COMPANY DETAILS')
   return (
     <div>
       <Grid fluid>
