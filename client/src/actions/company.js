@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function submitProfile(profile) {
+export function updateCompany(profile) {
   console.log('profile in submitProfile actions???????????????', profile);
   return {
     type: 'PROFILE_SUBMITTED',
@@ -8,17 +8,21 @@ export function submitProfile(profile) {
   };
 }
 
-/*export function submitProfile(profile){
+export function submitProfile(profile){
   return (dispatch) => {
-    axios.put('http://localhost:3000/api/companies')
-      .then((result) => {
-        dispatch(updateCompany(result));
+    const id = profile.companyId;
+    console.log('ID', id)
+    const updatedProfile = profile.updatedProfile;
+    axios.put('http://localhost:3000/api/companies/' +id, updatedProfile)
+      .then((company) => {
+        console.log('result in company actions', company);
+        dispatch(updateCompany(company));
       })
       .catch((err) => {
         console.error(err);
       });
   };
-}*/
+}
 
 export function createInterview(){
   return {

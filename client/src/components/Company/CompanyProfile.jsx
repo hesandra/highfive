@@ -16,9 +16,9 @@ class CompanyProfile extends React.Component {
     super(props);
     this.state = {
       name: '',
-      profileVideo: '',
-      industry: '',
-      location: '',
+      profile_img: '',
+      industry_id: '',
+      location_id: '',
       email: '',
       address: '',
     };
@@ -61,7 +61,7 @@ class CompanyProfile extends React.Component {
             Profile Video
         </Col>
           <Col sm={8}>
-            <FormControl name="profileVideo" type="text" value={this.state.profileVideo} onChange={this.handleChange} />
+            <FormControl name="profile_img" type="text" value={this.state.profile_img} onChange={this.handleChange} />
           </Col>
         </FormGroup>
         <br />
@@ -71,12 +71,12 @@ class CompanyProfile extends React.Component {
         </Col>
           <Col sm={8}>
             <FormGroup controlId="formControlsSelect">
-              <FormControl componentClass="select" placeholder="select" name="industry" value={this.state.industry} onChange={this.handleChange}>
+              <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
                 <option value="select">select</option>
-                <option >Social Media</option>
-                <option >Finance</option>
-                <option >Fashion</option>
-                <option >Food</option>
+                <option >1</option>
+                <option >2</option>
+                <option >3</option>
+                <option >4</option>
               </FormControl>
             </FormGroup>
           </Col>
@@ -88,12 +88,12 @@ class CompanyProfile extends React.Component {
         </Col>
           <Col sm={8}>
             <FormGroup controlId="formControlsSelect">
-              <FormControl componentClass="select" placeholder="select" name="location" value={this.state.location} onChange={this.handleChange}>
+              <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
                 <option value="select">select</option>
-                <option >San Francisco</option>
-                <option >Los Angeles</option>
-                <option >New York</option>
-                <option >Seattle</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
               </FormControl>
             </FormGroup>
           </Col>

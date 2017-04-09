@@ -67,6 +67,13 @@ module.exports = {
   companies: {
     createOne: async (req, res, next) => {
       // creates a company
+      const formatted = {
+        name: req.body.name,
+        email: req.body.email,
+        profile_img: req.body.profile_img,
+        address: req.body.address,
+        auth0_id: req.body.auth0_id,
+      }
 
       const { name, email, auth0_id, profile_img } = req.body;
 
@@ -92,15 +99,17 @@ module.exports = {
       });
     },
     updateCompany: (req, res, next) => {
+      console.log('req.body in index.js', req.body)
+      console.log('req.params', req.params)
       const { id } = req.params;
 
       const formatted = {
-        id: parseInt(id),
+        //id: parseInt(id),
         name: req.body.name,
         email: req.body.email,
         profile_img: req.body.profile_img,
         address: req.body.address,
-        auth0_id: req.body.auth0_id,
+        //auth0_id: req.body.auth0_id,
         industry_id: parseInt(req.body.industry_id),
         location_id: parseInt(req.body.location_id)
       };
