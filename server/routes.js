@@ -18,30 +18,16 @@ router.post('/api/companies', controller.companies.createOne);
 router.put('/api/companies/:id', controller.companies.updateCompany);
 router.delete('/api/companies/:id', controller.companies.deleteCompany);
 
-
-
 //jobposts
-//create a jobpost by company id
-router.post('/api/jobposts/company', controller.jobposts.createOne);
-
 router.get('/api/jobposts', controller.jobposts.getAll);
-
-//get jobposts by company id
-router.get('/api/jobposts/company/:company_id', controller.jobposts.getAllCompanyPosts);
-
-//update jobpost by jobpost id
-//delete jobpost by jobpost id
-router.put('/api/jobposts/company/:company_id/post/:post_id', controller.jobposts.updateCompanyPost);
-router.delete('/api/jobposts/company/:post_id', controller.jobposts.deleteCompanyPost);
-
-
-//grab jobposts by jobpost id
 router.get('/api/jobposts/:id', controller.jobposts.getById);
-//grab all jobposts
-//figure out how to put timestamps in db
-//for a jobpost, eagerly load all questions
+router.post('/api/jobposts', controller.jobposts.createOne);
+router.get('/api/jobposts/company/:company_id', controller.jobposts.getJobPostsByCompany)
 
-// router.get('/api/jobposts/company/:post_id/', controller.jobposts.getSubmissions)
+router.put('/api/jobposts/:id', controller.jobposts.updateJobPost)
+router.delete('/api/jobposts/:id', controller.jobposts.deleteJobPost)
+//for a jobpost, eagerly load all questions
+//figure out how to put timestamps in db
 
 //questions
 //eager load all questions belonging to jobpost_id?

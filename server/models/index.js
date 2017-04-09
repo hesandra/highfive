@@ -246,6 +246,7 @@ module.exports = {
     getById: (id, cb) => {
       Jobpost
         .query()
+        .where('id', id)
         .allowEager('[company, question]')
         .eager('[company, question]')
         .first()
@@ -259,34 +260,26 @@ module.exports = {
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     },
-    getAllCompanyPosts: (companyId, cb) => {
+    getJobPostsByCompany: (companyId, cb) => {
       Jobpost
         .query()
         .where('company_id', companyId)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     },
-    getCompanyPostById: (postId, companyId, cb) => {
-      Jobpost
-        .query()
-        .where('id', postId)
-        .where('company_id', companyId)
-        .then((jobs) => { cb(null, jobs) })
-        .catch( err => { console.log(err) })
-    },
-    deleteCompanyPost: (postId, companyId, cb) => {
-      Jobpost
-        .query()
-        .deleteById(postId)
-        .where('company_id', companyId)
-        .then((jobs) => { cb(null, jobs) })
-        .catch( err => { console.log(err) })
-    },
-    updateCompanyPost: (body, cb) => {
+    updateJobPost: (body, cb) => {
       Jobpost
         .query()
         .update(body)
         .where('id', body.id)
+        .then((jobs) => { cb(null, jobs) })
+        .catch( err => { console.log(err) })
+    },
+    deleteJobPost: (postId, companyId, cb) => {
+      Jobpost
+        .query()
+        .deleteById(postId)
+        .where('company_id', companyId)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     }
