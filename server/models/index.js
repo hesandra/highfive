@@ -246,9 +246,11 @@ module.exports = {
     getById: (id, cb) => {
       Jobpost
         .query()
-        .where('id', id)
-        .then((jobposts) => { cb(null, jobposts) })
-        .catch( err => { console.log(err) })
+        .allowEager('[company, question]')
+        .eager('[company, question]')
+        .first()
+        .then((jobpost) => { cb(null, jobpost) })
+        .catch((err) => { cb(err, null); });
     },
     createOne: (body, cb) => {
       Jobpost

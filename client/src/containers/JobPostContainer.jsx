@@ -2,16 +2,19 @@ import { connect } from 'react-redux';
 import { JobPost } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
-import { initJobInterview } from '../actions/jobPost';
+import { initJobInterview, fetchJobPostData } from '../actions/jobPost';
 
-import jobPosts from '../utils/mockdata/jobposts';
+// import jobPosts from '../utils/mockdata/jobposts';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;
+  const { jobPosts } = state.jobPosts;
+  const { jobPost } = state.jobPost;
   return {
     isAuthenticated,
     profile,
-    jobPosts
+    jobPosts,
+    jobPost
   };
 };
 
@@ -19,7 +22,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),
     checkCompanyLogin: () => dispatch(checkCompanyLogin()),
-    onJobInterviewClick: id => dispatch(initJobInterview(id))
+    onJobInterviewClick: id => dispatch(initJobInterview(id)),
+    fetchJobPostData: id => dispatch(fetchJobPostData(id))
   };
 };
 

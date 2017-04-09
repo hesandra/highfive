@@ -67,19 +67,10 @@ module.exports = {
   companies: {
     createOne: async (req, res, next) => {
       // creates a company
-    
-      const formatted = {
-        id: parseInt(req.body.id),
-        name: req.body.name,
-        email: req.body.email,
-        profile_img: req.body.profile_img,
-        address: req.body.address,
-        auth0_id: req.body.auth0_id,
-        industry_id: parseInt(req.body.industry_id),
-        location_id: parseInt(req.body.location_id)
-      }
 
-      models.companies.createOne(formatted, (err, fetchedCompany) => {
+      const { name, email, auth0_id, profile_img } = req.body;
+
+      models.companies.createOne(req.body, (err, fetchedCompany) => {
         const payload = {
           success: err ? true : false,
           fetchedCompany,
@@ -112,7 +103,7 @@ module.exports = {
         auth0_id: req.body.auth0_id,
         industry_id: parseInt(req.body.industry_id),
         location_id: parseInt(req.body.location_id)
-      }
+      };
 
       models.companies.updateCompany(id, formatted, (err, company) => {
         const payload = {
@@ -151,11 +142,12 @@ module.exports = {
     getById: (req, res, next) => {
       const { id } = req.params;
 
-      models.jobposts.getById(id, (err, jobposts) => {
+      models.jobposts.getById(id, (err, jobpost) => {
+        console.log(jobpost, 'this is jobpost');
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
-          jobposts
+          jobpost
         };
         res.send(payload)
       });
