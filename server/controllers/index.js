@@ -152,7 +152,6 @@ module.exports = {
       const { id } = req.params;
 
       models.jobposts.getById(id, (err, jobpost) => {
-        console.log(jobpost, 'this is jobpost');
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
