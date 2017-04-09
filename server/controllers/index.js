@@ -179,10 +179,10 @@ module.exports = {
         res.send(payload)
       });
     },
-    getAllCompanyPosts: (req, res, next) => {
+    getJobPostsByCompany: (req, res, next) => {
       const { company_id } = req.params;
 
-      models.jobposts.getAllCompanyPosts(company_id, (err, jobposts) => {
+      models.jobposts.getJobPostsByCompany(company_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -191,31 +191,7 @@ module.exports = {
         res.send(payload)
       });
     },
-    getCompanyPostById: (req, res, next) => {
-      const { post_id, company_id } = req.params;
-
-      models.jobposts.getCompanyPostById(post_id, company_id, (err, jobposts) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobposts
-        };
-        res.send(payload)
-      });
-    },
-    deleteCompanyPost: (req, res, next) => {
-      const { post_id, company_id } = req.params;
-
-      models.jobposts.deleteCompanyPost(post_id, company_id, (err, jobposts) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobposts
-        };
-        res.send(payload)
-      });
-    },
-    updateCompanyPost: (req, res, next) => {
+    updateJobPost: (req, res, next) => {
 
       var formatted = {
         id: parseInt(req.body.id),
@@ -226,6 +202,18 @@ module.exports = {
       }
 
       models.jobposts.updateCompanyPost(formatted, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
+    deleteJobPost: (req, res, next) => {
+      const { post_id, company_id } = req.params;
+
+      models.jobposts.deleteCompanyPost(post_id, company_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
