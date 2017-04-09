@@ -308,9 +308,12 @@ module.exports = {
         res.send(payload)
       });
     },
-    // getUserVideos: () => {
-
-    // }
+    createOne: (req, res, next) => {
+      models.videos.createOne((err, video) => {
+        console.log(video);
+        console.log('saved successfully to submission');
+      });
+    }
   },
 
   locations: {

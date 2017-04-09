@@ -6,6 +6,7 @@ const Location = require('./Location');
 const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
+const Submission = require('./Submission');
 
 module.exports = {
   users: {
@@ -15,8 +16,8 @@ module.exports = {
         .allowEager('[industry]')
         .eager('industry')
         .skipUndefined()
-        .then((users) => { cb(null, users) })
-        .catch(err => { console.log(err) })
+        .then((users) => cb(null, users))
+        .catch((err) => cb(err, null));
     },
     getById: () => {
 
@@ -122,55 +123,7 @@ module.exports = {
 
             cb(null, userToReturn);
           }
-
-          // .then((relationExists) => {
-          //   if (relationExists.length) {
-          //     if (index === industriesLength - 1) {
-          //   console.log('already exists', relationExists);
-          //   console.log(index, industriesLength);
-          //       User
-          //         .query()
-          //         .findById(id)
-          //         .allowEager('[industry]')
-          //         .eager('industry')
-          //         .skipUndefined()
-          //         .then((updatedUser) => {
-          //           return cb(null, updatedUser);
-          //         });
-          //     }
-          //     console.log('industry already saved, skip');
-          //     if (industriesLength === 1) {
-          //       User
-          //         .query()
-          //         .findById(id)
-          //         .allowEager('[industry]')
-          //         .eager('industry')
-          //         .skipUndefined()
-          //         .then((updatedUser) => {
-          //           return cb(null, updatedUser);
-          //         });
-          //     }
-          //     return;
-          //   }
-            // industry
-            //   .$relatedQuery('user')
-            //   .relate(id)
-            //   .then(async (usrId) => {
-            //     await User
-            //       .query()
-            //       .findById(usrId)
-            //       .allowEager('[industry]')
-            //       .eager('industry')
-            //       .skipUndefined()
-            //       .then((updatedUser) => {
-            //         if (index === industriesLength - 1) {
-            //           console.log('index', index);
-            //           cb(null, updatedUser);
-            //         }
-            //       });
-            //   });
-          // });
-      });
+        });
       }
     },
     deleteIndustryById: async ({ id, industryId }, cb) => {
@@ -322,7 +275,14 @@ module.exports = {
         .catch( err => { console.log(err) })
     }
   },
+  submissions: {
+    getAll: (cb) => {
 
+    },
+    createOne: (cb) => {
+
+    }
+  },
   videos: {
     getAll: (cb) => {
       Video
@@ -331,7 +291,8 @@ module.exports = {
         .catch( err => { console.log(err) })
     },
     getUserVideos: () => {
-      
+    },
+    createOne: (cb) => {
     }
   },
   locations: {
