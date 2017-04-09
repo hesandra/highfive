@@ -22,12 +22,12 @@ class Question extends Model {
   static get relationMappings() {
     return {
       jobpost: {
-        relation: Model.BelongsToOneRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: `${__dirname}/Jobpost`,
         join: {
           from: 'question.id',
           through: {
-            from: 'jobpost_question.question.id',
+            from: 'jobpost_question.question_id',
             to: 'jobpost_question.jobpost_id'
           },
           to: 'jobpost.id'

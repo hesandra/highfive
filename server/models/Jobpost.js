@@ -35,7 +35,7 @@ class Jobpost extends Model {
         }
       },
       question: {
-        relation: Model.HasManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: `${__dirname}/Question`,
         join: {
           from: 'jobpost.id',

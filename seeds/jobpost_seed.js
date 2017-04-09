@@ -41,6 +41,6 @@ exports.seed = function (knex, Promise) {
             location_id: 1
           }
         ]);
-      })
+      });
   });
 };

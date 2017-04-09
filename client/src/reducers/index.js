@@ -4,6 +4,7 @@ import userAuth from './userAuth';
 import companyAuth from './companyAuth';
 import companyProfile from './company';
 import jobPosts from './jobPosts';
+import jobPost from './jobPost';
 import interview from './interview';
 import browse from './browse';
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   companyAuth,
   companyProfile,
   jobPosts,
+  jobPost,
   interview,
   browse
 });
