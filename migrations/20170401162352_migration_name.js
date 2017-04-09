@@ -17,6 +17,8 @@ return knex.raw('SET foreign_key_checks = 0;')
         table.string('profile_img');
         table.string('github_url');
         table.string('linkedin_url');
+        table.string('created_at').notNullable().defaultTo(new Date().toISOString());
+        table.string('updated_at').notNullable().defaultTo(new Date().toISOString());
       })
       .createTable('industry', (table) => {
         table.increments('id').primary()

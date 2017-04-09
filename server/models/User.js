@@ -1,11 +1,11 @@
 const Model = require('objection').Model;
 
 class User extends Model {
-  $beforeUpdate() {
-    this.updatedAt = new Date().toISOString();
-  }
   $beforeInsert() {
-    this.createdAt = new Date().toISOString();
+    this.created_at = new Date().toISOString();
+  }
+  $beforeUpdate() {
+    this.updated_at = new Date().toISOString();
   }
   static get tableName() {
     return 'user';
@@ -22,7 +22,9 @@ class User extends Model {
         location_id:     { type: 'integer' },
         profile_img:     { type: 'string' },
         github_url:      { type: 'string' },
-        linkedin_url:    { type: 'string' }
+        linkedin_url:    { type: 'string' },
+        created_at:      { type: 'string' },
+        updated_at:      { type: 'string' }
       }
     };
   }
