@@ -67,6 +67,16 @@ module.exports = {
   companies: {
     createOne: async (req, res, next) => {
       // creates a company
+    
+      const formatted = {
+        name: req.body.name,
+        email: req.body.email,
+        profile_img: req.body.profile_img,
+        address: req.body.address,
+        auth0_id: req.body.auth0_id,
+        industry_id: parseInt(req.body.industry_id),
+        location_id: parseInt(req.body.location_id)
+      }
 
       const { name, email, auth0_id, profile_img } = req.body;
 
@@ -170,10 +180,10 @@ module.exports = {
         res.send(payload)
       });
     },
-    getAllCompanyPosts: (req, res, next) => {
+    getJobPostsByCompany: (req, res, next) => {
       const { company_id } = req.params;
 
-      models.jobposts.getAllCompanyPosts(company_id, (err, jobposts) => {
+      models.jobposts.getJobPostsByCompany(company_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -182,31 +192,7 @@ module.exports = {
         res.send(payload)
       });
     },
-    getCompanyPostById: (req, res, next) => {
-      const { post_id, company_id } = req.params;
-
-      models.jobposts.getCompanyPostById(post_id, company_id, (err, jobposts) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobposts
-        };
-        res.send(payload)
-      });
-    },
-    deleteCompanyPost: (req, res, next) => {
-      const { post_id, company_id } = req.params;
-
-      models.jobposts.deleteCompanyPost(post_id, company_id, (err, jobposts) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          jobposts
-        };
-        res.send(payload)
-      });
-    },
-    updateCompanyPost: (req, res, next) => {
+    updateJobPost: (req, res, next) => {
 
       var formatted = {
         id: parseInt(req.body.id),
@@ -217,6 +203,18 @@ module.exports = {
       }
 
       models.jobposts.updateCompanyPost(formatted, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload)
+      });
+    },
+    deleteJobPost: (req, res, next) => {
+      const { post_id, company_id } = req.params;
+
+      models.jobposts.deleteCompanyPost(post_id, company_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
