@@ -19,9 +19,9 @@ class JobPost extends Component {
     const { jobPosts } = this.props;
     const { fetchJobPostData } = this.props;
     // send ajax action to grab jobpost if we don't have it in our store.
-    if (!jobPosts.length) {
+    // if (!jobPosts.length) {
       fetchJobPostData(id);
-    }
+    // }
   }
   render() {
     console.log(this.props);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Well } from 'react-bootstrap';
-import { Button, Dimmer, Segment, Loader } from 'semantic-ui-react';
+import { Button, Dimmer, Segment, Loader, Header } from 'semantic-ui-react';
 import ReactCountDownClock from 'react-countdown-clock';
 import recordRTC from 'recordrtc';
 import brace from 'brace';
@@ -18,9 +18,12 @@ class Interview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false
+      loaded: false,
+      time: 10,
+      questions: props.jobPost.question
     };
     this.selectNextQuestion = this.selectNextQuestion.bind(this);
+    this.handleEditorInputChange = this.handleEditorInputChange.bind(this);
   }
   /**
    * Setup submission on back-end server
@@ -31,7 +34,6 @@ class Interview extends Component {
       user_id: backend_profile.id,
       jobpost_id: jobPost.id
     };
-    console.log(this.props, 'inside comp willMount');
     requestUserMedia();
     createSubmission(submissionData);
   }
@@ -42,7 +44,7 @@ class Interview extends Component {
     }
     setTimeout(() => {
       this.setState({ loaded: true })
-    }, 3000);
+    }, 4000);
   }
   componentDidUpdate(prevProps) {
     if (this.props.stream && !this.state.done) {
@@ -52,7 +54,11 @@ class Interview extends Component {
   }
   componentWillUnmount() {
     // stop media stream if user navigates away while streaming
-    this.state.stream.stop();
+    alert('interview in progress');
+    // this.state.stream.stop();
+  }
+  handleEditorInputChange(newValue) {
+    console.log(newValue);
   }
   startRecording(stream) {
     const { backend_profile } = this.props;
@@ -64,6 +70,7 @@ class Interview extends Component {
       type: 'video',
       mimeType: 'video/webm',
     });
+    this.time = 10;
     video.startRecording();
     setTimeout(() => {
       video.stopRecording((vidsrc) => {
@@ -78,15 +85,19 @@ class Interview extends Component {
             videoData,
             name: backend_profile.name
           };
-          this.props.socket.emit('video', payload);
-          console.log('video sent');
-          this.listenForS3Link();
+          // this.props.socket.emit('video', payload);
+          // console.log('video sent');
+          // this.listenForS3Link();
         });
       }, 1000);
     }, 10000);
   }
   selectNextQuestion() {
-    console.log('fired');
+    console.log('select next question');
+    console.log(this.state);
+    this.setState({
+      time: 10
+    });
   }
   listenForS3Link() {
     this.props.socket.on('ready', (url) => {
@@ -98,8 +109,8 @@ class Interview extends Component {
     let videoOptions = {};
     if (this.state.stream) {
       videoOptions = {
-        height: '300',
-        width: '300',
+        height: '350',
+        width: '500',
         autoPlay: true,
         controls: true,
         controlBar: {
@@ -116,32 +127,45 @@ class Interview extends Component {
         <Row>
           <Col xs={12} md={12}>
             <h1 className="text-center">Interview here</h1>
-            <div className="text-center">
+            <div className="text-center clock">
               <ReactCountDownClock
-                seconds={10}
+                seconds={this.state.time}
                 alpha={0.9}
-                size={150}
+                size={75}
                 onComplete={this.selectNextQuestion}
               />
-              <hr />
-              { jobPost.question[0].question }
-              { this.state.stream ?
-                <VideoPlayer {...videoOptions} /> : '' }
-              <hr />
             </div>
-            <div>
-              <Well>
+            <div className="text-center question">
+              <hr />
+              <Header as="h1" textAlign="center">
+                { jobPost.question[0].question }
+              </Header>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6}>
+            { this.state.stream ?
+              <VideoPlayer {...videoOptions} /> : '' }
+              <hr />
+          </Col>
+          <Col xs={6}>
+            <Well>
+              <div className="text-center">
                 <AceEditor
                   mode="javascript"
                   theme="monokai"
+                  className="text-center"
+                  onChange={this.handleEditorInputChange}
+                  height="300px"
+                  width="400px"
                   editorProps={{ $blockScrolling: true }}
                   enableBasicAutocompletion
                   tabSize={2}
-                  value={'/* enter your answer below */'}
                   setOptions={{ cursorStyle: 'wide' }}
                 />
-              </Well>
-            </div>
+              </div>
+            </Well>
           </Col>
         </Row>
       </Grid>
