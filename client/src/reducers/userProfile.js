@@ -12,6 +12,12 @@ export default function userProfileReducer(state = {
       return { ...state, isFetching: false, submissions: action.submissions };
     case ActionTypes.REQUEST_JOB_SUBMISSIONS_ERROR:
       return { ...state, isFetching: false, error: action.error };
+    case ActionTypes.DELETE_INDUSTRY_REQUEST:
+      return { ...state, isDeleting: true };
+    case ActionTypes.DELETE_INDUSTRY_SUCCESS:
+      return { ...state, isDeleting: false };
+    case ActionTypes.DELETE_INDUSTRY_ERROR:
+      return { ...state, isDeleting: false, error: action.error };
     default:
       return state;
   }

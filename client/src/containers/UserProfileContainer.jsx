@@ -3,7 +3,7 @@ import { hashHistory } from 'react-router';
 import { UserProfile } from '../components';
 import { checkUserLogin, updateUserProfile } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
-import { requestJobPosts, fetchJobSubmissions } from '../actions/userProfile';
+import { requestJobPosts, fetchJobSubmissions, deleteUserIndustry } from '../actions/userProfile';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, backend_profile } = state.userAuth;
@@ -29,6 +29,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onSubmissionsClick: (id) => {
       dispatch(fetchJobSubmissions(id));
+    },
+    onDeleteIndustryClick: (userId, industryId) => {
+      dispatch(deleteUserIndustry(userId, industryId));
     }
   };
 };
