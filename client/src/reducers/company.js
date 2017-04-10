@@ -16,10 +16,13 @@ export default function (state = initialState, action) {
         profileEdited: true,
     });
     case 'PROFILE_RELOAD':
-      console.log('in PROFILE REDUCER RELOAD')
       return Object.assign({}, state, {
         companyReload: action.payload,
         profileReload: true,
+    });
+    case 'GET_POSITIONS':
+      return Object.assign({}, state, {
+        jobs: action.payload,
     });
     case 'CREATE_INTERVIEW':
       return Object.assign({}, state, {

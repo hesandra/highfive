@@ -10,11 +10,11 @@ export function updateCompany(profile) {
 export function submitProfile(profile){
   return (dispatch) => {
     const id = profile.companyId;
-    console.log('ID', id)
+    //console.log('ID', id)
     const updatedProfile = profile.updatedProfile;
     axios.put('http://localhost:3000/api/companies/' + id, updatedProfile)
       .then((company) => {
-        console.log('result in company actions', JSON.parse(company.config.data));
+        //console.log('result in company actions', JSON.parse(company.config.data));
         dispatch(updateCompany(JSON.parse(company.config.data)));
       })
       .catch((err) => {
@@ -24,7 +24,7 @@ export function submitProfile(profile){
 }
 
 export function refreshCompany(profile){
-console.log('profile in refreshCompany actions???????????????', profile);
+//console.log('profile in refreshCompany actions???????????????', profile);
   return {
     type: 'PROFILE_RELOAD',
     payload: profile,
@@ -32,7 +32,7 @@ console.log('profile in refreshCompany actions???????????????', profile);
 }
 
 export function getCompany(companyId){
-  console.log('in GET COMPANY')
+  //console.log('in GET COMPANY')
   const id = companyId;
   return (dispatch) => {
     axios.get('http://localhost:3000/api/companies/' + id)
@@ -44,6 +44,29 @@ export function getCompany(companyId){
         console.error(err);
       });
   };  
+}
+
+export function getJobs(jobs){
+  return {
+    type: 'GET_POSITIONS',
+    payload: jobs
+  }
+}
+
+export function getPositions(companyId){
+  console.log('in get positions');
+  console.log('companyId*****************', companyId)
+  const company_id = companyId; 
+  return (dispatch) => {
+    axios.get('http://localhost:3000/api/jobposts/company/' + company_id)
+    .then((jobposts) => {
+      console.log('jobposts in getPostiions', jobposts)
+      dispatch(getJobs(jobposts))
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
 }
 
 

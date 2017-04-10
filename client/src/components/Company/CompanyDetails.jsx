@@ -18,7 +18,7 @@ class CompanyDetails extends React.Component {
   }
 
   renderProfile() {
-    console.log(this.props, 'PROPS IN COMPANY DETAILS')
+    //console.log(this.props, 'PROPS IN COMPANY DETAILS')
     if (this.props.companyAuth.companyProfile.profileEdited) {
       return (
         <div>
