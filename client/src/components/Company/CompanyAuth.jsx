@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import axios from 'axios';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
 import { Icon, Label } from 'semantic-ui-react';
@@ -33,3 +33,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyAuth);
+*/
