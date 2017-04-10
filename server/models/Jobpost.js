@@ -29,7 +29,6 @@ class Jobpost extends Model {
       }
     };
   }
-
   static get relationMappings() {
     return {
       company: {

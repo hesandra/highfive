@@ -17,16 +17,15 @@ module.exports = {
     });
 
     io.on('connection', (socket) => {
-      console.log('connection');
-      socket.on('video', (data) => {
-        const dataURL = data.split(',').pop();
+      socket.on('video', ({ videoData, name}) => {
+        const dataURL = videoData.split(',').pop();
         const fileBuffer = new Buffer(dataURL, 'base64');
         // fs.writeFileSync('./t.webm', fileBuffer);
         count++;
 
         const s3Params = {
           Bucket: process.env.S3_BUCKET,
-          Key: `blah${count}.webm`,
+          Key: `${name}.webm`,
           Body: fileBuffer,
           Expires: new Date(),
           ACL: 'public-read'

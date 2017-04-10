@@ -50,7 +50,22 @@ exports.seed = function (knex, Promise) {
               id: 9,
               jobpost_id: 3,
               question_id: 9
-            }
+            },
+            {
+              id: 10,
+              jobpost_id: 4,
+              question_id: 1
+            },
+            {
+              id: 11,
+              jobpost_id: 4,
+              question_id: 2
+            },
+            {
+              id: 12,
+              jobpost_id: 4,
+              question_id: 5
+            },
           ]);
         });
     });

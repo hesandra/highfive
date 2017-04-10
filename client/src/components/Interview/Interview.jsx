@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Well } from 'react-bootstrap';
 import { Button, Dimmer, Segment, Loader } from 'semantic-ui-react';
+import ReactCountDownClock from 'react-countdown-clock';
 import recordRTC from 'recordrtc';
 import brace from 'brace';
 import AceEditor from 'react-ace';
@@ -19,6 +20,7 @@ class Interview extends Component {
     this.state = {
       loaded: false
     };
+    this.selectNextQuestion = this.selectNextQuestion.bind(this);
   }
   /**
    * Setup submission on back-end server
@@ -53,6 +55,7 @@ class Interview extends Component {
     this.state.stream.stop();
   }
   startRecording(stream) {
+    const { backend_profile } = this.props;
     if (stream.active) {
       this.setState({ stream, done: true });
       this.stream = stream;
@@ -70,13 +73,20 @@ class Interview extends Component {
         }
       });
       setTimeout(() => {
-        const url = video.getDataURL((dataUrl) => {
-          this.props.socket.emit('video', dataUrl);
+        const url = video.getDataURL((videoData) => {
+          const payload = {
+            videoData,
+            name: backend_profile.name
+          };
+          this.props.socket.emit('video', payload);
           console.log('video sent');
           this.listenForS3Link();
         });
       }, 1000);
     }, 10000);
+  }
+  selectNextQuestion() {
+    console.log('fired');
   }
   listenForS3Link() {
     this.props.socket.on('ready', (url) => {
@@ -84,7 +94,7 @@ class Interview extends Component {
     });
   }
   render() {
-    const { requestUserMedia } = this.props;
+    const { requestUserMedia, jobPost } = this.props;
     let videoOptions = {};
     if (this.state.stream) {
       videoOptions = {
@@ -107,8 +117,14 @@ class Interview extends Component {
           <Col xs={12} md={12}>
             <h1 className="text-center">Interview here</h1>
             <div className="text-center">
-              <Button onClick={requestUserMedia} primary>Get STREAM</Button>
+              <ReactCountDownClock
+                seconds={10}
+                alpha={0.9}
+                size={150}
+                onComplete={this.selectNextQuestion}
+              />
               <hr />
+              { jobPost.question[0].question }
               { this.state.stream ?
                 <VideoPlayer {...videoOptions} /> : '' }
               <hr />
