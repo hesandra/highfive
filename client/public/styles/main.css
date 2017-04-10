@@ -114,3 +114,7 @@ a {
 .space {
   height: 50px
 }
+
+.ui.list:last-child, ol.ui.list:last-child, ul.ui.list:last-child {
+  margin-top: 15px;
+}

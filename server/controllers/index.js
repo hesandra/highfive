@@ -296,7 +296,34 @@ module.exports = {
       });
     }
   },
-  
+  submissions: {
+    getAll: (req, res, next) => {
+      models.submissions.getAll((err, submissions) => {
+        console.log(submissions);
+      })
+    },
+    getAllByUserId: (req, res, next) => {
+      const { id } = req.params;
+      models.submissions.getAllByUserId(id, (err, submissions) => {
+        const payload = {
+          success: err ? false : true,
+          submissions,
+          err
+        };
+        res.status(200).send(JSON.stringify(payload));
+      });
+    },
+    createOne: (req, res, next) => {
+      models.submissions.createOne(req.body, (err, submission) => {
+        const payload = {
+          success: err ? false : true,
+          submission,
+          err
+        };
+        res.status(201).send(JSON.stringify(payload));
+      });
+    }
+  },
   videos: {
     getAll: (req, res, next) => {
       models.videos.getAll((err, videos) => {
@@ -308,9 +335,12 @@ module.exports = {
         res.send(payload)
       });
     },
-    // getUserVideos: () => {
-
-    // }
+    createOne: (req, res, next) => {
+      models.videos.createOne((err, video) => {
+        console.log(video);
+        console.log('saved successfully to submission');
+      });
+    }
   },
 
   locations: {

@@ -3,21 +3,24 @@ import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootst
 import { Link, hashHistory } from 'react-router';
 import SettingsForm from './SettingsForm';
 import EditProfileForm from './EditProfileForm';
+import SubmissionsList from './SubmissionsList';
 
 const UserProfileNav = (props) => {
-  const { onJobPostsClick, githubLink, id, location, linkedinLink, onUpdateUserProfile, industries } = props;
+  const { onJobPostsClick, onSubmissionsClick, githubLink, id, location,
+    linkedinLink, onUpdateUserProfile, industries, submissions } = props;
+    console.log('dis submissions', submissions);
   return (
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
         <Row className="clearfix">
-          <Col sm={12}>
+          <Col sm={8}>
             <Nav bsStyle="tabs">
               <NavItem eventKey="1">
                 Notifications
                 <br />
                 <i className="fa fa-envelope-open-o" aria-hidden="true" />
               </NavItem>
-              <NavItem eventKey="2">
+              <NavItem onClick={() => { onSubmissionsClick(id); }} eventKey="2">
                 Submissions
                 <br />
                 <i className="fa fa-folder-open" aria-hidden="true" />
@@ -39,14 +42,16 @@ const UserProfileNav = (props) => {
               </NavItem>
             </Nav>
           </Col>
-          <Col sm={12}>
+          <Col sm={8}>
             <Tab.Content animation>
               <Tab.Pane eventKey="1">
                 notifications here
             </Tab.Pane>
               <Tab.Pane eventKey="2">
-                Submissions
-            </Tab.Pane>
+                <SubmissionsList
+                  submissions={submissions}
+                />
+              </Tab.Pane>
               <Tab.Pane eventKey="3" />
               <Tab.Pane eventKey="4">
                 <EditProfileForm

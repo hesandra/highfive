@@ -1,5 +1,6 @@
 const fs = require('fs');
-const AWS = require('aws-sdk'); 
+const AWS = require('aws-sdk');
+const axios = require('axios');
 
 const s3 = new AWS.S3();
 

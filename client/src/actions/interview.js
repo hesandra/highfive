@@ -1,3 +1,4 @@
+import axios from 'axios';
 /**
  * Actions Responsible for Interview logic
  */
@@ -39,4 +40,34 @@ export function getUserMedia() {
       .catch(e => dispatch(requestUserMediaError(e)));
   };
 }
+
+
+export const CREATE_SUBMISSION_REQUEST = 'CREATE_SUBMISSION_REQUEST';
+function createSubmissionRequest() {
+  return {
+    type: CREATE_SUBMISSION_REQUEST
+  };
+}
+
+export const CREATE_SUBMISSION_SUCCESS = 'CREATE_SUBMISSION_SUCCESS';
+export function createSubmissionSuccess(submission) {
+  return {
+    type: CREATE_SUBMISSION_SUCCESS
+  };
+}
+
+export function createSubmission(submissionData) {
+  return (dispatch) => {
+    dispatch(createSubmissionRequest());
+
+    axios.post('http://localhost:3000/api/submissions', submissionData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+}
+
 

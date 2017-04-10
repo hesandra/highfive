@@ -1,9 +1,15 @@
 const Model = require('objection').Model;
 
-const Question = require('./Question')
-const Company = require('./Company')
+const Question = require('./Question');
+const Company = require('./Company');
 
 class Jobpost extends Model {
+  $beforeInsert() {
+    this.created_at = new Date().toISOString();
+  }
+  $beforeUpdate() {
+    this.updated_at = new Date().toISOString();
+  }
   static get tableName() {
     return 'jobpost';
   }

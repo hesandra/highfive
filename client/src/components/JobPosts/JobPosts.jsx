@@ -12,8 +12,11 @@ class JobPosts extends Component {
     };
   }
   componentDidMount() {
-    const { requestJobPosts } = this.props;
-    requestJobPosts();
+    const { jobPosts } = this.props;
+    if (!jobPosts.length) {
+      const { requestJobPosts } = this.props;
+      requestJobPosts();
+    }
   }
   render() {
     const { jobPosts } = this.props;
