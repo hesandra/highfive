@@ -3,6 +3,7 @@ import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootst
 import { Link } from 'react-router';
 import CompanyProfile from './CompanyProfile';
 import Positions from './Positions';
+import Submissions from './Submissions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
@@ -34,7 +35,7 @@ const CompanyNavbar = (props) => {
                 Notifications
             </Tab.Pane>
               <Tab.Pane eventKey="second">
-                Submissions
+                <Submissions />
             </Tab.Pane>
               <Tab.Pane eventKey="3.1">
                 <Positions />

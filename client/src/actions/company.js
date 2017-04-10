@@ -76,6 +76,26 @@ export function getPositions(){
   }
 }
 
+/*export function getSubs(submissions){
+  return {
+    type: 'GET_SUBMISSIONS',
+    payload: submissions
+  }
+}
+
+export function getSubmissions(){
+  return (dispatch) => {
+    axios.get('http://localhost:3000/api/jobposts')
+    .then((jobposts) => {
+      console.log('in submissions', jobposts)
+      dispatch(getSubs(jobposts.data.jobposts))
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+}*/
+
 
 export function createInterview(){
   return {

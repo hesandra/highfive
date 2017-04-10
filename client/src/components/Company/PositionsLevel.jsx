@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Image, Button, FormGroup } from 'react-bootstrap';
+import { Grid, Row, Col, Image, Button, FormGroup, Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createInterview, getQuestions, getPositions } from '../../actions/company';
@@ -10,14 +10,31 @@ class PositionsLevel extends React.Component {
     this.props.getPositions();
   }
   renderJobs() {
-    //console.log('props in positionslevel', this.props)
+    console.log('props in positionslevel', this.props.companyProfile.jobs);
     return (
       <div>
         {this.props.companyProfile.jobs.map((item, idx) => {
           if (this.props.companyProfile.level === item.level && this.props.companyProfile.companyReload[0].id === item.company_id) {
-            return (
-              <div>{item.title}</div>
-            )
+            return ( 
+              <div> 
+  <Table responsive>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{item.id}</td>
+        <td>{item.title}</td><td>{item.description}</td><td>{item.created_at}</td><td>{item.updated_at}</td>
+      </tr>
+    </tbody>
+  </Table>
+            </div>)
           }
         })}
         <FormGroup>
