@@ -5,21 +5,22 @@ import { bindActionCreators } from 'redux';
 import { createInterview, getQuestions, getPositions } from '../../actions/company';
 
 class PositionsLevel extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getQuestions();
     this.props.getPositions();
-}
-   renderJobs(){
+  }
+  renderJobs() {
     console.log('props in positionslevel', this.props)
     return (
       <div>
-      {this.props.companyProfile.jobs.map((item, idx) => {
-        if (this.props.companyProfile.level === item.level && this.props.companyProfile.companyReload[0].id === item.company_id){
-          return (
-            <div>{item.title}</div>
-          )}
-      })}  
-          <FormGroup>
+        {this.props.companyProfile.jobs.map((item, idx) => {
+          if (this.props.companyProfile.level === item.level && this.props.companyProfile.companyReload[0].id === item.company_id) {
+            return (
+              <div>{item.title}</div>
+            )
+          }
+        })}
+        <FormGroup>
           <Col smOffset={3} sm={8}>
             <Button onClick={() => this.props.createInterview()} type="submit" value="Submit">
               Create new Interview
@@ -29,10 +30,14 @@ class PositionsLevel extends React.Component {
       </div>
     );
   }
-render(){
-  return (
-  <div>{this.renderJobs()}</div>
-   )
+  render() {
+    if (this.props.companyProfile.jobs !== undefined) {
+      return (
+        <div>{this.renderJobs()}</div>
+      )
+    } else {
+      return (<div>{}</div>)
+    }
   }
 }
 
