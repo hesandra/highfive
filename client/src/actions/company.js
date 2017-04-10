@@ -10,11 +10,19 @@ export function updateCompany(profile) {
 export function submitProfile(profile){
   return (dispatch) => {
     const id = profile.companyId;
-    //console.log('ID', id)
+    //console.log('profile in sumbitProfile', profile)
     const updatedProfile = profile.updatedProfile;
+    const industryId = parseInt(updatedProfile.industry_id);
+    const locationId = parseInt(updatedProfile.location_id);
+    updatedProfile.industry_id = industryId;
+    updatedProfile.location_id = locationId;
+    //console.log('updatedProfile', updatedProfile);
+    //console.log('updatedProfile', profile.updatedProfile);
+    //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
+    //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
     axios.put('http://localhost:3000/api/companies/' + id, updatedProfile)
       .then((company) => {
-        //console.log('result in company actions', JSON.parse(company.config.data));
+        console.log('result in company actions', company.config.data);
         dispatch(updateCompany(JSON.parse(company.config.data)));
       })
       .catch((err) => {
@@ -37,7 +45,7 @@ export function getCompany(companyId){
   return (dispatch) => {
     axios.get('http://localhost:3000/api/companies/' + id)
       .then((company) => {
-        console.log('company in actions getcompany', company)
+        //console.log('company in actions getcompany', company)
         dispatch(refreshCompany(company.data.company));
       })
       .catch((err) => {
