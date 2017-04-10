@@ -7,12 +7,18 @@ import { createInterview, getQuestions, getPositions } from '../../actions/compa
 class PositionsLevel extends React.Component {
   componentDidMount(){
     this.props.getQuestions();
-    this.props.getPositions(this.props.companyProfile.companyReload[0].id);
+    this.props.getPositions();
 }
    renderJobs(){
     console.log('props in positionslevel', this.props)
     return (
       <div>
+      {this.props.companyProfile.jobs.map((item, idx) => {
+        if (this.props.companyProfile.level === item.level && this.props.companyProfile.companyReload[0].id === item.company_id){
+          return (
+            <div>{item.title}</div>
+          )}
+      })}  
           <FormGroup>
           <Col smOffset={3} sm={8}>
             <Button onClick={() => this.props.createInterview()} type="submit" value="Submit">
@@ -42,7 +48,11 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(mapStateToProps, mapDispatchToProps)(PositionsLevel);
 
-/*renderJobs(){
+/*
+this.props.getPositions(this.props.companyProfile.companyReload[0].id)
+
+
+renderJobs(){
     console.log('props in positionslevel', this.props)
     return (
       <div>

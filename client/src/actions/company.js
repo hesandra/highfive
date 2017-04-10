@@ -53,15 +53,14 @@ export function getJobs(jobs){
   }
 }
 
-export function getPositions(companyId){
+export function getPositions(){
   console.log('in get positions');
-  console.log('companyId*****************', companyId)
-  const company_id = companyId; 
+  //const company_id = companyId; 
   return (dispatch) => {
-    axios.get('http://localhost:3000/api/jobposts/company/' + company_id)
+    axios.get('http://localhost:3000/api/jobposts')
     .then((jobposts) => {
       console.log('jobposts in getPostiions', jobposts)
-      dispatch(getJobs(jobposts))
+      dispatch(getJobs(jobposts.data.jobposts))
     })
     .catch((err) => {
       console.error(err);
