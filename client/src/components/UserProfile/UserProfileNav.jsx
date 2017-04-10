@@ -8,7 +8,6 @@ import SubmissionsList from './SubmissionsList';
 const UserProfileNav = (props) => {
   const { onJobPostsClick, onSubmissionsClick, githubLink, id, location,
     linkedinLink, onUpdateUserProfile, industries, submissions } = props;
-    console.log('dis submissions', submissions);
   return (
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
@@ -55,7 +54,7 @@ const UserProfileNav = (props) => {
               <Tab.Pane eventKey="3" />
               <Tab.Pane eventKey="4">
                 <EditProfileForm
-                  onUpdateUserProfile={onUpdateUserProfile}
+                  handleUpdateUserProfile={onUpdateUserProfile}
                   githubLink={githubLink}
                   id={id}
                   location={location}

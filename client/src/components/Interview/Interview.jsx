@@ -30,7 +30,7 @@ class Interview extends Component {
       jobpost_id: jobPost.id
     };
     console.log(this.props, 'inside comp willMount');
-    // requestUserMedia();
+    requestUserMedia();
     createSubmission(submissionData);
   }
   componentDidMount() {
