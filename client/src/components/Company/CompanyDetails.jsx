@@ -10,44 +10,55 @@ class CompanyDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-       }
     }
+  }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getCompany(this.props.companyAuth.companyAuth.company_backend_profile.id);
   }
 
-renderProfile(){
-  console.log(this.props, 'PROPS IN COMPANY DETAILS')
-  return (
-    <div>
-      <Grid fluid>
-        <Row>
-          <Col xs={6} md={4}>
-          {this.props.companyAuth.companyProfile.profileEdited ?
-            <div>
-            <Image className="company-img text-center" src={this.props.profile_img} circle />
-            <h1>{this.props.name}</h1>
-            <h2>{this.props.industry_id}</h2>
-            <h2>{this.props.location_id}</h2>
-            </div> : 
-            <div>
-            <Image className="company-img text-center" src={this.props.companyAuth.companyAuth.company_backend_profile.profile_img} circle />
-            <h1>{this.props.companyAuth.companyAuth.company_backend_profile.name}</h1>
-            <h2>{this.props.companyAuth.companyAuth.company_backend_profile.industry_id}</h2>
-            <h2>{this.props.companyAuth.companyAuth.company_backend_profile.location_id}</h2>
-            </div>
-          }
-          </Col>
-        </Row>
-      </Grid>
-    </div>
-  );
- }
-render (){        
-    return(
+  renderProfile() {
+    console.log(this.props, 'PROPS IN COMPANY DETAILS')
+    if (this.props.companyAuth.companyProfile.profileEdited) {
+      return (
+        <div>
+          <Image className="company-img text-center" src={this.props.profile_img} circle />
+          <h1>{this.props.name}</h1>
+          <h2>{this.props.industry_id}</h2>
+          <h2>{this.props.location_id}</h2>
+        </div>)
+    }
+    else if (this.props.companyAuth.companyProfile.profileReload) {
+      return (
+        <div>
+          <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.companyReload[0].profile_img} circle />
+          <h1>{this.props.companyAuth.companyProfile.companyReload[0].name}</h1>
+          <h2>{this.props.companyAuth.companyProfile.companyReload[0].industry_id}</h2>
+          <h2>{this.props.companyAuth.companyProfile.companyReload[0].location_id}</h2>
+        </div>
+
+      )
+    } else {
+      return (
+        <div>
+          <Image className="company-img text-center" src={this.props.companyAuth.companyAuth.company_backend_profile.profile_img} circle />
+          <h1>{this.props.companyAuth.companyAuth.company_backend_profile.name}</h1>
+          <h2>{this.props.companyAuth.companyAuth.company_backend_profile.industry_id}</h2>
+          <h2>{this.props.companyAuth.companyAuth.company_backend_profile.location_id}</h2>
+        </div>
+      )
+    }
+  }
+  render() {
+    return (
       <div>
-        { this.renderProfile() }
+        <Grid fluid>
+          <Row>
+            <Col xs={6} md={4}>
+              {this.renderProfile()}
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )
   }
