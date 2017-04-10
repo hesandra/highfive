@@ -4,6 +4,8 @@ let initialState = {
   junior: false, 
   mid: false,
   selectedQuestion: [],
+  profileEdited: false,
+  profileReload: false,
 }
 
 export default function (state = initialState, action) {
@@ -11,6 +13,16 @@ export default function (state = initialState, action) {
     case 'PROFILE_SUBMITTED':
       return Object.assign({}, state, {
         companyProfile: action.payload,
+        profileEdited: true,
+    });
+    case 'PROFILE_RELOAD':
+      return Object.assign({}, state, {
+        companyReload: action.payload,
+        profileReload: true,
+    });
+    case 'GET_POSITIONS':
+      return Object.assign({}, state, {
+        jobs: action.payload,
     });
     case 'CREATE_INTERVIEW':
       return Object.assign({}, state, {

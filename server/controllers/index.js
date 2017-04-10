@@ -226,6 +226,7 @@ module.exports = {
   questions: {
     getAll: (req, res, next) => {
       models.questions.getAll((err, questions) => {
+        console.log('questions', questions);
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
