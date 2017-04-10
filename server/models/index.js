@@ -276,11 +276,27 @@ module.exports = {
     }
   },
   submissions: {
-    getAll: (cb) => {
-
+    getAll: async (cb) => {
+      const submissions = await Submission
+        .query()
+        .catch(err => cb(err, null));
+      cb(null, submissions);
     },
-    createOne: (cb) => {
-
+    getAllByUserId: async (id, cb) => {
+      const userSubmissions = await User
+        .query()
+        .eager('[submission, submission.jobpost]')
+        .where('id', id)
+        .first()
+        .catch(err => cb(err, null));
+      cb(null, userSubmissions);
+    },
+    createOne: async (submission, cb) => {
+      const insertedSubmission = await Submission
+        .query()
+        .insert(submission)
+        .catch(e => cb(e, null));
+      cb(null, insertedSubmission);
     }
   },
   videos: {

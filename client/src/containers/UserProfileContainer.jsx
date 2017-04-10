@@ -3,14 +3,16 @@ import { hashHistory } from 'react-router';
 import { UserProfile } from '../components';
 import { checkUserLogin, updateUserProfile } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
-import { requestJobPosts } from '../actions/userProfile';
+import { requestJobPosts, fetchJobSubmissions } from '../actions/userProfile';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, backend_profile } = state.userAuth;
+  const { submissions } = state.userProfile;
   return {
     isAuthenticated,
     profile,
-    backend_profile
+    backend_profile,
+    submissions
   };
 };
 
@@ -24,6 +26,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onUpdateUserProfile: (profile) => {
       dispatch(updateUserProfile(profile));
+    },
+    onSubmissionsClick: (id) => {
+      dispatch(fetchJobSubmissions(id));
     }
   };
 };

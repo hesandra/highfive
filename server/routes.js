@@ -40,6 +40,10 @@ router.get('/api/questions', controller.questions.getAll);
 // submission by user id must be eager loaded with all videos
 // post a submission by user id
 
+router.get('/api/submissions', controller.submissions.getAll);
+router.get('/api/submissions/user/:id', controller.submissions.getAllByUserId);
+router.post('/api/submissions', controller.submissions.createOne);
+
 // videos
 // post a video
 router.post('/api/video', controller.videos.createOne);

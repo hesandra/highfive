@@ -20,9 +20,18 @@ class Interview extends Component {
       loaded: false
     };
   }
+  /**
+   * Setup submission on back-end server
+   */
   componentWillMount() {
-    const { requestUserMedia } = this.props;
-    requestUserMedia();
+    const { requestUserMedia, createSubmission, backend_profile, jobPost } = this.props;
+    const submissionData = {
+      user_id: backend_profile.id,
+      jobpost_id: jobPost.id
+    };
+    console.log(this.props, 'inside comp willMount');
+    // requestUserMedia();
+    createSubmission(submissionData);
   }
   componentDidMount() {
     if (!hasGetUserMedia) {

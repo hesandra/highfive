@@ -27,7 +27,7 @@ class UserProfile extends Component {
       .catch(e => console.log(e));
   }
   render() {
-    const { profile, onJobPostsClick, backend_profile, onUpdateUserProfile } = this.props;
+    const { profile, submissions, onJobPostsClick, backend_profile, onUpdateUserProfile, onSubmissionsClick } = this.props;
     console.log(this.props, 'USSSEEEERRRR')
     let profileImage;
     let name;
@@ -117,6 +117,8 @@ class UserProfile extends Component {
             <UserProfileNav
               onJobPostsClick={onJobPostsClick}
               onUpdateUserProfile={onUpdateUserProfile}
+              onSubmissionsClick={onSubmissionsClick}
+              submissions={submissions}
               githubLink={profile.html_url}
               linkedinLink={linkedinLink}
               industries={industries}

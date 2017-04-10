@@ -7,16 +7,18 @@ import jobPosts from './jobPosts';
 import jobPost from './jobPost';
 import interview from './interview';
 import browse from './browse';
+import userProfile from './userProfile';
 
 const rootReducer = combineReducers({
   routing,
   userAuth,
+  userProfile,
   companyAuth,
   companyProfile,
   jobPosts,
   jobPost,
   interview,
-  browse
+  browse,
 });
 
 export default rootReducer;
