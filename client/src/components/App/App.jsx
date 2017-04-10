@@ -11,8 +11,8 @@ class App extends Component {
     };
     // check login status here
 
-    //this.props.checkUserLogin();
-    this.props.checkCompanyLogin();
+    this.props.checkUserLogin();
+    // this.props.checkCompanyLogin();
   }
 
   render() {

@@ -22,15 +22,15 @@ router.delete('/api/companies/:id', controller.companies.deleteCompany);
 router.get('/api/jobposts', controller.jobposts.getAll);
 router.get('/api/jobposts/:id', controller.jobposts.getById);
 router.post('/api/jobposts', controller.jobposts.createOne);
-router.get('/api/jobposts/company/:company_id', controller.jobposts.getJobPostsByCompany)
-router.put('/api/jobposts/:id', controller.jobposts.updateJobPost)
-router.delete('/api/jobposts/:id', controller.jobposts.deleteJobPost)
+router.get('/api/jobposts/company/:company_id', controller.jobposts.getJobPostsByCompany);
+router.put('/api/jobposts/:id', controller.jobposts.updateJobPost);
+router.delete('/api/jobposts/:id', controller.jobposts.deleteJobPost);
 
-//submissions
+// submissions
 router.get('/api/submissions/:id', controller.submissions.getBySubmissionId);
 router.get('/api/submissions/jobpost/:jobpost_id', controller.submissions.getAllForJobPost);
 router.get('/api/submissions/:id', controller.submissions.updateSubmission);
-router.get('/api/submissions', controller.submissions.getAll);
+// router.get('/api/submissions', controller.submissions.getAll);
 router.get('/api/submissions/user/:id', controller.submissions.getAllByUserId);
 router.post('/api/submissions', controller.submissions.createOne);
 // router.get('/api/submissions/user/:user_id', controller.submissions.getByUserId);
