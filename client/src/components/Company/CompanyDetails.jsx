@@ -38,7 +38,7 @@ class CompanyDetails extends React.Component {
         </div>
 
       )
-    } else {
+    } else if (!this.props.companyAuth.companyProfile.profileReload) {
       return (
         <div>
           <Image className="company-img text-center" src={this.props.companyAuth.companyAuth.company_backend_profile.profile_img} circle />
