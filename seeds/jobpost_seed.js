@@ -6,7 +6,7 @@ exports.seed = function (knex, Promise) {
         return knex('jobpost').insert([
           {
             id: 1,
-            //company_id: 4,
+            // company_id: 4,
             company_id: 1,
             title: 'Jr Dev',
             level: 0,
@@ -16,7 +16,7 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 2,
-            //company_id: 4,
+            // company_id: 4,
             company_id: 1,
             title: 'Sr Dev',
             level: 2,
@@ -26,7 +26,7 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 3,
-            //company_id: 4,
+            // company_id: 4,
             company_id: 2,
             title: 'Mid Dev',
             level: 1,
@@ -36,7 +36,7 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 4,
-            //company_id: 4,
+            // company_id: 4,
             company_id: 2,
             title: 'Hack Reactor HIR',
             level: 0,
