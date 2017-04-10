@@ -6,7 +6,7 @@ const Location = require('./Location');
 const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
-const Submission = require('./Submission')
+const Submission = require('./Submission');
 
 module.exports = {
   users: {
@@ -180,8 +180,8 @@ module.exports = {
       Company
         .query()
         .deleteById(id)
-        .then((deleted) => { cb(null, deleted) })
-        .catch(err => { console.log(err) })
+        .then((deleted) => { cb(null, deleted); })
+        .catch((err) => { console.log(err); });
     }
   },
 
@@ -192,9 +192,7 @@ module.exports = {
         .allowEager('[company]')
         .eager('company')
         .then((jobposts) => { cb(null, jobposts); })
-        .catch((err) => { 
-          cb(err, null);
-        });
+        .catch((err) => { cb(err, null); });
     },
     getById: (id, cb) => {
       Jobpost
@@ -203,15 +201,15 @@ module.exports = {
         .allowEager('[company, question]')
         .eager('[company, question]')
         .first()
-        .then((jobpost) => { cb(null, jobpost) })
+        .then((jobpost) => { cb(null, jobpost); })
         .catch((err) => { cb(err, null); });
     },
     createOne: (body, cb) => {
       Jobpost
         .query()
         .insertAndFetch(body)
-        .then((jobs) => { cb(null, jobs) })
-        .catch( err => { console.log(err) })
+        .then((jobs) => { cb(null, jobs); })
+        .catch((err) => { console.log(err); });
     },
     getJobPostsByCompany: (companyId, cb) => {
       Jobpost
@@ -262,6 +260,7 @@ module.exports = {
     getAll: async (cb) => {
       const submissions = await Submission
         .query()
+        .eager('[video, user]')
         .catch(err => cb(err, null));
       cb(null, submissions);
     },

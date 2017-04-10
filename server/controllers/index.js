@@ -211,6 +211,16 @@ module.exports = {
     // }
   // },
   submissions: {
+    getAll: (req, res, next) => {
+      models.submissions.getAll((err, submissions) => {
+        const payload = {
+          success: err ? false : true,
+          submissions,
+          err
+        };
+        res.status(200).send(JSON.stringify(payload));
+      });
+    },
     getBySubmissionId: (req, res, next) => {
       const { id } = req.params;
 
@@ -219,8 +229,8 @@ module.exports = {
           success: err ? false : true,
           err: JSON.stringify(err),
           submission
-        }
-        res.send(payload)
+        };
+        res.send(payload);
       });
     },
     getAllForJobPost: (req, res, next) => {
