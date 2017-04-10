@@ -10,7 +10,7 @@ class PositionsLevel extends React.Component {
     this.props.getPositions();
   }
   renderJobs() {
-    console.log('props in positionslevel', this.props)
+    //console.log('props in positionslevel', this.props)
     return (
       <div>
         {this.props.companyProfile.jobs.map((item, idx) => {
