@@ -1,9 +1,12 @@
-#test {
+.background-img { 
   background: url(../images/background.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 2000px;
+  width: 3000px;
+  position: fixed;
 }
 
 .signup-box {
@@ -13,7 +16,7 @@
   border-radius: 5px;
   position: absolute;
   height: 245px;
-  top: -40px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;

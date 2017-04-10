@@ -23,36 +23,31 @@ router.get('/api/jobposts', controller.jobposts.getAll);
 router.get('/api/jobposts/:id', controller.jobposts.getById);
 router.post('/api/jobposts', controller.jobposts.createOne);
 router.get('/api/jobposts/company/:company_id', controller.jobposts.getJobPostsByCompany)
-
 router.put('/api/jobposts/:id', controller.jobposts.updateJobPost)
 router.delete('/api/jobposts/:id', controller.jobposts.deleteJobPost)
-// for a jobpost, eagerly load all questions
-// figure out how to put timestamps in db
 
-// questions
-// eager load all questions belonging to jobpost_id?
-router.get('/api/questions', controller.questions.getAll);
-
-// submissions
-// get all submissions by jobpost id
-// get one submission by submission id
-// update submission by submission id
-// submission by user id must be eager loaded with all videos
-// post a submission by user id
-
+//submissions
+router.get('/api/submissions/:id', controller.submissions.getBySubmissionId);
+router.get('/api/submissions/jobpost/:jobpost_id', controller.submissions.getAllForJobPost);
+router.get('/api/submissions/:id', controller.submissions.updateSubmission);
 router.get('/api/submissions', controller.submissions.getAll);
 router.get('/api/submissions/user/:id', controller.submissions.getAllByUserId);
 router.post('/api/submissions', controller.submissions.createOne);
+// router.get('/api/submissions/user/:user_id', controller.submissions.getByUserId);
+// router.post('/api/submissions', controller.submissions.createOne);
 
-// videos
-// post a video
-router.post('/api/video', controller.videos.createOne);
+// questions
+router.get('/api/questions', controller.questions.getAll);
+
+//videos
+router.post('/api/videos', controller.videos.createOne);
 
 // locations
 router.get('/api/locations', controller.locations.getAll);
 
 // industries
 router.get('/api/industries', controller.industries.getAll);
+
 
 module.exports = router;
 

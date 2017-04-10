@@ -67,14 +67,6 @@ module.exports = {
   companies: {
     createOne: async (req, res, next) => {
       // creates a company
-      const formatted = {
-        name: req.body.name,
-        email: req.body.email,
-        profile_img: req.body.profile_img,
-        address: req.body.address,
-        auth0_id: req.body.auth0_id,
-      }
-
       const { name, email, auth0_id, profile_img } = req.body;
 
       models.companies.createOne(req.body, (err, fetchedCompany) => {
@@ -99,22 +91,9 @@ module.exports = {
       });
     },
     updateCompany: (req, res, next) => {
-      console.log('req.body in index.js', req.body)
-      console.log('req.params', req.params)
       const { id } = req.params;
 
-      const formatted = {
-        //id: parseInt(id),
-        name: req.body.name,
-        email: req.body.email,
-        profile_img: req.body.profile_img,
-        address: req.body.address,
-        //auth0_id: req.body.auth0_id,
-        industry_id: parseInt(req.body.industry_id),
-        location_id: parseInt(req.body.location_id)
-      };
-
-      models.companies.updateCompany(id, formatted, (err, company) => {
+      models.companies.updateCompany(id, req.body, (err, company) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -162,14 +141,7 @@ module.exports = {
     },
     createOne: (req, res, next) => {
 
-      var formatted = {
-        title: req.body.title,
-        level: req.body.level,
-        description: req.body.description,
-        company_id: parseInt(req.body.company_id)
-      }
-
-      models.jobposts.createOne(formatted, (err, jobposts) => {
+      models.jobposts.createOne(req.body, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -191,16 +163,7 @@ module.exports = {
       });
     },
     updateJobPost: (req, res, next) => {
-
-      var formatted = {
-        id: parseInt(req.body.id),
-        title: req.body.title,
-        level: req.body.level,
-        description: req.body.description,
-        company_id: parseInt(req.body.company_id)
-      }
-
-      models.jobposts.updateCompanyPost(formatted, (err, jobposts) => {
+      models.jobposts.updateCompanyPost(req.body, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -223,85 +186,66 @@ module.exports = {
     }
   },
 
-  questions: {
-    getAll: (req, res, next) => {
-      models.questions.getAll((err, questions) => {
-        console.log('questions', questions);
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          questions
-        }
-        res.send(payload)
-      });
-    }, 
-    getByPostId: (req, res, next) => {
-      const { post_id } = req.params;
+  // submissions: {
+    // createOne: (req, res, next) => {
+    //   models.submissions.createOne(req.body, (err, submission) => {
+    //     const payload = {
+    //       success: err ? false : true,
+    //       err: JSON.stringify(err),
+    //       submission
+    //     }
+    //     res.send(payload)
+    //   });
+    // },
+    // getByUserId: (req, res, next) => {
+    //   const { user_id } = req.params;
 
-      models.questions.getByPostId(post_id, (err, questions) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          questions
-        }
-        res.send(payload)
-      });
-    }, 
-    createOne: (req, res, next) => {
-      
-      const formatted = {
-        type: req.body.type,
-        level: parseInt(req.body.level),
-        question: req.body.question,
-        jobpost_id: parseInt(req.body.post_id)
-      }
-
-      models.questions.createOne(formatted, (err, questions) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          questions
-        }
-        res.send(payload)
-      });
-    },
-    updateQuestion: (req, res, next) => {
-
-      const formatted = {
-        id: parseInt(req.body.q_id),
-        type: req.body.type,
-        level: parseInt(req.body.level),
-        question: req.body.question,
-        jobpost_id: parseInt(req.body.post_id)
-      }
-
-      models.questions.updateQuestion(formatted, (err, questions) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          questions
-        }
-        res.send(payload)
-      });
-    },
-    deleteQuestion: (req, res, next) => {
-      const { q_id } = req.params;
-
-      models.questions.deleteQuestion(q_id, (err, questions) => {
-        const payload = {
-          success: err ? false : true,
-          err: JSON.stringify(err),
-          questions
-        }
-        res.send(payload)
-      });
-    }
-  },
+    //   models.submissions.getByUserId(user_id, (err, submission) => {
+    //     const payload = {
+    //       success: err ? false : true,
+    //       err: JSON.stringify(err),
+    //       submission
+    //     }
+    //     res.send(payload)
+    //   });
+    // }
+  // },
   submissions: {
-    getAll: (req, res, next) => {
-      models.submissions.getAll((err, submissions) => {
-        console.log(submissions);
-      })
+    getBySubmissionId: (req, res, next) => {
+      const { id } = req.params;
+
+      models.submissions.getBySubmissionId(id, (err, submission) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          submission
+        }
+        res.send(payload)
+      });
+    },
+    getAllForJobPost: (req, res, next) => {
+      const { jobpost_id } = req.params;
+
+      models.submissions.getAllForJobPost(jobpost_id, (err, submission) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          submission
+        }
+        res.send(payload)
+      });
+    },
+    updateSubmission: (req, res, next) => {
+      const { id } = req.params;
+
+      models.submissions.updateSubmission(id, req.body, (err, submission) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          submission
+        }
+        res.send(payload)
+      });
     },
     getAllByUserId: (req, res, next) => {
       const { id } = req.params;
@@ -326,20 +270,27 @@ module.exports = {
     }
   },
   videos: {
-    getAll: (req, res, next) => {
-      models.videos.getAll((err, videos) => {
+    createOne: (req, res, next) => {
+      models.videos.createOne(req.body, (err, video) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
-          videos
+          video
         }
         res.send(payload)
       });
-    },
-    createOne: (req, res, next) => {
-      models.videos.createOne((err, video) => {
-        console.log(video);
-        console.log('saved successfully to submission');
+    }
+  },
+
+  questions: {
+    getAll: (req, res, next) => {
+      models.questions.getAll((err, questions) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          questions
+        }
+        res.send(payload);
       });
     }
   },

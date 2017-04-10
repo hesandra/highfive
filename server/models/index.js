@@ -6,7 +6,7 @@ const Location = require('./Location');
 const Question = require('./Question');
 const User = require('./User');
 const Video = require('./Video');
-const Submission = require('./Submission');
+const Submission = require('./Submission')
 
 module.exports = {
   users: {
@@ -216,6 +216,8 @@ module.exports = {
     getJobPostsByCompany: (companyId, cb) => {
       Jobpost
         .query()
+        .allowEager('[question]')
+        .eager('[question]')
         .where('company_id', companyId)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
@@ -238,43 +240,24 @@ module.exports = {
     }
   },
 
-  questions: { 
-    getAll: (cb) => {
-      Question
-        .query()
-        .then((questions) => { cb(null, questions) })
-        .catch(err => { console.log(err) })
-    },
-    getByPostId: (id, cb) => {
-      Question
-        .query()
-        .where('jobpost_id', id)
-        .then((questions) => { cb(null, questions) })
-        .catch(err => { console.log(err) })
-    },
-    createOne: (body, cb) => {
-      Question
-        .query()
-        .insertAndFetch(body)
-        .then((question) => { cb(null, question) })
-        .catch( err => { console.log(err) })
-    },
-    updateQuestion: (body, cb) => {
-      Question
-        .query()
-        .update(body)
-        .where('id', body.id)
-        .then((question) => { cb(null, question) })
-        .catch( err => { console.log(err) })
-    },
-    deleteQuestion: (q_id, cb) => {
-      Question
-        .query()
-        .deleteById(q_id)
-        .then((question) => { cb(null, question) })
-        .catch( err => { console.log(err) })
-    }
-  },
+  // submissions: {
+    // createOne: (body, cb) => {
+    //   Submission
+    //     .query()
+    //     .insertAndFetch(body)
+    //     .then((result) => { cb(null, result) })
+    //     .catch( err => { console.log(err) })
+    // },
+    // getByUserId: (user_id, cb) => {
+    //   Submission
+    //     .query()
+    //     .allowEager('[video]')
+    //     .eager('[video]')
+    //     .where('user_id', user_id)
+    //     .then((submission) => { cb(null, submission) })
+    //     .catch((err) => { cb(err, null); });
+    // }
+  // },
   submissions: {
     getAll: async (cb) => {
       const submissions = await Submission
@@ -297,20 +280,49 @@ module.exports = {
         .insert(submission)
         .catch(e => cb(e, null));
       cb(null, insertedSubmission);
+    },
+    getBySubmissionId: (id, cb) => {
+      Submission
+        .query()
+        .where('id', id)
+        .then((submission) => { cb(null, submission) })
+        .catch((err) => { cb(err, null); });
+    },
+    getAllForJobPost: (jobpost_id, cb) => {
+      Submission
+        .query()
+        .where('jobpost_id', jobpost_id)
+        .then((result) => { cb(null, result) })
+        .catch((err) => { cb(err, null); });
+    },
+    updateSubmission: (id, body, cb) => {
+      Submission
+        .query()
+        .update(body)
+        .where('id', body.id)
+        .then((result) => { cb(null, result) })
+        .catch( err => { console.log(err) })
     }
   },
   videos: {
-    getAll: (cb) => {
+    createOne: (body, cb) => {
       Video
         .query()
-        .then((videos) => { cb(null, videos) })
+        .insertAndFetch(body)
+        .then((video) => { cb(null, video) })
         .catch( err => { console.log(err) })
-    },
-    getUserVideos: () => {
-    },
-    createOne: (cb) => {
     }
   },
+
+  questions: { 
+    getAll: (cb) => {
+      Question
+        .query()
+        .then((questions) => { cb(null, questions) })
+        .catch(err => { console.log(err) })
+    }
+  },
+
   locations: {
     getAll: (cb) => {
       Location
