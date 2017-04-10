@@ -9,7 +9,7 @@ export const REQUEST_JOB_POSTS_ERROR = 'REQUEST_JOB_POSTS_ERROR';
  *  -todo- Grab data from server using redux Thunk
  */
 
-export const fetchJobPostsData = () => {
+export const fetchJobPosts = () => {
   return (dispatch) => {
     dispatch(requestJobPostsData());
     axios.get(`http://localhost:3000/api/jobposts`)

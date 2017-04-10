@@ -16,20 +16,11 @@ class UserProfile extends Component {
   }
   deleteUserIndustry(industryId) {
     const { onUpdateUserProfile, onDeleteIndustryClick } = this.props;
-    const userId= this.id;
-    // axios.delete(`http://localhost:3000/api/users/${userId}/industry/${industryId}`)
-    //   .then((response) => {
-    //     if (response.status === 201) {
-    //       console.log(response);
-    //       onUpdateUserProfile(response.data.user);
-    //     }
-    //   })
-    //   .catch(e => console.log(e));
+    const userId = this.id;
     onDeleteIndustryClick(userId, industryId);
   }
   render() {
     const { profile, submissions, onJobPostsClick, backend_profile, onUpdateUserProfile, onSubmissionsClick } = this.props;
-    console.log(this.props, 'USSSEEEERRRR')
     let profileImage;
     let name;
     let location;
@@ -130,7 +121,7 @@ class UserProfile extends Component {
         </Row>
       </Grid>
     );
-  };
+  }
 }
 
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { List } from 'semantic-ui-react';
 
 const Submission = ({ submission }) => {
-
   return (
     <List.Item>
       <List.Icon name="folder" size="large" verticalAlign="middle" />

@@ -1,6 +1,41 @@
 import axios from 'axios';
 import { updateUserProfile } from './userAuth';
 
+export const REQUEST_PROFILE_UPDATE = 'REQUEST_PROFILE_UPDATE';
+const requestProfileUpdate = () => {
+  return {
+    type: REQUEST_PROFILE_UPDATE
+  };
+};
+export const REQUEST_PROFILE_UPDATE_SUCCESS = 'REQUEST_PROFILE_UPDATE_SUCCESS';
+const requestProfileUpdateSuccess = (profile) => {
+  return {
+    type: REQUEST_PROFILE_UPDATE_SUCCESS,
+    profile
+  };
+};
+export const REQUEST_PROFILE_UPDATE_ERROR = 'REQUEST_PROFILE_UPDATE_ERROR';
+const requestProfileUpdateError = (error) => {
+  return {
+    type: REQUEST_PROFILE_UPDATE_ERROR,
+    error
+  };
+};
+export const updateProfile = (userId, data) => {
+  return (dispatch) => {
+    dispatch(requestProfileUpdate());
+
+    axios.put(`http://localhost:3000/api/users/${userId}`, data)
+      .then((response) => {
+        if (response.status === 201) {
+          dispatch(requestProfileUpdateSuccess(response.data.user));
+          dispatch(updateUserProfile(response.data.user));
+        }
+      })
+      .catch(err => dispatch(requestProfileUpdateError()));
+  };
+};
+
 export const REQUEST_JOB_SUBMISSIONS = 'REQUEST_JOB_SUBMISSIONS';
 const requestJobSubmissions = () => {
   return {
