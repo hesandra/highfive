@@ -127,7 +127,6 @@ export function showVideos(videos){
   return {
     payload: videos,
     type: 'SHOW_VIDEOS',
-    showVideos: true
   }
 }
 

@@ -11,8 +11,8 @@ class ApplicationModal extends React.Component {
     return (
       <div>
       <Modal 
-        show={this.props.companyProfile.showVideos}
-        bsSize="large" aria-labelledby="contained-modal-title-lg">
+      show={this.props.companyProfile.showVideos}
+      bsSize="large" aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg">Andrew Yi</Modal.Title>
         </Modal.Header>
