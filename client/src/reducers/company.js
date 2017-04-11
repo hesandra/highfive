@@ -24,6 +24,10 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         jobs: action.payload,
     });
+    case 'GET_SUBMISSIONS':
+      return Object.assign({}, state, {
+        submissions: action.payload,
+    });
     case 'CREATE_INTERVIEW':
       return Object.assign({}, state, {
         createButton: true,
