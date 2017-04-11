@@ -15,26 +15,26 @@ class PositionsLevel extends React.Component {
       <div>
         {this.props.companyProfile.jobs.map((item, idx) => {
           if (this.props.companyProfile.level === item.level && this.props.companyProfile.companyReload[0].id === item.company_id) {
-            return ( 
-              <div> 
-  <Table responsive>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{item.id}</td>
-        <td>{item.title}</td><td>{item.description}</td><td>{item.created_at}</td><td>{item.updated_at}</td><tb><Button onClick={() => this.props.getSubmissions(item.id)}>See Submissions</Button></tb>
-      </tr>
-    </tbody>
-  </Table>
-  </div>)
+            return (
+              <div>
+                <Table responsive>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Created at</th>
+                      <th>Updated at</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{item.id}</td>
+                      <td>{item.title}</td><td>{item.description}</td><td>{item.created_at}</td><td>{item.updated_at}</td><tb><Button onClick={() => this.props.getSubmissions(item.id)}>See Submissions</Button></tb>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>)
           }
         })}
         <FormGroup>

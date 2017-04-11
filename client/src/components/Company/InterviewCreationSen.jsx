@@ -38,12 +38,13 @@ class InterviewFormSen extends React.Component {
       <div>
         <div>
           <div>
-            <div>SENIOR-Level</div>
+           <div className="spaceQ"></div>
+            <h3>Senior Software Engineer</h3>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
               <FormGroup>
                 <Col componentClass={ControlLabel} sm={1}>
-                  JobTitle
+                  Description
                 </Col>
                 <Col sm={4}>
                   <FormControl name="name" type="text" value={this.state.jobTitel} onChange={this.handleChange} />

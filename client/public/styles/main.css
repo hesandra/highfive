@@ -126,6 +126,9 @@ a {
   margin-top: 15px;
 }
 
+.notes {
+  width: 200px
+}
 /*canvas {
     position: static !important;
 }*/
