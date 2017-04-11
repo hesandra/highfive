@@ -16,7 +16,6 @@ class PositionsLevel extends React.Component {
         {this.props.companyProfile.jobs.map((item, idx) => {
           if (this.props.companyProfile.level === item.level && this.props.companyProfile.companyReload[0].id === item.company_id) {
             return (
-              <div>
                 <Table responsive>
                   <thead>
                     <tr>
@@ -34,7 +33,7 @@ class PositionsLevel extends React.Component {
                     </tr>
                   </tbody>
                 </Table>
-              </div>)
+             )
           }
         })}
         <FormGroup>

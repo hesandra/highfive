@@ -6,6 +6,7 @@ let initialState = {
   selectedQuestion: [],
   profileEdited: false,
   profileReload: false,
+  showVideos: false,
 }
 
 export default function (state = initialState, action) {
@@ -55,6 +56,11 @@ export default function (state = initialState, action) {
         senior: false,
         createButton: false,
         level: 1
+    });
+    case 'SHOW_VIDEOS':
+      return Object.assign({}, state, {
+        applicationVideos: action.payload,
+        showVideos: true,
     });
     case 'JOBTITLE':
       return Object.assign({}, state, {

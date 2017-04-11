@@ -4,43 +4,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Card, Image, Icon, Rating, List, Popup, Button, Label } from 'semantic-ui-react';
 import { Form, Col, FormGroup, ControlLabel, FormControl, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
-//import { getSubmissions } from '../../actions/company';
-
-const ApplicationModal = React.createClass({
-  render() {
-    return (
-      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Andrew Yi</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Application Video</h4>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-});
+import { showVideos } from '../../actions/company';
+import ApplicationModal from './ApplicationModal';
 
 
 class PositionsLevel extends React.Component {
-  getIntialState(){
-    return { lgShow: false };
-  }
   renderSubmissions() {
     console.log('PROPS IN SUBMISSIONS', this.props);
-    const lgClose = () => this.setState({ lgShow: false });
     return (
       <div>
         {this.props.companyProfile.submissions.map((item, idx) => {
@@ -74,7 +44,7 @@ class PositionsLevel extends React.Component {
                     </List>
                   </Card.Description>
                    <div className="spaceQ"></div>
-                   <Button color="purple" fluid onClick={()=> this.setState({lgShow:true})}>Watch application</Button>
+                   <Button color="purple" fluid onClick={() => this.props.showVideos(item.video[0].href)}>Watch application</Button>
                    <div><a href={item.video[0].href}>Download application here</a></div>
                 </Card.Content>
                 <Card.Content extra>
@@ -92,15 +62,17 @@ class PositionsLevel extends React.Component {
                 </Card.Content>
               </Card>
             </Card.Group>
-            </div>
-          )
-        })}
-      </div>);
-  }
+     </div>
+      )}
+    )}
+</div>
+)};
+       
   render() {
     if (this.props.companyProfile.submissions !== undefined) {
       return (
         <div>{this.renderSubmissions()}
+        <ApplicationModal />
         </div>
       )
     } else {
@@ -116,7 +88,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({ showVideos }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PositionsLevel);

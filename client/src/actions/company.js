@@ -123,6 +123,14 @@ export function getSubmissions(postId){
   }
 }
 
+export function showVideos(videos){
+  return {
+    payload: videos,
+    type: 'SHOW_VIDEOS',
+    showVideos: true
+  }
+}
+
 export function createInterview(){
   return {
     type: 'CREATE_INTERVIEW'
