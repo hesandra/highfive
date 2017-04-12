@@ -57,7 +57,11 @@ class InterviewFormJun extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'algorithm' && item.level === this.props.companyProfile.level) {
                     return (
-                      <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>{item.question}</p>
+                      <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>
+                      <div>
+                      {item.title}</div>
+                      {item.question}
+                      </p>
                     )
                   }
                 })

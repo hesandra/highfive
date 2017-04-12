@@ -43,19 +43,25 @@ class InterviewForm extends React.Component {
           <div><h3 className="selectedQ">Selected algorithm questions</h3>
             <div>{algorithm.map((item) => {
               return (
-                <div>{item.question}</div>)
+                <div>
+                <h4>{item.title}</h4>
+                {item.question}</div>)
             })}
             </div>
             <h3 className="selectedQ">Selected system design questions</h3>
             <div>{system.map((item) => {
               return (
-                <div>{item.question}</div>)
+                <div>
+                <h4>{item.title}</h4>
+                {item.question}</div>)
             })}
             </div>
             <h3 className="selectedQ">Selected behavioral questions</h3>
             <div>{behavioral.map((item) => {
               return (
-                <div>{item.question}</div>)
+                <div>
+                <h4>{item.title}</h4>
+                {item.question}</div>)
             })}
               <div className="space"></div>
               <Button>Save</Button>
