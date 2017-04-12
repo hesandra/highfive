@@ -18,4 +18,5 @@ export InterviewFormMid from './Company/InterviewCreationMid';
 export InterviewFormSen from './Company/InterviewCreationSen';
 export Browse from './Browse/Browse';
 export CompanyAuth from './Company/CompanyAuth';
-
+export Submissions from './Company/Submissions';
+export ApplicationModal from './Company/ApplicationModal';

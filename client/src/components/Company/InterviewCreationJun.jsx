@@ -37,12 +37,13 @@ class InterviewFormJun extends React.Component {
       <div>
         <div>
           <div>
-            <div>JUNIOR-Level</div>
+           <div className="spaceQ"></div>
+            <h3>Junior Software Engineer</h3>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
               <FormGroup>
                 <Col componentClass={ControlLabel} sm={1}>
-                  JobTitle
+                  Description
                 </Col>
                 <Col sm={4}>
                   <FormControl name="name" type="text" value={this.state.jobTitel} onChange={this.handleChange} />
@@ -56,7 +57,11 @@ class InterviewFormJun extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'algorithm' && item.level === this.props.companyProfile.level) {
                     return (
-                      <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>{item.question}</p>
+                      <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>
+                      <div>
+                      {item.title}</div>
+                      {item.question}
+                      </p>
                     )
                   }
                 })
@@ -98,8 +103,8 @@ class InterviewFormJun extends React.Component {
   }
 
   render() {
-    console.log(this.props.companyProfile, 'INTERVIEWCREATION JUN COMPANYPROFILE');
-    console.log(this.props.companyAuth, 'INTERVIEWCREATION JUN COMPANYAUTH');
+    //console.log(this.props.companyProfile, 'INTERVIEWCREATION JUN COMPANYPROFILE');
+    //console.log(this.props.companyAuth, 'INTERVIEWCREATION JUN COMPANYAUTH');
     return (
       <div>
         <div>{this.renderAll()}</div>

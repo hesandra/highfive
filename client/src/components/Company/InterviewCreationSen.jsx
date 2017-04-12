@@ -38,12 +38,13 @@ class InterviewFormSen extends React.Component {
       <div>
         <div>
           <div>
-            <div>SENIOR-Level</div>
+           <div className="spaceQ"></div>
+            <h3>Senior Software Engineer</h3>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
               <FormGroup>
                 <Col componentClass={ControlLabel} sm={1}>
-                  JobTitle
+                  Description
                 </Col>
                 <Col sm={4}>
                   <FormControl name="name" type="text" value={this.state.jobTitel} onChange={this.handleChange} />
@@ -85,7 +86,7 @@ class InterviewFormSen extends React.Component {
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'behavioral' && item.level === this.props.companyProfile.level) {
                     return (
-                      <p key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</p>
+                      <p key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.title} | {item.question}</p>
                     )
                   }
                 })

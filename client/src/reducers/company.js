@@ -6,6 +6,7 @@ let initialState = {
   selectedQuestion: [],
   profileEdited: false,
   profileReload: false,
+  showVideos: false,
 }
 
 export default function (state = initialState, action) {
@@ -23,6 +24,10 @@ export default function (state = initialState, action) {
     case 'GET_POSITIONS':
       return Object.assign({}, state, {
         jobs: action.payload,
+    });
+    case 'GET_SUBMISSIONS':
+      return Object.assign({}, state, {
+        submissions: action.payload,
     });
     case 'CREATE_INTERVIEW':
       return Object.assign({}, state, {
@@ -52,6 +57,11 @@ export default function (state = initialState, action) {
         createButton: false,
         level: 1
     });
+    case 'SHOW_VIDEOS':
+      return Object.assign({}, state, {
+        applicationVideos: action.payload,
+        showVideos: true,
+    });
     case 'JOBTITLE':
       return Object.assign({}, state, {
         jobTitle: action.payload,
@@ -67,6 +77,11 @@ export default function (state = initialState, action) {
     case 'GET_QUESTIONS':
       return Object.assign({}, state, {
         questions: action.payload,
+    });
+    case 'CLOSE_MODAL':
+      return Object.assign({}, state, {
+        questions: action.payload,
+        showVideos: false,
     });
   }
   return state;

@@ -290,7 +290,8 @@ module.exports = {
     getAllForJobPost: (jobpost_id, cb) => {
       Submission
         .query()
-        .allowEager('[jobpost')
+        .allowEager('[video, user]')
+        .eager('[video, user]')
         .where('jobpost_id', jobpost_id)
         .then((result) => { cb(null, result) })
         .catch((err) => { cb(err, null); });

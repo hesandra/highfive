@@ -8,6 +8,7 @@ export function updateCompany(profile) {
 }
 
 export function submitProfile(profile){
+  console.log('submitProfile')
   return (dispatch) => {
     const id = profile.companyId;
     //console.log('profile in sumbitProfile', profile)
@@ -22,7 +23,7 @@ export function submitProfile(profile){
     //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
     axios.put('http://localhost:3000/api/companies/' + id, updatedProfile)
       .then((company) => {
-        console.log('result in company actions', company.config.data);
+        console.log('result in company actions', company);
         dispatch(updateCompany(JSON.parse(company.config.data)));
       })
       .catch((err) => {
@@ -67,7 +68,7 @@ export function getPositions(){
   return (dispatch) => {
     axios.get('http://localhost:3000/api/jobposts')
     .then((jobposts) => {
-      console.log('jobposts in getPostiions', jobposts)
+      //console.log('jobposts in getPostiions', jobposts)
       dispatch(getJobs(jobposts.data.jobposts))
     })
     .catch((err) => {
@@ -76,6 +77,58 @@ export function getPositions(){
   }
 }
 
+export function getSubs(submissions){
+  return {
+    type: 'GET_SUBMISSIONS',
+    payload: submissions
+  }
+}
+
+/*export function getSubmissions(companyId){
+  return (dispatch) => {
+    axios.get('http://localhost:3000/api/submissions' + companyId)
+    .then((submissions) => {
+      console.log('in submissions', submissions)
+      dispatch(getSubs(submissions))
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+}*/
+
+/*export function getSubmissions(postId){
+  return (dispatch) => {
+    axios.get('http://localhost:3000/api/submissions/jobpost/' + postId)
+    .then((submissions) => {
+      console.log('submissions in getSubmissions', submissions);
+      dispatch(getSubs(submissions))
+    })
+    .catch((err) => {
+      console.error(err)
+    });
+  }
+}*/
+
+export function getSubmissions(postId){
+  return (dispatch) => {
+    axios.get('http://localhost:3000/api/submissions/jobpost/' + postId)
+    .then((submission) => {
+      console.log('submissions in getSubmissions', submission);
+      dispatch(getSubs(submission.data.submission))
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+}
+
+export function showVideos(videos){
+  return {
+    payload: videos,
+    type: 'SHOW_VIDEOS',
+  }
+}
 
 export function createInterview(){
   return {
@@ -133,4 +186,10 @@ export function getQuestions(){
         console.error(err);
       });
   };
+}
+
+export function closeModal(){
+  return {
+    type: 'CLOSE_MODAL',
+  }
 }
