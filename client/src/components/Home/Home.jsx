@@ -2,18 +2,18 @@ import React from 'react';
 import Signup from './Signup';
 
 const Home = (props) => {
-  const { 
-    isUserAuthenticated, 
-    isCompanyAuthenticated, 
+  const {
+    isUserAuthenticated,
+    isCompanyAuthenticated,
     onUserLoginClick,
-    onCompanyLoginClick, 
-    onAuthedUserLoginClick, 
-    onAuthedCompanyLoginClick 
+    onCompanyLoginClick,
+    onAuthedUserLoginClick,
+    onAuthedCompanyLoginClick
   } = props;
 
   return (
     <div>
-      <div className="background-img col-xs-12"></div>
+      <div className="background-img col-xs-12" />
         <Signup
           onUserLoginClick={onUserLoginClick}
           onCompanyLoginClick={onCompanyLoginClick}

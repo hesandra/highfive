@@ -13,7 +13,6 @@ const authService = new CompanyAuthService(COMPANIES_AUTH0_CLIENT_ID, 'teamhighf
 // Listen to authenticated event from AuthService and get the profile of the company
 // Done on every page startup
 export function checkCompanyLogin() {
-  console.log('IN CHECKLOGIN COMPANY!!!!!!!!!!!!!!')
   return (dispatch) => {
     // Add callback for lock's `authenticated` event
     authService.lock.on('authenticated', (authResult) => {
@@ -32,12 +31,11 @@ export function checkCompanyLogin() {
         .then((response) => {
           if (response.status === 201) {
             dispatch(setCompanyBackEndProfile(response.data.fetchedCompany));
-            console.log('RESPONSE DATA', response.data.fetchedCompany)
             dispatch(companyLoginSuccess(profile));
-            console.log('PROFILE IN COMPANYAUTH', profile)
           }
         })
         .catch((err) => {
+          console.log('company login error');
           console.log(err);
         });
       });

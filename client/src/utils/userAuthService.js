@@ -49,7 +49,7 @@ export default class UserAuthService {
 
   static loggedIn() {
     // Checks if there is a saved token and it's still valid
-    const token = UserAuthService.getToken()
+    const token = UserAuthService.getToken();
     return !!token && !UserAuthService.isTokenExpired(token);
   }
 
