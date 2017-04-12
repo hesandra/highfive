@@ -44,13 +44,10 @@ class Interview extends Component {
     }
     if (!this.state.submissionCreated) {
       createSubmission({
-        user_id: backend_profile,
+        user_id: backend_profile.id,
         jobpost_id: jobPost.id
       });
     }
-    setTimeout(() => {
-      this.setState({ loaded: true })
-    }, 4000);
   }
   componentDidUpdate(prevProps) {
     if (this.props.stream && !this.state.done) {
@@ -101,9 +98,10 @@ class Interview extends Component {
         id: Math.floor(Math.random() * 90000) + 10000,
         answer: 'test',
         question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
-        submission_id: 10
+        submission_id: this.props.submission.id
       };
       this.props.socket.emit('video', payload);
+      this.video.clearRecordedData();
       this.listenForS3Link();
     });
   }
