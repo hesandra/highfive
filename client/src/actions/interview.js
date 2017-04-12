@@ -37,10 +37,9 @@ export function getUserMedia() {
       .then((mediaStream) => {
         dispatch(requestUserMediaSuccess(mediaStream));
       })
-      .catch(e => dispatch(requestUserMediaError(e)));
+      .catch(e => dispatch(requestUserMediaError(e)))
   };
 }
-
 
 export const CREATE_SUBMISSION_REQUEST = 'CREATE_SUBMISSION_REQUEST';
 function createSubmissionRequest() {
@@ -52,22 +51,32 @@ function createSubmissionRequest() {
 export const CREATE_SUBMISSION_SUCCESS = 'CREATE_SUBMISSION_SUCCESS';
 export function createSubmissionSuccess(submission) {
   return {
-    type: CREATE_SUBMISSION_SUCCESS
+    type: CREATE_SUBMISSION_SUCCESS,
+    submission
+  };
+}
+
+export const CREATE_SUBMISSION_ERROR = 'CREATE_SUBMISSION_ERROR';
+export function createSubmissionError(error) {
+  return {
+    type: CREATE_SUBMISSION_ERROR,
+    error
   };
 }
 
 export function createSubmission(submissionData) {
   return (dispatch) => {
     dispatch(createSubmissionRequest());
-
     axios.post('http://localhost:3000/api/submissions', submissionData)
       .then((response) => {
-        console.log(response);
+        if (response.status === 201) {
+          dispatch(createSubmissionSuccess(response.data.submission));
+        }
       })
-      .catch((e) => {
-        console.log(e);
-      });
+      .catch(e => dispatch(createSubmissionError(e)));
   };
 }
+
+
 
 

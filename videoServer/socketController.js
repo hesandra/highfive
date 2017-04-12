@@ -17,12 +17,11 @@ module.exports = {
     });
 
     io.on('connection', (socket) => {
-      socket.on('video', ({ videoData, name}) => {
+      socket.on('video', ({ videoData, name, id, answer, question_id, submission_id }) => {
         const dataURL = videoData.split(',').pop();
         const fileBuffer = new Buffer(dataURL, 'base64');
-        // fs.writeFileSync('./t.webm', fileBuffer);
         count++;
-
+        console.log(name, id, question_id, submission_id, 'data rec');
         const s3Params = {
           Bucket: process.env.S3_BUCKET,
           Key: `${name}.webm`,
