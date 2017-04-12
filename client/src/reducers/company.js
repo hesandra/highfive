@@ -78,6 +78,11 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         questions: action.payload,
     });
+    case 'CLOSE_MODAL':
+      return Object.assign({}, state, {
+        questions: action.payload,
+        showVideos: false,
+    });
   }
   return state;
 }
