@@ -9,10 +9,10 @@ class App extends Component {
     super(props);
     this.state = {
     };
-    // check login status here
 
+    // check login status here
     this.props.checkUserLogin();
-    // this.props.checkCompanyLogin();
+    this.props.checkCompanyLogin();
   }
 
   render() {

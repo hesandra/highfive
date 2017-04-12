@@ -4,9 +4,9 @@ import jwtDecode from 'jwt-decode';
 
 // import LogoImg from 'images/test-icon.png';
 export default class CompanyAuthService {
-  constructor(clientId, domain, type) {
+  constructor(companyId, domain, type) {
     // Configure Auth0 lock
-    this.lock = new Auth0Lock(clientId, domain, {
+    this.lock = new Auth0Lock(companyId, domain, {
       auth: {
         redirectUrl: 'http://localhost:8080/',
         redirect: true,
@@ -17,7 +17,7 @@ export default class CompanyAuthService {
       },
       languageDictionary: {
         title: type
-       }
+      }
     });
     // binds login functions to keep this context
     this.login = this.login.bind(this);
@@ -54,16 +54,11 @@ export default class CompanyAuthService {
   }
 
   static setProfile(profile) {
-    // Saves profile data to localStorage
     localStorage.setItem('profile_company', JSON.stringify(profile));
-    // Triggers profile_updated event to update the UI
   }
 
   static setCompanyBackEndProfile(company) {
-    console.log('inCompanyBackEndProfile!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-    console.log(company, 'company in setCompanyBackEndProfile++++++++++')
     localStorage.setItem('company_backend_profile', JSON.stringify(company));
-    console.log(this.props, 'this props in setcompanybackendprofile')
   }
 
   static getCompanyBackEndProfile() {

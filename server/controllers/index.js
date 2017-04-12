@@ -211,6 +211,16 @@ module.exports = {
     // }
   // },
   submissions: {
+    getAllByCompanyId: (req, res, next) => {
+      models.submissions.getAllByCompanyId((err, submissions) => {
+        const payload = {
+          success: err ? false : true,
+          submissions,
+          err
+        };
+        res.status(200).send(JSON.stringify(payload));
+      });
+    },
     getAll: (req, res, next) => {
       models.submissions.getAll((err, submissions) => {
         const payload = {
@@ -279,6 +289,7 @@ module.exports = {
       });
     }
   },
+  
   videos: {
     createOne: (req, res, next) => {
       models.videos.createOne(req.body, (err, video) => {

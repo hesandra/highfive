@@ -28,9 +28,7 @@ const requireCompanyAuth = (nextState, replace) => {
   }
 };
 
-const NotFoundPage = () => {
-  return (<h1>HELLO</h1>);
-};
+const NotFoundPage = () => ((<p>not found</p>));
 
 export default function createRoutes() {
   return (

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 import { NavigationBar } from '../components';
 import { userLoginRequest, userLogoutSuccess } from '../actions/userAuth';
-import { companyLoginRequest, companyLogoutSuccess } from '../actions/userAuth';
+import { companyLoginRequest, companyLogoutSuccess } from '../actions/companyAuth';
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, error, isFetching } = state.userAuth;

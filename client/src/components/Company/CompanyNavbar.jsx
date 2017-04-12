@@ -14,12 +14,8 @@ const CompanyNavbar = (props) => {
         <Row className="clearfix">
           <Col sm={12}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="first">
-                Notifications
-                </NavItem>
-              <NavItem eventKey="second">
-                Submissions
-            </NavItem>
+              <NavItem eventKey="first">Notifications</NavItem>
+              <NavItem eventKey="second">Submissions</NavItem>
               <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab">
                 <MenuItem eventKey="3.1" onClick={() => props.junPos()}>Junior</MenuItem>
                 <MenuItem eventKey="3.2" onClick={() => props.midPos()}>Mid</MenuItem>
