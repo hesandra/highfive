@@ -228,11 +228,11 @@ module.exports = {
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     },
-    deleteJobPost: (postId, companyId, cb) => {
+    deleteJobPost: (postId, cb) => {
       Jobpost
         .query()
+        .skipUndefined()
         .deleteById(postId)
-        .where('company_id', companyId)
         .then((jobs) => { cb(null, jobs) })
         .catch( err => { console.log(err) })
     }
