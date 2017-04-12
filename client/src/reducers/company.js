@@ -83,6 +83,10 @@ export default function (state = initialState, action) {
         questions: action.payload,
         showVideos: false,
     });
+    case 'REMOVE_QUESTION':
+      return Object.assign({}, state, {
+        selectedQuestion: state.selectedQuestion.splice(state.selectedQuestion.indexOf(action.payload), 1)   
+    });
   }
   return state;
 }

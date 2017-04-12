@@ -193,3 +193,19 @@ export function closeModal(){
     type: 'CLOSE_MODAL',
   }
 }
+
+export function deleteJob(jobId){
+  return (dispatch) => {
+    axios.delete('http://localhost:3000/api/jobposts/' + jobId)
+    .then(()=> {
+      getPositions()
+    });
+  }
+}
+
+export function removeQuestion(item){
+  return {
+    type: 'REMOVE_QUESTION',
+    payload: item,
+  }
+}

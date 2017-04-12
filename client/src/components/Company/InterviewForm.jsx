@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Image, Button, FormGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { removeQuestion } from '../../actions/company';
 
 const algorithm = [];
 const system = [];
@@ -51,7 +52,7 @@ class InterviewForm extends React.Component {
             <h3 className="selectedQ">Selected system design questions</h3>
             <div>{system.map((item) => {
               return (
-                <div>
+                <div onClick={()=> this.props.removeQuestion(item)}>
                 <h4>{item.title}</h4>
                 {item.question}</div>)
             })}
@@ -81,7 +82,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({ removeQuestion }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewForm);
