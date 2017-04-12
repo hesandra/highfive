@@ -173,9 +173,9 @@ module.exports = {
       });
     },
     deleteJobPost: (req, res, next) => {
-      const { post_id, company_id } = req.params;
+      const { post_id } = req.params;
 
-      models.jobposts.deleteCompanyPost(post_id, company_id, (err, jobposts) => {
+      models.jobposts.deleteJobPost(post_id, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
