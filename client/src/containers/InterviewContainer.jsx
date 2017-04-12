@@ -11,7 +11,7 @@ const socket = io('http://localhost:3001');
 
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, backend_profile } = state.userAuth;
-  const { stream } = state.interview;
+  const { stream, submission, isCreatingSubmission } = state.interview;
   const { jobPost } = state.jobPost;
   return {
     isAuthenticated,
@@ -19,7 +19,9 @@ const mapStateToProps = (state) => {
     backend_profile,
     jobPost,
     stream,
-    socket
+    socket,
+    submission,
+    isCreatingSubmission,
   };
 };
 

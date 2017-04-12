@@ -8,6 +8,7 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
+import Timer from './Timer';
 import LoadingModal from './LoadingModal';
 import VideoPlayer from './VideoPlayer';
 
@@ -19,28 +20,33 @@ class Interview extends Component {
     super(props);
     this.state = {
       loaded: false,
-      time: 10,
-      questions: props.jobPost.question
+      startTimer: false,
+      questions: props.jobPost.question,
+      selectedQuestionIdx: 0,
+      submissionCreated: false
     };
-    this.selectNextQuestion = this.selectNextQuestion.bind(this);
+    this.startInterview = this.startInterview.bind(this);
     this.handleEditorInputChange = this.handleEditorInputChange.bind(this);
+    this.showNextQuestion = this.showNextQuestion.bind(this);
   }
   /**
    * Setup submission on back-end server
    */
   componentWillMount() {
-    const { requestUserMedia, createSubmission, backend_profile, jobPost } = this.props;
-    const submissionData = {
-      user_id: backend_profile.id,
-      jobpost_id: jobPost.id
-    };
-    requestUserMedia();
-    createSubmission(submissionData);
   }
   componentDidMount() {
+    const { requestUserMedia, createSubmission, backend_profile, jobPost } = this.props;
     if (!hasGetUserMedia) {
       // use sweetalert here
       alert('browser wont work');
+    } else {
+      requestUserMedia();
+    }
+    if (!this.state.submissionCreated) {
+      createSubmission({
+        user_id: backend_profile,
+        jobpost_id: jobPost.id
+      });
     }
     setTimeout(() => {
       this.setState({ loaded: true })
@@ -55,7 +61,7 @@ class Interview extends Component {
   componentWillUnmount() {
     // stop media stream if user navigates away while streaming
     alert('interview in progress');
-    // this.state.stream.stop();
+    this.props.stream.stop();
   }
   handleEditorInputChange(newValue) {
     console.log(newValue);
@@ -66,37 +72,45 @@ class Interview extends Component {
       this.setState({ stream, done: true });
       this.stream = stream;
     }
-    const video = recordRTC(stream, {
+
+    this.video = recordRTC(stream, {
       type: 'video',
       mimeType: 'video/webm',
     });
-    this.time = 10;
-    video.startRecording();
+    this.video.startRecording();
     setTimeout(() => {
-      video.stopRecording((vidsrc) => {
-        if (this.state.stream.active) {
-          this.setState({ src: vidsrc, done: true });
-          stream.stop();
-        }
-      });
+      this.stopRecording();
       setTimeout(() => {
-        const url = video.getDataURL((videoData) => {
-          const payload = {
-            videoData,
-            name: backend_profile.name
-          };
-          // this.props.socket.emit('video', payload);
-          // console.log('video sent');
-          // this.listenForS3Link();
-        });
+        this.processRecording();
       }, 1000);
-    }, 10000);
+    }, 8000);
   }
-  selectNextQuestion() {
-    console.log('select next question');
-    console.log(this.state);
+  stopRecording() {
+    this.video.stopRecording((vidsrc) => {
+      if (this.state.stream.active) {
+        this.setState({ src: vidsrc, done: true });
+      }
+    });
+  }
+  processRecording() {
+    const { backend_profile } = this.props;
+    const url = this.video.getDataURL((videoData) => {
+      const payload = {
+        videoData,
+        name: backend_profile.name + this.state.selectedQuestionIdx,
+        id: Math.floor(Math.random() * 90000) + 10000,
+        answer: 'test',
+        question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
+        submission_id: 10
+      };
+      this.props.socket.emit('video', payload);
+      this.listenForS3Link();
+    });
+  }
+  startInterview() {
+    console.log('start interview');
     this.setState({
-      time: 10
+      startTimer: true
     });
   }
   listenForS3Link() {
@@ -104,7 +118,18 @@ class Interview extends Component {
       console.log(url);
     });
   }
+  showNextQuestion() {
+    // this.startRecording(this.props.stream);
+    this.startRecording(this.props.stream);
+    const currentIdx = this.state.selectedQuestionIdx;
+    if (currentIdx < 2) {
+      this.setState({
+        selectedQuestionIdx: this.state.selectedQuestionIdx + 1
+      });
+    }
+  }
   render() {
+    console.log(this.state);
     const { requestUserMedia, jobPost } = this.props;
     let videoOptions = {};
     if (this.state.stream) {
@@ -127,19 +152,30 @@ class Interview extends Component {
         <Row>
           <Col xs={12} md={12}>
             <h1 className="text-center">Interview here</h1>
+            { this.state.startTimer ? '' :
             <div className="text-center clock">
               <ReactCountDownClock
-                seconds={this.state.time}
+                seconds={5}
                 alpha={0.9}
                 size={75}
-                onComplete={this.selectNextQuestion}
+                onComplete={this.startInterview}
               />
             </div>
+            }
             <div className="text-center question">
+              { this.state.startTimer ?
+                <div>
+                <Timer
+                  startInterview={true}
+                  showNextQuestion={this.showNextQuestion}
+                />
               <hr />
               <Header as="h1" textAlign="center">
-                { jobPost.question[0].question }
+                { this.state.questions[this.state.selectedQuestionIdx].question }
               </Header>
+            
+              </div>
+                : '' }
             </div>
           </Col>
         </Row>
