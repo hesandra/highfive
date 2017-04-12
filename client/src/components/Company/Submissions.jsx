@@ -44,7 +44,7 @@ class PositionsLevel extends React.Component {
                     </List>
                   </Card.Description>
                    <div className="spaceQ"></div>
-                   <Button color="purple" fluid onClick={() => this.props.showVideos(item.video[0].href)}>Watch application</Button>
+                   <Button color="purple" fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                    <div><a href={item.video[0].href}>Download application here</a></div>
                 </Card.Content>
                 <Card.Content extra>

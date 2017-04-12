@@ -20,7 +20,7 @@ class ApplicationModal extends React.Component {
           <h4>Application Video</h4>
           <div>
             <video width="800" controls
-            src={this.props.companyProfile.applicationVideos} type="video/webm">
+            src={this.props.companyProfile.applicationVideos.videolink} type="video/webm">
             </video>
           </div>
         </Modal.Body>
