@@ -267,8 +267,9 @@ module.exports = {
     getAllByUserId: async (id, cb) => {
       const userSubmissions = await User
         .query()
-        .eager('[submission, submission.jobpost]')
+        .eager('[submission, submission.[jobpost, video]]')
         .where('id', id)
+        .skipUndefined()
         .first()
         .catch(err => cb(err, null));
       cb(null, userSubmissions);

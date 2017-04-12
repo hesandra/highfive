@@ -23,9 +23,12 @@ class Interview extends Component {
       startTimer: false,
       questions: props.jobPost.question,
       selectedQuestionIdx: 0,
-      submissionCreated: false
+      submissionCreated: false,
+      done: false,
+      interviewOver: false
     };
     this.startInterview = this.startInterview.bind(this);
+    this.endInterview = this.endInterview.bind(this);
     this.handleEditorInputChange = this.handleEditorInputChange.bind(this);
     this.showNextQuestion = this.showNextQuestion.bind(this);
   }
@@ -64,30 +67,26 @@ class Interview extends Component {
     console.log(newValue);
   }
   startRecording(stream) {
-    const { backend_profile } = this.props;
-    if (stream.active) {
+    this.video = recordRTC(stream, {
+      type: 'video',
+      mimeType: 'video/webm;codecs=vp8',
+      timeSlice: 1000
+    });
+    if (stream.active && !this.state.done) {
       this.setState({ stream, done: true });
       this.stream = stream;
     }
-
-    this.video = recordRTC(stream, {
-      type: 'video',
-      mimeType: 'video/webm',
-    });
     this.video.startRecording();
-    setTimeout(() => {
-      this.stopRecording();
-      setTimeout(() => {
-        this.processRecording();
-      }, 1000);
-    }, 8000);
   }
   stopRecording() {
     this.video.stopRecording((vidsrc) => {
-      if (this.state.stream.active) {
-        this.setState({ src: vidsrc, done: true });
-      }
+      this.processRecording();
     });
+    setTimeout(() => {
+      if (!this.state.interviewOver) {
+        this.video.startRecording();
+      }
+    }, 2000);
   }
   processRecording() {
     const { backend_profile } = this.props;
@@ -102,6 +101,9 @@ class Interview extends Component {
       };
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
+      setTimeout(() => {
+        this.video.resume();
+      }, 3000);
       this.listenForS3Link();
     });
   }
@@ -117,14 +119,23 @@ class Interview extends Component {
     });
   }
   showNextQuestion() {
+    this.stopRecording();
     // this.startRecording(this.props.stream);
-    this.startRecording(this.props.stream);
+    // this.startRecording(this.props.stream);
+    // this.video.startRecording();
     const currentIdx = this.state.selectedQuestionIdx;
     if (currentIdx < 2) {
       this.setState({
         selectedQuestionIdx: this.state.selectedQuestionIdx + 1
       });
     }
+  }
+  endInterview() {
+    this.setState({
+      interviewOver: true
+    });
+    this.stopRecording();
+    this.props.stream.stop();
   }
   render() {
     console.log(this.state);
@@ -165,6 +176,7 @@ class Interview extends Component {
                 <div>
                 <Timer
                   startInterview={true}
+                  endInterview={this.endInterview}
                   showNextQuestion={this.showNextQuestion}
                 />
               <hr />
@@ -174,6 +186,7 @@ class Interview extends Component {
             
               </div>
                 : '' }
+                { this.state.interviewOver ? 'Interview DONE' : '' }
             </div>
           </Col>
         </Row>

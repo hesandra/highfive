@@ -1,6 +1,6 @@
 export function captureUserMedia(callback) {
   const params = {
-    audio: true,
+    audio: false,
     video: true,
   };
 
