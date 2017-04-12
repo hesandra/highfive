@@ -87,7 +87,7 @@ module.exports = {
             .$relatedQuery('user')
             .where({ user_id: id })
             .first()
-            .skipUndefined()
+            .skipUndefined();
 
           if (relationExists) {
             if (index === industriesLength - 1) {
@@ -217,16 +217,33 @@ module.exports = {
         .allowEager('[question]')
         .eager('[question]')
         .where('company_id', companyId)
-        .then((jobs) => { cb(null, jobs) })
-        .catch( err => { console.log(err) })
+        .then((jobs) => { cb(null, jobs); })
+        .catch((err) => { console.log(err); });
     },
-    updateJobPost: (body, cb) => {
-      Jobpost
+    updateJobPost: async (id, body, cb) => {
+      const jobpost = await Jobpost
         .query()
-        .update(body)
-        .where('id', body.id)
-        .then((jobs) => { cb(null, jobs) })
-        .catch( err => { console.log(err) })
+        .where('id', id)
+        // .update(body)
+        // .then((job) => { cb(null, job); })
+        .catch((err) => { cb(err, null); });
+
+      const { questions } = body;
+
+      let count = 0;
+      questions.forEach((question) => {
+        jobpost
+          //.$relatedQuery('question')
+            .relate(question.id)
+            .catch((e) => {
+              cb(e, null);
+            });
+        count++;
+
+        if(count === questions.length){
+          cb(null, jobpost);
+        }
+      });
     },
     deleteJobPost: (postId, cb) => {
       Jobpost

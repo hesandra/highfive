@@ -1,8 +1,5 @@
 const Model = require('objection').Model;
 
-const Question = require('./Question');
-const Company = require('./Company');
-
 class Jobpost extends Model {
   $beforeInsert() {
     this.created_at = new Date().toISOString();
@@ -31,6 +28,14 @@ class Jobpost extends Model {
   }
   static get relationMappings() {
     return {
+      submission: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: `${__dirname}/Submission`,
+        join: {
+          from: 'jobpost.id',
+          to: 'submission.jobpost_id'
+        }
+      },
       company: {
         relation: Model.BelongsToOneRelation,
         modelClass: `${__dirname}/Company`,
