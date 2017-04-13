@@ -11,7 +11,7 @@ class JobPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      perPage: 1
+      perPage: 10
     };
     this.handlePageClick = this.handlePageClick.bind(this);
   }
@@ -69,9 +69,9 @@ class JobPosts extends Component {
             previousLabel={'previous'}
             nextLabel={'next'}
             breakClassName={'break-me'}
-            pageCount={5}
+            pageCount={9}
             marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={9}
             onPageChange={this.handlePageClick}
             containerClassName={'pagination'}
             subContainerClassName={'pages pagination'}

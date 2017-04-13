@@ -67,7 +67,6 @@ class Interview extends Component {
     this.props.stream.stop();
   }
   handleEditorInputChange(newValue) {
-    console.log(arguments);
     this.setState({
       answer: newValue
     });
@@ -99,6 +98,8 @@ class Interview extends Component {
     let answer;
     if (this.state.selectedQuestionIdx === 2) {
       answer = this.state.answer;
+    } else {
+      answer = '';
     }
     const url = this.video.getDataURL((videoData) => {
       const payload = {
@@ -118,7 +119,6 @@ class Interview extends Component {
     });
   }
   startInterview() {
-    console.log('start interview');
     this.setState({
       startTimer: true
     });
@@ -130,9 +130,6 @@ class Interview extends Component {
   }
   showNextQuestion() {
     this.stopRecording();
-    // this.startRecording(this.props.stream);
-    // this.startRecording(this.props.stream);
-    // this.video.startRecording();
     const currentIdx = this.state.selectedQuestionIdx;
     if (currentIdx < 2) {
       this.setState({
@@ -184,18 +181,18 @@ class Interview extends Component {
             <div className="text-center question">
               { this.state.startTimer ?
                 <div>
-                <Timer
-                  startInterview={true}
-                  endInterview={this.endInterview}
-                  showNextQuestion={this.showNextQuestion}
-                />
-              <Header as="h1" textAlign="center">
-                { this.state.questions[this.state.selectedQuestionIdx].question }
-              </Header>        
-              </div>
-                : '' }
-                { this.state.interviewOver ? 'Interview DONE' : '' }
-              <hr className='interview-hr' />
+                  <Timer
+                    startInterview={true}
+                    endInterview={this.endInterview}
+                    showNextQuestion={this.showNextQuestion}
+                  />
+                  <Header as="h1" textAlign="center">
+                    { this.state.questions[this.state.selectedQuestionIdx].question }
+                  </Header>
+                </div>
+              : '' }
+              { this.state.interviewOver ? 'Interview DONE' : '' }
+              <hr className="interview-hr" />
             </div>
           </Col>
         </Row>
@@ -203,31 +200,31 @@ class Interview extends Component {
           <Col xs={6}>
             { this.state.stream ?
               <div>
-               <h5 className="text-center">Smile, your on camera</h5>
-              <VideoPlayer {...videoOptions} /> 
+                <h5 className="text-center">Smile, your on camera</h5>
+                <VideoPlayer {...videoOptions} />
               </div>
-                : '' }
-              <hr />
+              : '' }
+            <hr />
           </Col>
           <Col xs={6}>
-              <div className="text-center">
-                <h5 className="text-center">Enter Code Here</h5>
-                <AceEditor
-                  mode="javascript"
-                  theme="monokai"
-                  className="text-center"
-                  onChange={this.handleEditorInputChange}
-                  height="400px"
-                  width="500px"
-                  editorProps={{ $blockScrolling: true }}
-                  enableBasicAutocompletion
-                  value={this.state.answer}
-                  defaultValue={this.state.answer}
-                  tabSize={2}
-                  setOptions={{ cursorStyle: 'wide' }}
-                  style={{ marginRight: '5px' }}
-                />
-              </div>
+            <div className="text-center">
+              <h5 className="text-center">Enter Code Here</h5>
+              <AceEditor
+                mode="javascript"
+                theme="monokai"
+                className="text-center"
+                onChange={this.handleEditorInputChange}
+                height="400px"
+                width="500px"
+                editorProps={{ $blockScrolling: true }}
+                enableBasicAutocompletion
+                value={this.state.answer}
+                defaultValue={this.state.answer}
+                tabSize={2}
+                setOptions={{ cursorStyle: 'wide' }}
+                style={{ marginRight: '5px' }}
+              />
+            </div>
           </Col>
         </Row>
       </Grid>
