@@ -58,7 +58,7 @@ class InterviewForm extends React.Component {
       return (
         <div>
           <div><h3 className="selectedQ">Selected algorithm questions</h3>
-            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'algorithm').map((item) => {
+            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
               return (
                  <div onClick={()=> this.props.removeQuestion(item)}>
                 <h4>{item.title}</h4>
@@ -66,7 +66,7 @@ class InterviewForm extends React.Component {
             })}
             </div>
             <h3 className="selectedQ">Selected system design questions</h3>
-            <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'data structure').map(( item )=> {
+            <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'System Design').map(( item )=> {
               return (
                 <div onClick={()=> this.props.removeQuestion(item)}>
                 <h4>{item.title}</h4>
@@ -74,7 +74,7 @@ class InterviewForm extends React.Component {
             })}
             </div>
             <h3 className="selectedQ">Selected behavioral questions</h3>
-            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'behavioral').map((item) => {
+            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Behavioral').map((item) => {
               return (
                 <div onClick={()=> this.props.removeQuestion(item)}>
                 <h4>{item.title}</h4>
