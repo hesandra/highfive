@@ -4,7 +4,7 @@ import { Grid, Row, Col, Image } from 'react-bootstrap';
 import CompanyAuth from './CompanyAuth';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCompany, getIndustries } from '../../actions/company';
+import { getCompany, getIndustries, getLocations } from '../../actions/company';
 
 class CompanyDetails extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class CompanyDetails extends React.Component {
   componentDidMount() {
     this.props.getCompany(this.props.companyAuth.companyAuth.company_backend_profile.id);
     this.props.getIndustries();
+    this.props.getLocations();
   }
 
   renderProfile() {
@@ -33,13 +34,13 @@ class CompanyDetails extends React.Component {
     }else if (this.props.companyAuth.companyProfile.profileReload) {
       return (
         <div>
-          <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.companyReload[0].profile_img} circle />
+        {this.props.companyAuth.companyProfile.industries.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].industry_id).map(item =>
+          <div><Image className="company-img text-center" src={this.props.profile_img} circle />
           <h1>{this.props.companyAuth.companyProfile.companyReload[0].name}</h1>
-          <h2>{this.props.companyAuth.companyProfile.companyReload[0].industry_id}</h2>
+          <h2>{item.name}</h2></div>)}
           <h2>{this.props.companyAuth.companyProfile.companyReload[0].location_id}</h2>
-        </div>
+          </div>)
 
-      )
     } else if (!this.props.companyAuth.companyProfile.profileReload) {
       return (
         <div>
@@ -74,9 +75,28 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getCompany, getIndustries }, dispatch);
+  return bindActionCreators({ getCompany, getIndustries, getLocations }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyDetails);
 
 
+/*}else if (this.props.companyAuth.companyProfile.profileReload) {
+      return (
+        <div>
+          <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.companyReload[0].profile_img} circle />
+          <h1>{this.props.companyAuth.companyProfile.companyReload[0].name}</h1>
+          <h2>{this.props.companyAuth.companyProfile.companyReload[0].industry_id}</h2>
+          <h2>{this.props.companyAuth.companyProfile.companyReload[0].location_id}</h2>
+        </div>
+
+      )
+    } else if (!this.props.companyAuth.companyProfile.profileReload) {
+      return (
+        <div>
+          <Image className="company-img text-center" src={this.props.companyAuth.companyAuth.company_backend_profile.profile_img} circle />
+          <h1>{this.props.companyAuth.companyAuth.company_backend_profile.name}</h1>
+          <h2>{this.props.companyAuth.companyAuth.company_backend_profile.industry_id}</h2>
+          <h2>{this.props.companyAuth.companyAuth.company_backend_profile.location_id}</h2>
+        </div>
+      )*/
