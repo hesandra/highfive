@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 class InterviewFormJun extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {   
+    this.state = {
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +36,7 @@ class InterviewFormJun extends React.Component {
       <div>
         <div>
           <div>
-           <div className="spaceQ"></div>
+            <div className="spaceQ"></div>
             <h3>Junior Software Engineer</h3>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
@@ -45,11 +45,11 @@ class InterviewFormJun extends React.Component {
                   Description
                 </Col>
                 <Col sm={4}>
-                  <FormControl name="name" type="text" value={this.state.description} onChange={this.handleChange} onSubmit={()=> this.props.submitDescription(this.state)}/>
+                  <FormControl name="name" type="text" value={this.state.description} onChange={this.handleChange} onSubmit={() => this.props.submitDescription(this.state)} />
                 </Col>
               </FormGroup>
             </Form>
-            <Button onClick={()=> this.props.createJobPost({company_id: this.props.companyProfile.companyReload[0].id, level: this.props.companyProfile.level, description: this.props.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyReload[0].industry_id , location_id: this.props.companyProfile.companyReload[0].location_id } )}>New job position</Button>
+            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyReload[0].id, level: this.props.companyProfile.level, description: this.props.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyReload[0].industry_id, location_id: this.props.companyProfile.companyReload[0].location_id })}>New job position</Button>
             <div className="spaceQ"></div>
             <h3>Select 3-5 Algorithm Questions</h3>
             <div className="scroll">
@@ -58,9 +58,9 @@ class InterviewFormJun extends React.Component {
                   if (item.type === 'Algorithm' && item.level === this.props.companyProfile.level) {
                     return (
                       <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>
-                      <div>
-                      {item.title}</div>
-                      {item.question}
+                        <div>
+                          {item.title}</div>
+                        {item.question}
                       </p>
                     )
                   }
