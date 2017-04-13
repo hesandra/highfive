@@ -56,7 +56,7 @@ class InterviewFormSen extends React.Component {
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
-                  if (item.type === 'algorithm' && item.level === this.props.companyProfile.level) {
+                  if (item.type === 'Algorithm' && item.level === this.props.companyProfile.level) {
                     return (
                       <p key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</p>
                     )
@@ -70,7 +70,7 @@ class InterviewFormSen extends React.Component {
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
-                  if (item.type === 'data structure' && item.level === this.props.companyProfile.level) {
+                  if (item.type === 'System Design' && item.level === this.props.companyProfile.level) {
                     return (
                       <p key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.question}</p>
                     )
@@ -84,7 +84,7 @@ class InterviewFormSen extends React.Component {
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
-                  if (item.type === 'behavioral' && item.level === this.props.companyProfile.level) {
+                  if (item.type === 'Behavioral' && item.level === this.props.companyProfile.level) {
                     return (
                       <p key={idx} onClick={(question) => {if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) {this.props.saveQuestion(item)}}}>{item.title} | {item.question}</p>
                     )
