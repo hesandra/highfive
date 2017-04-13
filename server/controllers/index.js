@@ -159,17 +159,19 @@ module.exports = {
           err: JSON.stringify(err),
           jobposts
         };
-        res.send(payload)
+        res.send(payload);
       });
     },
     updateJobPost: (req, res, next) => {
-      models.jobposts.updateCompanyPost(req.body, (err, jobposts) => {
+      const { id } = req.params;
+
+      models.jobposts.updateJobPost(id, req.body, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
           jobposts
         };
-        res.send(payload)
+        res.send(payload);
       });
     },
     deleteJobPost: (req, res, next) => {
@@ -181,7 +183,7 @@ module.exports = {
           err: JSON.stringify(err),
           jobposts
         };
-        res.send(payload)
+        res.send(payload);
       });
     }
   },
