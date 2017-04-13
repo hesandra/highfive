@@ -62,9 +62,9 @@ export default function (state = initialState, action) {
         applicationVideos: action.payload,
         showVideos: true,
     });
-    case 'JOBTITLE':
+    case 'DESCRIPTION':
       return Object.assign({}, state, {
-        jobTitle: action.payload,
+        jobDescription: action.payload,
     });
 /*    case 'SELECT_QUESTION':
       return Object.assign({}, state, {
@@ -84,8 +84,15 @@ export default function (state = initialState, action) {
         showVideos: false,
     });
     case 'REMOVE_QUESTION':
+    console.log('index in remove question reducers', state.selectedQuestion )
+    console.log('index in remove question reducers', state.selectedQuestion.indexOf(action.payload))
+    const idx = state.selectedQuestion.indexOf(action.payload);
       return Object.assign({}, state, {
-        selectedQuestion: state.selectedQuestion.splice(state.selectedQuestion.indexOf(action.payload), 1)   
+        selectedQuestion: state.selectedQuestion.splice(idx, 1)
+    });
+     case 'CREATE_JOBPOST':
+      return Object.assign({}, state, {
+        createdJob: action.payload
     });
   }
   return state;

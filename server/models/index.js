@@ -227,24 +227,24 @@ module.exports = {
         // .update(body)
         // .then((job) => { cb(null, job); })
         .catch((err) => { cb(err, null); });
-
-      const { questions } = body;
-
-      let count = 0;
-      questions.forEach((question) => {
-        jobpost
-          //.$relatedQuery('question')
-            .relate(question.id)
-            .catch((e) => {
-              cb(e, null);
-            });
-        count++;
-
-        if(count === questions.length){
-          cb(null, jobpost);
-        }
-      });
+        const questions = body;
+ 
+       let count = 0;
+       console.log('QUESTIONS IN INDEX MODELS', questions)
+       questions.forEach((question) => {
+         jobpost
+           .$relatedQuery('question')
+             .relate(question.id)
+             .catch((e) => {
+               cb(e, null);
+             });
+         count++;
+         if(count === questions.length){
+           cb(null, jobpost);
+          }
+       });
     },
+
     deleteJobPost: (postId, cb) => {
       Jobpost
         .query()

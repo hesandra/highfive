@@ -14,11 +14,10 @@ class Jobpost extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['title', 'level', 'description', 'company_id'],
+      required: ['level', 'description', 'company_id'],
       properties: {
         id:                { type: 'integer' },
         company_id:        { type: 'integer' },
-        title:             { type: 'string' },
         level:             { type: 'integer' },
         description:       { type: 'string' },
         industry_id:       { type: 'integer' },

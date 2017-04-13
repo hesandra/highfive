@@ -154,10 +154,11 @@ export function midPos(){
  };
 }
 
-export function submitTitle(title){
+export function submitDescription(description){
+  console.log('title in ACtion handlers', description)
   return {
-    type: 'JOBTITLE',
-    payload: title,
+    type: 'DESCRIPTION',
+    payload: description,
  };
 }
 //const allQuestions = [];
@@ -197,15 +198,50 @@ export function closeModal(){
 export function deleteJob(jobId){
   return (dispatch) => {
     axios.delete('http://localhost:3000/api/jobposts/' + jobId)
-    .then(()=> {
-      getPositions()
-    });
   }
 }
 
 export function removeQuestion(item){
+  console.log('item in removeQuestion', item)
   return {
     type: 'REMOVE_QUESTION',
     payload: item,
   }
 }
+
+export function createJob(jobpost){
+  return{
+    type: 'CREATE_JOBPOST',
+    payload: jobpost
+  }
+}
+
+export function createJobPost(jobpost){
+  console.log(jobpost)
+ return (dispatch) => {
+   console.log('after dispatch')
+    axios.post('http://localhost:3000/api/jobposts', jobpost)
+      .then((jobpost) => {
+        console.log('jobpost', jobpost)
+        dispatch(createJob(jobpost));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+}
+
+export function saveInterview(data){
+  console.log('in saveInterview')
+  return (dispatch) => {
+    const postId = data.postId;
+    axios.put('http://localhost:3000/api/jobposts/' + postId, data.questions)
+    .then((jobpost) => {
+      console.log('jobpost in saveInterview', jobpost)
+    })
+    .catch((err) => {
+        console.error(err);
+      });
+  }
+}
+

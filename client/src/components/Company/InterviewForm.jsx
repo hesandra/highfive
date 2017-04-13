@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Image, Button, FormGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { removeQuestion } from '../../actions/company';
+import { removeQuestion, saveInterview } from '../../actions/company';
 
 const algorithm = [];
 const system = [];
@@ -65,7 +65,7 @@ class InterviewForm extends React.Component {
                 {item.question}</div>)
             })}
               <div className="space"></div>
-              <Button>Save</Button>
+              <Button onClick={()=> {this.props.saveInterview({postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion })}}>Save</Button>
               <div className="space"></div>
             </div>
           </div>
@@ -82,7 +82,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ removeQuestion }, dispatch);
+  return bindActionCreators({ removeQuestion, saveInterview }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewForm);
