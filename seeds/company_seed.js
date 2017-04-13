@@ -47,16 +47,6 @@ exports.seed = function (knex, Promise) {
             auth0_id: ''
           },
           {
-            id: 4,
-            industry_id: 4,
-            location_id: 4,
-            name: 'Yahoo',
-            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
-            email: 'info@info.com',
-            address: '',
-            auth0_id: ''
-          },
-          {
             id: 5,
             industry_id: 5,
             location_id: 5,
@@ -80,7 +70,7 @@ exports.seed = function (knex, Promise) {
             id: 7,
             industry_id: 7,
             location_id: 7,
-            name: 'LG',
+            name: 'Samsung',
             profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
             email: 'info@info.com',
             address: '',
@@ -101,16 +91,6 @@ exports.seed = function (knex, Promise) {
             industry_id: 9,
             location_id: 9,
             name: 'Panasonic',
-            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
-            email: 'info@info.com',
-            address: '',
-            auth0_id: ''
-          },
-          {
-            id: 10,
-            industry_id: 10,
-            location_id: 10,
-            name: 'Samsung',
             profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
             email: 'info@info.com',
             address: '',
