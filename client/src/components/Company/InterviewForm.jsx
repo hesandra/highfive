@@ -11,13 +11,13 @@ class InterviewForm extends React.Component {
   renderAll() {
     return this.props.companyProfile.selectedQuestion.map((item) => {
       //console.log('in render all map', algorithm, 'selected questions', this.props.companyProfile.selectedQuestion, 'item', item)
-      if (item.type === 'algorithm' && (algorithm.findIndex((el) => el.id === item.id)) === -1) {
+      if (item.type === 'Algorithm' && (algorithm.findIndex((el) => el.id === item.id)) === -1) {
         algorithm.push(item)
       }
-      if (item.type === 'data structure' && (system.findIndex((el) => el.id === item.id)) === -1) {
+      if (item.type === 'System Design' && (system.findIndex((el) => el.id === item.id)) === -1) {
         system.push(item)
       }
-      if (item.type === 'behavioral' && (behavioral.findIndex((el) => el.id === item.id)) === -1) {
+      if (item.type === 'Behavioral' && (behavioral.findIndex((el) => el.id === item.id)) === -1) {
         behavioral.push(item)
       }
     })
