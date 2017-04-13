@@ -43,7 +43,8 @@ class CompanyProfile extends React.Component {
     event.preventDefault();
   }
 
-  render() {
+  renderForm() {
+    console.log('this.props in companyprofile', this.props)
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
         <br />
@@ -70,15 +71,16 @@ class CompanyProfile extends React.Component {
             Industry
         </Col>
           <Col sm={8}>
+          
             <FormGroup controlId="formControlsSelect">
               <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
                 <option value="select">select</option>
-                <option >1</option>
-                <option >2</option>
-                <option >3</option>
-                <option >4</option>
+                {this.props.profile.companyProfile.industries.map((item) => 
+                <option value={item.id}>{item.name}</option>
+                )}
               </FormControl>
             </FormGroup>
+            
           </Col>
         </FormGroup>
         <br />
@@ -90,10 +92,9 @@ class CompanyProfile extends React.Component {
             <FormGroup controlId="formControlsSelect">
               <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
                 <option value="select">select</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                 {this.props.profile.companyProfile.locations.map((item) => 
+                <option value={item.id}>{item.city}</option>
+                )}
               </FormControl>
             </FormGroup>
           </Col>
@@ -125,9 +126,20 @@ class CompanyProfile extends React.Component {
           </Col>
         </FormGroup>
       </Form>
-    );
+    )}
+  render(){
+    if (this.props.profile.companyProfile.industries){
+    return(
+      <div>
+      {this.renderForm()}
+      </div>
+    )
+  } else {
+    return(
+      <div></div>
+    )
+  }}
   }
-}
 
 function mapStateToProps(state) {
   return {

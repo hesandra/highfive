@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Image, Button, FormGroup, Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { createInterview, getQuestions, getPositions, getSubmissions } from '../../actions/company';
+import { createInterview, getQuestions, getPositions, getSubmissions, deleteJob } from '../../actions/company';
 
 class PositionsLevel extends React.Component {
   componentDidMount() {
@@ -29,7 +29,9 @@ class PositionsLevel extends React.Component {
                   <tbody>
                     <tr>
                       <td>{item.id}</td>
-                      <td>{item.title}</td><td>{item.description}</td><td>{item.created_at}</td><td>{item.updated_at}</td><tb><Button onClick={() => this.props.getSubmissions(item.id)}>See Submissions</Button></tb>
+                      <td>{item.title}</td><td>{item.description}</td><td>{item.created_at}</td><td>{item.updated_at}</td>
+                      <tb><Button onClick={() => this.props.getSubmissions(item.id)}>See Submissions</Button></tb>
+                      <tb><Button onClick={() => this.props.deleteJob(item.id)}>Delete</Button></tb>
                     </tr>
                   </tbody>
                 </Table>
@@ -64,7 +66,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ createInterview, getQuestions, getPositions, getSubmissions }, dispatch);
+  return bindActionCreators({ createInterview, getQuestions, getPositions, getSubmissions, deleteJob }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PositionsLevel);

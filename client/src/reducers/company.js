@@ -62,9 +62,9 @@ export default function (state = initialState, action) {
         applicationVideos: action.payload,
         showVideos: true,
     });
-    case 'JOBTITLE':
+    case 'DESCRIPTION':
       return Object.assign({}, state, {
-        jobTitle: action.payload,
+        jobDescription: action.payload,
     });
 /*    case 'SELECT_QUESTION':
       return Object.assign({}, state, {
@@ -82,6 +82,25 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         questions: action.payload,
         showVideos: false,
+    });
+    case 'REMOVE_QUESTION':
+    console.log('index in remove question reducers', state.selectedQuestion )
+    console.log('index in remove question reducers', state.selectedQuestion.indexOf(action.payload))
+    const idx = state.selectedQuestion.indexOf(action.payload);
+      return Object.assign({}, state, {
+        selectedQuestion: state.selectedQuestion.slice(0, idx).concat(state.selectedQuestion.slice(idx+1))
+    });
+     case 'CREATE_JOBPOST':
+      return Object.assign({}, state, {
+        createdJob: action.payload
+    });
+    case 'GET_INDUSTRIES':
+      return Object.assign({}, state, {
+        industries: action.payload
+    });
+    case 'GET_LOCATIONS':
+      return Object.assign({}, state, {
+        locations: action.payload
     });
   }
   return state;

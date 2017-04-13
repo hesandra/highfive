@@ -68,7 +68,7 @@ export function getPositions(){
   return (dispatch) => {
     axios.get('http://localhost:3000/api/jobposts')
     .then((jobposts) => {
-      //console.log('jobposts in getPostiions', jobposts)
+      console.log('jobposts in getPostiions', jobposts)
       dispatch(getJobs(jobposts.data.jobposts))
     })
     .catch((err) => {
@@ -154,10 +154,11 @@ export function midPos(){
  };
 }
 
-export function submitTitle(title){
+export function submitDescription(description){
+  console.log('title in ACtion handlers', description)
   return {
-    type: 'JOBTITLE',
-    payload: title,
+    type: 'DESCRIPTION',
+    payload: description,
  };
 }
 //const allQuestions = [];
@@ -193,3 +194,94 @@ export function closeModal(){
     type: 'CLOSE_MODAL',
   }
 }
+
+export function deleteJob(jobId){
+  return (dispatch) => {
+    axios.delete('http://localhost:3000/api/jobposts/' + jobId)
+  }
+}
+
+export function removeQuestion(item){
+  //console.log('item in removeQuestion', data.itemToRemove, data.currentQuestions )
+  return {
+    type: 'REMOVE_QUESTION',
+    payload: item,
+  }
+}
+
+export function createJob(jobpost){
+  return{
+    type: 'CREATE_JOBPOST',
+    payload: jobpost
+  }
+}
+
+export function createJobPost(jobpost){
+  console.log(jobpost)
+ return (dispatch) => {
+   console.log('after dispatch')
+    axios.post('http://localhost:3000/api/jobposts', jobpost)
+      .then((jobpost) => {
+        console.log('jobpost', jobpost)
+        dispatch(createJob(jobpost));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+}
+
+export function saveInterview(data){
+  console.log('in saveInterview')
+  return (dispatch) => {
+    const postId = data.postId;
+    axios.put('http://localhost:3000/api/jobposts/' + postId, data.questions)
+    .then((jobpost) => {
+      console.log('jobpost in saveInterview', jobpost)
+    })
+    .catch((err) => {
+        console.error(err);
+      });
+  }
+}
+export function getAllIndustries(industries){
+  return{
+    type: 'GET_INDUSTRIES',
+    payload: industries,
+  }
+}
+
+export function getIndustries(){
+  return(dispatch) => {
+  axios.get('http://localhost:3000/api/industries')
+  .then((result) =>{
+    console.log('industries in getIndustries', result)
+    dispatch(getAllIndustries(result.data.industries))
+  })
+    .catch((err) => {
+        console.error(err);
+  });
+  }
+}
+
+export function getAllLocations(locations){
+  return{
+    type: 'GET_LOCATIONS',
+    payload: locations,
+  }
+}
+
+export function getLocations(){
+  return(dispatch) => {
+  axios.get('http://localhost:3000/api/locations')
+  .then((result) =>{
+    console.log('industries in getIndustries', result)
+    dispatch(getAllLocations(result.data.locations))
+  })
+    .catch((err) => {
+        console.error(err);
+  });
+  }
+}
+
+

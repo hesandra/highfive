@@ -164,7 +164,6 @@ module.exports = {
     },
     updateJobPost: (req, res, next) => {
       const { id } = req.params;
-
       models.jobposts.updateJobPost(id, req.body, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
