@@ -36,7 +36,7 @@ class PositionsLevel extends React.Component {
                     <tr>
                       <td>{item.id}</td>
                       <td>{item.title}</td><td>{item.description}</td><td>{cDateString}</td><td>{uDateString}</td>
-                      <tb><Button onClick={() => this.props.getSubmissions(item.id)}>See Submissions</Button></tb>
+                      <tb><Button onClick={() => { this.props.getSubmissions(item.id); document.getElementById('tabs-with-dropdown-tab-second').click(); }}>See Submissions</Button></tb>
                       <tb><Button onClick={() => this.props.deleteJob(item.id)}>Delete</Button></tb>
                     </tr>
                   </tbody>
