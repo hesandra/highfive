@@ -28,6 +28,12 @@ class InterviewForm extends React.Component {
       if (item.type === 'System Design' && (system.findIndex((el) => el.id === item.id)) === -1) {
         system.push(item)
       }
+      if (item.type === 'Algorithm' && (algorithm.findIndex((el) => el.id === item.id)) === -1) {
+        algorithm.push(item)
+      }
+      if (item.type === 'System Design' && (system.findIndex((el) => el.id === item.id)) === -1) {
+        system.push(item)
+      }
       if (item.type === 'Behavioral' && (behavioral.findIndex((el) => el.id === item.id)) === -1) {
         behavioral.push(item)
       }
