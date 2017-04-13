@@ -217,13 +217,13 @@ export function createJob(jobpost){
 }
 
 export function createJobPost(jobpost){
-  console.log(jobpost)
+  console.log('JOBPOST IN CREATE JOBPOST', jobpost)
  return (dispatch) => {
    console.log('after dispatch')
     axios.post('http://localhost:3000/api/jobposts', jobpost)
-      .then((jobpost) => {
-        console.log('jobpost', jobpost)
-        dispatch(createJob(jobpost));
+      .then((result) => {
+        console.log('result', result)
+        dispatch(createJob(result));
       })
       .catch((err) => {
         console.error(err);
