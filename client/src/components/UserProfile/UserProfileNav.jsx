@@ -1,6 +1,8 @@
 import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link, hashHistory } from 'react-router';
+import NotificationSystem from 'react-notification-system';
+
 import SettingsForm from './SettingsForm';
 import EditProfileForm from './EditProfileForm';
 import SubmissionsList from './SubmissionsList';
@@ -10,7 +12,7 @@ const UserProfileNav = (props) => {
     linkedinLink, onUpdateUserProfile, industries, submissions } = props;
   return (
     <div className="text-center">
-      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
+      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="1">
         <Row className="clearfix">
           <Col sm={8}>
             <Nav bsStyle="tabs">

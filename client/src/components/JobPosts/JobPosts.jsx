@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Card, Icon, Image, Rating, Header, List, Statistic } from 'semantic-ui-react';
+import ReactPaginate from 'react-paginate';
+
 import img from '../../../public/images/mock_company_1_hq.jpg';
 import CardList from './CardList';
 
@@ -8,8 +10,9 @@ class JobPosts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      perPage: 1
     };
+    this.handlePageClick = this.handlePageClick.bind(this);
   }
   componentDidMount() {
     const { jobPosts } = this.props;
@@ -18,7 +21,16 @@ class JobPosts extends Component {
       requestJobPosts();
     }
   }
+  handlePageClick = (data) => {
+    const selected = data.selected;
+    const offset = Math.ceil(selected * this.state.perPage);
+
+    this.setState({
+      offset
+    });
+  }
   render() {
+    console.log(this.state);
     const { jobPosts } = this.props;
     return (
       <Grid>
@@ -38,9 +50,25 @@ class JobPosts extends Component {
             </div>
             <hr />
             { jobPosts ?
-              <CardList
-                jobPosts={jobPosts}
-              />
+              <div>
+                <CardList
+                  jobPosts={jobPosts}
+                />
+                <hr />
+                <div className="text-center">
+                  <ReactPaginate
+                    previousLabel={"previous"}
+                    nextLabel={"next"}
+                    breakClassName={"break-me"}
+                    pageCount={5}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={"pagination"}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={"active"} />
+                  </div>
+              </div>
             : '' }
           </Col>
         </Row>
