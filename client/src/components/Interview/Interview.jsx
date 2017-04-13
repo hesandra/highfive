@@ -23,9 +23,12 @@ class Interview extends Component {
       startTimer: false,
       questions: props.jobPost.question,
       selectedQuestionIdx: 0,
-      submissionCreated: false
+      submissionCreated: false,
+      done: false,
+      interviewOver: false
     };
     this.startInterview = this.startInterview.bind(this);
+    this.endInterview = this.endInterview.bind(this);
     this.handleEditorInputChange = this.handleEditorInputChange.bind(this);
     this.showNextQuestion = this.showNextQuestion.bind(this);
   }
@@ -44,13 +47,10 @@ class Interview extends Component {
     }
     if (!this.state.submissionCreated) {
       createSubmission({
-        user_id: backend_profile,
+        user_id: backend_profile.id,
         jobpost_id: jobPost.id
       });
     }
-    setTimeout(() => {
-      this.setState({ loaded: true })
-    }, 4000);
   }
   componentDidUpdate(prevProps) {
     if (this.props.stream && !this.state.done) {
@@ -60,37 +60,35 @@ class Interview extends Component {
   }
   componentWillUnmount() {
     // stop media stream if user navigates away while streaming
-    alert('interview in progress');
+    if (!this.state.interviewOver) {
+      alert('interview in progress');
+    }
     this.props.stream.stop();
   }
   handleEditorInputChange(newValue) {
     console.log(newValue);
   }
   startRecording(stream) {
-    const { backend_profile } = this.props;
-    if (stream.active) {
+    this.video = recordRTC(stream, {
+      type: 'video',
+      mimeType: 'video/webm;codecs=vp8',
+      timeSlice: 1000
+    });
+    if (stream.active && !this.state.done) {
       this.setState({ stream, done: true });
       this.stream = stream;
     }
-
-    this.video = recordRTC(stream, {
-      type: 'video',
-      mimeType: 'video/webm',
-    });
     this.video.startRecording();
-    setTimeout(() => {
-      this.stopRecording();
-      setTimeout(() => {
-        this.processRecording();
-      }, 1000);
-    }, 8000);
   }
   stopRecording() {
     this.video.stopRecording((vidsrc) => {
-      if (this.state.stream.active) {
-        this.setState({ src: vidsrc, done: true });
-      }
+      this.processRecording();
     });
+    setTimeout(() => {
+      if (!this.state.interviewOver) {
+        this.video.startRecording();
+      }
+    }, 2000);
   }
   processRecording() {
     const { backend_profile } = this.props;
@@ -101,9 +99,13 @@ class Interview extends Component {
         id: Math.floor(Math.random() * 90000) + 10000,
         answer: 'test',
         question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
-        submission_id: 10
+        submission_id: this.props.submission.id
       };
       this.props.socket.emit('video', payload);
+      this.video.clearRecordedData();
+      setTimeout(() => {
+        this.video.resume();
+      }, 3000);
       this.listenForS3Link();
     });
   }
@@ -119,8 +121,10 @@ class Interview extends Component {
     });
   }
   showNextQuestion() {
+    this.stopRecording();
     // this.startRecording(this.props.stream);
-    this.startRecording(this.props.stream);
+    // this.startRecording(this.props.stream);
+    // this.video.startRecording();
     const currentIdx = this.state.selectedQuestionIdx;
     if (currentIdx < 2) {
       this.setState({
@@ -128,13 +132,20 @@ class Interview extends Component {
       });
     }
   }
+  endInterview() {
+    this.setState({
+      interviewOver: true
+    });
+    this.stopRecording();
+    this.props.stream.stop();
+  }
   render() {
     console.log(this.state);
     const { requestUserMedia, jobPost } = this.props;
     let videoOptions = {};
     if (this.state.stream) {
       videoOptions = {
-        height: '350',
+        height: '400',
         width: '500',
         autoPlay: true,
         controls: true,
@@ -167,41 +178,46 @@ class Interview extends Component {
                 <div>
                 <Timer
                   startInterview={true}
+                  endInterview={this.endInterview}
                   showNextQuestion={this.showNextQuestion}
                 />
-              <hr />
               <Header as="h1" textAlign="center">
                 { this.state.questions[this.state.selectedQuestionIdx].question }
-              </Header>
-            
+              </Header>        
               </div>
                 : '' }
+                { this.state.interviewOver ? 'Interview DONE' : '' }
+              <hr className='interview-hr' />
             </div>
           </Col>
         </Row>
         <Row>
           <Col xs={6}>
             { this.state.stream ?
-              <VideoPlayer {...videoOptions} /> : '' }
+              <div>
+               <h5 className="text-center">Smile, your on camera</h5>
+              <VideoPlayer {...videoOptions} /> 
+              </div>
+                : '' }
               <hr />
           </Col>
           <Col xs={6}>
-            <Well>
               <div className="text-center">
+                <h5 className="text-center">Enter Code Here</h5>
                 <AceEditor
                   mode="javascript"
                   theme="monokai"
                   className="text-center"
                   onChange={this.handleEditorInputChange}
-                  height="300px"
-                  width="400px"
+                  height="400px"
+                  width="500px"
                   editorProps={{ $blockScrolling: true }}
                   enableBasicAutocompletion
                   tabSize={2}
                   setOptions={{ cursorStyle: 'wide' }}
+                  style={{ marginRight: '5px' }}
                 />
               </div>
-            </Well>
           </Col>
         </Row>
       </Grid>

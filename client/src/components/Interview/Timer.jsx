@@ -35,7 +35,7 @@ class Timer extends Component {
       }, 3000);
     }
     if (this.state.minutes === 0 && this.state.seconds === 0 && this.state.round === 2 && !this.state.round2) {
-       this.setState({
+      this.setState({
         round2: true
       });
       const timeInMinutes = .2;
@@ -46,6 +46,13 @@ class Timer extends Component {
         showNextQuestion();
         this.initializeTimer('clockdiv', deadline);
       }, 3000);
+    }
+    if (this.state.minutes === 0 && this.state.seconds === 0 && this.state.round > 2 && !this.state.interviewOver) {
+      this.setState({
+        interviewOver: true
+      });
+      // interview is over
+      this.props.endInterview();
     }
   }
   componentWillUnmount() {

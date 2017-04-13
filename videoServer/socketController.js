@@ -24,7 +24,7 @@ module.exports = {
         console.log(name, id, question_id, submission_id, 'data rec');
         const s3Params = {
           Bucket: process.env.S3_BUCKET,
-          Key: `${name}.webm`,
+          Key: `${name}_${id}.webm`,
           Body: fileBuffer,
           Expires: new Date(),
           ACL: 'public-read'
@@ -37,6 +37,12 @@ module.exports = {
           }
           console.log(data);
           console.log('video saved');
+          axios.post(`http://localhost:3000/api/videos`, {
+            href: data.Location,
+            answer: 'test',
+            submission_id,
+            question_id
+          });
           socket.emit('ready', data.Location);
         });
       });

@@ -267,13 +267,15 @@ module.exports = {
     getAllByUserId: async (id, cb) => {
       const userSubmissions = await User
         .query()
-        .eager('[submission, submission.jobpost]')
+        .eager('[submission, submission.[jobpost, video]]')
         .where('id', id)
+        .skipUndefined()
         .first()
         .catch(err => cb(err, null));
       cb(null, userSubmissions);
     },
     createOne: async (submission, cb) => {
+      console.log('this is submission', submission);
       const insertedSubmission = await Submission
         .query()
         .insert(submission)
