@@ -60,7 +60,9 @@ class Interview extends Component {
   }
   componentWillUnmount() {
     // stop media stream if user navigates away while streaming
-    alert('interview in progress');
+    if (!this.state.interviewOver) {
+      alert('interview in progress');
+    }
     this.props.stream.stop();
   }
   handleEditorInputChange(newValue) {
@@ -143,7 +145,7 @@ class Interview extends Component {
     let videoOptions = {};
     if (this.state.stream) {
       videoOptions = {
-        height: '350',
+        height: '400',
         width: '500',
         autoPlay: true,
         controls: true,
@@ -179,40 +181,43 @@ class Interview extends Component {
                   endInterview={this.endInterview}
                   showNextQuestion={this.showNextQuestion}
                 />
-              <hr />
               <Header as="h1" textAlign="center">
                 { this.state.questions[this.state.selectedQuestionIdx].question }
-              </Header>
-            
+              </Header>        
               </div>
                 : '' }
                 { this.state.interviewOver ? 'Interview DONE' : '' }
+              <hr className='interview-hr' />
             </div>
           </Col>
         </Row>
         <Row>
           <Col xs={6}>
             { this.state.stream ?
-              <VideoPlayer {...videoOptions} /> : '' }
+              <div>
+               <h5 className="text-center">Smile, your on camera</h5>
+              <VideoPlayer {...videoOptions} /> 
+              </div>
+                : '' }
               <hr />
           </Col>
           <Col xs={6}>
-            <Well>
               <div className="text-center">
+                <h5 className="text-center">Enter Code Here</h5>
                 <AceEditor
                   mode="javascript"
                   theme="monokai"
                   className="text-center"
                   onChange={this.handleEditorInputChange}
-                  height="300px"
-                  width="400px"
+                  height="400px"
+                  width="500px"
                   editorProps={{ $blockScrolling: true }}
                   enableBasicAutocompletion
                   tabSize={2}
                   setOptions={{ cursorStyle: 'wide' }}
+                  style={{ marginRight: '5px' }}
                 />
               </div>
-            </Well>
           </Col>
         </Row>
       </Grid>
