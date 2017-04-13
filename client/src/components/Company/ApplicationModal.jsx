@@ -26,7 +26,8 @@ class ApplicationModal extends React.Component {
                     {item.video.map((video) => {
                       return (
                         <div>
-                          <h4>Question</h4>
+                        {item.jobpost.question.filter((question) => question.id === video.question_id).map(question =>
+                        <h4>{question.question}</h4>)}
                           <video width="600" controls
                             src={video.href} type="video/webm">
                           </video>
