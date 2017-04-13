@@ -9,7 +9,7 @@ window.jQuery = $;
 React.Bootstrap = require('react-bootstrap');
 React.Bootstrap.Select = require('react-bootstrap-select');
 import CompanyAuthService from '../../utils/companyAuthService';
-
+import Dropzone from '../Dropzone/dropzone';
 
 class CompanyProfile extends React.Component {
   constructor(props) {
@@ -46,6 +46,7 @@ class CompanyProfile extends React.Component {
   render() {
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
+        <Dropzone />
         <br />
         <FormGroup>
           <Col componentClass={ControlLabel} sm={1}>

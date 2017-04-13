@@ -21,8 +21,6 @@ const CompanyNavbar = (props) => {
                 <MenuItem eventKey="3.1" onClick={() => props.junPos()}>Junior</MenuItem>
                 <MenuItem eventKey="3.2" onClick={() => props.midPos()}>Mid</MenuItem>
                 <MenuItem eventKey="3.3" onClick={() => props.senPos()}>Senior</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey="3.4">Show all positions</MenuItem>
               </NavDropdown>
               <NavItem eventKey="fourth">
                 Edit Profile
@@ -45,9 +43,6 @@ const CompanyNavbar = (props) => {
             </Tab.Pane>
               <Tab.Pane eventKey="3.3">
                 <Positions />
-            </Tab.Pane>
-              <Tab.Pane eventKey="3.4">
-                Show all positions posted by company
             </Tab.Pane>
               <Tab.Pane eventKey="fourth">
                 <CompanyProfile />
