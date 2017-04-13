@@ -3,7 +3,7 @@ exports.seed = function (knex, Promise) {
   return knex.raw('SET foreign_key_checks = 0;')
   .then(() => {
     return knex('industry').del()
-      .then(function () {
+      .then(() => {
         // Inserts seed entries
         return knex('industry').insert([
           {
@@ -24,9 +24,29 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 5,
-            name: 'Education'
+            name: 'Gaming'
+          },
+          {
+            id: 6,
+            name: 'Entertainment'
+          },
+          {
+            id: 7,
+            name: 'Electronic'
+          },
+          {
+            id: 8,
+            name: 'Aviation'
+          },
+          {
+            id: 9,
+            name: 'Food'
+          },
+          {
+            id: 10,
+            name: 'Fishing'
           }
         ]);
-      });    
-  })
+      });
+  });
 };

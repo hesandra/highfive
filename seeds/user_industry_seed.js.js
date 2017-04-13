@@ -3,7 +3,7 @@ exports.seed = function (knex, Promise) {
   return knex.raw('SET foreign_key_checks = 0;')
     .then(() => {
       return knex('user_industry').del()
-        .then(function() {
+        .then(() => {
           // Inserts seed entries
           return knex('user_industry').insert([
             {

@@ -28,11 +28,71 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 3,
+            industry_id: 3,
+            location_id: 3,
+            name: 'Hackreactor',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
+            email: 'info@info.com',
+            address: '',
+            auth0_id: ''
+          },
+          {
+            id: 4,
             industry_id: 2,
             location_id: 2,
             name: 'Hackreactor',
             profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
-            email: 'info@hr.com',
+            email: 'info@info.com',
+            address: '',
+            auth0_id: ''
+          },
+          {
+            id: 5,
+            industry_id: 5,
+            location_id: 5,
+            name: 'NFL',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
+            email: 'info@info.com',
+            address: '',
+            auth0_id: ''
+          },
+          {
+            id: 6,
+            industry_id: 6,
+            location_id: 6,
+            name: 'NBA',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
+            email: 'info@info.com',
+            address: '',
+            auth0_id: ''
+          },
+          {
+            id: 7,
+            industry_id: 7,
+            location_id: 7,
+            name: 'Samsung',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
+            email: 'info@info.com',
+            address: '',
+            auth0_id: ''
+          },
+          {
+            id: 8,
+            industry_id: 8,
+            location_id: 8,
+            name: 'Sony',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
+            email: 'info@info.com',
+            address: '',
+            auth0_id: ''
+          },
+          {
+            id: 9,
+            industry_id: 9,
+            location_id: 9,
+            name: 'Panasonic',
+            profile_img: 'https://s3-us-west-1.amazonaws.com/highfivestatic/mock_company_1_hq.jpg',
+            email: 'info@info.com',
             address: '',
             auth0_id: ''
           }
