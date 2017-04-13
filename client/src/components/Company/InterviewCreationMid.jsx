@@ -34,6 +34,7 @@ class InterviewFormMid extends React.Component {
   }
 
   renderAll() {
+    console.log(this.props, 'this.props in interviewCreationMid')
     return (
       <div>
         <div>
@@ -55,7 +56,7 @@ class InterviewFormMid extends React.Component {
             <div className="spaceQ"></div>
             <h3>Select 3-5 Algorithm Questions</h3>
             <div className="scroll">
-              <div className="questions" >
+              <div className="questions">
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'Algorithm' && item.level === this.props.companyProfile.level) {
                     return (

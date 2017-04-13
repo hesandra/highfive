@@ -33,6 +33,7 @@ class InterviewFormSen extends React.Component {
     event.preventDefault();
   }
   renderAll() {
+    console.log('in render all for senrion creation form')
     return (
       <div>
         <div>
@@ -57,6 +58,7 @@ class InterviewFormSen extends React.Component {
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'Algorithm' && item.level === this.props.companyProfile.level) {
+                    console.log('item in InterviewCreation Senior', item)
                     return (
                       <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>{item.question}</p>
                     )
