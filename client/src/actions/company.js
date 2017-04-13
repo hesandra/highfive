@@ -264,4 +264,24 @@ export function getIndustries(){
   }
 }
 
+export function getAllLocations(locations){
+  return{
+    type: 'GET_LOCATIONS',
+    payload: locations,
+  }
+}
+
+export function getLocations(){
+  return(dispatch) => {
+  axios.get('http://localhost:3000/api/locations')
+  .then((result) =>{
+    console.log('industries in getIndustries', result)
+    dispatch(getAllLocations(result.data.locations))
+  })
+    .catch((err) => {
+        console.error(err);
+  });
+  }
+}
+
 

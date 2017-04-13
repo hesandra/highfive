@@ -92,10 +92,9 @@ class CompanyProfile extends React.Component {
             <FormGroup controlId="formControlsSelect">
               <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
                 <option value="select">select</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                 {this.props.profile.companyProfile.locations.map((item) => 
+                <option value={item.id}>{item.city}</option>
+                )}
               </FormControl>
             </FormGroup>
           </Col>

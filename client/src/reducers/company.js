@@ -98,6 +98,10 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         industries: action.payload
     });
+    case 'GET_LOCATIONS':
+      return Object.assign({}, state, {
+        locations: action.payload
+    });
   }
   return state;
 }
