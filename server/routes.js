@@ -19,7 +19,7 @@ router.put('/api/companies/:id', controller.companies.updateCompany);
 router.delete('/api/companies/:id', controller.companies.deleteCompany);
 
 // jobposts
-router.get('/api/jobposts', controller.jobposts.getAll);
+router.get('/api/jobposts/page/:page', controller.jobposts.getAll);
 router.get('/api/jobposts/:id', controller.jobposts.getById);
 router.post('/api/jobposts', controller.jobposts.createOne);
 router.get('/api/jobposts/company/:company_id', controller.jobposts.getJobPostsByCompany);

@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
   const { jobPosts, isFetching } = state.jobPosts;
   return {
     isAuthenticated,
+    isFetching,
     profile,
     jobPosts
   };
@@ -18,7 +19,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    requestJobPosts: () => dispatch(fetchJobPosts()),
+    requestJobPosts: (page) => dispatch(fetchJobPosts(page)),
     checkUserLogin: () => dispatch(checkUserLogin()),
     checkCompanyLogin: () => dispatch(checkCompanyLogin()),
   };

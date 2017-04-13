@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     checkUserLogin: () => dispatch(checkUserLogin()),
     // fetch JobPosts here
     onJobPostsClick: () => {
-      dispatch(fetchJobPosts());
+      // dispatch(fetchJobPosts());
       hashHistory.push('/jobposts');
     },
     onUpdateUserProfile: (id, data) => {

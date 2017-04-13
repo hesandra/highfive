@@ -25,7 +25,8 @@ class Interview extends Component {
       selectedQuestionIdx: 0,
       submissionCreated: false,
       done: false,
-      interviewOver: false
+      interviewOver: false,
+      answer: ''
     };
     this.startInterview = this.startInterview.bind(this);
     this.endInterview = this.endInterview.bind(this);
@@ -66,7 +67,10 @@ class Interview extends Component {
     this.props.stream.stop();
   }
   handleEditorInputChange(newValue) {
-    console.log(newValue);
+    console.log(arguments);
+    this.setState({
+      answer: newValue
+    });
   }
   startRecording(stream) {
     this.video = recordRTC(stream, {
@@ -92,12 +96,16 @@ class Interview extends Component {
   }
   processRecording() {
     const { backend_profile } = this.props;
+    let answer;
+    if (this.state.selectedQuestionIdx === 2) {
+      answer = this.state.answer;
+    }
     const url = this.video.getDataURL((videoData) => {
       const payload = {
         videoData,
         name: backend_profile.name + this.state.selectedQuestionIdx,
         id: Math.floor(Math.random() * 90000) + 10000,
-        answer: 'test',
+        answer,
         question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
         submission_id: this.props.submission.id
       };
@@ -213,6 +221,8 @@ class Interview extends Component {
                   width="500px"
                   editorProps={{ $blockScrolling: true }}
                   enableBasicAutocompletion
+                  value={this.state.answer}
+                  defaultValue={this.state.answer}
                   tabSize={2}
                   setOptions={{ cursorStyle: 'wide' }}
                   style={{ marginRight: '5px' }}

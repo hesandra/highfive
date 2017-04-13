@@ -118,7 +118,9 @@ module.exports = {
 
   jobposts: {
     getAll: (req, res, next) => {
-      models.jobposts.getAll((err, jobposts) => {
+      const { page } = req.params;
+
+      models.jobposts.getAll(page, (err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),

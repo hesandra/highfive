@@ -39,7 +39,7 @@ module.exports = {
           console.log('video saved');
           axios.post(`http://localhost:3000/api/videos`, {
             href: data.Location,
-            answer: 'test',
+            answer,
             submission_id,
             question_id
           });
