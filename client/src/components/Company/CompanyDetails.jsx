@@ -23,13 +23,14 @@ class CompanyDetails extends React.Component {
     if (this.props.companyAuth.companyProfile.profileEdited) {
       return (
         <div>
-          <Image className="company-img text-center" src={this.props.profile_img} circle />
+        {this.props.companyAuth.companyProfile.industries.filter((item) => item.id === this.props.industry_id).map(item =>
+          <div><Image className="company-img text-center" src={this.props.profile_img} circle />
           <h1>{this.props.name}</h1>
-          <h2>{this.props.industry_id}</h2>
+          <h2>{item.name}</h2></div>)}
           <h2>{this.props.location_id}</h2>
-        </div>)
-    }
-    else if (this.props.companyAuth.companyProfile.profileReload) {
+          </div>)
+        
+    }else if (this.props.companyAuth.companyProfile.profileReload) {
       return (
         <div>
           <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.companyReload[0].profile_img} circle />
