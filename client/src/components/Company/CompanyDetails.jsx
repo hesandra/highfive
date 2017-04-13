@@ -4,7 +4,7 @@ import { Grid, Row, Col, Image } from 'react-bootstrap';
 import CompanyAuth from './CompanyAuth';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCompany } from '../../actions/company';
+import { getCompany, getIndustries } from '../../actions/company';
 
 class CompanyDetails extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class CompanyDetails extends React.Component {
 
   componentDidMount() {
     this.props.getCompany(this.props.companyAuth.companyAuth.company_backend_profile.id);
+    this.props.getIndustries();
   }
 
   renderProfile() {
@@ -72,7 +73,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getCompany }, dispatch);
+  return bindActionCreators({ getCompany, getIndustries }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyDetails);

@@ -44,6 +44,7 @@ class CompanyProfile extends React.Component {
   }
 
   render() {
+    console.log('this.props in companyprofile', this.props)
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
         <br />
@@ -72,11 +73,11 @@ class CompanyProfile extends React.Component {
           <Col sm={8}>
             <FormGroup controlId="formControlsSelect">
               <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
-                <option value="select">select</option>
-                <option >1</option>
-                <option >2</option>
-                <option >3</option>
-                <option >4</option>
+               <option value="select">select</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
               </FormControl>
             </FormGroup>
           </Col>
@@ -125,9 +126,8 @@ class CompanyProfile extends React.Component {
           </Col>
         </FormGroup>
       </Form>
-    );
+    )}
   }
-}
 
 function mapStateToProps(state) {
   return {

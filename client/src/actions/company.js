@@ -68,7 +68,7 @@ export function getPositions(){
   return (dispatch) => {
     axios.get('http://localhost:3000/api/jobposts')
     .then((jobposts) => {
-      //console.log('jobposts in getPostiions', jobposts)
+      console.log('jobposts in getPostiions', jobposts)
       dispatch(getJobs(jobposts.data.jobposts))
     })
     .catch((err) => {
@@ -244,4 +244,24 @@ export function saveInterview(data){
       });
   }
 }
+export function getAllIndustries(industries){
+  return{
+    type: 'GET_INDUSTRIES',
+    payload: industries,
+  }
+}
+
+export function getIndustries(){
+  return(dispatch) => {
+  axios.get('http://localhost:3000/api/industries')
+  .then((result) =>{
+    console.log('industries in getIndustries', result)
+    dispatch(getAllIndustries(result.data.industries))
+  })
+    .catch((err) => {
+        console.error(err);
+  });
+  }
+}
+
 

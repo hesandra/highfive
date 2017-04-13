@@ -94,6 +94,10 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         createdJob: action.payload
     });
+    case 'GET_INDUSTRIES':
+      return Object.assign({}, state, {
+        industries: action.payload
+    });
   }
   return state;
 }
