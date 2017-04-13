@@ -88,7 +88,7 @@ export default function (state = initialState, action) {
     console.log('index in remove question reducers', state.selectedQuestion.indexOf(action.payload))
     const idx = state.selectedQuestion.indexOf(action.payload);
       return Object.assign({}, state, {
-        selectedQuestion: state.selectedQuestion.splice(idx, 1)
+        selectedQuestion: state.selectedQuestion.slice(0, idx).concat(state.selectedQuestion.slice(idx+1))
     });
      case 'CREATE_JOBPOST':
       return Object.assign({}, state, {

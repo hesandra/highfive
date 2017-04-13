@@ -4,25 +4,28 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { removeQuestion, saveInterview } from '../../actions/company';
 
-const algorithm = [];
-const system = [];
-const behavioral = [];
+/*let algorithm = [];
+let system = [];
+let behavioral = [];*/
 
 class InterviewForm extends React.Component {
-  renderAll() {
+  /*renderAll() {*/
+    /*system = [];
+    algorithm = [];
+    behavioral = [];
     return this.props.companyProfile.selectedQuestion.map((item) => {
       //console.log('in render all map', algorithm, 'selected questions', this.props.companyProfile.selectedQuestion, 'item', item)
-      if (item.type === 'algorithm' && (algorithm.findIndex((el) => el.id === item.id)) === -1) {
+      if (item.type === 'algorithm') {
         algorithm.push(item)
       }
-      if (item.type === 'data structure' && (system.findIndex((el) => el.id === item.id)) === -1) {
+      if (item.type === 'data structure') {
         system.push(item)
       }
-      if (item.type === 'behavioral' && (behavioral.findIndex((el) => el.id === item.id)) === -1) {
+      if (item.type === 'behavioral') {
         behavioral.push(item)
       }
     })
-  }
+  }*/
 
   /*  shouldComponentUpdate(nextProps, nextState) {
       console.log('nextPropsCompanyprofile', nextProps.companyProfile)
@@ -36,21 +39,21 @@ class InterviewForm extends React.Component {
       return false;
     }*/
   render() {
-    console.log('this.props.companyProfile in Interview Form', this.props.companyProfile);
+   /* console.log('this.props.companyProfile in Interview Form', this.props.companyProfile, 'szstem questions', system);
     if (this.props.companyProfile.selectedQuestion) {
-      this.renderAll()
+      this.renderAll()*/
       return (
         <div>
           <div><h3 className="selectedQ">Selected algorithm questions</h3>
-            <div>{algorithm.map((item) => {
+            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'algorithm').map((item) => {
               return (
-                <div>
+                 <div onClick={()=> this.props.removeQuestion(item)}>
                 <h4>{item.title}</h4>
                 {item.question}</div>)
             })}
             </div>
             <h3 className="selectedQ">Selected system design questions</h3>
-            <div>{system.map((item) => {
+            <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'data structure').map(( item )=> {
               return (
                 <div onClick={()=> this.props.removeQuestion(item)}>
                 <h4>{item.title}</h4>
@@ -58,9 +61,9 @@ class InterviewForm extends React.Component {
             })}
             </div>
             <h3 className="selectedQ">Selected behavioral questions</h3>
-            <div>{behavioral.map((item) => {
+            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'behavioral').map((item) => {
               return (
-                <div>
+                <div onClick={()=> this.props.removeQuestion(item)}>
                 <h4>{item.title}</h4>
                 {item.question}</div>)
             })}
@@ -71,7 +74,6 @@ class InterviewForm extends React.Component {
           </div>
         </div>
       )
-    } return <div></div>
   }
 }
 

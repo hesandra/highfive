@@ -202,7 +202,7 @@ export function deleteJob(jobId){
 }
 
 export function removeQuestion(item){
-  console.log('item in removeQuestion', item)
+  //console.log('item in removeQuestion', data.itemToRemove, data.currentQuestions )
   return {
     type: 'REMOVE_QUESTION',
     payload: item,

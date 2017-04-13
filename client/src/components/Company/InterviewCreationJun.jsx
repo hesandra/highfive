@@ -9,8 +9,7 @@ import ReactDOM from 'react-dom';
 class InterviewFormJun extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    
+    this.state = {   
     };
 
     this.handleChange = this.handleChange.bind(this);
