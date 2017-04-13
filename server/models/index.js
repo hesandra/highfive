@@ -223,6 +223,7 @@ module.exports = {
     updateJobPost: async (id, body, cb) => {
       const jobpost = await Jobpost
         .query()
+        .first()
         .where('id', id)
         // .update(body)
         // .then((job) => { cb(null, job); })
@@ -230,7 +231,7 @@ module.exports = {
         const questions = body;
  
        let count = 0;
-       console.log('QUESTIONS IN INDEX MODELS', questions)
+       console.log('QUESTIONS IN INDEX MODELS', jobpost)
        questions.forEach((question) => {
          jobpost
            .$relatedQuery('question')
