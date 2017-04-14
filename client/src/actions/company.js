@@ -197,8 +197,12 @@ export function closeModal(){
 
 export function deleteJob(jobId){
   return (dispatch) => {
-    axios.delete('http://localhost:3000/api/jobposts/' + jobId)
-  }
+    console.log("delete clicked", jobId);
+    axios
+      .delete(`http://localhost:3000/api/jobposts/${jobId}`)
+      .then((res) => { console.log('res', res); })
+      .catch((e) => { console.log(e); });
+  };
 }
 
 export function removeQuestion(item){
