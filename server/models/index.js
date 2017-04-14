@@ -189,7 +189,6 @@ module.exports = {
     getAllPage: (page, cb) => {
       Jobpost
         .query()
-        .page(page, 10)
         .allowEager('[company]')
         .eager('company')
         .then((jobposts) => { cb(null, jobposts); })
@@ -331,7 +330,8 @@ module.exports = {
       Submission
         .query()
         .update(body)
-        .where('id', body.id)
+        .where('id', id)
+        .skipUndefined()
         .then((result) => { cb(null, result) })
         .catch( err => { console.log(err) })
     }
