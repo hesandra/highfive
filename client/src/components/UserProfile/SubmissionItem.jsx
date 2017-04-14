@@ -5,7 +5,6 @@ import SubmissionModal from './SubmissionModal';
 import { getPositionName } from '../../utils/Mappings/positionMappings';
 
 const Submission = ({ submission }) => {
-  console.log('dis submission', submission);
   return (
     <div>
       <List.Item>

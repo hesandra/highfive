@@ -6,8 +6,18 @@ import { getIndustryName } from '../../utils/Mappings/industryMappings';
 import { getPositionName } from '../../utils/Mappings/positionMappings';
 
 const CardList = (props) => {
-  const jobPostsData = props.jobPosts;
-  const cardList = jobPostsData.map((jobPost, index) => {
+  let jobPosts;
+  if (!props.filter.length) {
+    jobPosts = props.jobPosts;
+  } else {
+    jobPosts = props.jobPosts.filter((jobpost) => {
+      const industry = getIndustryName(jobpost.industry_id);
+      if (props.filter.includes(industry)) {
+        return jobpost;
+      }
+    });
+  }
+  const cardList = jobPosts.map((jobPost, index) => {
     const location = getLocationName(jobPost.location_id);
     const industry = getIndustryName(jobPost.industry_id);
     const position = getPositionName(jobPost.level);

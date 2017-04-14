@@ -16,10 +16,11 @@ class JobPosts extends Component {
     this.handlePageClick = this.handlePageClick.bind(this);
   }
   componentDidMount() {
-    const { jobPosts } = this.props;
+    const { jobPosts, backend_profile } = this.props;
     if (!jobPosts.length) {
       const { requestJobPosts } = this.props;
       console.log('refetching');
+      console.log(this.props)
       requestJobPosts(0);
     }
   }
@@ -35,8 +36,10 @@ class JobPosts extends Component {
     requestJobPosts(data.selected);
   }
   render() {
-    console.log(this.state);
-    const { jobPosts, isFetching } = this.props;
+    const { jobPosts, isFetching, backend_profile } = this.props;
+    const filters = backend_profile.industry.map((obj) => {
+      return obj.name;
+    });
     return (
       <Grid>
         <Row>
@@ -60,6 +63,7 @@ class JobPosts extends Component {
               <div>
                 <CardList
                   jobPosts={jobPosts}
+                  filter={filters}
                 />
                 <hr />
               </div>
