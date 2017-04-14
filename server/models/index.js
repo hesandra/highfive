@@ -186,7 +186,7 @@ module.exports = {
   },
 
   jobposts: {
-    getAll: (page, cb) => {
+    getAllPage: (page, cb) => {
       Jobpost
         .query()
         .page(page, 10)
@@ -194,6 +194,14 @@ module.exports = {
         .eager('company')
         .then((jobposts) => { cb(null, jobposts); })
         .catch((err) => { cb(err, null); });
+    },
+    getAll: (cb) => {
+      Jobpost
+        .query()
+        .allowEager('[company]')
+        .eager('company')
+        .then((jobposts) => cb(null, jobposts))
+        .catch((err) => cb(err, null));
     },
     getById: (id, cb) => {
       Jobpost
