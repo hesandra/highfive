@@ -25,6 +25,7 @@ module.exports = {
         const s3Params = {
           Bucket: process.env.S3_BUCKET,
           Key: `${name}_${id}.webm`,
+          ContentType: 'video/webm',
           Body: fileBuffer,
           Expires: new Date(),
           ACL: 'public-read'
@@ -39,7 +40,7 @@ module.exports = {
           console.log('video saved');
           axios.post(`http://localhost:3000/api/videos`, {
             href: data.Location,
-            answer: 'test',
+            answer,
             submission_id,
             question_id
           });

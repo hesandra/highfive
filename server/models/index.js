@@ -186,9 +186,10 @@ module.exports = {
   },
 
   jobposts: {
-    getAll: (cb) => {
+    getAll: (page, cb) => {
       Jobpost
         .query()
+        .page(page, 10)
         .allowEager('[company]')
         .eager('company')
         .then((jobposts) => { cb(null, jobposts); })
@@ -287,7 +288,7 @@ module.exports = {
     getAllByUserId: async (id, cb) => {
       const userSubmissions = await User
         .query()
-        .eager('[submission, submission.[jobpost, video]]')
+        .eager('[submission, submission.[jobpost, jobpost.question, video]]')
         .where('id', id)
         .skipUndefined()
         .first()

@@ -25,7 +25,8 @@ class Interview extends Component {
       selectedQuestionIdx: 0,
       submissionCreated: false,
       done: false,
-      interviewOver: false
+      interviewOver: false,
+      answer: ''
     };
     this.startInterview = this.startInterview.bind(this);
     this.endInterview = this.endInterview.bind(this);
@@ -62,11 +63,15 @@ class Interview extends Component {
     // stop media stream if user navigates away while streaming
     if (!this.state.interviewOver) {
       alert('interview in progress');
+      // delete submission on navigate away;
+      // or set submission status to notFinished
     }
     this.props.stream.stop();
   }
   handleEditorInputChange(newValue) {
-    console.log(newValue);
+    this.setState({
+      answer: newValue
+    });
   }
   startRecording(stream) {
     this.video = recordRTC(stream, {
@@ -92,12 +97,18 @@ class Interview extends Component {
   }
   processRecording() {
     const { backend_profile } = this.props;
+    let answer;
+    if (this.state.selectedQuestionIdx === 2) {
+      answer = this.state.answer;
+    } else {
+      answer = '';
+    }
     const url = this.video.getDataURL((videoData) => {
       const payload = {
         videoData,
         name: backend_profile.name + this.state.selectedQuestionIdx,
         id: Math.floor(Math.random() * 90000) + 10000,
-        answer: 'test',
+        answer,
         question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
         submission_id: this.props.submission.id
       };
@@ -110,7 +121,6 @@ class Interview extends Component {
     });
   }
   startInterview() {
-    console.log('start interview');
     this.setState({
       startTimer: true
     });
@@ -122,9 +132,6 @@ class Interview extends Component {
   }
   showNextQuestion() {
     this.stopRecording();
-    // this.startRecording(this.props.stream);
-    // this.startRecording(this.props.stream);
-    // this.video.startRecording();
     const currentIdx = this.state.selectedQuestionIdx;
     if (currentIdx < 2) {
       this.setState({
@@ -147,8 +154,9 @@ class Interview extends Component {
       videoOptions = {
         height: '400',
         width: '500',
-        autoPlay: true,
+        autoplay: true,
         controls: true,
+        muted: true,
         controlBar: {
           fullscreenControl: false,
         },
@@ -176,18 +184,18 @@ class Interview extends Component {
             <div className="text-center question">
               { this.state.startTimer ?
                 <div>
-                <Timer
-                  startInterview={true}
-                  endInterview={this.endInterview}
-                  showNextQuestion={this.showNextQuestion}
-                />
-              <Header as="h1" textAlign="center">
-                { this.state.questions[this.state.selectedQuestionIdx].question }
-              </Header>        
-              </div>
-                : '' }
-                { this.state.interviewOver ? 'Interview DONE' : '' }
-              <hr className='interview-hr' />
+                  <Timer
+                    startInterview={true}
+                    endInterview={this.endInterview}
+                    showNextQuestion={this.showNextQuestion}
+                  />
+                  <Header as="h1" textAlign="center">
+                    { this.state.questions[this.state.selectedQuestionIdx].question }
+                  </Header>
+                </div>
+              : '' }
+              { this.state.interviewOver ? 'Interview DONE' : '' }
+              <hr className="interview-hr" />
             </div>
           </Col>
         </Row>
@@ -195,29 +203,31 @@ class Interview extends Component {
           <Col xs={6}>
             { this.state.stream ?
               <div>
-               <h5 className="text-center">Smile, your on camera</h5>
-              <VideoPlayer {...videoOptions} /> 
+                <h5 className="text-center">Smile, your on camera</h5>
+                <VideoPlayer {...videoOptions} />
               </div>
-                : '' }
-              <hr />
+              : '' }
+            <hr />
           </Col>
           <Col xs={6}>
-              <div className="text-center">
-                <h5 className="text-center">Enter Code Here</h5>
-                <AceEditor
-                  mode="javascript"
-                  theme="monokai"
-                  className="text-center"
-                  onChange={this.handleEditorInputChange}
-                  height="400px"
-                  width="500px"
-                  editorProps={{ $blockScrolling: true }}
-                  enableBasicAutocompletion
-                  tabSize={2}
-                  setOptions={{ cursorStyle: 'wide' }}
-                  style={{ marginRight: '5px' }}
-                />
-              </div>
+            <div className="text-center">
+              <h5 className="text-center">Enter Code Here</h5>
+              <AceEditor
+                mode="javascript"
+                theme="monokai"
+                className="text-center"
+                onChange={this.handleEditorInputChange}
+                height="400px"
+                width="500px"
+                editorProps={{ $blockScrolling: true }}
+                enableBasicAutocompletion
+                value={this.state.answer}
+                defaultValue={this.state.answer}
+                tabSize={2}
+                setOptions={{ cursorStyle: 'wide' }}
+                style={{ marginRight: '5px' }}
+              />
+            </div>
           </Col>
         </Row>
       </Grid>

@@ -152,3 +152,30 @@ canvas:nth-of-type(2) {
 .interview-hr {
   margin-bottom: 50px;
 }
+
+
+#react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#react-paginate li {
+    display: inline-block;
+}
+
+#react-paginate .break a {
+    cursor: default;
+}
+
+.notification-dismiss {
+  background-color: black !important;
+}
+
+.position-matchings {
+  margin-top: 25px;
+}
+
+.apply-now a {
+  color: "#337ab7";
+}

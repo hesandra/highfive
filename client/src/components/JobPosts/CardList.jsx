@@ -20,10 +20,6 @@ const CardList = (props) => {
         />
         <Card.Content>
           <Card.Header className="text-shadow blurry-text">
-            <Popup
-              trigger={<Icon onClick={() => { console.log('click'); }} name="heart" />}
-              content="Add job to favorites"
-            />
           </Card.Header>
           <Card.Meta>
             <span className="date posted_on">
