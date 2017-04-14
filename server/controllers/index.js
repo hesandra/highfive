@@ -129,6 +129,17 @@ module.exports = {
         res.send(payload);
       });
     },
+    getAllPage: (req, res, next) => {
+      const { page } = req.params;
+      models.jobposts.getAllPage(page, (err, jobposts) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          jobposts
+        };
+        res.send(payload);
+      });
+    },
     getById: (req, res, next) => {
       const { id } = req.params;
 
