@@ -41,6 +41,8 @@ exports.up = function(knex, Promise) {
           table.string('status');
           table.integer('completed');
           table.string('notes');
+          table.string('created_at').notNullable().defaultTo(new Date().toISOString());
+          table.string('updated_at').notNullable().defaultTo(new Date().toISOString());
         })
         .createTable('jobpost', (table) => {
           table.increments('id').primary();
@@ -66,6 +68,8 @@ exports.up = function(knex, Promise) {
           table.string('answer');
           table.integer('question_id').unsigned().references('id').inTable('question');
           table.integer('submission_id').unsigned().references('id').inTable('submission');
+          table.string('created_at').notNullable().defaultTo(new Date().toISOString());
+          table.string('updated_at').notNullable().defaultTo(new Date().toISOString());
         })
         .createTable('jobpost_question', (table) => {
           table.increments('id').primary();

@@ -198,7 +198,7 @@ module.exports = {
     getAllPage: (page, cb) => {
       Jobpost
         .query()
-        // .page(page, 10)
+        .page(parseInt(page), 10)
         .allowEager('[company]')
         .eager('company')
         .then((jobposts) => { cb(null, jobposts); })
