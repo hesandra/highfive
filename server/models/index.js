@@ -250,9 +250,11 @@ module.exports = {
       Jobpost
         .query()
         .skipUndefined()
+        // .allowEager('[question]')
+        // .eager('[question]')
         .deleteById(postId)
-        .then((jobs) => { cb(null, jobs) })
-        .catch( err => { console.log(err) })
+        .then((jobs) => { cb(null, jobs); })
+        .catch( err => { console.log(err); });
     }
   },
 

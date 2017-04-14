@@ -69,8 +69,8 @@ exports.up = function(knex, Promise) {
         })
         .createTable('jobpost_question', (table) => {
           table.increments('id').primary();
-          table.integer('jobpost_id').unsigned().references('id').inTable('jobpost');
-          table.integer('question_id').unsigned().references('id').inTable('question');
+          table.integer('jobpost_id').unsigned().references('id').inTable('jobpost').onDelete('CASCADE');
+          table.integer('question_id').unsigned().references('id').inTable('question').onDelete('CASCADE');
         })
         .createTable('user_industry', (table) => {
           table.increments('id').primary();

@@ -1,4 +1,4 @@
-let initialState = {
+const initialState = {
   createButton: false, 
   senior: false, 
   junior: false, 
@@ -7,7 +7,7 @@ let initialState = {
   profileEdited: false,
   profileReload: false,
   showVideos: false,
-}
+};
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -44,7 +44,7 @@ export default function (state = initialState, action) {
     case 'JUNIOR':
       return Object.assign({}, state, {
         junior: true,
-        senior: false, 
+        senior: false,
         mid: false,
         createButton: false,
         level: 0
@@ -52,7 +52,7 @@ export default function (state = initialState, action) {
     case 'MID':
       return Object.assign({}, state, {
         mid: true,
-        junior: false, 
+        junior: false,
         senior: false,
         createButton: false,
         level: 1
@@ -99,6 +99,10 @@ export default function (state = initialState, action) {
         industries: action.payload
     });
     case 'GET_LOCATIONS':
+      return Object.assign({}, state, {
+        locations: action.payload
+    });
+    case 'REFRESH_POSTS':
       return Object.assign({}, state, {
         locations: action.payload
     });
