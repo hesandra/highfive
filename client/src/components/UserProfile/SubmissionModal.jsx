@@ -21,26 +21,33 @@ class SubmissionModal extends Component {
     this.setState({ showModal: true });
   }
   changeVideo(index) {
-    console.log('fired');
     this.setState({
       index
     });
+    const video = document.getElementById('app-video_html5_api');
+    const source = document.createElement('source');
+    source.setAttribute('src', this.props.videos[index].href);
+    console.log(this.props.videos[index]);
+    video.src = this.props.videos[index].href;
+    video.load();
   }
   render() {
     const { questions, videos } = this.props;
-    console.log(this.state);
-    console.log(this.props);
     const videoList = videos.map((video, i) => {
-      return <a key={video.id} onClick={() => this.changeVideo(i)}>{`Video # ${i + 1}`}</a>;
+      return <Button key={video.id} onClick={() => {
+        this.changeVideo(i);
+        this.open();
+      }}
+      > {`Video # ${i + 1}`} </Button>;
     });
     const videoOptions = {
       height: '400',
       width: '500',
-      preload: 'none',
+      preload: 'auto',
       autoPlay: true,
       controls: true,
       controlBar: {
-        fullscreenControl: true
+        fullscreenControl: false
       },
       sources: [
         {
@@ -61,6 +68,7 @@ class SubmissionModal extends Component {
       <div>
         <Button 
           primary
+          size="mini"
           onClick={this.open}
         >
         Watch Submission
@@ -70,7 +78,8 @@ class SubmissionModal extends Component {
             <Modal.Title>Your Submission</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Text in a modal</h4> 
+            <h4>QUESTION:</h4> 
+            <p> {this.props.questions[this.state.index].question } </p>
             <VideoPlayer {...videoOptions} />
             { videoList }
           </Modal.Body>

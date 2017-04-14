@@ -11,7 +11,7 @@ const Submission = ({ submission }) => {
       <List.Item>
         <List.Icon name="folder" size="large" verticalAlign="middle" />
         <List.Content>
-          <Link to="/"><List.Header>{ getPositionName(submission.jobpost.level) }</List.Header></Link>
+          <List.Header>{ getPositionName(submission.jobpost.level) }</List.Header>
           <List.Description>{submission.status ? 'seen' : 'pending'}</List.Description>
         </List.Content>
       </List.Item>

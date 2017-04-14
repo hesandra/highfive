@@ -8,6 +8,11 @@ class VideoPlayer extends Component {
       this.controlBar.liveDisplay.hide();
     });
     videojs.players['app-video'].controlBar.liveDisplay.hide();
+    videojs('app-video', {
+      controlBar: {
+        fullscreenControl: false
+      }
+    });
   }
   componentWillUnmount() {
     if (this.player) {
