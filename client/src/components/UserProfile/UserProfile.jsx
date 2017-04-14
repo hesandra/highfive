@@ -6,7 +6,8 @@ import NotificationSystem from 'react-notification-system';
 import UserProfileNav from './UserProfileNav';
 import IndustryList from './IndustryList';
 import { getLocationName } from '../../utils/Mappings/locationMappings';
-var defaultColors = {
+
+const defaultColors = {
   success: {
     rgb: '33, 133, 208',
     hex: '#2185D0'
@@ -24,7 +25,7 @@ var defaultColors = {
     hex: '#369cc7'
   }
 };
-var defaultShadowOpacity = '0.9';
+const defaultShadowOpacity = '0.9';
 
 const style = {
   NotificationItem: {
@@ -62,15 +63,15 @@ class UserProfile extends Component {
     };
     this.notificationSystem = null;
     this.deleteUserIndustry = this.deleteUserIndustry.bind(this);
+    this.addNotification = this.addNotification.bind(this);
   }
-  addNotification(e) {
-    e.preventDefault();
+  addNotification() {
     if (this.notificationSystem) {
       this.notificationSystem.addNotification({
-        message: 'test',
+        message: 'updated Profile',
         level: 'success',
         position: 'tr',
-        autoDismiss: 0
+        autoDismiss: 5
       });
     }
   }
@@ -167,6 +168,7 @@ class UserProfile extends Component {
           </Col>
           <Col xs={8} md={8}>
             <UserProfileNav
+              addNotification={this.addNotification}
               onJobPostsClick={onJobPostsClick}
               onUpdateUserProfile={onUpdateUserProfile}
               onSubmissionsClick={onSubmissionsClick}
@@ -177,7 +179,6 @@ class UserProfile extends Component {
               id={id}
               location={location}
             />
-            <button onClick={this.addNotification.bind(this)}>Add notification</button>
             <NotificationSystem ref={n => this.notificationSystem = n} style={style} />
           </Col>
         </Row>

@@ -50,7 +50,7 @@ class EditProfileForm extends Component {
     }
   }
   handleSubmit(e) {
-    const { id, handleUpdateUserProfile } = this.props;
+    const { id, handleUpdateUserProfile, addNotification } = this.props;
     e.preventDefault();
     const { locationValue, industriesValue, linkedInLink } = this.state;
     const industries = industriesValue.map((industry) => {
@@ -62,19 +62,7 @@ class EditProfileForm extends Component {
       linkedin_url: linkedInLink,
     };
     handleUpdateUserProfile(id, data);
-    // axios({
-    //   method: 'PUT',
-    //   url: `http://localhost:3000/api/users/${id}`,
-    //   data,
-    //   headers: {
-    //     'Content-Type' : 'application/json'
-    //   }
-    // })
-    // .then((response) => {
-    //   onUpdateUserProfile(response.data.user);
-
-    // })
-    // .catch(err => console.log(err));
+    addNotification();
   }
   render() {
     const { industries } = this.props;

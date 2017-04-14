@@ -63,6 +63,8 @@ class Interview extends Component {
     // stop media stream if user navigates away while streaming
     if (!this.state.interviewOver) {
       alert('interview in progress');
+      // delete submission on navigate away;
+      // or set submission status to notFinished
     }
     this.props.stream.stop();
   }
@@ -152,8 +154,9 @@ class Interview extends Component {
       videoOptions = {
         height: '400',
         width: '500',
-        autoPlay: true,
+        autoplay: true,
         controls: true,
+        muted: true,
         controlBar: {
           fullscreenControl: false,
         },

@@ -25,6 +25,7 @@ module.exports = {
         const s3Params = {
           Bucket: process.env.S3_BUCKET,
           Key: `${name}_${id}.webm`,
+          ContentType: 'video/webm',
           Body: fileBuffer,
           Expires: new Date(),
           ACL: 'public-read'

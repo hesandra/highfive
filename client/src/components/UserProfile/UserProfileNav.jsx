@@ -1,15 +1,35 @@
 import React from 'react';
-import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import {
+  Tab,
+  Row,
+  Col,
+  Nav,
+  NavItem,
+  NavDropdown,
+  MenuItem
+} from 'react-bootstrap';
+import { Icon, Statistic } from 'semantic-ui-react';
 import { Link, hashHistory } from 'react-router';
 import NotificationSystem from 'react-notification-system';
 
 import SettingsForm from './SettingsForm';
 import EditProfileForm from './EditProfileForm';
 import SubmissionsList from './SubmissionsList';
+import SubmissionModal from './SubmissionModal';
 
 const UserProfileNav = (props) => {
-  const { onJobPostsClick, onSubmissionsClick, githubLink, id, location,
-    linkedinLink, onUpdateUserProfile, industries, submissions } = props;
+  const {
+    onJobPostsClick,
+    onSubmissionsClick,
+    githubLink,
+    id,
+    location,
+    linkedinLink,
+    onUpdateUserProfile,
+    industries,
+    submissions,
+    addNotification
+  } = props;
   return (
     <div className="text-center">
       <Tab.Container id="tabs-with-dropdown" defaultActiveKey="1">
@@ -19,9 +39,14 @@ const UserProfileNav = (props) => {
               <NavItem eventKey="1">
                 Notifications
                 <br />
-                <i className="fa fa-envelope-open-o" aria-hidden="true" />
+                <i className="fa fa-envelope-open-o" aria-hidden="true"/>
               </NavItem>
-              <NavItem onClick={() => { onSubmissionsClick(id); }} eventKey="2">
+              <NavItem
+                onClick={() => {
+                  onSubmissionsClick(id);
+                }}
+                eventKey="2"
+              >
                 Submissions
                 <br />
                 <i className="fa fa-folder-open" aria-hidden="true" />
@@ -37,7 +62,7 @@ const UserProfileNav = (props) => {
                 <i className="fa fa-user" aria-hidden="true" />
               </NavItem>
               <NavItem eventKey="5">
-                Settings
+                Practice
                 <br />
                 <i className="fa fa-spin fa-cog" aria-hidden="true" />
               </NavItem>
@@ -46,16 +71,24 @@ const UserProfileNav = (props) => {
           <Col sm={8}>
             <Tab.Content animation>
               <Tab.Pane eventKey="1">
-                notifications here
-            </Tab.Pane>
+                <div className="position-matchings">
+                  <Statistic>
+                    <Statistic.Value>
+                      <Icon name="computer" />
+                      5
+                    </Statistic.Value>
+                    <Statistic.Label>Position Matchings Found</Statistic.Label>
+                    <Link className="apply-now" to="#">apply now</Link>
+                  </Statistic>
+                </div>
+              </Tab.Pane>
               <Tab.Pane eventKey="2">
-                <SubmissionsList
-                  submissions={submissions}
-                />
+                <SubmissionsList submissions={submissions} />
               </Tab.Pane>
               <Tab.Pane eventKey="3" />
               <Tab.Pane eventKey="4">
                 <EditProfileForm
+                  addNotification={addNotification}
                   handleUpdateUserProfile={onUpdateUserProfile}
                   githubLink={githubLink}
                   id={id}
