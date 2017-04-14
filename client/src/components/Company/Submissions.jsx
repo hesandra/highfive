@@ -2,15 +2,32 @@ import React from 'react';
 import { } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, Image, Icon, Rating, List, Popup, Button, Label } from 'semantic-ui-react';
+import { Card, Image, Icon, Rating, List, Popup, Button, Label, Segment, TextArea } from 'semantic-ui-react';
 import { Form, Col, FormGroup, ControlLabel, FormControl, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 import { showVideos } from '../../actions/company';
 import ApplicationModal from './ApplicationModal';
 
 
 class PositionsLevel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      status: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event){
+    const val = event.target.value;
+    this.setState({
+      status: val,
+    });
+  }    
+
   renderSubmissions() {
     console.log('PROPS IN SUBMISSIONS', this.props);
+    console.log('state in submissions', this.state);
     return (
       <div>
         {this.props.companyProfile.submissions.map((item, idx) => {
@@ -44,20 +61,23 @@ class PositionsLevel extends React.Component {
                       </List>
                     </Card.Description>
                     <div className="spaceQ"></div>
-                    <Button color="purple" fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
+                    <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>
-                    <input className="notes" placeholder="take notes here"></input>
+                    <div>{item.notes}||</div>
+                   <Form>
+                   <TextArea className="form-control notesField" placeholder={item.notes} autoHeight />
+                   </Form>
                     <div className="spaceQ"></div>
                     <FormGroup controlId="formControlsSelect">
-                      <FormControl componentClass="select" placeholder="select" onChange={this.handleChange}>
-                        <option value="select">new</option>
+                      <FormControl componentClass="select" placeholder="select" value={this.state.status} onChange={this.handleChange} >
+                        <option value="select">{item.status}</option>
                         <option >passed</option>
                         <option >failed</option>
                         <option >second chance</option>
                       </FormControl>
                     </FormGroup>
-                    <Rating icon="star" defaultRating={3} maxRating={5} />
+                    <Button color="purple" size="mini" onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Save</Button>
                   </Card.Content>
                 </Card>
               </Card.Group>
