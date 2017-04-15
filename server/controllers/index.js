@@ -366,5 +366,18 @@ module.exports = {
         res.send(payload)
       });
     }
+  },
+
+  dashboard: {
+    getAllStats: (req, res, next) => {
+      models.dashboard.getAllStats((err, stats) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          stats
+        };
+        res.send(payload);
+      });
+    }
   }
 };

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import { Link } from 'react-router';
 import CompanyProfile from './CompanyProfile';
 import Positions from './Positions';
 import Submissions from './Submissions';
+import Dashboard from '../Dashboard/Dashboard';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
@@ -30,20 +31,20 @@ const CompanyNavbar = (props) => {
           <Col sm={12}>
             <Tab.Content animation>
               <Tab.Pane eventKey="first">
-                Notifications
-            </Tab.Pane>
+                <Dashboard />
+              </Tab.Pane>
               <Tab.Pane eventKey="second">
                 <Submissions />
-            </Tab.Pane>
+              </Tab.Pane>
               <Tab.Pane eventKey="3.1">
                 <Positions />
-            </Tab.Pane>
+              </Tab.Pane>
               <Tab.Pane eventKey="3.2">
                 <Positions />
-            </Tab.Pane>
+              </Tab.Pane>
               <Tab.Pane eventKey="3.3">
                 <Positions />
-            </Tab.Pane>
+              </Tab.Pane>
               <Tab.Pane eventKey="fourth">
                 <CompanyProfile />
               </Tab.Pane>
