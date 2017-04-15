@@ -182,9 +182,18 @@ module.exports = {
         .deleteById(id)
         .then((deleted) => { cb(null, deleted); })
         .catch((err) => { console.log(err); });
+    },
+    updatePicture: (id, body, cb) => {
+      console.log('body in index models', body)
+      Company
+        .query()
+        .update(body)
+        .where('id', id)
+        .skipUndefined()
+        .then((result) => { cb(null, result) })
+        .catch(err => { console.log(err) });
     }
   },
-
   jobposts: {
     getAllPage: (page, cb) => {
       Jobpost
@@ -237,7 +246,7 @@ module.exports = {
         // .then((job) => { cb(null, job); })
         .catch((err) => { cb(err, null); });
         const questions = body;
- 
+
        let count = 0;
        console.log('QUESTIONS IN INDEX MODELS', jobpost)
        questions.forEach((question) => {
@@ -372,6 +381,5 @@ module.exports = {
         .catch( err => { console.log(err) })
     }
   }
-
 };
 

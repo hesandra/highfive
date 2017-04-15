@@ -37,7 +37,7 @@ class PositionsLevel extends React.Component {
       <div>
         {this.props.companyProfile.submissions.map((item, idx) => {
           return (  
-              <Card.Group doubling itemsPerRow={'four'}>
+              <Card.Group className="ui link cards">
                 <Card key={item.id}>
                   <Image
                     height={200}
@@ -64,7 +64,7 @@ class PositionsLevel extends React.Component {
                         </a>
                       </List>
                     </Card.Description>
-                    <div className="spaceQ"></div>
+                   <div className="spaceQ"></div>
                     <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>

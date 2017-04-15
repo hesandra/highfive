@@ -44,10 +44,10 @@ class InterviewFormMid extends React.Component {
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
               <FormGroup>
-                <Col componentClass={ControlLabel} sm={1}>
-                  Description
+                <Col componentClass={ControlLabel} sm={2}>
+                  <div>Description</div>
               </Col>
-                <Col sm={4}>
+                <Col sm={5}>
                   <FormControl name="name" type="text" value={this.state.description} onChange={this.handleChange} onSubmit={() => this.props.submitDescription(this.state)} />
                 </Col>
               </FormGroup>

@@ -294,9 +294,34 @@ export function updateSubmission(data){
   return (dispatch) => {
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
     .then((result) => {
-     console.log(result)
+      console.log(result)
     });
   }
 }
+
+export function dropPic(picture){
+  return {
+    type: 'UPDATE_PICTURE',
+    payload: picture.profile_img
+  }
+}
+
+export function updatePicture(data) {
+  console.log('data in updatePicture actions handler', data)
+  const id = data.companyId;
+  return (dispatch) => {
+    console.log('after dispatch');
+    axios.put('http://localhost:3000/api/companies/picture/' + id, data)
+    .then((result) => {
+      console.log('result in company', JSON.parse(result.config.data));
+       dispatch(dropPic(JSON.parse(result.config.data)))
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+   }
+  }
+
+
 
 

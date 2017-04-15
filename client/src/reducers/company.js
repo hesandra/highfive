@@ -102,9 +102,9 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         locations: action.payload
     });
-    case 'REFRESH_POSTS':
+    case 'UPDATE_PICTURE':
       return Object.assign({}, state, {
-        locations: action.payload
+        picture: action.payload
     });
   }
   return state;

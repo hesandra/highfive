@@ -71,8 +71,7 @@ class CompanyProfile extends React.Component {
           <Col componentClass={ControlLabel} sm={1}>
             Industry
         </Col>
-          <Col sm={8}>
-          
+          <Col sm={8}>         
             <FormGroup controlId="formControlsSelect">
               <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
                 <option value="select">select</option>

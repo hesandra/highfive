@@ -1,41 +1,59 @@
+import request from 'superagent';
 var React = require('react');
 var Dropzone = require('react-dropzone');
 const axios = require('axios');
-// const cloudinary = require('cloudinary');
+import { Component } from 'react';
+import { updatePicture } from '../../actions/company';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-// cloudinary.config({
-//   cloud_name: 'deeyv422c',
-//   api_key: 172875363448973,
-//   api_secret: 'MlCK35IWvDzfy9lcvn7TpfMcL6M'
-// });
-
-const DropzoneDemo = React.createClass({
-    onDrop: function (acceptedFiles, rejectedFiles) {
-      console.log('Accepted files: ', acceptedFiles);
-      console.log('Rejected files: ', rejectedFiles);
-
-      axios
-        .post('https://api.cloudinary.com/v1_1/deeyv422c/image/upload', {
-          upload_preset: 'lqjk0w6k',
-          file: acceptedFiles[0]
-        })
-        .then((result) => {
-          console.log("result", result);
-        })
-        .catch((e) => {
-          console.log("error here", e);
-        })
-    },
-
-    render: function () {
-      return (
-          <div>
-            <Dropzone onDrop={this.onDrop}>
-              <div>Try dropping some files here, or click to select files to upload.</div>
-            </Dropzone>
-          </div>
-      );
+class myDropzone extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      files: []
     }
-});
+    this.onDrop = this.onDrop.bind(this)
+  }
 
-export default DropzoneDemo;
+  onDrop(acceptedFiles, rejectedFiles) {
+
+    console.log('Accepted files: ', acceptedFiles);
+    console.log('Rejected files: ', rejectedFiles);
+
+    let upload = request.post('https://api.cloudinary.com/v1_1/dyggshpma/image/upload')
+      .field('upload_preset', 'oqjbm809')
+      .field('file', acceptedFiles[0])
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err)
+      } else {
+        console.log(response.body.secure_url)
+        this.props.updatePicture({ profile_img: response.body.secure_url, companyId: this.props.companyProfile.companyReload[0].id })
+      }
+    })
+  }
+  render() {
+    console.log('this.props in dropzone', this.props.companyProfile.companyReload[0].id)
+    return (
+      <div>
+        <Dropzone onDrop={this.onDrop}>
+          <div>Try dropping some files here, or click to select files to upload.</div>
+        </Dropzone>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    companyProfile: state.companyProfile
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ updatePicture }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(myDropzone);
