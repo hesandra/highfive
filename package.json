@@ -66,6 +66,7 @@
     "semantic-ui-react": "^0.67.2",
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3",
+    "superagent": "^3.5.2",
     "sweetalert2": "^6.4.4"
   },
   "devDependencies": {

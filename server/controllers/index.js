@@ -102,6 +102,19 @@ module.exports = {
         res.send(payload)
       });
     },
+    updatePicture: (req, res, next) => {
+      console.log('req in index controllers', req)
+      const { id } = req.params;
+      console.log('req.body in index controllers', req.body)
+      models.companies.updatePicture(id, req.body, (err, picture) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          picture
+        }
+        res.send(payload)
+      })
+    },
     deleteCompany: (req, res, next) => {
       const { id } = req.params;
 
@@ -118,9 +131,8 @@ module.exports = {
 
   jobposts: {
     getAll: (req, res, next) => {
-      const { page } = req.params;
 
-      models.jobposts.getAll(page, (err, jobposts) => {
+      models.jobposts.getAll((err, jobposts) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),
@@ -153,7 +165,6 @@ module.exports = {
       });
     },
     createOne: (req, res, next) => {
-
       models.jobposts.createOne(req.body, (err, jobposts) => {
         const payload = {
           success: err ? false : true,

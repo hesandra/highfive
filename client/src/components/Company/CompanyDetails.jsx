@@ -36,7 +36,9 @@ class CompanyDetails extends React.Component {
       return (
         <div>
           {this.props.companyAuth.companyProfile.industries.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].industry_id).map(item =>
-            <div><Image className="company-img text-center" src={this.props.profile_img} circle />
+            <div>{this.props.companyAuth.companyProfile.picture ?
+            <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.picture} circle />:
+            <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.companyReload[0].profile_img} circle />}
               <h1>{this.props.companyAuth.companyProfile.companyReload[0].name}</h1>
               <h2>{item.name}</h2></div>)}
           {this.props.companyAuth.companyProfile.locations.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].location_id).map(item =>

@@ -182,14 +182,22 @@ module.exports = {
         .deleteById(id)
         .then((deleted) => { cb(null, deleted); })
         .catch((err) => { console.log(err); });
+    },
+    updatePicture: (id, body, cb) => {
+      console.log('body in index models', body)
+      Company
+        .query()
+        .update(body)
+        .where('id', id)
+        .skipUndefined()
+        .then((result) => { cb(null, result) })
+        .catch(err => { console.log(err) });
     }
   },
-
   jobposts: {
     getAllPage: (page, cb) => {
       Jobpost
         .query()
-        .page(page, 10)
         .allowEager('[company]')
         .eager('company')
         .then((jobposts) => { cb(null, jobposts); })
@@ -238,7 +246,7 @@ module.exports = {
         // .then((job) => { cb(null, job); })
         .catch((err) => { cb(err, null); });
         const questions = body;
- 
+
        let count = 0;
        console.log('QUESTIONS IN INDEX MODELS', jobpost)
        questions.forEach((question) => {
@@ -321,8 +329,8 @@ module.exports = {
     getAllForJobPost: (jobpost_id, cb) => {
       Submission
         .query()
-        .allowEager('[video, user]')
-        .eager('[video, user]')
+        //.allowEager('[video, user, jobpost, jobpost.question]')
+        .eager('[video, user, jobpost.question]')
         .where('jobpost_id', jobpost_id)
         .then((result) => { cb(null, result) })
         .catch((err) => { cb(err, null); });
@@ -331,7 +339,8 @@ module.exports = {
       Submission
         .query()
         .update(body)
-        .where('id', body.id)
+        .where('id', id)
+        .skipUndefined()
         .then((result) => { cb(null, result) })
         .catch( err => { console.log(err) })
     }
@@ -372,6 +381,5 @@ module.exports = {
         .catch( err => { console.log(err) })
     }
   }
-
 };
 

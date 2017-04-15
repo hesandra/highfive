@@ -84,8 +84,8 @@ export default function (state = initialState, action) {
         showVideos: false,
     });
     case 'REMOVE_QUESTION':
-    console.log('index in remove question reducers', state.selectedQuestion )
-    console.log('index in remove question reducers', state.selectedQuestion.indexOf(action.payload))
+    //console.log('index in remove question reducers', state.selectedQuestion )
+    //console.log('index in remove question reducers', state.selectedQuestion.indexOf(action.payload))
     const idx = state.selectedQuestion.indexOf(action.payload);
       return Object.assign({}, state, {
         selectedQuestion: state.selectedQuestion.slice(0, idx).concat(state.selectedQuestion.slice(idx+1))
@@ -102,9 +102,9 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         locations: action.payload
     });
-    case 'REFRESH_POSTS':
+    case 'UPDATE_PICTURE':
       return Object.assign({}, state, {
-        locations: action.payload
+        picture: action.payload
     });
   }
   return state;
