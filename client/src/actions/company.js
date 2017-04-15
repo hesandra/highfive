@@ -8,7 +8,7 @@ export function updateCompany(profile) {
 }
 
 export function submitProfile(profile){
-  console.log('submitProfile')
+  //console.log('submitProfile')
   return (dispatch) => {
     const id = profile.companyId;
     //console.log('profile in sumbitProfile', profile)
@@ -23,7 +23,7 @@ export function submitProfile(profile){
     //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
     axios.put('http://localhost:3000/api/companies/' + id, updatedProfile)
       .then((company) => {
-        console.log('result in company actions', company);
+        //console.log('result in company actions', company);
         dispatch(updateCompany(JSON.parse(company.config.data)));
       })
       .catch((err) => {
@@ -63,12 +63,12 @@ export function getJobs(jobs){
 }
 
 export function getPositions(){
-  console.log('in get positions');
+  //console.log('in get positions');
   //const company_id = companyId; 
   return (dispatch) => {
     axios.get('http://localhost:3000/api/jobposts')
     .then((jobposts) => {
-      console.log('jobposts in getPostiions', jobposts)
+      //console.log('jobposts in getPostiions', jobposts)
       dispatch(getJobs(jobposts.data.jobposts))
     })
     .catch((err) => {
@@ -114,7 +114,7 @@ export function getSubmissions(postId){
   return (dispatch) => {
     axios.get('http://localhost:3000/api/submissions/jobpost/' + postId)
     .then((submission) => {
-      console.log('submissions in getSubmissions', submission);
+      //console.log('submissions in getSubmissions', submission);
       dispatch(getSubs(submission.data.submission))
     })
     .catch((err) => {
@@ -155,7 +155,7 @@ export function midPos(){
 }
 
 export function submitDescription(description){
-  console.log('title in ACtion handlers', description)
+  //console.log('title in ACtion handlers', description)
   return {
     type: 'DESCRIPTION',
     payload: description,
@@ -197,7 +197,7 @@ export function closeModal(){
 
 export function deleteJob(jobId){
   return (dispatch) => {
-    console.log("delete clicked", jobId);
+    //console.log("delete clicked", jobId);
     axios
       .delete(`http://localhost:3000/api/jobposts/${jobId}`)
       .then((res) => { console.log('res', res); })
@@ -221,12 +221,12 @@ export function createJob(jobpost){
 }
 
 export function createJobPost(jobpost){
-  console.log('JOBPOST IN CREATE JOBPOST', jobpost)
+  //console.log('JOBPOST IN CREATE JOBPOST', jobpost)
  return (dispatch) => {
-   console.log('after dispatch')
+   //console.log('after dispatch')
     axios.post('http://localhost:3000/api/jobposts', jobpost)
       .then((result) => {
-        console.log('result', result)
+        //console.log('result', result)
         dispatch(createJob(result));
       })
       .catch((err) => {
@@ -236,7 +236,7 @@ export function createJobPost(jobpost){
 }
 
 export function saveInterview(data){
-  console.log('in saveInterview')
+  //console.log('in saveInterview')
   return (dispatch) => {
     const postId = data.postId;
     axios.put('http://localhost:3000/api/jobposts/' + postId, data.questions)
@@ -259,7 +259,7 @@ export function getIndustries(){
   return(dispatch) => {
   axios.get('http://localhost:3000/api/industries')
   .then((result) =>{
-    console.log('industries in getIndustries', result)
+    //console.log('industries in getIndustries', result)
     dispatch(getAllIndustries(result.data.industries))
   })
     .catch((err) => {
@@ -279,7 +279,7 @@ export function getLocations(){
   return(dispatch) => {
   axios.get('http://localhost:3000/api/locations')
   .then((result) =>{
-    console.log('industries in getIndustries', result)
+    //console.log('industries in getIndustries', result)
     dispatch(getAllLocations(result.data.locations))
   })
     .catch((err) => {
@@ -289,7 +289,7 @@ export function getLocations(){
 }
 
 export function updateSubmission(data){
-  console.log('data in updateSubmission', data)
+  //console.log('data in updateSubmission', data)
   const id = data.subId;
   return (dispatch) => {
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
@@ -307,13 +307,13 @@ export function dropPic(picture){
 }
 
 export function updatePicture(data) {
-  console.log('data in updatePicture actions handler', data)
+  //console.log('data in updatePicture actions handler', data)
   const id = data.companyId;
   return (dispatch) => {
-    console.log('after dispatch');
+    //console.log('after dispatch');
     axios.put('http://localhost:3000/api/companies/picture/' + id, data)
     .then((result) => {
-      console.log('result in company', JSON.parse(result.config.data));
+      //console.log('result in company', JSON.parse(result.config.data));
        dispatch(dropPic(JSON.parse(result.config.data)))
     })
     .catch((err) => {

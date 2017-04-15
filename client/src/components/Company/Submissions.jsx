@@ -31,8 +31,8 @@ class PositionsLevel extends React.Component {
 }    
 
   renderSubmissions() {
-    console.log('PROPS IN SUBMISSIONS', this.props);
-    console.log('state in submissions', this.state);
+    //console.log('PROPS IN SUBMISSIONS', this.props);
+    //console.log('state in submissions', this.state);
     return (
       <div>
         {this.props.companyProfile.submissions.map((item, idx) => {

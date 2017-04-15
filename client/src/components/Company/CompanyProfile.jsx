@@ -44,7 +44,7 @@ class CompanyProfile extends React.Component {
   }
 
   renderForm() {
-    console.log('this.props in companyprofile', this.props)
+    //console.log('this.props in companyprofile', this.props)
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
         <Dropzone />
@@ -54,7 +54,7 @@ class CompanyProfile extends React.Component {
             Name
         </Col>
           <Col sm={8}>
-            <FormControl name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+            <FormControl key="name" type="text" value={this.state.name} onChange={this.handleChange} />
           </Col>
         </FormGroup>
         <br />
@@ -63,7 +63,7 @@ class CompanyProfile extends React.Component {
             Profile Video
         </Col>
           <Col sm={8}>
-            <FormControl name="profile_img" type="text" value={this.state.profile_img} onChange={this.handleChange} />
+            <FormControl key="profile_img" type="text" value={this.state.profile_img} onChange={this.handleChange} />
           </Col>
         </FormGroup>
         <br />
@@ -71,16 +71,16 @@ class CompanyProfile extends React.Component {
           <Col componentClass={ControlLabel} sm={1}>
             Industry
         </Col>
-          <Col sm={8}>         
+          <Col sm={8}>
             <FormGroup controlId="formControlsSelect">
-              <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
+              <FormControl componentClass="select" placeholder="select" key="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
                 <option value="select">select</option>
-                {this.props.profile.companyProfile.industries.map((item) => 
-                <option value={item.id}>{item.name}</option>
+                {this.props.profile.companyProfile.industries.map((item) =>
+                  <option value={item.id} key={item.name}>{item.name}</option>
                 )}
               </FormControl>
             </FormGroup>
-            
+
           </Col>
         </FormGroup>
         <br />
@@ -90,10 +90,10 @@ class CompanyProfile extends React.Component {
         </Col>
           <Col sm={8}>
             <FormGroup controlId="formControlsSelect">
-              <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
+              <FormControl componentClass="select" placeholder="select" key="location_id" value={this.state.location_id} onChange={this.handleChange}>
                 <option value="select">select</option>
-                 {this.props.profile.companyProfile.locations.map((item) => 
-                <option value={item.id}>{item.city}</option>
+                {this.props.profile.companyProfile.locations.map((item) =>
+                  <option value={item.id} key={item.id}>{item.city}</option>
                 )}
               </FormControl>
             </FormGroup>
@@ -105,7 +105,7 @@ class CompanyProfile extends React.Component {
             Email
         </Col>
           <Col sm={8}>
-            <FormControl name="email" type="text" value={this.state.email} onChange={this.handleChange} />
+            <FormControl key="email" type="text" value={this.state.email} onChange={this.handleChange} />
           </Col>
         </FormGroup>
         <br />
@@ -114,7 +114,7 @@ class CompanyProfile extends React.Component {
             Address
         </Col>
           <Col sm={8}>
-            <FormControl name="address" type="text" value={this.state.address} onChange={this.handleChange} />
+            <FormControl key="address" type="text" value={this.state.address} onChange={this.handleChange} />
           </Col>
         </FormGroup>
         <br />
@@ -126,20 +126,22 @@ class CompanyProfile extends React.Component {
           </Col>
         </FormGroup>
       </Form>
-    )}
-  render(){
-    if (this.props.profile.companyProfile.industries){
-    return(
-      <div>
-      {this.renderForm()}
-      </div>
     )
-  } else {
-    return(
-      <div></div>
-    )
-  }}
   }
+  render() {
+    if (this.props.profile.companyProfile.industries) {
+      return (
+        <div>
+          {this.renderForm()}
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+  }
+}
 
 function mapStateToProps(state) {
   return {

@@ -34,7 +34,7 @@ class InterviewFormMid extends React.Component {
   }
 
   renderAll() {
-    console.log(this.props, 'this.props in interviewCreationMid')
+    //console.log(this.props, 'this.props in interviewCreationMid')
     return (
       <div>
         <div>

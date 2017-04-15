@@ -103,7 +103,7 @@ class InterviewFormJun extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'INTERVIEWCREATION JUN COMPANYPROFILE');
+    //console.log(this.props, 'INTERVIEWCREATION JUN COMPANYPROFILE');
     return (
       <div>
         <div>{this.renderAll()}</div>
