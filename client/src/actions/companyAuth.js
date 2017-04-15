@@ -1,4 +1,4 @@
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import axios from 'axios';
 import CompanyAuthService from '../utils/companyAuthService';
 import { COMPANIES_AUTH0_CLIENT_ID } from '../../../config';
@@ -52,7 +52,7 @@ export function companyLoginRequest() {
   };
 }
 export function companyLoginSuccess(profile) {
-  hashHistory.push('/company');
+  browserHistory.push('/company');
   location.reload();
   return {
     type: COMPANY_LOGIN_SUCCESS,

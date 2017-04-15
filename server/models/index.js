@@ -58,10 +58,22 @@ module.exports = {
       }
     },
     updateById: async ({ location, linkedin_url, id, industries }, cb) => {
+      console.log(linkedin_url, 'linked', industries, 'industries');
       const industriesLength = industries.length;
       /* Patch User (async/await) */
+      if (!linkedin_url) {
+        const updatedUser = await User
+          .query()
+          .eager('industry')
+          .patchAndFetchById(id, { location_id: location })
+          .first()
+          .catch((e) => {
+            return cb(e, null);
+          });
+      }
       const updatedUser = await User
         .query()
+        .eager('industry')
         .patchAndFetchById(id, { location_id: location, linkedin_url })
         .first()
         .catch((e) => {
@@ -198,10 +210,13 @@ module.exports = {
     getAllPage: (page, cb) => {
       Jobpost
         .query()
-        // .page(page, 10)
-        .allowEager('[company]')
-        .eager('company')
-        .then((jobposts) => { cb(null, jobposts); })
+        .page(parseInt(page), 10)
+        .allowEager('[company, submission]')
+        .eager('[company, submission]')
+        .then((jobposts) => { 
+          cb(null, jobposts); 
+          console.log(jobposts);
+        })
         .catch((err) => { cb(err, null); });
     },
     getAll: (cb) => {

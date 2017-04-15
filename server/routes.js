@@ -41,7 +41,7 @@ router.post('/api/submissions', controller.submissions.createOne);
 // questions
 router.get('/api/questions', controller.questions.getAll);
 
-//videos
+// videos
 router.post('/api/videos', controller.videos.createOne);
 
 // locations

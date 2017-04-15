@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import { Home } from '../components';
 import { userLoginRequest, userLogoutSuccess, checkUserLogin } from '../actions/userAuth';
 import { companyLoginRequest, companyLogoutSuccess } from '../actions/companyAuth';
@@ -21,17 +21,17 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(userLoginRequest());
     },
     onAuthedUserLoginClick: () => {
-      hashHistory.push('/profile');
+      browserHistory.push('/profile');
     },
     onUserLogoutClick: () => {
       dispatch(userLogoutSuccess());
-      hashHistory.push('/');
+      browserHistory.push('/');
     },
     onCompanyLoginClick: () => {
       dispatch(companyLoginRequest());
     },
     onAuthedCompanyLoginClick: () => {
-      hashHistory.push('/company');
+      browserHistory.push('/company');
     }
   };
 };

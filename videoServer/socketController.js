@@ -4,11 +4,6 @@ const axios = require('axios');
 
 const s3 = new AWS.S3();
 
-let count = 0;
-// create a map to store active interviews ?
-const Interviews = new Map();
-
-
 module.exports = {
   init(io) {
     AWS.config.update({
@@ -20,7 +15,6 @@ module.exports = {
       socket.on('video', ({ videoData, name, id, answer, question_id, submission_id }) => {
         const dataURL = videoData.split(',').pop();
         const fileBuffer = new Buffer(dataURL, 'base64');
-        count++;
         console.log(name, id, question_id, submission_id, 'data rec');
         const s3Params = {
           Bucket: process.env.S3_BUCKET,

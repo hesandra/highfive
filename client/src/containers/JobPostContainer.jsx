@@ -9,9 +9,10 @@ import { initJobInterview, fetchJobPostData } from '../actions/jobPost';
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile } = state.userAuth;
   const { jobPosts } = state.jobPosts;
-  const { jobPost } = state.jobPost;
+  const { jobPost, isFetching } = state.jobPost;
   return {
     isAuthenticated,
+    isFetching,
     profile,
     jobPosts,
     jobPost

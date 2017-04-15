@@ -1,10 +1,15 @@
 const Model = require('objection').Model;
 
 class Video extends Model {
+  $beforeInsert() {
+    this.created_at = new Date().toISOString();
+  }
+  $beforeUpdate() {
+    this.updated_at = new Date().toISOString();
+  }
   static get tableName() {
     return 'video';
   }
-
   static get jsonSchema() {
     return {
       type: 'object',
@@ -18,7 +23,6 @@ class Video extends Model {
       }
     };
   }
-
   static get relationMappings() {
     return {
       question: {

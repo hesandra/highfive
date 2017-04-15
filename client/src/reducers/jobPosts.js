@@ -3,7 +3,7 @@ import userAuthService from '../utils/userAuthService';
 
 export default function jobPostsReducer(state = {
   isAuthenticated: !userAuthService.isTokenExpired(),
-  jobPosts: [],
+  jobPosts: { results: [] },
   isFetching: false,
   error: null
 }, action) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import { Company } from '../components';
 import { toProfile, toJobPosts, toSubmissions } from '../actions/company';
 
@@ -14,17 +14,17 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onProfileClick: () => {
       dispatch(toProfile());
-      hashHistory.push('/cprofile');
+      browserHistory.push('/cprofile');
       location.reload();
     },
     onJobsClick: () => {
       dispatch(toJobPosts());
-      hashHistory.push('/jobposts');
+      browserHistory.push('/jobposts');
       location.reload();
     },
     onSubmissionsClick: () => {
       dispatch(toSubmissions());
-      hashHistory.push('/submissions');
+      browserHistory.push('/submissions');
       location.reload();
     }
   };

@@ -143,6 +143,7 @@ class UserProfile extends Component {
             <h4 className="text-center">{ name } </h4>
             <div className="text-center">
               <Image className="user-profile-img text-center" src={profileImage} circle />
+              <hr />
             </div>
             <div className="text-center">
               <small className="text-center"> {location} </small>

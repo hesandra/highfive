@@ -15,7 +15,7 @@ export const fetchJobPosts = (page) => {
     axios.get(`http://localhost:3000/api/jobposts/page/${page}`)
       .then((response) => {
         if (response.status === 200 || response.status === 304) {
-          dispatch(requestJobPostsDataSuccess(response.data.jobposts.results));
+          dispatch(requestJobPostsDataSuccess(response.data.jobposts));
         }
       })
       .catch(e => dispatch(requestJobPostsDataError(e)));
