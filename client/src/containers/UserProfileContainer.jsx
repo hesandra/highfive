@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import { UserProfile } from '../components';
 import { checkUserLogin, updateUserProfile } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     // fetch JobPosts here
     onJobPostsClick: () => {
       // dispatch(fetchJobPosts());
-      hashHistory.push('/jobposts');
+      browserHistory.push('/jobposts/page/1');
     },
     onUpdateUserProfile: (id, data) => {
       dispatch(updateProfile(id, data));

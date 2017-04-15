@@ -28,7 +28,7 @@ class Jobpost extends Model {
   static get relationMappings() {
     return {
       submission: {
-        relation: Model.BelongsToOneRelation,
+        relation: Model.HasManyRelation,
         modelClass: `${__dirname}/Submission`,
         join: {
           from: 'jobpost.id',

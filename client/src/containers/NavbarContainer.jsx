@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import { NavigationBar } from '../components';
 import { userLoginRequest, userLogoutSuccess } from '../actions/userAuth';
 import { companyLoginRequest, companyLogoutSuccess } from '../actions/companyAuth';
@@ -26,14 +26,14 @@ const mapDispatchToProps = (dispatch) => {
     },
     onUserLogoutClick: () => {
       dispatch(userLogoutSuccess());
-      hashHistory.push('/');
+      browserHistory.push('/');
     },
     onCompanyLoginClick: () => {
       dispatch(companyLoginRequest());
     },
     onCompanyLogoutClick: () => {
       dispatch(companyLogoutSuccess());
-      hashHistory.push('/');
+      browserHistory.push('/');
     }
   };
 };

@@ -29,7 +29,7 @@ const NavigationBar = (props) => {
       </Navbar.Header>
       <Nav pullRight>
         { authType === 'user' ? <LinkContainer to="/profile"><NavItem>Profile</NavItem></LinkContainer> : '' }
-        { authType === 'user' ? <LinkContainer to="/jobposts"><NavItem>Jobposts</NavItem></LinkContainer> : '' }
+        { authType === 'user' ? <LinkContainer to="/jobposts/page/1"><NavItem>Jobposts</NavItem></LinkContainer> : '' }
         <NavItem className="nav-item" onClick={logType}>{logText}</NavItem>
       </Nav>
     </Navbar>

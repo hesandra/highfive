@@ -1,4 +1,4 @@
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import axios from 'axios';
 import UserAuthService from '../utils/userAuthService';
 import { USERS_AUTH0_CLIENT_ID } from '../../../config';
@@ -43,7 +43,7 @@ export const userLoginRequest = () => {
 };
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 const userLoginSuccess = (profile) => {
-  hashHistory.push('/profile');
+  browserHistory.push('/profile');
   return {
     type: USER_LOGIN_SUCCESS,
     profile

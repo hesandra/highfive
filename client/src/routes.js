@@ -36,7 +36,7 @@ export default function createRoutes() {
       <IndexRoute component={HomeContainer} />
       <Route path="/company" component={CompanyContainer} onEnter={requireCompanyAuth} />
       <Route path="/profile" component={UserProfileContainer} onEnter={requireUserAuth} />
-      <Route path="/jobposts" component={JobPostsContainer} onEnter={requireUserAuth} />
+      <Route path="/jobposts/page/:page" component={JobPostsContainer} onEnter={requireUserAuth} />
       <Route path="/jobposts/:id" component={JobPostContainer} onEnter={requireUserAuth} />
       <Route path="/interview/:id" component={InterviewContainer} onEnter={requireUserAuth} />
       <Route path="/browse/users" component={BrowseContainer} />

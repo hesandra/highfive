@@ -5,6 +5,7 @@ import { getLocationName } from '../../utils/Mappings/locationMappings';
 import { getIndustryName } from '../../utils/Mappings/industryMappings';
 import { getPositionName } from '../../utils/Mappings/positionMappings';
 
+import JobPostLoader from '../JobPosts/JobPostLoader';
 import ApplyConfirmModal from './ApplyConfirmModal';
 
 class JobPost extends Component {
@@ -19,9 +20,9 @@ class JobPost extends Component {
     const { jobPosts } = this.props;
     const { fetchJobPostData } = this.props;
     // send ajax action to grab jobpost if we don't have it in our store.
-    // if (!jobPosts.length) {
-    fetchJobPostData(id);
-    // }
+    if (!jobPosts.length) {
+      fetchJobPostData(id);
+    }
   }
   render() {
     console.log(this.props);
@@ -50,6 +51,7 @@ class JobPost extends Component {
           <Col xs={12} md={6} mdOffset={3}>
             { jobPost ?
               <div>
+              <Card.Group itemsPerRow={"one"}>
                 <Card color="red" centered>
                   <Image
                     height={200}
@@ -77,14 +79,15 @@ class JobPost extends Component {
                     15 applicants
                     <br />
                   </Card.Content>
+                  <ApplyConfirmModal
+                    id={id}
+                    onJobInterviewClick={onJobInterviewClick}
+                  />
                 </Card>
-                <ApplyConfirmModal
-                  id={id}
-                  onJobInterviewClick={onJobInterviewClick}
-                />
+              </Card.Group>
                 <p className="text-center">please review our terms and conditions</p>
               </div>
-            : '' }
+            : <JobPostLoader /> }
           </Col>
         </Row>
       </Grid>

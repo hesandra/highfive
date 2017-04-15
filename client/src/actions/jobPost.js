@@ -1,21 +1,21 @@
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import axios from 'axios';
+
+export const REQUEST_JOB_POST = 'REQUEST_JOB_POST';
+export const REQUEST_JOB_POST_SUCCESS = 'REQUEST_JOB_POST_SUCCESS';
+export const REQUEST_JOB_POST_ERROR = 'REQUEST_JOB_POST_ERROR';
+
 /**
  * Actions fired when on a particular Job posting
  */
 
 export const INIT_JOB_INTERVIEW = 'INIT_JOB_INTERVIEW';
 export function initJobInterview(id) {
-  hashHistory.push(`/interview/${id}`);
+  browserHistory.push(`/interview/${id}`);
   return {
     type: INIT_JOB_INTERVIEW
   };
 }
-
-
-export const REQUEST_JOB_POST = 'REQUEST_JOB_POST';
-export const REQUEST_JOB_POST_SUCCESS = 'REQUEST_JOB_POST_SUCCESS';
-export const REQUEST_JOB_POST_ERROR = 'REQUEST_JOB_POST_ERROR';
 
 export const fetchJobPostData = (id) => {
   return (dispatch) => {
@@ -29,7 +29,6 @@ export const fetchJobPostData = (id) => {
       .catch(e => dispatch(requestJobPostDataError(e)));
   };
 };
-
 
 const requestJobPostData = () => {
   return {
