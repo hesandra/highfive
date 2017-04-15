@@ -48,6 +48,7 @@ router.get('/api/locations', controller.locations.getAll);
 // industries
 router.get('/api/industries', controller.industries.getAll);
 
+router.get('/api/dashboard', controller.dashboard.getAllStats);
 
 module.exports = router;
 
