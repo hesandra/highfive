@@ -41,14 +41,14 @@ class JobPosts extends Component {
     requestJobPosts(data.selected);
   }
   decrementPage() {
-    const { requestJobPosts } = this.props;
-    const { page } = this.props.params;
-    browserHistory.push(`/jobposts/page/${parseInt(page) - 1}`);
+      const { requestJobPosts } = this.props;
+      const { page } = this.props.params;
+      browserHistory.push(`/jobposts/page/${parseInt(page) - 1}`);
   }
   incrementPage() {
-    const { requestJobPosts } = this.props;
-    const { page } = this.props.params;
-    browserHistory.push(`/jobposts/page/${parseInt(page) + 1}`);
+      const { requestJobPosts } = this.props;
+      const { page } = this.props.params;
+      browserHistory.push(`/jobposts/page/${parseInt(page) + 1}`);
   }
   render() {
     const { jobPosts, isFetching, backend_profile } = this.props;
@@ -60,7 +60,6 @@ class JobPosts extends Component {
       <Grid>
         <Row>
           <Col md={12}>
-            { !isFetching ?
               <div className="text-center">
                 <Header as="h3" icon textAlign="center">
                   Job Postings
@@ -76,7 +75,6 @@ class JobPosts extends Component {
                 <Icon size="large" onClick={this.decrementPage} name="arrow left" />
                 <Icon size="large" onClick={this.incrementPage} name="arrow right" />
               </div>
-                  : '' }
             <hr />
             { !isFetching ?
               <div>
