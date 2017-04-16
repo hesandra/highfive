@@ -3,10 +3,14 @@ import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootst
 import CompanyProfile from './CompanyProfile';
 import Positions from './Positions';
 import Submissions from './Submissions';
+import Dashboard from '../Dashboard/Dashboard';
+import { Icon, Statistic } from 'semantic-ui-react';
+import { Link, hashHistory } from 'react-router';
+import NotificationSystem from 'react-notification-system';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
-import Dashboard from '../Dashboard/Dashboard';
+
 
 const CompanyNavbar = (props) => {
   return (
@@ -15,8 +19,14 @@ const CompanyNavbar = (props) => {
         <Row className="clearfix">
           <Col sm={12}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="first">Dashboard</NavItem>
-              <NavItem eventKey="second">Submissions</NavItem>
+              <NavItem eventKey="first">Notifications
+              <br />
+              <i className="fa fa-envelope-open-o" aria-hidden="true"/>
+              </NavItem>
+              <NavItem eventKey="second">Submissions
+              <br />
+              <i className="fa fa-folder-open" aria-hidden="true" />
+              </NavItem>
               <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab">
                 <MenuItem eventKey="3.1" onClick={() => props.junPos()}>Junior</MenuItem>
                 <MenuItem eventKey="3.2" onClick={() => props.midPos()}>Mid</MenuItem>
@@ -24,6 +34,8 @@ const CompanyNavbar = (props) => {
               </NavDropdown>
               <NavItem eventKey="fourth">
                 Edit Profile
+                <br />
+                <i className="fa fa-user-circle-o" aria-hidden="true" />
                </NavItem>
             </Nav>
           </Col>

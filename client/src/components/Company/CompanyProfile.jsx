@@ -10,6 +10,9 @@ React.Bootstrap = require('react-bootstrap');
 React.Bootstrap.Select = require('react-bootstrap-select');
 import CompanyAuthService from '../../utils/companyAuthService';
 import Dropzone from '../Dropzone/dropzone';
+import ReactSelectize from 'react-selectize';
+
+const SimpleSelect = ReactSelectize.SimpleSelect;
 
 class CompanyProfile extends React.Component {
   constructor(props) {
@@ -47,7 +50,10 @@ class CompanyProfile extends React.Component {
     console.log('this.props in companyprofile', this.props)
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
+      <br/>
+      <div className="dropzone">
         <Dropzone />
+      </div>
         <br />
         <FormGroup>
           <Col componentClass={ControlLabel} sm={1}>
@@ -57,7 +63,7 @@ class CompanyProfile extends React.Component {
             <FormControl name="name" type="text" value={this.state.name} onChange={this.handleChange} />
           </Col>
         </FormGroup>
-        <br />
+       {/* <br />
         <FormGroup>
           <Col componentClass={ControlLabel} sm={1}>
             Profile Video
@@ -65,23 +71,39 @@ class CompanyProfile extends React.Component {
           <Col sm={8}>
             <FormControl name="profile_img" type="text" value={this.state.profile_img} onChange={this.handleChange} />
           </Col>
-        </FormGroup>
+        </FormGroup>*/}
         <br />
         <FormGroup>
           <Col componentClass={ControlLabel} sm={1}>
             Industry
         </Col>
-          <Col sm={8}>
-          
+          <Col sm={8}>  
+{/*<SimpleSelect
+        theme="bootstrap"
+        placeholder="Select industry"
+        onValueChange={this.handleChange}
+        name="industry_id"
+        onValueChange={(selection) => {
+          if (selection) {
+            return {
+              property: 'industry_id',
+              data: this.state.industry_id }
+          }
+        }}
+      >{this.props.profile.companyProfile.industries.map((item) => 
+                <option value={item.id}>{item.name}</option>
+                )} 
+      </SimpleSelect>*/}
             <FormGroup controlId="formControlsSelect">
+            <Col sm={8}>
               <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
                 <option value="select">select</option>
                 {this.props.profile.companyProfile.industries.map((item) => 
                 <option value={item.id}>{item.name}</option>
                 )}
               </FormControl>
+              </Col>
             </FormGroup>
-            
           </Col>
         </FormGroup>
         <br />
@@ -91,12 +113,14 @@ class CompanyProfile extends React.Component {
         </Col>
           <Col sm={8}>
             <FormGroup controlId="formControlsSelect">
+            <Col sm={8}>
               <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
                 <option value="select">select</option>
                  {this.props.profile.companyProfile.locations.map((item) => 
                 <option value={item.id}>{item.city}</option>
                 )}
               </FormControl>
+             </Col>
             </FormGroup>
           </Col>
         </FormGroup>
