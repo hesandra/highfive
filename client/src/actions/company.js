@@ -1,4 +1,5 @@
 import axios from 'axios';
+import NotificationSystem from 'react-notification-system';
 
 export function updateCompany(profile) {
   return {
@@ -321,6 +322,17 @@ export function updatePicture(data) {
     });
    }
   }
+
+/*export function addNotification() {
+  if (this.notificationSystem) {
+    this.notificationSystem.addNotification({
+      message: 'updated Profile',
+      level: 'success',
+      position: 'tr',
+      autoDismiss: 5
+    });
+  }
+}*/
 
 
 
