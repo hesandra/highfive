@@ -131,6 +131,9 @@ class Interview extends Component {
     });
   }
   showNextQuestion() {
+    this.setState({
+      answer: ''
+    });
     this.stopRecording();
     const currentIdx = this.state.selectedQuestionIdx;
     if (currentIdx < 2) {
