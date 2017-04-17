@@ -9,6 +9,7 @@ const initialState = {
   showVideos: false,
   showJobModal: false,
   applUpdate: false,
+  renderStatus: false,
 };
 
 export default function (state = initialState, action) {
@@ -85,7 +86,7 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         questions: action.payload,
         showVideos: false,
-        showJobModal: false,
+        //showJobModal: false,
     });
       case 'CLOSE_POST_MODAL':
       return Object.assign({}, state, {
@@ -117,6 +118,15 @@ export default function (state = initialState, action) {
     case 'OPEN_MODAL':
       return Object.assign({}, state, {
         applUpdate: true
+    });
+    case 'CLOSE_APPL_MODAL':
+      return Object.assign({}, state, {
+        applUpdate: false,
+        renderStatus: true,
+    });
+    case 'UPDATE_STATUS':
+      return Object.assign({}, state, {
+        status: action.payload,
     });
   }
   return state;
