@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/server.js",
+    "sass" : "sass --watch ./client/public/styles/main.scss",
     "test": "node_modules/.bin/mocha --bail --reporter nyan test/",
     "lint": "eslint . || true",
     "video": "nodemon ./videoServer/index.js",
@@ -35,6 +36,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "helmet": "^3.5.0",
+    "highcharts": "^5.0.10",
     "jquery": "^3.2.1",
     "jwt-decode": "^2.2.0",
     "knex": "^0.12.9",
