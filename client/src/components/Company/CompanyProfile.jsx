@@ -77,7 +77,6 @@ class CompanyProfile extends React.Component {
       address: '',
     };
     this.notificationSystem = null;
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addNotification = this.addNotification.bind(this);

@@ -70,12 +70,11 @@ class PositionsLevel extends React.Component {
                     </Card.Description>
 
                     <div className="spaceQ"></div>
-
-                    {this.props.companyProfile.renderStatus ?
+                    {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
                       <div>current status: {this.props.companyProfile.status.status}</div> :
                       <div>current status: {item.status}</div>}
                     <div className="spaceQ"></div>
-                    {this.props.companyProfile.renderStatus ?
+                    {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
                       <div>notes:{this.props.companyProfile.status.notes}</div> :
                       <div>notes: {item.notes}</div>}
                     <div className="spaceQ"></div>
