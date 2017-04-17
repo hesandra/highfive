@@ -202,6 +202,12 @@ export function closePostModal(){
   }
 }
 
+export function closeApplModal(){
+  return {
+    type: 'CLOSE_APPL_MODAL'
+  }
+}
+
 export function deleteJob(jobId){
   return (dispatch) => {
     //console.log("delete clicked", jobId);
@@ -305,14 +311,24 @@ export function updateSubmission(data){
   return (dispatch) => {
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
     .then((result) => {
-      console.log(result)
+      console.log('result in updateSubmission', JSON.parse(result.config.data))
+      const status = JSON.parse(result.config.data)
+      dispatch(updateStatus(status))
     })
     .then(() => {
       console.log('before saveUpdate')
       dispatch(saveAppUpdate())
-      })
+    })
   }
 }
+
+export function updateStatus(data){
+  return {
+    type: 'UPDATE_STATUS',
+    payload: data,
+  }
+}
+
 
 export function saveAppUpdate(){
   return {

@@ -41,7 +41,6 @@ class ApplicationModal extends React.Component {
                 <Modal.Footer>
                 </Modal.Footer>
               </Modal>
-
             )
           }
         })}

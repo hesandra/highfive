@@ -13,7 +13,7 @@ class PositionsLevel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: '', 
+      status: '',
       notes: ''
     };
 
@@ -29,16 +29,17 @@ class PositionsLevel extends React.Component {
       //industry: value,
       //location: value,
     });
-}    
+  }
 
   renderSubmissions() {
-    //console.log('PROPS IN SUBMISSIONS', this.props);
+    console.log('PROPS IN SUBMISSIONS', this.props);
+
     //console.log('state in submissions', this.state);
     return (
       <div className="ui stackable twelve column grid">
         {this.props.companyProfile.submissions.map((item, idx) => {
           return (
-            <div className="cardStyle">  
+            <div className="cardStyle">
               <Card.Group >
                 <Card key={item.id} >
                   <Image
@@ -47,6 +48,7 @@ class PositionsLevel extends React.Component {
                     src={item.user.profile_img}
                   />
                   <Card.Content className="cardSize">
+
                     <Card.Header>
                     </Card.Header>
                     <Card.Meta>
@@ -66,28 +68,38 @@ class PositionsLevel extends React.Component {
                         </a>
                       </List>
                     </Card.Description>
-                   <div className="spaceQ"></div>
+
+                    <div className="spaceQ"></div>
+
+                    {this.props.companyProfile.renderStatus ?
+                      <div>current status: {this.props.companyProfile.status.status}</div> :
+                      <div>current status: {item.status}</div>}
+                    <div className="spaceQ"></div>
+                    {this.props.companyProfile.renderStatus ?
+                      <div>notes:{this.props.companyProfile.status.notes}</div> :
+                      <div>notes: {item.notes}</div>}
+                    <div className="spaceQ"></div>
                     <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>
-                   <Form>
-                   <TextArea className="form-control notesField" placeholder={item.notes} name="notes" onChange={this.handleChange} autoHeight />
-                   </Form>
+                    <Form>
+                      <TextArea className="form-control notesField" placeholder="take notes about interview here" name="notes" onChange={this.handleChange} autoHeight />
+                    </Form>
                     <div className="spaceQ"></div>
                     <FormGroup controlId="formControlsSelect">
-                      <FormControl componentClass="select" placeholder="select" name="status" value={item.status} onChange={this.handleChange} >
-                        <option value="select">{item.status}</option>
+                      <FormControl componentClass="select" placeholder="select" name="status" onChange={this.handleChange} >
+                        <option value="select">select</option>
                         <option >viewed</option>
-                        <option >pass</option>
-                        <option >fail</option>
                         <option >undecided</option>
+                        <option >passed</option>
+                        <option >failed</option>
                       </FormControl>
                     </FormGroup>
-                    <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes:this.state.notes  })}>Save</Button>
+                    <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes })}>Save</Button>
                   </Card.Content>
                 </Card>
               </Card.Group>
-              </div>
+            </div>
           )
         }
         )}
@@ -99,11 +111,10 @@ class PositionsLevel extends React.Component {
     if (this.props.companyProfile.submissions !== undefined) {
       return (
         <div>
-        {this.props.companyProfile.applUpdate ?
-          <SaveModal />:
-        <div>{this.renderSubmissions()}
-          <ApplicationModal />
-        </div>}
+          <div>{this.renderSubmissions()}
+            <ApplicationModal />
+            <SaveModal />
+          </div>}
         </div>
       )
     } else {
