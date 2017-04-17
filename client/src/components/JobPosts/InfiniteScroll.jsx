@@ -48,10 +48,11 @@ class InfiniteScroll extends Component {
         loadingSpinnerDelegate={this.infiniteLoading()}
         isInfiniteLoading={this.state.isInfiniteLoading}
       >
-        <CardList
-          jobPosts={this.props.jobPosts}
-          filter={this.props.filter}
-        />
+
+        // <CardList
+        //   jobPosts={this.props.jobPosts}
+        //   filter={this.props.filter}
+        // />
       </Infinite>
     );
   }

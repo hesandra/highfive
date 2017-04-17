@@ -304,7 +304,6 @@ module.exports = {
       });
     },
     createOne: (req, res, next) => {
-      console.log(req.body);
       models.submissions.createOne(req.body, (err, submission) => {
         const payload = {
           success: err ? false : true,

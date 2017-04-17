@@ -328,7 +328,6 @@ module.exports = {
       cb(null, userSubmissions);
     },
     createOne: async (submission, cb) => {
-      console.log('this is submission', submission);
       const insertedSubmission = await Submission
         .query()
         .insert(submission)
