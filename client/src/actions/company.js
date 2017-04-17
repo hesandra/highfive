@@ -306,7 +306,17 @@ export function updateSubmission(data){
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
     .then((result) => {
       console.log(result)
-    });
+    })
+    .then(() => {
+      console.log('before saveUpdate')
+      dispatch(saveAppUpdate())
+      })
+  }
+}
+
+export function saveAppUpdate(){
+  return {
+    type: 'OPEN_MODAL'
   }
 }
 

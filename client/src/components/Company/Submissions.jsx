@@ -6,6 +6,7 @@ import { Card, Image, Icon, Rating, List, Popup, Button, Label, Segment, TextAre
 import { Form, Col, FormGroup, ControlLabel, FormControl, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 import { showVideos, updateSubmission } from '../../actions/company';
 import ApplicationModal from './ApplicationModal';
+import SaveModal from './SaveModal';
 
 
 class PositionsLevel extends React.Component {
@@ -97,8 +98,12 @@ class PositionsLevel extends React.Component {
   render() {
     if (this.props.companyProfile.submissions !== undefined) {
       return (
+        <div>
+        {this.props.companyProfile.applUpdate ?
+          <SaveModal />:
         <div>{this.renderSubmissions()}
           <ApplicationModal />
+        </div>}
         </div>
       )
     } else {

@@ -8,6 +8,7 @@ const initialState = {
   profileReload: false,
   showVideos: false,
   showJobModal: false,
+  applUpdate: false,
 };
 
 export default function (state = initialState, action) {
@@ -112,6 +113,10 @@ export default function (state = initialState, action) {
     case 'UPDATE_PICTURE':
       return Object.assign({}, state, {
         picture: action.payload
+    });
+    case 'OPEN_MODAL':
+      return Object.assign({}, state, {
+        applUpdate: true
     });
   }
   return state;
