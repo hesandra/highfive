@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 
 import CardList from './CardList';
 import JobPostLoader from './JobPostLoader';
-import InfiniteScroll from './InfiniteScroll';
+// import InfiniteScroll from './InfiniteScroll';
 
 class JobPosts extends Component {
   constructor(props) {

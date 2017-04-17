@@ -3,9 +3,6 @@ import { Polar } from 'react-chartjs-2';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getJobs } from '../../actions/company';
-import axios from 'axios';
-
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -18,17 +15,13 @@ class Dashboard extends React.Component {
     this.chartConfig = this.chartConfig.bind(this);
   }
 
-  // getStats() {
-  //   axios.get('http://localhost:3000/api/dashboard')
-  //     .then((result) => {
-  //       this.setState({
-  //         stats: result.data
-  //       });
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // }
+  componentWillReceiveProps(nextProps) {
+    const { companyStats } = this.props;
+
+    this.setState({
+
+    });
+  }
 
   chartConfig() {
     return {
@@ -45,9 +38,9 @@ class Dashboard extends React.Component {
           90,
           30,
           50,
-          30,
-          10,
-          10
+          45,
+          12,
+          12
         ],
         backgroundColor: [
           '#FF6384',
@@ -63,19 +56,17 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <Polar data={this.chartConfig()} />
+      <div className="stats-chart">
+        <Polar data={this.chartConfig()} />
+      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    jobs: state.companyProfile.jobs
+    companyStats: state.companyProfile
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getJobs }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
