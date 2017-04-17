@@ -7,6 +7,7 @@ import ScrollbarWrapper from 'react-scrollbar';
 import ReactDOM from 'react-dom';
 import { submitDescription, saveQuestion, createJobPost } from '../../actions/company';
 import InterviewForm from './InterviewForm';
+import PostModal from './PostModal'
 
 class InterviewFormSen extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class InterviewFormSen extends React.Component {
         <div>
           <div>
             <div className="spaceQ"></div>
-            <h3>Senior Software Engineer</h3>
+            {/*<h3>Senior Software Engineer</h3>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
               <FormGroup>
@@ -51,9 +52,9 @@ class InterviewFormSen extends React.Component {
                 </Col>
               </FormGroup>
             </Form>
-            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyReload[0].id, level: this.props.companyProfile.level, description: this.props.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyReload[0].industry_id, location_id: this.props.companyProfile.companyReload[0].location_id })}>New job position</Button>
+            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyReload[0].id, level: this.props.companyProfile.level, description: this.props.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyReload[0].industry_id, location_id: this.props.companyProfile.companyReload[0].location_id })}>New job position</Button>*/}
             <div className="spaceQ"></div>
-            <h3>Select 3-5 Algorithm Questions</h3>
+            <h4>Select 1 Algorithm Question</h4>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
@@ -68,7 +69,7 @@ class InterviewFormSen extends React.Component {
               </div>
             </div>
             <div className="spaceQ"></div>
-            <h3>Select 3-5 System Design Questions</h3>
+            <h4>Select 1 System Design Question</h4>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
@@ -82,7 +83,7 @@ class InterviewFormSen extends React.Component {
               </div>
             </div>
             <div className="spaceQ"></div>
-            <h3>Select 3-5 System Behavioral Questions</h3>
+            <h4>Select 1 System Behavioral Question</h4>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
@@ -101,15 +102,23 @@ class InterviewFormSen extends React.Component {
     )
   }
 
-  render() {
+ render() {
+    //console.log(this.props, 'INTERVIEWCREATION SENIOR COMPANYPROFILE');
+    if (this.props.companyProfile.showJobModal){
+      return (
+        <div><PostModal /></div>
+      )} else if (this.props.companyProfile.showJobModal === false){
     return (
       <div>
         <div>{this.renderAll()}</div>
         <div className="spaceQ" />
         <div><InterviewForm /></div>
       </div>
-    )
-  }
+    )}
+    else {
+      return (<div>{}</div>)
+    }
+}
 }
 
 

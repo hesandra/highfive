@@ -36,12 +36,18 @@ class PostModal extends React.Component {
     event.preventDefault();
   }
   render(){
+    console.log('this.props in PostModal', this.props)
     return (
       <div >
             <Modal
               show={this.props.companyProfile.showJobModal}>
+              {/*onHide={this.props.closePostModal()}*/}
               <Modal.Header closeButton>
-               <Modal.Title>Junior Software Engineer</Modal.Title>
+               {this.props.companyProfile.level === 0?
+         <Modal.Title>Junior Software Engineer</Modal.Title>:
+          this.props.companyProfile.level === 1?
+          <Modal.Title>Mid-level Software Engineer</Modal.Title>:
+          <Modal.Title>Senior Software Engineer</Modal.Title>}
               </Modal.Header>
               <Modal.Body>
             <Form horizontal onSubmit={this.handleSubmit}>

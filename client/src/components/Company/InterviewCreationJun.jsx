@@ -64,7 +64,7 @@ class InterviewFormJun extends React.Component {
             </Modal>
             </div>*/}
             <div className="spaceQ"></div>
-            <h3>Select 3-5 Algorithm Questions</h3>
+            <h4>Select 1 Algorithm Question</h4>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
@@ -82,7 +82,7 @@ class InterviewFormJun extends React.Component {
               </div>
             </div>
             <div className="spaceQ"></div>
-            <h3>Select 3-5 System Design Questions</h3>
+            <h4>Select 1 System Design Question</h4>
             <div className="scroll">
               <div className="questions">
                 {this.props.companyProfile.questions.map((item, idx) => {
@@ -96,7 +96,7 @@ class InterviewFormJun extends React.Component {
               </div>
             </div>
             <div className="spaceQ"></div>
-            <h3>Select 3-5 System Behavioral Questions</h3>
+            <h4>Select 1 System Behavioral Question</h4>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
