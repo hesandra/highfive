@@ -22,7 +22,6 @@ class PositionsLevel extends React.Component {
             const uDateString = `${uDate.getMonth()}/${uDate.getDay()}/${uDate.getFullYear()}`;
 
             return (
-              
                 <Table id={item.id} responsive>
                   <thead>
                     <tr>
@@ -33,8 +32,7 @@ class PositionsLevel extends React.Component {
                   </thead>
                   <tbody>
                     <tr>
-                      <td>{item.id}</td>
-                      <td>{item.description}</td><td>{cDateString}</td>
+                      <td>{item.id}</td><td>{item.description}</td><td>{cDateString}</td>
                       <tb><Button onClick={() => { this.props.getSubmissions(item.id); document.getElementById('tabs-with-dropdown-tab-second').click(); }}>See Submissions</Button></tb>
                       <tb><Button onClick={() => { this.props.deleteJob(item.id); document.getElementById(item.id).remove(); }}>Delete</Button></tb>
                     </tr>
