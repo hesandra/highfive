@@ -131,6 +131,7 @@ class InterviewForm extends React.Component {
        this.renderAll()*/
     return (
       <div>
+        <div className="space"></div>
         <div><h3 className="selectedQ">Selected algorithm question</h3>
           <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
             return (
