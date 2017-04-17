@@ -55,7 +55,6 @@ class InfiniteScroll extends Component {
         }
       });
     }
-    console.log('this jobposts', jobPosts);
     const cardList = jobPosts.map((jobPost, index) => {
       const location = getLocationName(jobPost.location_id);
       const industry = getIndustryName(jobPost.industry_id);
@@ -68,8 +67,6 @@ class InfiniteScroll extends Component {
             src={jobPost.company.profile_img}
           />
           <Card.Content>
-            <Card.Header className="text-shadow blurry-text">
-            </Card.Header>
             <Card.Meta>
               <span className="date posted_on">
                 posted on : 03/17/2017

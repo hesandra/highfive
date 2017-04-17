@@ -61,11 +61,6 @@ const UserProfileNav = (props) => {
                 <br />
                 <i className="fa fa-user" aria-hidden="true" />
               </NavItem>
-              <NavItem eventKey="5">
-                Practice
-                <br />
-                <i className="fa fa-spin fa-cog" aria-hidden="true" />
-              </NavItem>
             </Nav>
           </Col>
           <Col sm={8}>
@@ -96,9 +91,6 @@ const UserProfileNav = (props) => {
                   linkedinLink={linkedinLink}
                   industries={industries}
                 />
-              </Tab.Pane>
-              <Tab.Pane eventKey="5">
-                <SettingsForm />
               </Tab.Pane>
             </Tab.Content>
           </Col>

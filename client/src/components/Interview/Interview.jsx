@@ -7,6 +7,7 @@ import brace from 'brace';
 import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
+import { default as swal } from 'sweetalert2';
 
 import Timer from './Timer';
 import LoadingModal from './LoadingModal';
@@ -62,7 +63,11 @@ class Interview extends Component {
   componentWillUnmount() {
     // stop media stream if user navigates away while streaming
     if (!this.state.interviewOver) {
-      alert('interview in progress');
+      swal({
+        title: 'Interview in progress',
+        text: 'If you navigate away your submission will be recorded as incomplete',
+        type: 'error'
+      });
       // delete submission on navigate away;
       // or set submission status to notFinished
     }

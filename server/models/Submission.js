@@ -21,7 +21,7 @@ class Submission extends Model {
         jobpost_id:       { type: 'integer' },
         status:           { type: 'string' },
         completed:        { type: 'integer' },
-        notes:            { type: 'string' }
+        notes:            { type: 'string' },
       }
     };
   }
