@@ -3,11 +3,10 @@ import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootst
 import CompanyProfile from './CompanyProfile';
 import Positions from './Positions';
 import Submissions from './Submissions';
-import Dashboard from '../Dashboard/Dashboard';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
+import Dashboard from '../Dashboard/Dashboard';
 
 const CompanyNavbar = (props) => {
   return (
@@ -16,7 +15,7 @@ const CompanyNavbar = (props) => {
         <Row className="clearfix">
           <Col sm={12}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="first">Notifications</NavItem>
+              <NavItem eventKey="first">Dashboard</NavItem>
               <NavItem eventKey="second">Submissions</NavItem>
               <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab">
                 <MenuItem eventKey="3.1" onClick={() => props.junPos()}>Junior</MenuItem>

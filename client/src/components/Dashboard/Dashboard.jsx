@@ -3,26 +3,32 @@ import { Polar } from 'react-chartjs-2';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getJobs, getPositions, getSubmissions, junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
+import { getJobs } from '../../actions/company';
 import axios from 'axios';
+
 
 class Dashboard extends React.Component {
   constructor(props) {
     super();
 
+    this.state = {
+      stats: []
+    };
+
     this.chartConfig = this.chartConfig.bind(this);
-    this.getStats = this.getStats.bind(this);
   }
 
-  getStats() {
-    axios.get('http://localhost:3000/api/dashboard')
-      .then((result) => {
-
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
+  // getStats() {
+  //   axios.get('http://localhost:3000/api/dashboard')
+  //     .then((result) => {
+  //       this.setState({
+  //         stats: result.data
+  //       });
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }
 
   chartConfig() {
     return {
@@ -34,26 +40,24 @@ class Dashboard extends React.Component {
         'Industries',
         'Locations'
       ],
-      datasets: [
-        {
-          data: [
-            90,
-            30,
-            50,
-            30,
-            10,
-            10
-          ],
-          backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#33cc33',
-            '#8c1aff',
-            '#800000'
-          ]
-        }
-      ]
+      datasets: [{
+        data: [
+          90,
+          30,
+          50,
+          30,
+          10,
+          10
+        ],
+        backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#33cc33',
+          '#8c1aff',
+          '#800000'
+        ],
+      }]
     };
   }
 
@@ -71,7 +75,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getJobs, getPositions, getSubmissions, junPos, senPos, midPos, getJunQuestions }, dispatch);
+  return bindActionCreators({ getJobs }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

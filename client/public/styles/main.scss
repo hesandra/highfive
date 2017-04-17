@@ -1,7 +1,10 @@
-.tab-content {
-  color: #e76; }
+$color: #e76;
 
-.background-img {
+.tab-content {
+  color: $color;
+}
+
+.background-img { 
   background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -9,10 +12,12 @@
   background-size: cover;
   height: 2000px;
   width: 3000px;
-  position: fixed; }
+  position: fixed;
+}
 
 .navbar-right .nav-item {
-  font-size: 16px; }
+  font-size: 16px;
+}
 
 .signup-box {
   border: 1px solid #fff;
@@ -24,51 +29,64 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0; }
+  bottom: 0;
+}
 
 .signup-or {
   color: #fff;
   font-size: 18px;
-  font-weight: 300; }
+  font-weight: 300;
+}
 
 .navbar {
   margin-bottom: 0px;
-  border-radius: initial; }
+  border-radius: initial;
+}
 
 .signup-box .btn-primary {
   width: 90%;
-  font-size: 18px; }
+  font-size: 18px;
+}
 
 .btn-container {
-  margin: 35px; }
+  margin: 35px;
+}
 
 .user-profile-img {
-  height: 300px; }
+  height: 300px;
+}
 
 .blur {
   color: transparent;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
 
 .posted_on {
   font-size: 12px;
-  font-style: italic; }
+  font-style: italic;
+}
 
 .loading-modal {
-  height: 700px; }
+  height: 700px;
+}
 
 .social-links {
-  color: black; }
+  color: black;
+}
 
 .hideline {
   margin: 5px;
   clear: both;
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 a {
-  color: black; }
+  color: black;
+}
 
 .apply-modal {
-  width: 90%; }
+  width: 90%;
+}
 
 .scroll {
   background-color: black;
@@ -78,77 +96,96 @@ a {
   overflow: scroll;
   text-align: center;
   border-radius: 25px;
-  position: relative;
-  text-align: center; }
+  position: relative; 
+  text-align: center;
+}
 
 .questions {
   border: 2px;
   border-color: cornflowerblue;
   margin: 30px;
-  padding-bottom: 30px; }
+  padding-bottom: 30px;
+}
 
 .spaceQ {
-  height: 15px; }
+  height: 15px
+}
 
 .company-img {
-  height: 200px;
-  width: 180px; }
+  height: 200px; 
+  width: 180px;
+}
 
 .react-selectize.root-node {
-  width: 100%; }
+  width: 100%
+}
 
 .selectedQ {
-  color: cornflowerblue; }
+  color: cornflowerblue
+}
 
 .space {
-  height: 50px; }
+  height: 50px
+}
 
 .ui.list:last-child, ol.ui.list:last-child, ul.ui.list:last-child {
-  margin-top: 15px; }
+  margin-top: 15px;
+}
 
 .notes {
-  width: 200px; }
+  width: 200px
+}
 
 .question {
-  margin-bottom: 50px; }
-
+  margin-bottom: 50px;
+}
 canvas:nth-of-type(2) {
-  position: static !important; }
+  position: static !important;
+}
 
-.video-js {
+.video-js  {
   background-color: #fff;
-  margin: 5px; }
+  margin: 5px;
+}
 
 .ace_editor {
-  display: -webkit-inline-box; }
+  display: -webkit-inline-box
+}
 
 .interview-hr {
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+}
 
 #react-paginate ul {
   display: inline-block;
   padding-left: 15px;
-  padding-right: 15px; }
+  padding-right: 15px;
+}
 
 #react-paginate li {
-  display: inline-block; }
+  display: inline-block;
+}
 
 #react-paginate .break a {
-  cursor: default; }
+  cursor: default;
+}
 
 .notification-dismiss {
-  background-color: black !important; }
+  background-color: black !important;
+}
 
 .position-matchings {
-  margin-top: 25px; }
+  margin-top: 25px;
+}
 
 .apply-now a {
-  color: "#337ab7"; }
+  color: "#337ab7";
+}
 
 .video-js .vjs-fullscreen-control {
-  display: none; }
+  display: none;
+}
 
 .notesField {
-  height: 100px !important; }
-
-/*# sourceMappingURL=main.css.map */
+  height: 100px !important
+}

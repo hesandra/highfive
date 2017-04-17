@@ -399,8 +399,47 @@ module.exports = {
   },
 
   dashboard: {
-    getAllStats: (cb) => {
+    getAllStats: async (cb) => {
+      // jobs, submissions, users, questions, industries, locations
+      const stats = {};
 
+      const jobpostCount = await Jobpost
+        .query()
+        .count('id')
+        .catch((e) => { return cb(e, null); });
+      stats.jobpost = jobpostCount;
+
+      const submissionCount = await Submission
+        .query()
+        .count('id')
+        .catch((e) => { return cb(e, null); });
+      stats.submission = submissionCount;
+
+      const userCount = await User
+        .query()
+        .count('id')
+        .catch((e) => { return cb(e, null); });
+      stats.user = userCount;
+
+      const questionCount = await Question
+        .query()
+        .count('id')
+        .catch((e) => { return cb(e, null); });
+      stats.question = questionCount;
+
+      const industryCount = await Industry
+        .query()
+        .count('id')
+        .catch((e) => { return cb(e, null); });
+      stats.industry = industryCount;
+
+      const locationCount = await Location
+        .query()
+        .count('id')
+        .catch((e) => { return cb(e, null); });
+      stats.location = locationCount;
+
+      cb(null, stats);
     }
   }
 };
