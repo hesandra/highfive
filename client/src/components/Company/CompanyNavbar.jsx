@@ -19,9 +19,9 @@ const CompanyNavbar = (props) => {
         <Row className="clearfix">
           <Col sm={12}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="first">Notifications
+              <NavItem eventKey="first">Dashboard
               <br />
-              <i className="fa fa-envelope-open-o" aria-hidden="true"/>
+              <i className="fa fa-pie-chart" aria-hidden="true"></i>
               </NavItem>
               <NavItem eventKey="second">Submissions
               <br />

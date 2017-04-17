@@ -196,6 +196,12 @@ export function closeModal(){
   }
 }
 
+export function closePostModal(){
+  return {
+    type: 'CLOSE_POST_MODAL',
+  }
+}
+
 export function deleteJob(jobId){
   return (dispatch) => {
     //console.log("delete clicked", jobId);
@@ -229,6 +235,10 @@ export function createJobPost(jobpost){
       .then((result) => {
         //console.log('result', result)
         dispatch(createJob(result));
+      })
+      .then(() => {
+        console.log('in close Modal')
+        dispatch(closePostModal())
       })
       .catch((err) => {
         console.error(err);

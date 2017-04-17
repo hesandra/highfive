@@ -1,10 +1,12 @@
 import React from 'react';
-import { Grid, Row, Col, Image, Button, FormGroup, Form, ControlLabel, FormControl } from 'react-bootstrap';
+import { Grid, Row, Col, Image, Button, FormGroup, Form, ControlLabel, FormControl, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitDescription, saveQuestion, createJobPost } from '../../actions/company';
 import InterviewForm from './InterviewForm';
 import ReactDOM from 'react-dom';
+import { closeModal } from '../../actions/company';
+import PostModal from './PostModal'
 
 class InterviewFormJun extends React.Component {
   constructor(props) {
@@ -37,7 +39,13 @@ class InterviewFormJun extends React.Component {
         <div>
           <div>
             <div className="spaceQ"></div>
-            <h3>Junior Software Engineer</h3>
+           {/* <div >
+            <Modal
+              show={this.props.companyProfile.showJobModal}>
+              <Modal.Header closeButton>
+               <Modal.Title>Junior Software Engineer</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
               <FormGroup>
@@ -49,7 +57,12 @@ class InterviewFormJun extends React.Component {
                 </Col>
               </FormGroup>
             </Form>
+            </Modal.Body>
+            <Modal.Footer>
             <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyReload[0].id, level: this.props.companyProfile.level, description: this.props.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyReload[0].industry_id, location_id: this.props.companyProfile.companyReload[0].location_id })}>New job position</Button>
+            </Modal.Footer>
+            </Modal>
+            </div>*/}
             <div className="spaceQ"></div>
             <h3>Select 3-5 Algorithm Questions</h3>
             <div className="scroll">
@@ -104,14 +117,21 @@ class InterviewFormJun extends React.Component {
 
   render() {
     //console.log(this.props, 'INTERVIEWCREATION JUN COMPANYPROFILE');
+    if (this.props.companyProfile.showJobModal){
+      return (
+        <div><PostModal /></div>
+      )} else if (this.props.companyProfile.showJobModal === false){
     return (
       <div>
         <div>{this.renderAll()}</div>
         <div className="spaceQ" />
         <div><InterviewForm /></div>
       </div>
-    );
-  }
+    )}
+    else {
+      return (<div>{}</div>)
+    }
+}
 }
 
 function mapStateToProps(state) {
@@ -121,7 +141,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitDescription, saveQuestion, createJobPost }, dispatch);
+  return bindActionCreators({ submitDescription, saveQuestion, createJobPost, closeModal }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewFormJun);
