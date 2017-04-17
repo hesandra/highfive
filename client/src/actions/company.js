@@ -1,4 +1,5 @@
 import axios from 'axios';
+import NotificationSystem from 'react-notification-system';
 
 export function updateCompany(profile) {
   return {
@@ -195,6 +196,12 @@ export function closeModal(){
   }
 }
 
+export function closePostModal(){
+  return {
+    type: 'CLOSE_POST_MODAL',
+  }
+}
+
 export function deleteJob(jobId){
   return (dispatch) => {
     //console.log("delete clicked", jobId);
@@ -228,6 +235,10 @@ export function createJobPost(jobpost){
       .then((result) => {
         //console.log('result', result)
         dispatch(createJob(result));
+      })
+      .then(() => {
+        console.log('in close Modal')
+        dispatch(closePostModal())
       })
       .catch((err) => {
         console.error(err);
@@ -295,7 +306,17 @@ export function updateSubmission(data){
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
     .then((result) => {
       console.log(result)
-    });
+    })
+    .then(() => {
+      console.log('before saveUpdate')
+      dispatch(saveAppUpdate())
+      })
+  }
+}
+
+export function saveAppUpdate(){
+  return {
+    type: 'OPEN_MODAL'
   }
 }
 
@@ -321,6 +342,17 @@ export function updatePicture(data) {
     });
    }
   }
+
+/*export function addNotification() {
+  if (this.notificationSystem) {
+    this.notificationSystem.addNotification({
+      message: 'updated Profile',
+      level: 'success',
+      position: 'tr',
+      autoDismiss: 5
+    });
+  }
+}*/
 
 
 

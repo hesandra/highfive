@@ -6,7 +6,7 @@ import { createInterview, getQuestions, getPositions, getSubmissions, deleteJob 
 
 class PositionsLevel extends React.Component {
   componentDidMount() {
-    this.props.getQuestions();
+    //this.props.getQuestions();
     this.props.getPositions();
   }
   renderJobs() {
@@ -26,28 +26,26 @@ class PositionsLevel extends React.Component {
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Title</th>
                       <th>Description</th>
-                      <th>Created at</th>
-                      <th>Updated at</th>
+                      <th>Created at</th>                 
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>{item.id}</td>
-                      <td>{item.title}</td><td>{item.description}</td><td>{cDateString}</td><td>{uDateString}</td>
+                      <td>{item.id}</td><td>{item.description}</td><td>{cDateString}</td>
                       <tb><Button onClick={() => { this.props.getSubmissions(item.id); document.getElementById('tabs-with-dropdown-tab-second').click(); }}>See Submissions</Button></tb>
                       <tb><Button onClick={() => { this.props.deleteJob(item.id); document.getElementById(item.id).remove(); }}>Delete</Button></tb>
                     </tr>
                   </tbody>
                 </Table>
+   
              )
           }
         })}
         <FormGroup>
           <Col smOffset={3} sm={8}>
             <Button onClick={() => this.props.createInterview()} type="submit" value="Submit">
-              Create new Interview
+              New Position and Interview
             </Button>
           </Col>
         </FormGroup>
@@ -57,7 +55,15 @@ class PositionsLevel extends React.Component {
   render() {
     if (this.props.companyProfile.jobs !== undefined) {
       return (
-        <div>{this.renderJobs()}</div>
+        <div className="positionsHeading">
+          <div className="spaceQ"></div>
+          {this.props.companyProfile.level === 0?
+          <h2 className="panel panel-default panel-heading">Junior Positions</h2>:
+          this.props.companyProfile.level === 1?
+          <h2 className="panel panel-default panel-heading">Mid-level Positions</h2>:
+          <h2 className="panel panel-default panel-heading">Senior Positions</h2>}
+          <div>{this.renderJobs()}</div>
+        </div>
       )
     } else {
       return (<div>{}</div>)

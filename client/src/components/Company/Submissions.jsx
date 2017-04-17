@@ -6,6 +6,7 @@ import { Card, Image, Icon, Rating, List, Popup, Button, Label, Segment, TextAre
 import { Form, Col, FormGroup, ControlLabel, FormControl, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
 import { showVideos, updateSubmission } from '../../actions/company';
 import ApplicationModal from './ApplicationModal';
+import SaveModal from './SaveModal';
 
 
 class PositionsLevel extends React.Component {
@@ -34,17 +35,18 @@ class PositionsLevel extends React.Component {
     //console.log('PROPS IN SUBMISSIONS', this.props);
     //console.log('state in submissions', this.state);
     return (
-      <div>
+      <div className="ui stackable twelve column grid">
         {this.props.companyProfile.submissions.map((item, idx) => {
-          return (  
-              <Card.Group className="ui link cards">
-                <Card key={item.id}>
+          return (
+            <div className="cardStyle">  
+              <Card.Group >
+                <Card key={item.id} >
                   <Image
                     height={200}
                     //label={{ color: 'blue', icon: 'globe', ribbon: true }}
                     src={item.user.profile_img}
                   />
-                  <Card.Content>
+                  <Card.Content className="cardSize">
                     <Card.Header>
                     </Card.Header>
                     <Card.Meta>
@@ -84,7 +86,8 @@ class PositionsLevel extends React.Component {
                     <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes:this.state.notes  })}>Save</Button>
                   </Card.Content>
                 </Card>
-              </Card.Group> 
+              </Card.Group>
+              </div>
           )
         }
         )}
@@ -95,8 +98,12 @@ class PositionsLevel extends React.Component {
   render() {
     if (this.props.companyProfile.submissions !== undefined) {
       return (
+        <div>
+        {this.props.companyProfile.applUpdate ?
+          <SaveModal />:
         <div>{this.renderSubmissions()}
           <ApplicationModal />
+        </div>}
         </div>
       )
     } else {

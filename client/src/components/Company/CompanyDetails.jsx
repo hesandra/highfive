@@ -23,35 +23,49 @@ class CompanyDetails extends React.Component {
     console.log(this.props, 'PROPS IN COMPANY DETAILS')
     if (this.props.companyAuth.companyProfile.profileEdited) {
       return (
-        <div>
-          {this.props.companyAuth.companyProfile.industries.filter((item) => item.id === this.props.industry_id).map(item =>
-            <div><Image className="company-img text-center" src={this.props.profile_img} circle />
-              <h1>{this.props.name}</h1>
-              <h2>{item.name}</h2></div>)}
-          {this.props.companyAuth.companyProfile.locations.filter((item) => item.id === this.props.location_id).map(item =>
-            <h2>{item.city}</h2>)}
+        <div><div className="spaceQ"></div>
+          {this.props.companyAuth.companyProfile.picture ?
+            <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.picture} circle /> :
+            <Image className="company-img text-center" src={this.props.profile_img} circle />}
+          <h2>{this.props.name}</h2>
+          <div>{this.props.companyAuth.companyProfile.industries.filter((item) => item.id === this.props.industry_id).map(item =>
+            <span><i className="fa fa-industry" aria-hidden="true"></i>{'  '}<span>{item.name}</span></span>)}</div>
+          <div className="spaceQ"></div>
+          <div>{this.props.companyAuth.companyProfile.locations.filter((item) => item.id === this.props.location_id).map(item =>
+            <span><i className="fa fa-globe" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
+          <div className="spaceQ"></div>
+          <div><span><i className="fa fa-envelope" aria-hidden="true"></i>{'  '}<span>{this.props.email}</span></span></div>
+          <div className="spaceQ"></div>
+          <div><span><i className="fa fa-address-card-o" aria-hidden="true"></i>{'  '}<span>{this.props.address}</span></span></div>
         </div>)
     }
     else if (this.props.companyAuth.companyProfile.companyReload && this.props.companyAuth.companyProfile.industries && this.props.companyAuth.companyAuth.company_backend_profile.name !== this.props.companyAuth.companyProfile.companyReload[0].name) {
       return (
-        <div>
-          {this.props.companyAuth.companyProfile.industries.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].industry_id).map(item =>
-            <div>{this.props.companyAuth.companyProfile.picture ?
-            <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.picture} circle />:
+        <div><div className="spaceQ"></div>
+          {this.props.companyAuth.companyProfile.picture ?
+            <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.picture} circle /> :
             <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.companyReload[0].profile_img} circle />}
-              <h1>{this.props.companyAuth.companyProfile.companyReload[0].name}</h1>
-              <h2>{item.name}</h2></div>)}
-          {this.props.companyAuth.companyProfile.locations.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].location_id).map(item =>
-            <h2>{item.city}</h2>)}
+          <h2>{this.props.companyAuth.companyProfile.companyReload[0].name}</h2>
+          <div>{this.props.companyAuth.companyProfile.industries.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].industry_id).map(item =>
+            <span><i className="fa fa-industry" aria-hidden="true"></i>{'  '}<span>{item.name}</span></span>)}</div>
+          <div className="spaceQ"></div>
+          <div>{this.props.companyAuth.companyProfile.locations.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].location_id).map(item =>
+            <span><i className="fa fa-globe" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
+          <div className="spaceQ"></div>
+          <div><span><i className="fa fa-envelope" aria-hidden="true"></i>{'  '}<span>{this.props.companyAuth.companyProfile.companyReload[0].email}</span></span></div>
+          <div className="spaceQ"></div>
+          <div><span><i className="fa fa-address-card-o" aria-hidden="true"></i>{'  '}<span>{this.props.companyAuth.companyProfile.companyReload[0].address}</span></span></div>
         </div>)
     }
     else {
       return (
-        <div>
-          <Image className="company-img text-center" src={this.props.companyAuth.companyAuth.company_backend_profile.profile_img} circle />
-          <h1>{this.props.companyAuth.companyAuth.company_backend_profile.name}</h1>
-          <h2>{this.props.companyAuth.companyAuth.company_backend_profile.industry_id}</h2>
-          <h2>{this.props.companyAuth.companyAuth.company_backend_profile.location_id}</h2>
+        <div><div className="spaceQ"></div>
+          {this.props.companyAuth.companyProfile.picture ?
+            <Image className="company-img text-center" src={this.props.companyAuth.companyProfile.picture} circle /> :
+            <Image className="company-img text-center" src={this.props.companyAuth.companyAuth.company_backend_profile.profile_img} circle />}
+          <h2>{this.props.companyAuth.companyAuth.company_backend_profile.name}</h2>
+          <h3>{this.props.companyAuth.companyAuth.company_backend_profile.industry_id}</h3>
+          <h3>{this.props.companyAuth.companyAuth.company_backend_profile.location_id}</h3>
         </div>)
     }
   }
@@ -60,7 +74,7 @@ class CompanyDetails extends React.Component {
       <div>
         <Grid fluid>
           <Row>
-            <Col xs={6} md={4}>
+            <Col xs={4} md={8}>
               <div>
                 {this.renderProfile()}
               </div>

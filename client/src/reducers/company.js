@@ -7,6 +7,8 @@ const initialState = {
   profileEdited: false,
   profileReload: false,
   showVideos: false,
+  showJobModal: false,
+  applUpdate: false,
 };
 
 export default function (state = initialState, action) {
@@ -32,6 +34,7 @@ export default function (state = initialState, action) {
     case 'CREATE_INTERVIEW':
       return Object.assign({}, state, {
         createButton: true,
+        showJobModal: true,
     });
     case 'SENIOR':
       return Object.assign({}, state, {
@@ -82,6 +85,11 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         questions: action.payload,
         showVideos: false,
+        showJobModal: false,
+    });
+      case 'CLOSE_POST_MODAL':
+      return Object.assign({}, state, {
+        showJobModal: false,
     });
     case 'REMOVE_QUESTION':
     //console.log('index in remove question reducers', state.selectedQuestion )
@@ -105,6 +113,10 @@ export default function (state = initialState, action) {
     case 'UPDATE_PICTURE':
       return Object.assign({}, state, {
         picture: action.payload
+    });
+    case 'OPEN_MODAL':
+      return Object.assign({}, state, {
+        applUpdate: true
     });
   }
   return state;
