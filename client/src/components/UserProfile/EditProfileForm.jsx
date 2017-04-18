@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, FormControl, Col, ControlLabel, Button, Checkbox } from 'react-bootstrap';
 import axios from 'axios';
+import {
+  Form,
+  FormGroup,
+  FormControl,
+  Col,
+  ControlLabel,
+  Button,
+  Checkbox
+} from 'react-bootstrap';
+
 import { getLocationId } from '../../utils/Mappings/locationMappings';
 import { getIndustryId, industryToIdMappings } from '../../utils/Mappings/industryMappings';
-
-
 import IndustriesMultiSelect from './IndustriesMultiSelect';
 import LocationsMultiSelect from './LocationMultiSelect';
 
@@ -36,8 +43,7 @@ class EditProfileForm extends Component {
     const { property, data } = payload;
     if (property === 'industriesValue') {
       this.setState((prevState, props) => {
-        const industries = data;
-        
+        const industries = data;     
         return {
           [property]: industries
         };
@@ -50,9 +56,10 @@ class EditProfileForm extends Component {
     }
   }
   handleSubmit(e) {
-    const { id, handleUpdateUserProfile, addNotification } = this.props;
     e.preventDefault();
+    const { id, handleUpdateUserProfile, addNotification } = this.props;
     const { locationValue, industriesValue, linkedInLink } = this.state;
+    
     const industries = industriesValue.map((industry) => {
       return industryToIdMappings[industry.label];
     });

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Well } from 'react-bootstrap';
-import { Button, Dimmer, Segment, Loader, Header } from 'semantic-ui-react';
+import { Button, Dimmer, Segment, Loader, Header, Icon } from 'semantic-ui-react';
 import ReactCountDownClock from 'react-countdown-clock';
 import recordRTC from 'recordrtc';
 import brace from 'brace';
@@ -37,8 +37,6 @@ class Interview extends Component {
   /**
    * Setup submission on back-end server
    */
-  componentWillMount() {
-  }
   componentDidMount() {
     const { requestUserMedia, createSubmission, backend_profile, jobPost } = this.props;
     if (!hasGetUserMedia) {
@@ -153,9 +151,9 @@ class Interview extends Component {
     });
     this.stopRecording();
     this.props.stream.stop();
+
   }
   render() {
-    console.log(this.state);
     const { requestUserMedia, jobPost } = this.props;
     let videoOptions = {};
     if (this.state.stream) {
@@ -178,7 +176,10 @@ class Interview extends Component {
       <Grid>
         <Row>
           <Col xs={12} md={12}>
-            <h1 className="text-center">Interview here</h1>
+            <LoadingModal />
+            <Header as="h3" icon textAlign="center">
+              <Icon link name="video camera" circular />
+            </Header>
             { this.state.startTimer ? '' :
             <div className="text-center clock">
               <ReactCountDownClock

@@ -38,9 +38,9 @@ module.exports = {
       };
       const userAlreadyExists = await User
         .query()
-        .allowEager('[industry]')
+        .allowEager('[industry, submission.[jobpost]]')
         .first()
-        .eager('industry')
+        .eager('[industry, submission.[jobpost]]')
         .where(user);
 
       if (!userAlreadyExists) {
@@ -231,8 +231,8 @@ module.exports = {
       Jobpost
         .query()
         .where('id', id)
-        .allowEager('[company, question]')
-        .eager('[company, question]')
+        .allowEager('[company, question, submission]')
+        .eager('[company, question, submission]')
         .first()
         .then((jobpost) => { cb(null, jobpost); })
         .catch((err) => { cb(err, null); });

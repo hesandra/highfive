@@ -128,7 +128,6 @@ class UserProfile extends Component {
             // use e-mail info if avail
             profileImage = profile.picture;
             name = profile.name;
-            // location = profile.location || '';
             githubLink = profile.html_url;
           }
         }
@@ -140,53 +139,56 @@ class UserProfile extends Component {
       <Grid fluid>
         <Row>
           <Col xs={4} md={4}>
-            <h4 className="text-center">{ name } </h4>
-            <div className="text-center">
-              <Image className="user-profile-img text-center" src={profileImage} circle />
-              <hr />
-            </div>
-            <div className="text-center">
-              <small className="text-center"> {location} </small>
-              <br />
-              <small className="text-center"> looking for work in</small>
-              <br />
-              { industries ?
-                <IndustryList
-                  industries={industries}
-                  onUserDeleteIndustry={this.deleteUserIndustry}
-                /> : '' }
-              <hr className="hideline" />
-              <a href={githubLink} className="social-links" rel="noopener noreferrer" target="_blank">
-                <i className="fa fa-github" aria-hidden="true" />
-              </a>
-              {' '}
-              |
-              {' '}
-              <a href={linkedinLink} rel="noopener noreferrer" className="social-links" target="_blank">
-                <i className="fa fa-linkedin" aria-hidden="true" />
-              </a>
+            <div className="profile">
+              <h4 className="text-center">{ name } </h4>
+              <div className="text-center">
+                <Image className="user-profile-img text-center" src={profileImage} circle />
+                <hr />
+              </div>
+              <div className="text-center">
+                <small className="text-center"> {location} </small>
+                <br />
+                <span className="text-center"> looking for work in</span>
+                <br />
+                { industries ?
+                  <IndustryList
+                    industries={industries}
+                    onUserDeleteIndustry={this.deleteUserIndustry}
+                  /> : '' }
+                <hr className="hideline" />
+                <a href={githubLink} className="social-links" rel="noopener noreferrer" target="_blank">
+                  <i className="fa fa-github" aria-hidden="true" />
+                </a>
+                {' '}
+                |
+                {' '}
+                <a href={linkedinLink} rel="noopener noreferrer" className="social-links" target="_blank">
+                  <i className="fa fa-linkedin" aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </Col>
           <Col xs={8} md={8}>
-            <UserProfileNav
-              addNotification={this.addNotification}
-              onJobPostsClick={onJobPostsClick}
-              onUpdateUserProfile={onUpdateUserProfile}
-              onSubmissionsClick={onSubmissionsClick}
-              submissions={submissions}
-              githubLink={profile.html_url}
-              linkedinLink={linkedinLink}
-              industries={industries}
-              id={id}
-              location={location}
-            />
-            <NotificationSystem ref={n => this.notificationSystem = n} style={style} />
+            <div className="profile">
+              <UserProfileNav
+                addNotification={this.addNotification}
+                onJobPostsClick={onJobPostsClick}
+                onUpdateUserProfile={onUpdateUserProfile}
+                onSubmissionsClick={onSubmissionsClick}
+                submissions={submissions}
+                githubLink={profile.html_url}
+                linkedinLink={linkedinLink}
+                industries={industries}
+                id={id}
+                location={location}
+              />
+              <NotificationSystem ref={n => this.notificationSystem = n} style={style} />
+            </div>
           </Col>
         </Row>
       </Grid>
     );
   }
 }
-
 
 export default UserProfile;

@@ -1,11 +1,12 @@
 const Model = require('objection').Model;
+const moment = require('moment');
 
 class Submission extends Model {
   $beforeInsert() {
-    this.created_at = new Date().toISOString();
+    this.created_at = moment().format('LL');
   }
   $beforeUpdate() {
-    this.updated_at = new Date().toISOString();
+    this.updated_at = moment().format('LL');
   }
   static get tableName() {
     return 'submission';
