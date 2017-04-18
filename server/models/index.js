@@ -170,16 +170,31 @@ module.exports = {
       Company
         .query()
         .where('id', id)
-        .then((company) => { cb(null, company) })
-        .catch(err => { console.log(err) })
+        .then((company) => { cb(null, company); })
+        .catch((err) => { console.log(err); });
     },
-    createOne: (body, cb) => {
-      Company
+
+    createOne: async (body, cb) => {
+      const getCompany = await Company
         .query()
-        .insertAndFetch(body)
-        .then((company) => { cb(null, company) })
-        .catch(err => { console.log(err) })
+        .where('email', body.email)
+        .first()
+        .catch((err) => { cb(err, null); });
+
+      if (!getCompany) {
+        const newCompany = await Company
+          .query()
+          .insertAndFetch(body)
+          .catch((err) => { cb(err, null); });
+
+        console.log("creating new");
+        cb(null, newCompany);
+      } else {
+        console.log('returning existing');
+        cb(null, getCompany);
+      }
     },
+
     updateCompany: (id, body, cb) => {
       Company
         .query()
