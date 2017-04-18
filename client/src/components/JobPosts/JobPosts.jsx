@@ -6,7 +6,6 @@ import { browserHistory } from 'react-router';
 import CardList from './CardList';
 import JobPostLoader from './JobPostLoader';
 
-
 class JobPosts extends Component {
   constructor(props) {
     super(props);
