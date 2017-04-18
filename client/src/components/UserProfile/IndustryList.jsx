@@ -13,6 +13,8 @@ const IndustryList = ({ onUserDeleteIndustry, industries }) => {
   });
   return (
     <div>
+    <i className="fa fa-industry" aria-hidden="true"></i>
+      <br />
       { renderIndustries }
     </div>
   );
