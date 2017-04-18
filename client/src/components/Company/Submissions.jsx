@@ -115,7 +115,7 @@ class PositionsLevel extends React.Component {
           </div>
         </div> )
       }
-     else {
+    else {
       return (<div>{}</div>)
     }
   }

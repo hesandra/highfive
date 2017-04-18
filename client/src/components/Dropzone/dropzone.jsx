@@ -23,6 +23,55 @@ const componentConfig = {
   )
 }
 
+const defaultColors = {
+  success: {
+    rgb: '33, 133, 208',
+    hex: '#77C9D4'
+  },
+  error: {
+    rgb: '236, 61, 61',
+    hex: '#77C9D4'
+  },
+  warning: {
+    rgb: '235, 173, 23',
+    hex: '#77C9D4'
+  },
+  info: {
+    rgb: '54, 156, 199',
+    hex: '#77C9D4'
+  }
+};
+const defaultShadowOpacity = '0.9';
+
+const style = {
+  NotificationItem: {
+    DefaultStyle: {
+      backgroundColor: 'grey',
+      fontSize: '20px'
+    },
+    success: {
+      borderTop: '2px solid grey',
+      rgb: '33, 133, 208',
+      backgroundColor: 'black',
+      color: 'white',
+      marginTop: '75px',
+      WebkitBoxShadow: '0 0 1px rgba(' + defaultColors.success.rgb + ',' + defaultShadowOpacity + ')',
+      MozBoxShadow: '0 0 1px rgba(' + defaultColors.success.rgb + ',' + defaultShadowOpacity + ')',
+      boxShadow: '0 0 1px rgba(' + defaultColors.success.rgb + ',' + defaultShadowOpacity + ')'
+    },
+    Dismiss: {
+      DefaultStyle: {
+        backgroundColor: '#2185D0',
+        color: '#2185D0'
+      },
+      success: {
+        color: 'grey',
+        backgroundColor: '#2185D0'
+      }
+    }
+  }
+};
+
 class myDropzone extends Component {
   constructor(props) {
     super(props)
@@ -31,7 +80,13 @@ class myDropzone extends Component {
     }
     this.onDrop = this.onDrop.bind(this)
     this.onSending = this.onSending.bind(this);
+    this.notificationSystem = null;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addNotification = this.addNotification.bind(this);
   }
+
+
 
   onDrop(acceptedFiles, rejectedFiles) {
 
@@ -57,6 +112,19 @@ class myDropzone extends Component {
     // And disable the start button
     file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
   }
+
+  addNotification() {
+    if (this.notificationSystem) {
+      this.notificationSystem.addNotification({
+        message: 'profile updated',
+        level: 'success',
+        position: 'tr',
+        autoDismiss: 5
+      });
+    }
+  }
+
+
 
   render() {
     //console.log('this.props in dropzone', this.props.companyProfile.companyReload[0].id)
