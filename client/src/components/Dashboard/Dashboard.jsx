@@ -35,7 +35,7 @@ class Dashboard extends React.Component {
       ],
       datasets: [{
         data: [
-          90,
+          149,
           30,
           50,
           45,
