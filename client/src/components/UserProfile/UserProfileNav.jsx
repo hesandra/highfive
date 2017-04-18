@@ -20,6 +20,7 @@ import SubmissionModal from './SubmissionModal';
 const UserProfileNav = (props) => {
   const {
     onJobPostsClick,
+    backend_profile,
     onSubmissionsClick,
     githubLink,
     id,
@@ -68,15 +69,17 @@ const UserProfileNav = (props) => {
                   <Statistic>
                     <Statistic.Value>
                       <Icon name="computer" size="huge" /><br />
-                      5 ( update with dynamic data )
                     </Statistic.Value>
                     <Statistic.Label>Position Matchings Found</Statistic.Label>
                     <Link className="apply-now" to="/jobposts/page/1">apply now</Link>
                   </Statistic>
                 </div>
+                <br />
+                { backend_profile.industry.length ?
+                  "5"
+                : '0 positions found, select some industries!' }
               </Tab.Pane>
               <Tab.Pane eventKey="2">
-                ({ submissions.length })
                 <SubmissionsList submissions={submissions} />
               </Tab.Pane>
               <Tab.Pane eventKey="3" />

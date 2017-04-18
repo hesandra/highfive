@@ -52,6 +52,7 @@ class JobPosts extends Component {
     const filters = backend_profile.industry.map((obj) => {
       return obj.name;
     });
+    console.log(filters);
     return (
       <Grid>
         <Row>
@@ -62,11 +63,14 @@ class JobPosts extends Component {
                 <Icon link name="briefcase" circular />
               </Header>
               <div className="text-center">
-                <Statistic>
-                  <Statistic.Value>{`${jobPosts.results.length} out of ${jobPosts.total}`}</Statistic.Value>
-                  <Statistic.Label>Job Postings </Statistic.Label>
-                  page: {this.props.params.page}
-                </Statistic>
+                { filters.length ?
+                  '' :
+                  <Statistic>
+                    <Statistic.Value>{`${jobPosts.results.length * this.props.params.page} out of ${jobPosts.total}`}</Statistic.Value>
+                    <Statistic.Label>Job Postings </Statistic.Label>
+                    page: {this.props.params.page}
+                  </Statistic>
+                }
               </div>
               <Icon size="large" onClick={this.decrementPage} name="arrow left" />
               <Icon size="large" onClick={this.incrementPage} name="arrow right" />

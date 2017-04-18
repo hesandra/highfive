@@ -18,7 +18,13 @@ class CardList extends Component {
     return '4';
   }
   render() {
-    const { userSubmissions } = this.props;
+    let { userSubmissions, filters } = this.props;
+    if (!userSubmissions) {
+      userSubmissions = [];
+    }
+    if (!filters) {
+      filters = [];
+    }
     let jobPosts;
     if (!this.props.filter.length) {
       jobPosts = this.props.jobPosts;
@@ -69,9 +75,17 @@ class CardList extends Component {
     });
     return (
       <div>
-        <Card.Group doubling itemsPerRow={'two'}>
-          { cardList }
-        </Card.Group>
+        { filters.length ?
+          <div>found positions { cardList.length }
+            <Card.Group>
+              { cardList }
+            </Card.Group>
+          </div>
+          :
+          <Card.Group doubling itemsPerRow={'two'}>
+            { cardList }
+          </Card.Group>
+        }
       </div>
     );
   }

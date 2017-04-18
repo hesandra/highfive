@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Well } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 import { Button, Dimmer, Segment, Loader, Header, Icon } from 'semantic-ui-react';
 import ReactCountDownClock from 'react-countdown-clock';
 import recordRTC from 'recordrtc';
@@ -100,12 +101,14 @@ class Interview extends Component {
   }
   processRecording() {
     const { backend_profile } = this.props;
-    let answer;
+    let answer = '';
     if (this.state.selectedQuestionIdx === 2) {
       answer = this.state.answer;
-    } else {
-      answer = '';
+      console.log(answer);
     }
+    this.setState({
+      answer: ''
+    });
     const url = this.video.getDataURL((videoData) => {
       const payload = {
         videoData,
@@ -134,9 +137,6 @@ class Interview extends Component {
     });
   }
   showNextQuestion() {
-    this.setState({
-      answer: ''
-    });
     this.stopRecording();
     const currentIdx = this.state.selectedQuestionIdx;
     if (currentIdx < 2) {
@@ -151,7 +151,14 @@ class Interview extends Component {
     });
     this.stopRecording();
     this.props.stream.stop();
-
+    swal({
+      title: 'Interview done',
+      text: 'Nice Job!',
+      type: 'success'
+    })
+    .then(() => {
+      browserHistory.push('/profile');
+    });
   }
   render() {
     const { requestUserMedia, jobPost } = this.props;

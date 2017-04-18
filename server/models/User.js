@@ -53,7 +53,6 @@ class User extends Model {
           to: 'industry.id'
         }
       },
-
       submission: {
         relation: Model.HasManyRelation,
         modelClass: `${__dirname}/Submission`,

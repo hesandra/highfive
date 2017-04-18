@@ -33,11 +33,11 @@ class SubmissionModal extends Component {
   render() {
     const { questions, videos } = this.props;
     const videoList = videos.map((video, i) => {
-      return <Button key={video.id} onClick={() => {
+      return (<Button key={video.id} onClick={() => {
         this.changeVideo(i);
         this.open();
       }}
-      > {`Video # ${i + 1}`} </Button>;
+      > {`Video # ${i + 1}`} </Button>);
     });
     const videoOptions = {
       height: '400',
@@ -77,8 +77,17 @@ class SubmissionModal extends Component {
             <Modal.Title>Your Submission</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>QUESTION:</h4>
-            <p> {this.props.questions[this.state.index].question } </p>
+            <h4 className="text-center">QUESTION:</h4>
+            <p className="text-center"> {this.props.questions[this.state.index].question } </p>
+            <h4 className="text-center">ANSWER:</h4>
+            <div className="text-center">
+              <code>
+                { this.props.videos[this.state.index].answer ? 
+                  <p> {this.props.videos[this.state.index].answer } </p>
+                  : 'no answer given'
+                }
+              </code>
+            </div>
             <VideoPlayer {...videoOptions} />
             { videoList }
           </Modal.Body>

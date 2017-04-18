@@ -11,7 +11,14 @@ const SubmissionsList = ({ submissions }) => {
   return (
     <div>
       <List divided className="submissions-list">
-        { submissionList }
+        { submissionList.length ?
+          <div>
+            ({ submissions.length })
+            { submissionList.reverse() }
+          </div>
+          :
+          'no submissions, get out there and start applying!'
+        }
       </List>
     </div>
   );
