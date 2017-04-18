@@ -1,16 +1,3 @@
-.stats-chart canvas {
-  margin-top: 20px;
-  position: absolute;
-  right: 150px; }
-
-.tab-content {
-  color: $color;
-}
-
-.tab-content {
-  color: $color;
-}
-
 .background-img {
   background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
