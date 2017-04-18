@@ -32,7 +32,7 @@ class PositionsLevel extends React.Component {
   }
 
   renderSubmissions() {
-    console.log('PROPS IN SUBMISSIONS', this.props);
+    console.log('PROPS IN SUBMISSIONS', this.props.companyProfile.submissions);
 
     //console.log('state in submissions', this.state);
     return (
@@ -53,7 +53,7 @@ class PositionsLevel extends React.Component {
                     </Card.Header>
                     <Card.Meta>
                       <span className="date posted_on">
-                        applied on : 04/10/2017
+                        applied on : {item.created_at}
                       </span>
                     </Card.Meta>
                     <Card.Description>
