@@ -48,7 +48,6 @@ class PositionsLevel extends React.Component {
                     src={item.user.profile_img}
                   />
                   <Card.Content className="cardSize">
-
                     <Card.Header>
                     </Card.Header>
                     <Card.Meta>
@@ -104,7 +103,7 @@ class PositionsLevel extends React.Component {
         )}
       </div>
     )
-  };
+  }
 
   render() {
     if (this.props.companyProfile.submissions !== undefined) {
@@ -113,10 +112,10 @@ class PositionsLevel extends React.Component {
           <div>{this.renderSubmissions()}
             <ApplicationModal />
             <SaveModal />
-          </div>}
-        </div>
-      )
-    } else {
+          </div>
+        </div> )
+      }
+     else {
       return (<div>{}</div>)
     }
   }
