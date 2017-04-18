@@ -9,7 +9,7 @@ exports.seed = function (knex, Promise) {
           {
             id: 1,
             user_id: 1,
-            jobpost_id: 101,
+            jobpost_id: 162,
             //jobpost_id: 1,
             status: null,
             completed: 0,
@@ -18,7 +18,7 @@ exports.seed = function (knex, Promise) {
           {
             id: 2,
             user_id: 1,
-            jobpost_id: 102,
+            jobpost_id: 161,
             //jobpost_id: 1,
             status: 'passed',
             completed: 1,
@@ -27,7 +27,7 @@ exports.seed = function (knex, Promise) {
           {
             id: 3,
             user_id: 2,
-            jobpost_id: 101,
+            jobpost_id: 161,
             //jobpost_id: 2,
             status: 'viewed',
             completed: 0,
@@ -36,7 +36,7 @@ exports.seed = function (knex, Promise) {
           {
             id: 4,
             user_id: 2,
-            jobpost_id: 102,
+            jobpost_id: 161,
             //jobpost_id: 2,
             status: 'failed',
             completed: 1,

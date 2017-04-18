@@ -32,7 +32,7 @@ class PositionsLevel extends React.Component {
   }
 
   renderSubmissions() {
-    console.log('PROPS IN SUBMISSIONS', this.props);
+    console.log('PROPS IN SUBMISSIONS', this.props.companyProfile.submissions);
 
     //console.log('state in submissions', this.state);
     return (
@@ -48,12 +48,11 @@ class PositionsLevel extends React.Component {
                     src={item.user.profile_img}
                   />
                   <Card.Content className="cardSize">
-
                     <Card.Header>
                     </Card.Header>
                     <Card.Meta>
                       <span className="date posted_on">
-                        applied on : 04/10/2017
+                        applied on : {item.created_at}
                       </span>
                     </Card.Meta>
                     <Card.Description>
@@ -104,7 +103,7 @@ class PositionsLevel extends React.Component {
         )}
       </div>
     )
-  };
+  }
 
   render() {
     if (this.props.companyProfile.submissions !== undefined) {
@@ -113,10 +112,10 @@ class PositionsLevel extends React.Component {
           <div>{this.renderSubmissions()}
             <ApplicationModal />
             <SaveModal />
-          </div>}
-        </div>
-      )
-    } else {
+          </div>
+        </div> )
+      }
+    else {
       return (<div>{}</div>)
     }
   }
