@@ -40,20 +40,6 @@ class InfiniteScroll extends Component {
   }
   render() {
     return (
-      <Infinite
-        elementHeight={200}
-        infiniteLoadBeginEdgeOffset={20}
-        useWindowAsScrollContainer
-        onInfiniteLoad={this.handleInfiniteLoad}
-        loadingSpinnerDelegate={this.infiniteLoading()}
-        isInfiniteLoading={this.state.isInfiniteLoading}
-      >
-
-        // <CardList
-        //   jobPosts={this.props.jobPosts}
-        //   filter={this.props.filter}
-        // />
-      </Infinite>
     );
   }
 }

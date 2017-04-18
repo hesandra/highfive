@@ -22,6 +22,10 @@ export function checkUserLogin() {
         })
         .then((response) => {
           if (response.status === 201) {
+            // transforms users submissions to an array containg just the jobpost_ids // for jobpostlist
+            response.data.fetchedUser.submission = response.data.fetchedUser.submission.map((sub) => {
+              return sub.jobpost_id;
+            });
             dispatch(setUserBackEndProfile(response.data.fetchedUser));
             dispatch(userLoginSuccess(profile));
           }

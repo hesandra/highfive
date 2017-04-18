@@ -3,6 +3,10 @@
   position: absolute;
   right: 150px; }
 
+.tab-content {
+  color: $color;
+}
+
 .background-img {
   background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
@@ -12,6 +16,9 @@
   height: 2000px;
   width: 3000px;
   position: fixed; }
+
+.profile {
+  margin-top: 15px; }
 
 .navbar-right .nav-item {
   font-size: 16px; }

@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 
 import CardList from './CardList';
 import JobPostLoader from './JobPostLoader';
-// import InfiniteScroll from './InfiniteScroll';
+
 
 class JobPosts extends Component {
   constructor(props) {
@@ -22,9 +22,7 @@ class JobPosts extends Component {
     const { jobPosts, backend_profile, requestJobPosts } = this.props;
     const { page } = this.props.params;
     if (!jobPosts.length) {
-      const { requestJobPosts } = this.props;
-      console.log('refetching');
-      console.log(this.props);
+
     }
     requestJobPosts(page);
   }
@@ -41,40 +39,39 @@ class JobPosts extends Component {
     requestJobPosts(data.selected);
   }
   decrementPage() {
-      const { requestJobPosts } = this.props;
-      const { page } = this.props.params;
-      browserHistory.push(`/jobposts/page/${parseInt(page) - 1}`);
+    const { requestJobPosts } = this.props;
+    const { page } = this.props.params;
+    browserHistory.push(`/jobposts/page/${parseInt(page) - 1}`);
   }
   incrementPage() {
-      const { requestJobPosts } = this.props;
-      const { page } = this.props.params;
-      browserHistory.push(`/jobposts/page/${parseInt(page) + 1}`);
+    const { requestJobPosts } = this.props;
+    const { page } = this.props.params;
+    browserHistory.push(`/jobposts/page/${parseInt(page) + 1}`);
   }
   render() {
     const { jobPosts, isFetching, backend_profile } = this.props;
     const filters = backend_profile.industry.map((obj) => {
       return obj.name;
     });
-    console.log(this.state);
     return (
       <Grid>
         <Row>
           <Col md={12}>
+            <div className="text-center">
+              <Header as="h3" icon textAlign="center">
+                Job Postings
+                <Icon link name="briefcase" circular />
+              </Header>
               <div className="text-center">
-                <Header as="h3" icon textAlign="center">
-                  Job Postings
-                  <Icon link name="briefcase" circular />
-                </Header>
-                <div className="text-center">
-                  <Statistic>
-                    <Statistic.Value>{`${jobPosts.results.length} out of ${jobPosts.total}`}</Statistic.Value>
-                    <Statistic.Label>Job Postings </Statistic.Label>
-                    page: {this.props.params.page}
-                  </Statistic>
-                </div>
-                <Icon size="large" onClick={this.decrementPage} name="arrow left" />
-                <Icon size="large" onClick={this.incrementPage} name="arrow right" />
+                <Statistic>
+                  <Statistic.Value>{`${jobPosts.results.length} out of ${jobPosts.total}`}</Statistic.Value>
+                  <Statistic.Label>Job Postings </Statistic.Label>
+                  page: {this.props.params.page}
+                </Statistic>
               </div>
+              <Icon size="large" onClick={this.decrementPage} name="arrow left" />
+              <Icon size="large" onClick={this.incrementPage} name="arrow right" />
+            </div>
             <hr />
             { !isFetching ?
               <div>
@@ -82,6 +79,7 @@ class JobPosts extends Component {
                   jobPosts={jobPosts.results}
                   filter={filters}
                   onScroll={this.props.requestJobPosts}
+                  userSubmissions={backend_profile.submission}
                 />
                 <hr />
               </div>

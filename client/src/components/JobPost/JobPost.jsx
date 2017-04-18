@@ -25,8 +25,7 @@ class JobPost extends Component {
     }
   }
   render() {
-    console.log(this.props);
-    const { onJobInterviewClick, jobPosts, jobPost } = this.props;
+    const { onJobInterviewClick, jobPosts, jobPost, backend_profile } = this.props;
     const { id } = this.props.params;
     let location;
     let industry;
@@ -51,40 +50,42 @@ class JobPost extends Component {
           <Col xs={12} md={6} mdOffset={3}>
             { jobPost ?
               <div>
-              <Card.Group itemsPerRow={"one"}>
-                <Card color="red" centered>
-                  <Image
-                    height={200}
-                    src={jobPost.company.profile_img}
-                    label={{ color: 'blue', content: industry, icon: 'globe', ribbon: true }}
-                  />
-                  <Card.Content>
-                    <Card.Meta>
-                      <span className="date posted_on">
-                        posted on : 03/17/2017
-                      </span>
-                    </Card.Meta>
-                    <Card.Description>
-                      <List>
-                        <List.Item icon="globe" content={industry} />
-                        <List.Item icon="marker" content={location} />
-                        <List.Item icon="user" content={position} />
-                      </List>
-                    </Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <Rating icon="star" defaultRating={3} maxRating={4} />
-                    <br />
-                    <Icon name="user" />
-                    15 applicants
-                    <br />
-                  </Card.Content>
-                  <ApplyConfirmModal
-                    id={id}
-                    onJobInterviewClick={onJobInterviewClick}
-                  />
-                </Card>
-              </Card.Group>
+                <Card.Group itemsPerRow={'one'}>
+                  <Card color="red" centered>
+                    <Image
+                      height={200}
+                      src={jobPost.company.profile_img}
+                      label={{ color: 'blue', content: industry, icon: 'globe', ribbon: true }}
+                    />
+                    <Card.Content>
+                      <Card.Meta>
+                        <span className="date posted_on">
+                          { jobPost.created_at }
+                        </span>
+                      </Card.Meta>
+                      <Card.Description>
+                        <List>
+                          <List.Item icon="globe" content={industry} />
+                          <List.Item icon="marker" content={location} />
+                          <List.Item icon="user" content={position} />
+                        </List>
+                      </Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                      <Rating icon="star" defaultRating={0} maxRating={4} />
+                      <br />
+                      <Icon name="user" />
+                      { jobPost.submission.length } applicants
+                      <br />
+                    </Card.Content>
+                    { backend_profile.submission.includes(jobPost.id) ? <Button disabled> Already Applied</Button> :
+                    <ApplyConfirmModal
+                      id={id}
+                      onJobInterviewClick={onJobInterviewClick}
+                    />
+                    }
+                  </Card>
+                </Card.Group>
                 <p className="text-center">please review our terms and conditions</p>
               </div>
             : <JobPostLoader /> }
