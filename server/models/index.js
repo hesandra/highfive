@@ -46,8 +46,8 @@ module.exports = {
       if (!userAlreadyExists) {
         const newUser = await User
           .query()
-          .allowEager('[industry]')
-          .eager('industry')
+          .allowEager('[industry, submission.[jobpost]]')
+          .eager('[industry, submission.[jobpost]]')
           .insertAndFetch(user)
           .catch((err) => {
             return cb(err, null);
@@ -208,14 +208,16 @@ module.exports = {
   },
   jobposts: {
     getAllPage: (page, cb) => {
+      if (page < 1) {
+        page = 1;
+      }
       Jobpost
         .query()
-        .page(parseInt(page), 10)
+        .page(parseInt(page - 1), 10)
         .allowEager('[company, submission]')
         .eager('[company, submission]')
         .then((jobposts) => { 
           cb(null, jobposts); 
-          console.log(jobposts);
         })
         .catch((err) => { cb(err, null); });
     },

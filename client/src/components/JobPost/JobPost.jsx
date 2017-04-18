@@ -35,6 +35,9 @@ class JobPost extends Component {
       industry = getIndustryName(jobPost.industry_id);
       position = getPositionName(jobPost.level);
     }
+    if (!backend_profile.submission) {
+      backend_profile.submission = [];
+    }
     return (
       <Grid>
         <Row>

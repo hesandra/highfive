@@ -140,16 +140,15 @@ class UserProfile extends Component {
         <Row>
           <Col xs={4} md={4}>
             <div className="profile">
-              <h4 className="text-center">{ name } </h4>
+              <h2 className="text-center">{ name } </h2>
               <div className="text-center">
                 <Image className="user-profile-img text-center" src={profileImage} circle />
                 <hr />
               </div>
               <div className="text-center">
+                <i className="fa fa-globe" aria-hidden="true" />
+                <br />
                 <small className="text-center"> {location} </small>
-                <br />
-                <span className="text-center"> looking for work in</span>
-                <br />
                 { industries ?
                   <IndustryList
                     industries={industries}
@@ -179,6 +178,7 @@ class UserProfile extends Component {
                 githubLink={profile.html_url}
                 linkedinLink={linkedinLink}
                 industries={industries}
+                backend_profile={backend_profile}
                 id={id}
                 location={location}
               />
