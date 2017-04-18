@@ -4,4 +4,3 @@ client/build/*
 .env
 *.webm
 .sass-cache
-.scssc
