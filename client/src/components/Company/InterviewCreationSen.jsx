@@ -39,7 +39,6 @@ class InterviewFormSen extends React.Component {
       <div>
         <div>
           <div>
-            <div className="spaceQ"></div>
             {/*<h3>Senior Software Engineer</h3>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
@@ -109,11 +108,12 @@ class InterviewFormSen extends React.Component {
         <div><PostModal /></div>
       )} else if (this.props.companyProfile.showJobModal === false){
     return (
-      <div>
-        <div>{this.renderAll()}</div>
-        <div className="spaceQ" />
-        <div><InterviewForm /></div>
-      </div>
+       <Grid>
+          <Row className="show-grid">
+            <Col xs={6} md={5} >{this.renderAll()}</Col>
+            <Col xs={6} md={4} ><InterviewForm /></Col>
+          </Row>
+        </Grid>
     )}
     else {
       return (<div>{}</div>)

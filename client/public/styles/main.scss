@@ -89,7 +89,7 @@ a {
 }
 
 .scroll {
-  background-color: black;
+  background-color: #A5A5AF;
   color: white;
   width: 400px;
   height: 200px;
@@ -102,7 +102,7 @@ a {
 
 .questions {
   border: 2px;
-  border-color: cornflowerblue;
+  border-color: white;
   margin: 30px;
   padding-bottom: 30px;
 }
@@ -112,8 +112,8 @@ a {
 }
 
 .company-img {
-  height: 200px; 
-  width: 180px;
+  height: 300px; 
+  width: 300px;
 }
 
 .react-selectize.root-node {
@@ -121,7 +121,7 @@ a {
 }
 
 .selectedQ {
-  color: cornflowerblue
+  color: white
 }
 
 .space {
@@ -188,4 +188,31 @@ canvas:nth-of-type(2) {
 
 .notesField {
   padding-bottom: 18px !important
+}
+
+.intPreviewPadd {
+  padding-top: 310px;
+}
+
+.intPreview {
+  background-color:#57BC90;
+  border-radius: 25px;
+  padding: 20px;
+  border: inset;
+}
+
+.saveButtonForm {
+  text-align: center
+}
+
+.compDetails {
+  padding-left: 25px;
+}
+
+.cardStyle {
+  padding-top: 50px;
+}
+
+.dropzone{
+  padding-left: 250px
 }

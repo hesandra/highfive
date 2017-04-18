@@ -130,9 +130,8 @@ class InterviewForm extends React.Component {
      if (this.props.companyProfile.selectedQuestion) {
        this.renderAll()*/
     return (
-      <div>
-        <div className="space"></div>
-        <div><h3 className="selectedQ">Selected algorithm question</h3>
+      <div className="intPreviewPadd">
+        <div className="intPreview" ><h3 className="selectedQ">Selected algorithm question</h3>
           <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
             return (
               <div onClick={() => this.props.removeQuestion(item)}>
@@ -156,7 +155,7 @@ class InterviewForm extends React.Component {
                 {item.question}</div>)
           })}
             <div className="space"></div>
-            <Button onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() } }}>Save</Button>
+            <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() } }}>Save</Button>
             <div className="space"></div>
           </div>
         </div>

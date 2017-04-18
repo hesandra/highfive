@@ -17,19 +17,19 @@ import NotificationSystem from 'react-notification-system';
 const defaultColors = {
   success: {
     rgb: '33, 133, 208',
-    hex: '#2185D0'
+    hex: '#77C9D4'
   },
   error: {
     rgb: '236, 61, 61',
-    hex: '#ec3d3d'
+    hex: '#77C9D4'
   },
   warning: {
     rgb: '235, 173, 23',
-    hex: '#ebad1a'
+    hex: '#77C9D4'
   },
   info: {
     rgb: '54, 156, 199',
-    hex: '#369cc7'
+    hex: '#77C9D4'
   }
 };
 const defaultShadowOpacity = '0.9';

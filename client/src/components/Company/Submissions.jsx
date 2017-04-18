@@ -82,7 +82,7 @@ class PositionsLevel extends React.Component {
                   </Card.Content>
                   <Card.Content extra>
                     <Form>
-                      <TextArea className="form-control notesField" placeholder="take notes about interview here" name="notes" onChange={this.handleChange} autoHeight />
+                      <TextArea className="form-control notesField" placeholder="Give instant feedback to the applicant" name="notes" onChange={this.handleChange} autoHeight />
                     </Form>
                     <div className="spaceQ"></div>
                     <FormGroup controlId="formControlsSelect">

@@ -36,7 +36,6 @@ class InterviewFormJun extends React.Component {
   renderAll() {
     return (
       <div >
-
         <div>
           <div>
             {/* <div >
@@ -63,7 +62,7 @@ class InterviewFormJun extends React.Component {
             </Modal.Footer>
             </Modal>
             </div>*/}
-            <div className="space"></div>
+            <div className="spaceQ"></div>
             <h4>Select 1 Algorithm Question</h4>
             <div className="scroll">
               <div className="questions" >
