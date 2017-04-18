@@ -1,5 +1,5 @@
 import React from 'react';
-import { Polar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -25,39 +25,21 @@ class Dashboard extends React.Component {
 
   chartConfig() {
     return {
-      labels: [
-        'Jobs Posted',
-        'User Submissions',
-        'Users',
-        'Questions',
-        'Industries',
-        'Locations'
-      ],
-      datasets: [{
-        data: [
-          149,
-          30,
-          50,
-          45,
-          12,
-          12
-        ],
-        backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#33cc33',
-          '#8c1aff',
-          '#800000'
-        ],
-      }]
+      labels: ['Users', 'Jobs Posted', 'Submissions'],
+      datasets: [
+        {
+          label: 'Company Stats',
+          data: [30, 149, 50],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        }
+      ]
     };
   }
 
   render() {
     return (
       <div className="stats-chart">
-        <Polar data={this.chartConfig()} />
+        <Bar data={this.chartConfig()} />
       </div>
     );
   }
