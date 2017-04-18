@@ -102,7 +102,6 @@ exports.seed = function (knex, Promise) {
           { id: 98, company_id: 6, title: 'Sr Dev', level: 2, description: 'Looking for Sr Dev.', industry_id: 8, location_id: 8 },
           { id: 99, company_id: 5, title: 'Sr Dev', level: 2, description: 'Looking for Sr Dev.', industry_id: 9, location_id: 9 },
           { id: 100, company_id: 7, title: 'Sr Dev', level: 2, description: 'Looking for Sr Dev.', industry_id: 10, location_id: 10 },
-
           { id: 101, company_id: 1, title: 'Jr Dev', level: 0, description: 'Looking for Jr Dev.', industry_id: 1, location_id: 1 },
           { id: 102, company_id: 11, title: 'Jr Dev', level: 0, description: 'Looking for Jr Dev.', industry_id: 2, location_id: 2 },
           { id: 103, company_id: 10, title: 'Jr Dev', level: 0, description: 'Looking for Jr Dev.', industry_id: 3, location_id: 3 },
@@ -167,7 +166,6 @@ exports.seed = function (knex, Promise) {
           { id: 158, company_id: 15, title: 'Sr Dev', level: 2, description: 'Looking for Sr Dev.', industry_id: 8, location_id: 8 },
           { id: 159, company_id: 15, title: 'Sr Dev', level: 2, description: 'Looking for Sr Dev.', industry_id: 9, location_id: 9 },
           { id: 160, company_id: 15, title: 'Sr Dev', level: 2, description: 'Looking for Sr Dev.', industry_id: 10, location_id: 10 }
-
 
         ]);
       });

@@ -6,7 +6,7 @@ import { submitDescription, saveQuestion, createJobPost } from '../../actions/co
 import InterviewForm from './InterviewForm';
 import ReactDOM from 'react-dom';
 import { closeModal } from '../../actions/company';
-import PostModal from './PostModal'
+import PostModal from './PostModal';
 
 class InterviewFormJun extends React.Component {
   constructor(props) {
@@ -35,11 +35,10 @@ class InterviewFormJun extends React.Component {
 
   renderAll() {
     return (
-      <div>
+      <div >
         <div>
           <div>
-            <div className="spaceQ"></div>
-           {/* <div >
+            {/* <div >
             <Modal
               show={this.props.companyProfile.showJobModal}>
               <Modal.Header closeButton>
@@ -117,21 +116,25 @@ class InterviewFormJun extends React.Component {
 
   render() {
     //console.log(this.props, 'INTERVIEWCREATION JUN COMPANYPROFILE');
-    if (this.props.companyProfile.showJobModal){
+    if (this.props.companyProfile.showJobModal) {
       return (
         <div><PostModal /></div>
-      )} else if (this.props.companyProfile.showJobModal === false){
-    return (
-      <div>
-        <div>{this.renderAll()}</div>
-        <div className="spaceQ" />
-        <div><InterviewForm /></div>
-      </div>
-    )}
+      )
+    } else if (this.props.companyProfile.showJobModal === false) {
+      return (
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={6} md={5} >{this.renderAll()}</Col>
+            <Col xs={6} md={4} ><InterviewForm /></Col>
+          </Row>
+        </Grid>
+
+      )
+    }
     else {
       return (<div>{}</div>)
     }
-}
+  }
 }
 
 function mapStateToProps(state) {

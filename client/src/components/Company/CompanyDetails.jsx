@@ -74,7 +74,7 @@ class CompanyDetails extends React.Component {
       <div>
         <Grid fluid>
           <Row>
-            <Col xs={4} md={8}>
+            <Col xs={4} md={12} className="compDetails">
               <div>
                 {this.renderProfile()}
               </div>
