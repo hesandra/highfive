@@ -154,7 +154,6 @@ module.exports = {
     },
     getById: (req, res, next) => {
       const { id } = req.params;
-
       models.jobposts.getById(id, (err, jobpost) => {
         const payload = {
           success: err ? false : true,
@@ -258,7 +257,6 @@ module.exports = {
     },
     getBySubmissionId: (req, res, next) => {
       const { id } = req.params;
-
       models.submissions.getBySubmissionId(id, (err, submission) => {
         const payload = {
           success: err ? false : true,
@@ -270,7 +268,6 @@ module.exports = {
     },
     getAllForJobPost: (req, res, next) => {
       const { jobpost_id } = req.params;
-
       models.submissions.getAllForJobPost(jobpost_id, (err, submission) => {
         const payload = {
           success: err ? false : true,
@@ -282,7 +279,6 @@ module.exports = {
     },
     updateSubmission: (req, res, next) => {
       const { id } = req.params;
-
       models.submissions.updateSubmission(id, req.body, (err, submission) => {
         const payload = {
           success: err ? false : true,

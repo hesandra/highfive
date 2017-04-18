@@ -5,13 +5,14 @@ import { checkCompanyLogin } from '../actions/companyAuth';
 import { initJobInterview, fetchJobPostData } from '../actions/jobPost';
 
 const mapStateToProps = (state) => {
-  const { isAuthenticated, profile } = state.userAuth;
+  const { isAuthenticated, profile, backend_profile } = state.userAuth;
   const { jobPosts } = state.jobPosts;
   const { jobPost, isFetching } = state.jobPost;
   return {
     isAuthenticated,
     isFetching,
     profile,
+    backend_profile,
     jobPosts,
     jobPost
   };

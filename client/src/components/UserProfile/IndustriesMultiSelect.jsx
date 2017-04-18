@@ -15,7 +15,6 @@ const IndustriesMultiSelect = ({ onSelectChange, industries }) => {
   return (
     <div>
       <MultiSelect
-        defaultValues={defaultIndustries}
         theme="bootstrap"
         placeholder="Select industries"
         onValuesChange={(value) => {

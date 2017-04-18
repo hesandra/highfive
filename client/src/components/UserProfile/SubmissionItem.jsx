@@ -8,7 +8,7 @@ const Submission = ({ submission }) => {
   return (
     <div>
       <List.Item>
-        <List.Icon name="folder" size="large" verticalAlign="middle" />
+        <List.Icon name="folder" size="large" verticalAlign="middle" /><br /> <small> { submission.created_at } </small>
         <List.Content>
           <List.Header>{ getPositionName(submission.jobpost.level) }</List.Header>
           <List.Description>{submission.status ? 'seen' : 'pending'}</List.Description>

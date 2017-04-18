@@ -1,40 +1,15 @@
 import React, { Component } from 'react';
 import { Card, Image, Icon, Rating, List, Popup, Button } from 'semantic-ui-react';
 
-import Infinite from 'react-infinite';
-
-
 import { getLocationName } from '../../utils/Mappings/locationMappings';
 import { getIndustryName } from '../../utils/Mappings/industryMappings';
 import { getPositionName } from '../../utils/Mappings/positionMappings';
 
-class InfiniteScroll extends Component {
+class CardList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      elements: this.buildElements(0, 10),
-      isInfiniteLoading: false
     };
-    this.buildElements = this.buildElements.bind(this);
-    this.handleInfiniteLoad = this.handleInfiniteLoad.bind(this);
-  }
-  handleInfiniteLoad() {
-    setTimeout(() => {
-      var elemLength = this.state.elements.length,
-        newElements = this.buildElements(elemLength, elemLength + 10);
-      this.props.onScroll(2);
-    }, 2500);
-    console.log('go FETCH');
-  }
-  buildElements(start, end) {
-    var elements = [];
-    for (var i = start; i < end; i++) {
-      elements.push(<li key={i}>{i}</li>);
-    }
-    return elements;
-  }
-  infiniteLoading() {
-    return (<div>Loading...</div>);
   }
   findCardRowLength(length) {
     if (length < 10) {
@@ -43,8 +18,8 @@ class InfiniteScroll extends Component {
     return '4';
   }
   render() {
+    const { userSubmissions } = this.props;
     let jobPosts;
-    console.log(this.state);
     if (!this.props.filter.length) {
       jobPosts = this.props.jobPosts;
     } else {
@@ -69,7 +44,7 @@ class InfiniteScroll extends Component {
           <Card.Content>
             <Card.Meta>
               <span className="date posted_on">
-                posted on : 03/17/2017
+                { jobPost.created_at }
               </span>
             </Card.Meta>
             <Card.Description>
@@ -81,12 +56,13 @@ class InfiniteScroll extends Component {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <Rating icon="star" defaultRating={3} maxRating={4} />
+            <Rating icon="star" defaultRating={0} maxRating={4} />
             <br />
             <Icon name="user" />
-              15 applicants
+            { jobPost.submission.length } applicants
               <br />
-            <Button color="green" fluid>Apply!</Button>
+            { userSubmissions.includes(jobPost.id) ? <Button disabled fluid> Already Applied</Button> : <Button color="green" fluid>Apply!</Button>
+            }
           </Card.Content>
         </Card>
       );
@@ -101,4 +77,4 @@ class InfiniteScroll extends Component {
   }
 }
 
-export default InfiniteScroll;
+export default CardList;

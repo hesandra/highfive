@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/server.js",
-    "sass" : "sass --watch ./client/public/styles/main.scss",
+    "sass": "sass --watch ./client/public/styles/main.scss",
     "test": "node_modules/.bin/mocha --bail --reporter nyan test/",
     "lint": "eslint . || true",
     "video": "nodemon ./videoServer/index.js",
@@ -41,6 +41,7 @@
     "jwt-decode": "^2.2.0",
     "knex": "^0.12.9",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "morgan": "^1.8.1",
     "mysql": "^2.13.0",
     "objection": "^0.7.11",
