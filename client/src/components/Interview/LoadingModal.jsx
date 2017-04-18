@@ -13,9 +13,12 @@ class LoadingModal extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
+  componentDidMount() {
+    this.show();
+  }
   show() {
+    console.log('fired');
     this.setState({ showModal: true });
-
     setTimeout(() => {
       console.log('close!');
       this.handleClose();

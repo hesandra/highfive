@@ -5,7 +5,7 @@ import SubmissionItem from './SubmissionItem';
 import SubmissionModal from './SubmissionModal';
 
 const SubmissionsList = ({ submissions }) => {
-  const submissionList = submissions.map((submission, i) => {
+  const submissionList = submissions.map((submission) => {
     return <SubmissionItem key={submission.id} submission={submission} />;
   });
   return (

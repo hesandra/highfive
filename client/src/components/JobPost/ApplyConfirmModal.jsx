@@ -4,7 +4,6 @@ import { Modal, OverlayTrigger } from 'react-bootstrap';
 
 import StepInfo from './StepInfo';
 
-
 class ApplyConfirm extends Component {
   constructor(props) {
     super(props);

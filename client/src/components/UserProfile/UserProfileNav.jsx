@@ -42,10 +42,8 @@ const UserProfileNav = (props) => {
                 <i className="fa fa-envelope-open-o" aria-hidden="true"/>
               </NavItem>
               <NavItem
-                onClick={() => {
-                  onSubmissionsClick(id);
-                }}
                 eventKey="2"
+                onClick={() => { onSubmissionsClick(id); }}
               >
                 Submissions
                 <br />
@@ -69,15 +67,16 @@ const UserProfileNav = (props) => {
                 <div className="position-matchings">
                   <Statistic>
                     <Statistic.Value>
-                      <Icon name="computer" />
-                      5
+                      <Icon name="computer" size="huge" /><br />
+                      5 ( update with dynamic data )
                     </Statistic.Value>
                     <Statistic.Label>Position Matchings Found</Statistic.Label>
-                    <Link className="apply-now" to="#">apply now</Link>
+                    <Link className="apply-now" to="/jobposts/page/1">apply now</Link>
                   </Statistic>
                 </div>
               </Tab.Pane>
               <Tab.Pane eventKey="2">
+                ({ submissions.length })
                 <SubmissionsList submissions={submissions} />
               </Tab.Pane>
               <Tab.Pane eventKey="3" />

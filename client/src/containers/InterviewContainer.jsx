@@ -4,11 +4,8 @@ import { Interview } from '../components';
 import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 import { getUserMedia, createSubmission } from '../actions/interview';
-import jobPosts from '../utils/mockdata/jobposts';
-
 
 const socket = io('http://localhost:3001');
-
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, backend_profile } = state.userAuth;
   const { stream, submission, isCreatingSubmission } = state.interview;

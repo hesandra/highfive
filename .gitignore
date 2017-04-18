@@ -3,3 +3,5 @@ npm-debug.log
 client/build/*
 .env
 *.webm
+.sass-cache
+.scssc

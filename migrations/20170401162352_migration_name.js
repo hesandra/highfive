@@ -1,3 +1,4 @@
+const moment = require('moment');
 
 exports.up = function(knex, Promise) {
   return knex.raw('SET foreign_key_checks = 0;')
@@ -17,8 +18,8 @@ exports.up = function(knex, Promise) {
           table.string('profile_img');
           table.string('github_url');
           table.string('linkedin_url');
-          table.string('created_at').notNullable().defaultTo(new Date().toISOString());
-          table.string('updated_at').notNullable().defaultTo(new Date().toISOString());
+          table.string('created_at').notNullable().defaultTo(moment().format('LL'));
+          table.string('updated_at').notNullable().defaultTo(moment().format('LL'));
         })
         .createTable('industry', (table) => {
           table.increments('id').primary();
@@ -41,8 +42,8 @@ exports.up = function(knex, Promise) {
           table.string('status');
           table.integer('completed');
           table.string('notes');
-          table.string('created_at').notNullable().defaultTo(new Date().toISOString());
-          table.string('updated_at').notNullable().defaultTo(new Date().toISOString());
+          table.string('created_at').notNullable().defaultTo(moment().format('LL'));
+          table.string('updated_at').notNullable().defaultTo(moment().format('LL'));
         })
         .createTable('jobpost', (table) => {
           table.increments('id').primary();
@@ -52,8 +53,8 @@ exports.up = function(knex, Promise) {
           table.integer('industry_id');
           table.integer('location_id');
           table.integer('company_id').unsigned().references('id').inTable('company');
-          table.string('created_at').notNullable().defaultTo(new Date().toISOString());
-          table.string('updated_at').notNullable().defaultTo(new Date().toISOString());
+          table.string('created_at').notNullable().defaultTo(moment().format('LL'));
+          table.string('updated_at').notNullable().defaultTo(moment().format('LL'));
         })
         .createTable('question', (table) => {
           table.increments('id').primary();
@@ -68,8 +69,8 @@ exports.up = function(knex, Promise) {
           table.string('answer');
           table.integer('question_id').unsigned().references('id').inTable('question');
           table.integer('submission_id').unsigned().references('id').inTable('submission');
-          table.string('created_at').notNullable().defaultTo(new Date().toISOString());
-          table.string('updated_at').notNullable().defaultTo(new Date().toISOString());
+          table.string('created_at').notNullable().defaultTo(moment().format('LL'));
+          table.string('updated_at').notNullable().defaultTo(moment().format('LL'));
         })
         .createTable('jobpost_question', (table) => {
           table.increments('id').primary();

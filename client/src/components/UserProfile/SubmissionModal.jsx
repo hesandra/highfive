@@ -27,7 +27,6 @@ class SubmissionModal extends Component {
     const video = document.getElementById('app-video_html5_api');
     const source = document.createElement('source');
     source.setAttribute('src', this.props.videos[index].href);
-    console.log(this.props.videos[index]);
     video.src = this.props.videos[index].href;
     video.load();
   }
@@ -66,7 +65,7 @@ class SubmissionModal extends Component {
     };
     return (
       <div>
-        <Button 
+        <Button
           primary
           size="mini"
           onClick={this.open}
@@ -78,7 +77,7 @@ class SubmissionModal extends Component {
             <Modal.Title>Your Submission</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>QUESTION:</h4> 
+            <h4>QUESTION:</h4>
             <p> {this.props.questions[this.state.index].question } </p>
             <VideoPlayer {...videoOptions} />
             { videoList }
