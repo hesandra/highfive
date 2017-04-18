@@ -1,5 +1,7 @@
-.tab-content {
-  color: #e76; }
+.stats-chart canvas {
+  margin-top: 20px;
+  position: absolute;
+  right: 150px; }
 
 .background-img {
   background-image: url(../images/background.jpg);
@@ -91,9 +93,8 @@ a {
   height: 15px; }
 
 .company-img {
-  height: 250px; 
-  width: 250px;
-}
+  height: 200px;
+  width: 180px; }
 
 .react-selectize.root-node {
   width: 100%; }
@@ -153,22 +154,3 @@ canvas:nth-of-type(2) {
   height: 100px !important; }
 
 /*# sourceMappingURL=main.css.map */
-
-.dropzone {
-  margin-left: 80px;
-  margin-top: 10px;
-}
-
-.profileDetails {
-  font-size: 20px
-}
-
-.postionsHeading {
-  margin-top: 40px;
-  margin-bottom: 50px;
-}
-
-.cardStyle {
-  margin-top:25px;
-  
-}
