@@ -80,10 +80,10 @@ class myDropzone extends Component {
     }
     this.onDrop = this.onDrop.bind(this)
     this.onSending = this.onSending.bind(this);
-    this.notificationSystem = null;
+/*    this.notificationSystem = null;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.addNotification = this.addNotification.bind(this);
+    this.addNotification = this.addNotification.bind(this);*/
   }
 
 
@@ -113,7 +113,7 @@ class myDropzone extends Component {
     file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
   }
 
-  addNotification() {
+/*  addNotification() {
     if (this.notificationSystem) {
       this.notificationSystem.addNotification({
         message: 'profile updated',
@@ -122,7 +122,7 @@ class myDropzone extends Component {
         autoDismiss: 5
       });
     }
-  }
+  }*/
 
 
 
