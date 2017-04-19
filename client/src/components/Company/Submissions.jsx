@@ -127,7 +127,7 @@ class PositionsLevel extends React.Component {
         </div> )
       }
     else if (this.props.companyProfile.submissions === undefined){
-      return (<h4>Please go through jobposts to look at submissions</h4>)
+      return (<h1 style={{ 'margin-top': 20 }} className="text-center">No Submissions!</h1>);
     }
   }
 }

@@ -1,9 +1,14 @@
+.company-nav .nav-tabs {
+  margin-bottom: 15px;
+}
+
 .profile .profile-section {
   font-size: 20px;
+  margin-left: 17%;
 }
 
 .profile .profile-info {
-  margin: 10px;
+  margin: 10px 0px;
 }
 
 .jobpost-btn.dropdown {
@@ -129,6 +134,15 @@ a {
   text-align: center;
 }
 
+.dropzone.dz-progress {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+#tester > div {
+  height: 100px;
+}
+
 .questions {
   border: 2px;
   border-color: white;
@@ -141,8 +155,8 @@ a {
 }
 
 .company-img {
-  height: 300px; 
-  width: 300px;
+  height: 250px; 
+  width: 250px;
 }
 
 .react-selectize.root-node {
@@ -236,12 +250,13 @@ canvas:nth-of-type(2) {
 
 .compDetails {
   padding-left: 25px;
+  font-size: 16px;
 }
 
 .cardStyle {
   padding-top: 50px;
 }
 
-.dropzone{
-  padding-left: 250px
+.form-horizontal .form-group {
+  margin: 0;
 }

@@ -43,10 +43,8 @@ class PositionsLevel extends React.Component {
           }
         })}
         <FormGroup>
-          <Col smOffset={3} sm={8}>
-            <Button onClick={() => this.props.createInterview()} type="submit" value="Submit">
-              New Position and Interview
-            </Button>
+          <Col smOffset={5} sm={6}>
+            <Button onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button>
           </Col>
         </FormGroup>
       </div>

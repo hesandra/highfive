@@ -131,17 +131,19 @@ class myDropzone extends Component {
 
 
   render() {
-    console.log('this.props in dropzone', this.props)
     return (
-      <div>
+      <div className="dropzone" id="tester">
         <Dropzone onDrop={this.onDrop} config={componentConfig}>
-          <form action="/api/upload" className="dropzone dz-progress"><span className="dz-upload" data-dz-uploadprogress id="dropzone"></span>
+          <form action="/api/upload" className="dropzone dz-progress">
+            <span className="dz-upload" data-dz-uploadprogress id="dropzone"></span>
             <div className="dz-default dz-message text-center">
-              <i className="fa fa-cloud-upload fa-4x"></i></div>
+              <i className="fa fa-cloud-upload fa-4x"></i>
+              <div className="text-center">Upload Profile Image</div>
+            </div>
           </form>
-          <div>Drag and drop a picture here, or click to select files to upload.</div>
         </Dropzone>
-        <NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>
+        <NotificationSystem ref={n => this.notificationSystem = n} style={style} />
+      </div>
     );
   }
 }
