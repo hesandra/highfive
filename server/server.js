@@ -19,12 +19,16 @@ Model.knex(knex);
 
 const app = express()
   .use(cors())
+  .use(express.static('./client'))
   .use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: true }))
   .set('json spaces', 2);
-
 app.options('*', cors());
+
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/client/public/index.html`);
+});
 
 // pass all request to router
 app.use('/', router);
