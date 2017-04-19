@@ -20,7 +20,7 @@ Model.knex(knex);
 
 const app = express()
   .use(cors())
-  .use(express.static('./client/build'))
+  .use(express.static('./client/build/'))
   .use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: true }))
