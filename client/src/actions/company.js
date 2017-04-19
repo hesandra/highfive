@@ -365,6 +365,13 @@ export function updatePicture(data) {
    }
   }
 
+
+export function hidePostModal(){
+  return {
+    type: 'HIDE_POST_MODAL',
+  }
+}
+
 /*export function addNotification() {
   if (this.notificationSystem) {
     this.notificationSystem.addNotification({

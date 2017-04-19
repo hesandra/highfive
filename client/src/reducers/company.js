@@ -128,6 +128,11 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         status: action.payload,
     });
+    case 'HIDE_POST_MODAL':
+      return Object.assign({}, state, {
+        createButton: false,
+        showJobModal: false,
+    }); 
   }
   return state;
 }

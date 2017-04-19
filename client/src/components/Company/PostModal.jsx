@@ -6,7 +6,7 @@ import { submitDescription, saveQuestion, createJobPost, getQuestions } from '..
 import InterviewForm from './InterviewForm';
 import PositionsLevel from './PositionsLevel';
 import ReactDOM from 'react-dom';
-import { closePostModal, createInterview } from '../../actions/company';
+import { closePostModal, createInterview, hidePostModal } from '../../actions/company';
 
 class PostModal extends React.Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class PostModal extends React.Component {
       <div >
         <Modal
           show={this.props.companyProfile.companyProfile.showJobModal}
-          onHide={()=> {this.props.closePostModal(); document.getElementById('tabs-with-dropdown-tab-3').click()}}>
+          onHide={()=> this.props.hidePostModal()}>
           <Modal.Header closeButton>
             {this.props.companyProfile.companyProfile.level === 0 ?
               <Modal.Title>Junior Software Engineer</Modal.Title> :
@@ -79,7 +79,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitDescription, saveQuestion, createJobPost, closePostModal, getQuestions, createInterview }, dispatch);
+  return bindActionCreators({ submitDescription, saveQuestion, createJobPost, closePostModal, getQuestions, createInterview, hidePostModal }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
