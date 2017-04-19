@@ -117,7 +117,7 @@ export default function (state = initialState, action) {
     });
     case 'OPEN_MODAL':
       return Object.assign({}, state, {
-        applUpdate: true
+        applUpdate: true, 
     });
     case 'CLOSE_APPL_MODAL':
       return Object.assign({}, state, {
@@ -125,6 +125,7 @@ export default function (state = initialState, action) {
         renderStatus: true,
     });
     case 'UPDATE_STATUS':
+    console.log('action payload in update status in company reducers', action.payload)
       return Object.assign({}, state, {
         status: action.payload,
     });

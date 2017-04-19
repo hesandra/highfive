@@ -314,6 +314,7 @@ export function getLocations(){
 export function updateSubmission(data){
   //console.log('data in updateSubmission', data)
   const id = data.subId;
+  const jobPostId = data.jobPostId;
   return (dispatch) => {
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
     .then((result) => {
@@ -324,6 +325,9 @@ export function updateSubmission(data){
     .then(() => {
       console.log('before saveUpdate')
       dispatch(saveAppUpdate())
+    })
+    .then(() => {
+      dispatch(getSubmissions(jobPostId));
     })
   }
 }

@@ -93,7 +93,7 @@ class PositionsLevel extends React.Component {
                         <option >failed</option>
                       </FormControl>
                     </FormGroup>
-                    <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes })}>Save</Button>
+                    <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id })}>Save</Button>
                   </Card.Content>
                 </Card>
               </Card.Group>
