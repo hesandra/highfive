@@ -13,11 +13,7 @@ const paths = require('path');
 const router = require('./routes');
 
 const port = process.env.PORT || 3000;
-
-console.log('look for db info', process.env);
-
 dotenv.load();
-
 const knex = Knex(knexConfig.production);
 Model.knex(knex);
 
