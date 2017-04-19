@@ -3,11 +3,12 @@ exports.seed = function (knex, Promise) {
   .then(() => {
     return knex('jobpost').del()
       .then(() => {
+        const seedArray = [];
         let id, company_id, title, level, description, industry_id, location_id;
         let counterToTen = 1;
         let counterToFifteen = 1;
 
-        for (let i = 0; i < 160; i += 1) {
+        for (let i = 1; i <= 160; i += 1) {
           id = i;
           counterToTen++;
           counterToFifteen++;
@@ -19,31 +20,36 @@ exports.seed = function (knex, Promise) {
             counterToFifteen = 1;
           }
 
-          if (i % 10 <= 4) {
+          if (i % 10 === 1 || i % 10 === 2 || i % 10 === 3 || i % 10 === 4) {
             title = 'Jr Dev';
+            level = 0;
             description = 'Looking for Jr Dev';
           }
-          if (i % 10 >= 5 && i <= 7) {
+          if (i % 10 === 5 || i % 10 === 6 || i % 10 === 7) {
             title = 'Mid Dev';
+            level = 1;
             description = 'Looking for Mid Dev';
           }
-          if (i % 10 >= 8) {
+          if (i % 10 === 0 || i % 10 === 8 || i % 10 === 9) {
             title = 'Sr Dev';
+            level = 2;
             description = 'Looking for Sr Dev';
           }
 
-          return knex('jobpost').insert([
-            {
-              id,
-              company_id: counterToFifteen,
-              title,
-              level,
-              description,
-              industry_id: counterToTen,
-              location_id: counterToTen
-            }
-          ]);
+          const newObj = {
+            id,
+            company_id: counterToFifteen,
+            title,
+            level,
+            description,
+            industry_id: counterToTen,
+            location_id: counterToTen
+          };
+
+          seedArray.push(newObj);
         }
+
+        return knex('jobpost').insert(seedArray);
 
         // return knex('jobpost').insert([
         //   { id: 1, company_id: 1, title: 'Jr Dev', level: 0, description: 'Looking for Jr Dev.', industry_id: 1, location_id: 1 },
