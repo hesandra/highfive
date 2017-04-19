@@ -13,7 +13,7 @@ export function checkUserLogin() {
         }
         UserAuthService.setToken(authResult.idToken);
         UserAuthService.setProfile(profile);
-        return axios.post('http://localhost:3000/api/users', {
+        return axios.post(`${process.env.BASE_URL}/api/users`, {
           name: profile.name,
           email: profile.email,
           auth0_id: profile.user_id,

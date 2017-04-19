@@ -67,7 +67,7 @@ export function createSubmissionError(error) {
 export function createSubmission(submissionData) {
   return (dispatch) => {
     dispatch(createSubmissionRequest());
-    axios.post('http://localhost:3000/api/submissions', submissionData)
+    axios.post('http://localhost:8081/api/submissions', submissionData)
       .then((response) => {
         if (response.status === 201) {
           dispatch(createSubmissionSuccess(response.data.submission));

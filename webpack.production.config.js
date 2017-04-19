@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const SRC_DIR = path.resolve(__dirname, 'client/src');
@@ -42,7 +41,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-        'BASE_URL': JSON.stringify('http://localhost:3000'),
+        'BASE_URL': JSON.stringify('http://localhost:8081'),
         'USERS_AUTH0_ID': JSON.stringify('IlzCSthZWHUlsCK873pORMn0QbgKyln3'),
         'COMPANIES_AUTH0_ID': JSON.stringify('7UaPvuy3YOxD71ls2EMR9R1iajCASSPI')
       }

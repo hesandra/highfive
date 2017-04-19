@@ -22,7 +22,7 @@ export function checkCompanyLogin() {
         }
         CompanyAuthService.setToken(authResult.idToken);
         CompanyAuthService.setProfile(profile);
-        return axios.post('http://localhost:3000/api/companies', {
+        return axios.post(`${process.env.BASE_URL}/api/companies`, {
           name: profile.nickname,
           email: profile.email,
           auth0_id: profile.user_id,

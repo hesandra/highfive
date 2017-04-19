@@ -23,7 +23,7 @@ export function submitProfile(profile){
     //console.log('updatedProfile', profile.updatedProfile);
     //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
     //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
-    axios.put('http://localhost:3000/api/companies/' + id, updatedProfile)
+    axios.put('http://localhost:8081/api/companies/' + id, updatedProfile)
       .then((company) => {
         //console.log('result in company actions', company);
         dispatch(updateCompany(JSON.parse(company.config.data)));
