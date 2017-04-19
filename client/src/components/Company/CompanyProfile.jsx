@@ -13,6 +13,7 @@ import Dropzone from '../Dropzone/dropzone';
 import ReactSelectize from 'react-selectize';
 const SimpleSelect = ReactSelectize.SimpleSelect;
 import NotificationSystem from 'react-notification-system';
+import { getCompany, getIndustries, getLocations } from '../../actions/company';
 
 const defaultColors = {
   success: {
@@ -111,6 +112,11 @@ class CompanyProfile extends React.Component {
     this.addNotification();
   }
 
+  componentDidMount(){
+    this.props.getIndustries();
+    this.props.getLocations();
+}
+
   renderForm() {
     return (
       <Form horizontal onSubmit={this.handleSubmit} className="col-xs-8">
@@ -163,7 +169,7 @@ class CompanyProfile extends React.Component {
   }
   render() {
     //console.log('props in companyprofile render', this.props)
-    if (this.props.profile.companyAuth.industries) {
+    if (this.props.profile.companyAuth.industries && this.props.profile.companyAuth.locations) {
       return (
         <div>
           {this.renderForm()}
@@ -185,7 +191,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitProfile }, dispatch);
+  return bindActionCreators({ submitProfile, getIndustries, getLocations }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyProfile);
