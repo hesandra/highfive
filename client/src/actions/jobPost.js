@@ -20,7 +20,7 @@ export function initJobInterview(id) {
 export const fetchJobPostData = (id) => {
   return (dispatch) => {
     dispatch(requestJobPostData());
-    axios.get(`http://localhost:3000/api/jobposts/${id}`)
+    axios.get(`http://localhost:8081/api/jobposts/${id}`)
       .then((response) => {
         if (response.status === 200 || response.status === 304) {
           dispatch(requestJobPostDataSuccess(response.data.jobpost));
