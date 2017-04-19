@@ -4,7 +4,7 @@
   "description": "thesis project",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/server.js",
+    "start": "node server.js",
     "sass": "sass --watch ./client/public/styles/main.scss",
     "test": "node_modules/.bin/mocha --bail --reporter nyan test/",
     "lint": "eslint . || true",
