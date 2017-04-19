@@ -28,7 +28,7 @@ const app = express()
 app.options('*', cors());
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(`${__dirname}`, 'index.html'));
+  res.sendFile(path.join(`${__dirname}`, '/client/build/index.html'));
 });
 
 // pass all request to router
