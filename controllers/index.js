@@ -139,6 +139,7 @@ module.exports = {
     getAllPage: (req, res, next) => {
       const { page } = req.params;
       models.jobposts.getAllPage(page, (err, jobposts) => {
+        console.log(jobposts);
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),

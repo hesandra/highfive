@@ -5,7 +5,7 @@ export default class UserAuthService {
   constructor(clientId, domain, type) {
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://highfive-dev.us-west-2.elasticbeanstalk.com/',
+        redirectUrl: 'http://localhost:8080/',
         redirect: true,
         responseType: 'token'
       },
