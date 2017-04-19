@@ -60,7 +60,7 @@ class SaveModal extends React.Component {
           onHide={()=>{this.props.closeApplModal()}}
           //container={this}
           aria-labelledby="contained-modal-title"
-        >
+          >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title"><h3>Applicant Interview Review</h3></Modal.Title>
           </Modal.Header>

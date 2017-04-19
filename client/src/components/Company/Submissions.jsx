@@ -8,6 +8,11 @@ import { showVideos, updateSubmission } from '../../actions/company';
 import ApplicationModal from './ApplicationModal';
 import SaveModal from './SaveModal';
 
+const style = {
+  borderRadius: 0,
+  opacity: 0.7,
+  padding: '2em',
+}
 
 class PositionsLevel extends React.Component {
   constructor(props) {
@@ -30,6 +35,7 @@ class PositionsLevel extends React.Component {
       //location: value,
     });
   }
+
 
   renderSubmissions() {
     console.log('PROPS IN SUBMISSIONS', this.props.companyProfile.submissions);
@@ -74,8 +80,8 @@ class PositionsLevel extends React.Component {
                       <div>current status: {item.status}</div>}
                     <div className="spaceQ"></div>
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
-                      <div>notes:{this.props.companyProfile.status.notes}</div> :
-                      <div>notes: {item.notes}</div>}
+                      <div>feedback:{this.props.companyProfile.status.notes}</div> :
+                      <div>feedback: {item.notes}</div>}
                     <div className="spaceQ"></div>
                     <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
@@ -93,7 +99,12 @@ class PositionsLevel extends React.Component {
                         <option >failed</option>
                       </FormControl>
                     </FormGroup>
-                    <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id })}>Save</Button>
+                    <Popup trigger={
+                    <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id })}>Save</Button>}
+                    content='Clicking here will inform the applicant right away'
+                    style={style}
+                    inverted
+                    />
                   </Card.Content>
                 </Card>
               </Card.Group>

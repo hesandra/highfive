@@ -45,10 +45,10 @@ class PostModal extends React.Component {
           onHide={()=> this.props.hidePostModal()}>
           <Modal.Header closeButton>
             {this.props.companyProfile.companyProfile.level === 0 ?
-              <Modal.Title>Junior Software Engineer</Modal.Title> :
+              <Modal.Title>Create open position for Junior Software Engineer</Modal.Title> :
               this.props.companyProfile.companyProfile.level === 1 ?
-                <Modal.Title>Mid-level Software Engineer</Modal.Title> :
-                <Modal.Title>Senior Software Engineer</Modal.Title>}
+                <Modal.Title>Create open position for Mid-level Software Engineer</Modal.Title> :
+                <Modal.Title>Create open position for Senior Software Engineer</Modal.Title>}
           </Modal.Header>
           <Modal.Body>
             <Form horizontal onSubmit={this.handleSubmit}>
