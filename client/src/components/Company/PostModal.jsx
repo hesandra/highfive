@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 import { closePostModal } from '../../actions/company';
 
 class PostModal extends React.Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
     };
@@ -17,7 +17,7 @@ class PostModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-   componentWillMount() {
+  componentWillMount() {
     this.props.getQuestions();
   }
 
@@ -35,21 +35,21 @@ class PostModal extends React.Component {
     this.props.submitDescription(this.state);
     event.preventDefault();
   }
-  render(){
+  render() {
     console.log('this.props in PostModal', this.props)
     return (
       <div >
-            <Modal
-              show={this.props.companyProfile.showJobModal}>
-              {/*onHide={this.props.closePostModal()}*/}
-              <Modal.Header closeButton>
-               {this.props.companyProfile.level === 0?
-         <Modal.Title>Junior Software Engineer</Modal.Title>:
-          this.props.companyProfile.level === 1?
-          <Modal.Title>Mid-level Software Engineer</Modal.Title>:
-          <Modal.Title>Senior Software Engineer</Modal.Title>}
-              </Modal.Header>
-              <Modal.Body>
+        <Modal
+          show={this.props.companyProfile.companyProfile.showJobModal}>
+          {/*onHide={this.props.closePostModal()}*/}
+          <Modal.Header closeButton>
+            {this.props.companyProfile.companyProfile.level === 0 ?
+              <Modal.Title>Junior Software Engineer</Modal.Title> :
+              this.props.companyProfile.companyProfile.level === 1 ?
+                <Modal.Title>Mid-level Software Engineer</Modal.Title> :
+                <Modal.Title>Senior Software Engineer</Modal.Title>}
+          </Modal.Header>
+          <Modal.Body>
             <Form horizontal onSubmit={this.handleSubmit}>
               <br />
               <FormGroup>
@@ -61,18 +61,18 @@ class PostModal extends React.Component {
                 </Col>
               </FormGroup>
             </Form>
-            </Modal.Body>
-            <Modal.Footer>
-            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyReload[0].id, level: this.props.companyProfile.level, description: this.props.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyReload[0].industry_id, location_id: this.props.companyProfile.companyReload[0].location_id })}>New job position</Button>
-            </Modal.Footer>
-            </Modal>
-            </div>
-  )
-}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyAuth.company_backend_profile[0].id, level: this.props.companyProfile.companyProfile.level, description: this.props.companyProfile.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyAuth.company_backend_profile[0].industry_id, location_id: this.props.companyProfile.companyAuth.company_backend_profile[0].location_id })}>New job position</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    )
+  }
 }
 function mapStateToProps(state) {
   return {
-    companyProfile: state.companyProfile
+    companyProfile: state
   };
 }
 

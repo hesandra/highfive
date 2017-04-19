@@ -112,7 +112,7 @@ class CompanyProfile extends React.Component {
   }
 
   renderForm() {
-    console.log('this.props in companyprofile', this.props)
+    //console.log('this.props in companyprofile', this.props)
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
         <br />
@@ -219,7 +219,7 @@ class CompanyProfile extends React.Component {
     )
   }
   render() {
-    console.log('props in companyprofile render', this.props)
+    //console.log('props in companyprofile render', this.props)
     if (this.props.profile.companyAuth.industries) {
       return (
         <div>

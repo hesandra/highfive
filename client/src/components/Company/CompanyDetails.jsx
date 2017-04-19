@@ -19,7 +19,7 @@ class CompanyDetails extends React.Component {
 }
 
   renderProfile() {
-    console.log(this.props, 'PROPS IN COMPANY DETAILS')
+    //console.log(this.props, 'PROPS IN COMPANY DETAILS')
     if (this.props.companyAuth.companyProfile.profileEdited) {
       return (
         <div><div className="spaceQ"></div>
@@ -57,7 +57,7 @@ class CompanyDetails extends React.Component {
         </div>)}*/
     
     else {
-      console.log('companyAuth', this.props.companyAuth.companyAuth)
+      //console.log('companyAuth', this.props.companyAuth.companyAuth)
       return (
         <div><div className="spaceQ"></div>
           {this.props.companyAuth.companyProfile.picture ?
