@@ -1,6 +1,7 @@
 import React from 'react';
 import Signup from './Signup';
 
+console.log(process.env);
 const Home = (props) => {
   const {
     isUserAuthenticated,

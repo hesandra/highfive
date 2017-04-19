@@ -42,8 +42,11 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        'NODE_ENV': JSON.stringify('production'),
       }
+    }),
+    new webpack.EnvironmentPlugin({
+      'BASE_URL': JSON.stringify('http:localhost')
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
