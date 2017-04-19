@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const DotenvPlugin = require('webpack-dotenv-plugin');
 
 const SRC_DIR = path.resolve(__dirname, 'client/src');
 const PUBLIC_DIR = path.resolve(__dirname, 'client/public');
@@ -52,10 +51,6 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new CopyWebpackPlugin([{ from: PUBLIC_DIR }]),
-    new DotenvPlugin({
-      sample: './.env.example',
-      path: './.env',
-    }),
   ],
   stats: { colors: true },
   resolve: {
