@@ -3,7 +3,7 @@ import axios from 'axios';
 import UserAuthService from '../utils/userAuthService';
 import { USERS_AUTH0_CLIENT_ID } from '../../../config';
 
-const authService = new UserAuthService(USERS_AUTH0_CLIENT_ID, 'teamhighfive.auth0.com', 'Applicant Sign-In');
+const authService = new UserAuthService(process.env.USERS_AUTH0_ID, 'teamhighfive.auth0.com', 'Applicant Sign-In');
 export function checkUserLogin() {
   return (dispatch) => {
     authService.lock.on('authenticated', (authResult) => {
