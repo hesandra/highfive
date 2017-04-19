@@ -2,4 +2,5 @@
 **/*.min.js
 **/dist
 webpack.config.js
+webpack.production.config.js
 .babelrc
