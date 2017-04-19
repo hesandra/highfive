@@ -365,7 +365,9 @@ module.exports = {
 
   dashboard: {
     getAllStats: (req, res, next) => {
-      models.dashboard.getAllStats((err, stats) => {
+      const { id } = req.params;
+
+      models.dashboard.getAllStats(id, (err, stats) => {
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),

@@ -415,12 +415,12 @@ module.exports = {
   },
 
   dashboard: {
-    getAllStats: async (cb) => {
-      // jobs, submissions, users, questions, industries, locations
+    getAllStats: async (companyId, cb) => {
       const stats = {};
 
       const jobpostCount = await Jobpost
         .query()
+        .where('company_id', companyId)
         .count('id')
         .catch((e) => { return cb(e, null); });
       stats.jobpost = jobpostCount;
@@ -436,24 +436,6 @@ module.exports = {
         .count('id')
         .catch((e) => { return cb(e, null); });
       stats.user = userCount;
-
-      const questionCount = await Question
-        .query()
-        .count('id')
-        .catch((e) => { return cb(e, null); });
-      stats.question = questionCount;
-
-      const industryCount = await Industry
-        .query()
-        .count('id')
-        .catch((e) => { return cb(e, null); });
-      stats.industry = industryCount;
-
-      const locationCount = await Location
-        .query()
-        .count('id')
-        .catch((e) => { return cb(e, null); });
-      stats.location = locationCount;
 
       cb(null, stats);
     }
