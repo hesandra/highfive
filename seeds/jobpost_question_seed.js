@@ -126,9 +126,9 @@ exports.seed = function (knex, Promise) {
             { id: 91, jobpost_id: 30, question_id: 20 },
             { id: 92, jobpost_id: 30, question_id: 30 },
 
-            { id: 93, jobpost_id: 31, question_id: 21 },
-            { id: 94, jobpost_id: 31, question_id: 2 },
-            { id: 95, jobpost_id: 31, question_id: 12 },
+            { id: 93, jobpost_id: 31, question_id: 11 },
+            { id: 94, jobpost_id: 31, question_id: 22 },
+            { id: 95, jobpost_id: 31, question_id: 6 },
 
             { id: 96, jobpost_id: 32, question_id: 22 },
             { id: 97, jobpost_id: 32, question_id: 3 },

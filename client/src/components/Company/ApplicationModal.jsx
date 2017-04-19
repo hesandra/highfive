@@ -8,7 +8,7 @@ import { closeModal } from '../../actions/company';
 class ApplicationModal extends React.Component {
 
   renderVideos() {
-    //console.log('props in ApplicatoinModal', this.props);
+    console.log('props in ApplicatoinModal', this.props);
     return (
       <div>
         {this.props.companyProfile.submissions.map((item, idx) => {
@@ -27,11 +27,11 @@ class ApplicationModal extends React.Component {
                       return (
                         <div>
                         {item.jobpost.question.filter((question) => question.id === video.question_id).map(question =>
-                        <h4>{question.question}</h4>)}
+                        <h4>Question:{question.question}</h4>)}
                           <video width="600" controls
                             src={video.href} type="video/webm">
                           </video>
-                          <h3>{video.answer}</h3>
+                          <h4>{video.answer}</h4>
                           <div className="space"></div>
                         </div>
                       )
