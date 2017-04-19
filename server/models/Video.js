@@ -18,7 +18,7 @@ class Video extends Model {
       properties: {
         id:                { type: 'integer' },
         href:              { type: 'string' },
-        answer:            { type: 'string' },
+        answer:            { type: 'text' },
         submission_id:     { type: 'integer' },
         question_id:       { type: 'integer' }
       }

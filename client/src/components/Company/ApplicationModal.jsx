@@ -27,11 +27,13 @@ class ApplicationModal extends React.Component {
                       return (
                         <div>
                         {item.jobpost.question.filter((question) => question.id === video.question_id).map(question =>
-                        <h4>Question:{' '}{question.question}</h4>)}
+                        <h4>Question:{'     '}{question.question}</h4>)}
                           <video width="600" controls
                             src={video.href} type="video/webm">
                           </video>
-                          <h4>{video.answer}</h4>
+                          {video.answer? 
+                         <h4>Answer:{'    '} <pre>{video.answer}</pre></h4>:
+                          <div></div>}
                           <div className="space"></div>
                         </div>
                       )

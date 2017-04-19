@@ -43,7 +43,7 @@ exports.seed = function (knex, Promise) {
             email: 'r@r.com',
             auth0_id: '',
             location_id: 5,
-            profile_img: 'https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/11952007_10155940478875263_397327108705012757_n.jpg?oh=d6ffa584528ae06d0d070468c44d0724&oe=5997895D',
+            profile_img: 'https://scontent-dft4-2.xx.fbcdn.net/v/t31.0-8/12307554_10156232129465263_3626907393769208400_o.jpg?oh=35f58eb2fb2c8ec8722f80ba3ce4a161&oe=597F5E66',
             github_url: 'https://github.com/reginavlee',
             linkedin_url: 'https://www.linkedin.com/in/reginavlee/'
           },

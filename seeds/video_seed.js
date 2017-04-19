@@ -74,7 +74,8 @@ exports.seed = function (knex, Promise) {
           {
             id: 10,
             href: 'https://s3-us-west-1.amazonaws.com/highfivehrla13/Sandra+Jayasingha2_24418.webm',
-            answer: 'static bool IsPrime(int number) {for (int i = 2; i < number; i++) {if (number % i == 0 && i != number) return false;} return true;}',
+            answer: 
+            'function isPrime(number) { \n if (typeof number !== "number" || !Number.isInteger(number)) {\n return false;\n}\n if (number < 2) {\n return false;\n}\n if (number ===2) {\n return true;\n } else if (number % 2 === 0) { \n return false;\n} \n for (var i = 3; i*i <= number; i += 2) { \n if (number % i === 0) { \n return false;\n }\n}\n return true;\n}',
             submission_id: 8,
             question_id: 11
           },
