@@ -155,6 +155,16 @@ exports.seed = function (knex, Promise) {
             email: 'info@info.com',
             address: '',
             auth0_id: ''
+          },
+          {
+            id: 16,
+            industry_id: 5,
+            location_id: 5,
+            name: 'airbnb',
+            profile_img: 'https://static.dezeen.com/uploads/2016/05/airbnb-offices_sao-paulo_mm18_dezeen_1568_7.jpg',
+            email: 'airbnb@gmail.com',
+            address: '',
+            auth0_id: 'auth0|58f7a50abef25408f66aa180'
           }
         ]);
       });
