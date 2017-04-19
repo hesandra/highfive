@@ -10,26 +10,18 @@ module.exports = {
       user: process.env.MYSQL_MASTER_USER,
       password: process.env.MYSQL_MASTER_PASS
     },
-    pool: {
-      max: 1,
-      min: 1
-    }
   },
   production: {
     client: 'mysql',
     connection: {
-      host: process.env.RDS_HOSTNAME,
-      database: process.env.RDS_DB_NAME,
-      user: process.env.RDS_USERNAME,
-      password: process.env.RDS_PASSWORD,
+      host: "aaqg7rdv187q13.cw5klf3vrg1i.us-west-2.rds.amazonaws.com",
+      database: "ebdb",
+      user: "highfive",
+      password: "highfive",
       port: process.env.RDS_PORT
     },
     seeds: {
       directory: `${__dirname}/seeds`
-    },
-    pool: {
-      min: 5,
-      max: 20
     },
     migrations: {
       tableName: 'knex_migrations'

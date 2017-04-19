@@ -95,7 +95,7 @@ const deleteIndustryError = (error) => {
 export const deleteUserIndustry = (userId, industryId) => {
   return (dispatch) => {
     dispatch(deleteIndustryRequest());
-    axios.delete(`api/users/${userId}/industry/${industryId}`)
+    axios.delete(`/api/users/${userId}/industry/${industryId}`)
       .then((response) => {
         if (response.status === 201) {
           dispatch(deleteIndustrySuccess(response.data.user));
