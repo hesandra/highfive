@@ -13,6 +13,8 @@ const router = require('./routes');
 
 const port = process.env.PORT || 3000;
 
+console.log(process.env.BASE_URL);
+
 dotenv.load();
 
 const knex = Knex(knexConfig.development);
@@ -20,18 +22,16 @@ Model.knex(knex);
 
 const app = express()
   .use(cors())
-  .use(express.static(__dirname + '/client/build/'))
+  .use(express.static(`${__dirname}/client/build/`))
   .use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: true }))
   .set('json spaces', 2);
 app.options('*', cors());
 
-app.get('*', function (request, response) {
+app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'client/build', 'index.html'))
 });
-
-
 
 // pass all request to router
 app.use('/', router);
