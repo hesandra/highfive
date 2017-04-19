@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitDescription, saveQuestion, createJobPost, getQuestions } from '../../actions/company';
 import InterviewForm from './InterviewForm';
+import PositionsLevel from './PositionsLevel';
 import ReactDOM from 'react-dom';
-import { closePostModal } from '../../actions/company';
+import { closePostModal, createInterview } from '../../actions/company';
 
 class PostModal extends React.Component {
   constructor(props) {
@@ -40,8 +41,8 @@ class PostModal extends React.Component {
     return (
       <div >
         <Modal
-          show={this.props.companyProfile.companyProfile.showJobModal}>
-          {/*onHide={this.props.closePostModal()}*/}
+          show={this.props.companyProfile.companyProfile.showJobModal}
+          onHide={()=> {this.props.closePostModal(); document.getElementById('tabs-with-dropdown-tab-3').click()}}>
           <Modal.Header closeButton>
             {this.props.companyProfile.companyProfile.level === 0 ?
               <Modal.Title>Junior Software Engineer</Modal.Title> :
@@ -57,13 +58,14 @@ class PostModal extends React.Component {
                   Description
                 </Col>
                 <Col sm={5}>
-                  <FormControl name="name" type="text" value={this.state.description} onChange={this.handleChange} onSubmit={() => this.props.submitDescription(this.state)} />
+                  <FormControl name="name" type="text" value={this.state.description} onChange={this.handleChange} 
+                    onSubmit={() => this.props.submitDescription(this.state)}/>
                 </Col>
               </FormGroup>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyAuth.company_backend_profile[0].id, level: this.props.companyProfile.companyProfile.level, description: this.props.companyProfile.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyAuth.company_backend_profile[0].industry_id, location_id: this.props.companyProfile.companyAuth.company_backend_profile[0].location_id })}>New job position</Button>
+            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyAuth.company_backend_profile[0].id, level: this.props.companyProfile.companyProfile.level, description: this.props.companyProfile.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyAuth.company_backend_profile[0].industry_id, location_id: this.props.companyProfile.companyAuth.company_backend_profile[0].location_id }) }>New job position</Button>
           </Modal.Footer>
         </Modal>
       </div>
@@ -77,7 +79,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitDescription, saveQuestion, createJobPost, closePostModal, getQuestions }, dispatch);
+  return bindActionCreators({ submitDescription, saveQuestion, createJobPost, closePostModal, getQuestions, createInterview }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
+
