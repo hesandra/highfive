@@ -73,24 +73,24 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 10,
-            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
-            answer: 'video answers2',
+            href: 'https://s3-us-west-1.amazonaws.com/highfivehrla13/Sandra+Jayasingha2_24418.webm',
+            answer: 'static bool IsPrime(int number) {for (int i = 2; i < number; i++) {if (number % i == 0 && i != number) return false;} return true;}',
             submission_id: 8,
-            question_id: 1
+            question_id: 11
           },
           {
             id: 11,
-            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
+            href: 'https://s3-us-west-1.amazonaws.com/highfivehrla13/Sandra+Jayasingha2_63040.webm',
             answer: '',
             submission_id: 8,
-            question_id: 2
+            question_id: 22
           },
           {
             id: 12,
-            href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
-            answer: 'video answers2',
+            href: 'https://s3-us-west-1.amazonaws.com/highfivehrla13/Sandra+Jayasingha1_83672.webm',
+            answer: '',
             submission_id: 8,
-            question_id: 3
+            question_id: 6
           },
            {
             id: 13,
