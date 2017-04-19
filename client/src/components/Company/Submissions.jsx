@@ -126,8 +126,8 @@ class PositionsLevel extends React.Component {
           </div>
         </div> )
       }
-    else {
-      return (<div>{}</div>)
+    else if (this.props.companyProfile.submissions === undefined){
+      return (<h4>Please go through jobposts to look at submissions</h4>)
     }
   }
 }

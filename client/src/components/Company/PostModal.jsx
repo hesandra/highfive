@@ -7,6 +7,13 @@ import InterviewForm from './InterviewForm';
 import PositionsLevel from './PositionsLevel';
 import ReactDOM from 'react-dom';
 import { closePostModal, createInterview, hidePostModal } from '../../actions/company';
+import { Popup } from 'semantic-ui-react';
+
+const style = {
+  borderRadius: 0,
+  opacity: 0.7,
+  padding: '2em',
+}
 
 class PostModal extends React.Component {
   constructor(props) {
@@ -34,6 +41,19 @@ class PostModal extends React.Component {
 
   handleSubmit(event) {
     this.props.submitDescription(this.state);
+    // console.log('companyProfile++++++', this.props.companyProfile.companyProfile)
+    setTimeout(() => {
+      console.log('hai setTimeouttttttttttttttt', this.props.companyProfile.companyProfile.jobDescription)
+      if (this.props.companyProfile.companyProfile.jobDescription) {
+        this.props.createJobPost({ 
+          company_id: this.props.companyProfile.companyAuth.company_backend_profile[0].id,
+          level: this.props.companyProfile.companyProfile.level,
+          description: this.props.companyProfile.companyProfile.jobDescription.description,
+          industry_id: this.props.companyProfile.companyAuth.company_backend_profile[0].industry_id,
+          location_id: this.props.companyProfile.companyAuth.company_backend_profile[0].location_id
+        })
+      }
+    }, 0)
     event.preventDefault();
   }
   render() {
@@ -51,7 +71,7 @@ class PostModal extends React.Component {
                 <Modal.Title>Create open position for Senior Software Engineer</Modal.Title>}
           </Modal.Header>
           <Modal.Body>
-            <Form horizontal onSubmit={this.handleSubmit}>
+            <Form horizontal >
               <br />
               <FormGroup>
                 <Col componentClass={ControlLabel} sm={2}>
@@ -59,13 +79,16 @@ class PostModal extends React.Component {
                 </Col>
                 <Col sm={5}>
                   <FormControl name="name" type="text" value={this.state.description} onChange={this.handleChange} 
-                    onSubmit={() => this.props.submitDescription(this.state)}/>
+                   />
                 </Col>
               </FormGroup>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyAuth.company_backend_profile[0].id, level: this.props.companyProfile.companyProfile.level, description: this.props.companyProfile.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyAuth.company_backend_profile[0].industry_id, location_id: this.props.companyProfile.companyAuth.company_backend_profile[0].location_id }) }>New job position</Button>
+         <Popup trigger={
+            <Button onClick={this.handleSubmit}>New job position</Button>}
+            content="This will bring you to the interview section for this jobpost"
+            style={style} />
           </Modal.Footer>
         </Modal>
       </div>

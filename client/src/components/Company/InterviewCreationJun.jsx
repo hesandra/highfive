@@ -95,7 +95,7 @@ class InterviewFormJun extends React.Component {
               </div>
             </div>
             <div className="spaceQ"></div>
-            <h4>Select 1 System Behavioral Question</h4>
+            <h4>Select 1 Behavioral Question</h4>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
