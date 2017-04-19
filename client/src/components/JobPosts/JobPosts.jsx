@@ -53,6 +53,7 @@ class JobPosts extends Component {
       return obj.name;
     });
     console.log(filters);
+    console.log(jobPosts);
     return (
       <Grid>
         <Row>
@@ -63,14 +64,13 @@ class JobPosts extends Component {
                 <Icon link name="briefcase" circular />
               </Header>
               <div className="text-center">
-                { filters.length ?
-                  '' :
+                { jobPosts.total ?
                   <Statistic>
                     <Statistic.Value>{`${jobPosts.results.length * this.props.params.page} out of ${jobPosts.total}`}</Statistic.Value>
                     <Statistic.Label>Job Postings </Statistic.Label>
-                    page: {this.props.params.page}
+                      page: {this.props.params.page}
                   </Statistic>
-                }
+                  : '' }
               </div>
               <Icon size="large" onClick={this.decrementPage} name="arrow left" />
               <Icon size="large" onClick={this.incrementPage} name="arrow right" />
