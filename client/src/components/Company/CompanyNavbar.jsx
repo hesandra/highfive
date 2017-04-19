@@ -15,14 +15,14 @@ import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
 const CompanyNavbar = (props) => {
   return (
     <div>
-      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
+      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first" className="company-nav">
         <Row className="clearfix">
           <Col sm={12}>
             <Nav bsStyle="tabs">
               <NavItem eventKey="first"><i className="fa fa-pie-chart" aria-hidden="true" />Dashboard</NavItem>
               <NavItem eventKey="second"><i className="fa fa-folder-open" aria-hidden="true" />Submissions</NavItem>
               <span className="glyphicon glyphicon-pushpin" />
-              <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab" className="tester">
+              <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab" className="jobpost-btn">
                 <MenuItem eventKey="3.1" onClick={() => props.junPos()}>Junior</MenuItem>
                 <MenuItem eventKey="3.2" onClick={() => props.midPos()}>Mid</MenuItem>
                 <MenuItem eventKey="3.3" onClick={() => props.senPos()}>Senior</MenuItem>

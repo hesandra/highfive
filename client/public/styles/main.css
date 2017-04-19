@@ -1,11 +1,11 @@
-.tester.dropdown {
+.jobpost-btn.dropdown {
   width: 120px; }
 
-#tabs-with-dropdown-tab-3 {
+.company-nav #tabs-with-dropdown-tab-3 {
   padding-left: 30px; }
 
-.presentation .fa {
-  margin-right: 3px; }
+.fa {
+  margin-right: 5px; }
 
 a:hover {
   color: #333; }
