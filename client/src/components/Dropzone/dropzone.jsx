@@ -132,8 +132,8 @@ class myDropzone extends Component {
 
   render() {
     return (
-      <div className="dropzone" id="tester">
-        <Dropzone onDrop={this.onDrop} config={componentConfig}>
+      <div className="dropzone">
+        <Dropzone className="dropzone-area" onDrop={this.onDrop} config={componentConfig}>
           <form action="/api/upload" className="dropzone dz-progress">
             <span className="dz-upload" data-dz-uploadprogress id="dropzone"></span>
             <div className="dz-default dz-message text-center">

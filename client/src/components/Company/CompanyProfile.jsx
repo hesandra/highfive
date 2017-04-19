@@ -134,7 +134,6 @@ class CompanyProfile extends React.Component {
               </FormGroup>
           </Col>
         </FormGroup>
-        <br />
         <FormGroup>
           <Col componentClass={ControlLabel}>Location</Col>
           <Col>
@@ -158,7 +157,7 @@ class CompanyProfile extends React.Component {
           <Col componentClass={ControlLabel}>Address</Col>
           <Col><FormControl name="address" type="text" value={this.state.address} onChange={this.handleChange} /></Col>
         </FormGroup>
-        <FormGroup><Col><Button type="submit" value="Submit">Submit</Button></Col></FormGroup>
+        <FormGroup><Col><Button type="submit" value="Submit" className="btn btn-primary">Submit</Button></Col></FormGroup>
       </Form>
     )
   }
