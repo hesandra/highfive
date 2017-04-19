@@ -14,7 +14,7 @@ const router = require('./routes');
 
 const port = process.env.PORT || 3000;
 
-console.log(process.env.NODE_ENV);
+console.log('look for db info', process.env);
 
 dotenv.load();
 
