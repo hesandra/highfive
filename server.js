@@ -27,9 +27,9 @@ const app = express()
   .set('json spaces', 2);
 app.options('*', cors());
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(`${__dirname}`, 'index.html'));
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(`${__dirname}`, 'index.html'));
+});
 
 // pass all request to router
 app.use('/', router);
