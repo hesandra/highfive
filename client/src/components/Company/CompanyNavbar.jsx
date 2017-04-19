@@ -15,28 +15,19 @@ import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
 const CompanyNavbar = (props) => {
   return (
     <div>
-      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first">
+      <Tab.Container id="tabs-with-dropdown" defaultActiveKey="first" className="company-nav">
         <Row className="clearfix">
           <Col sm={12}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="first">Dashboard
-              <br />
-              <i className="fa fa-pie-chart" aria-hidden="true"></i>
-              </NavItem>
-              <NavItem eventKey="second">Submissions
-              <br />
-              <i className="fa fa-folder-open" aria-hidden="true" />
-              </NavItem>
-              <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab">
+              <NavItem eventKey="first"><i className="fa fa-pie-chart" aria-hidden="true" />Dashboard</NavItem>
+              <NavItem eventKey="second"><i className="fa fa-folder-open" aria-hidden="true" />Submissions</NavItem>
+              <span className="glyphicon glyphicon-pushpin" />
+              <NavDropdown eventKey="3" title="Jobposts" id="nav-dropdown-within-tab" className="jobpost-btn">
                 <MenuItem eventKey="3.1" onClick={() => props.junPos()}>Junior</MenuItem>
                 <MenuItem eventKey="3.2" onClick={() => props.midPos()}>Mid</MenuItem>
                 <MenuItem eventKey="3.3" onClick={() => props.senPos()}>Senior</MenuItem>
               </NavDropdown>
-              <NavItem eventKey="fourth">
-                Edit Profile
-                <br />
-                <i className="fa fa-user-circle-o" aria-hidden="true" />
-               </NavItem>
+              <NavItem eventKey="fourth"><i className="fa fa-user-circle-o" aria-hidden="true" />Edit Profile</NavItem>
             </Nav>
           </Col>
           <Col sm={12}>

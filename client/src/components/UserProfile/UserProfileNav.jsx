@@ -37,29 +37,10 @@ const UserProfileNav = (props) => {
         <Row className="clearfix">
           <Col sm={8}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="1">
-                Notifications
-                <br />
-                <i className="fa fa-envelope-open-o" aria-hidden="true"/>
-              </NavItem>
-              <NavItem
-                eventKey="2"
-                onClick={() => { onSubmissionsClick(id); }}
-              >
-                Submissions
-                <br />
-                <i className="fa fa-folder-open" aria-hidden="true" />
-              </NavItem>
-              <NavItem onClick={onJobPostsClick} eventKey="3">
-                JobPosts
-                <br />
-                <i className="fa fa-laptop" aria-hidden="true" />
-              </NavItem>
-              <NavItem eventKey="4">
-                Edit Profile
-                <br />
-                <i className="fa fa-user" aria-hidden="true" />
-              </NavItem>
+              <NavItem eventKey="1"><i className="fa fa-envelope-open-o" aria-hidden="true" />Notifications</NavItem>
+              <NavItem eventKey="2" onClick={() => { onSubmissionsClick(id); }}><i className="fa fa-folder-open" aria-hidden="true" />Submissions</NavItem>
+              <NavItem onClick={onJobPostsClick} eventKey="3"><i className="fa fa-laptop" aria-hidden="true" />JobPosts</NavItem>
+              <NavItem eventKey="4"><i className="fa fa-user" aria-hidden="true" />Edit Profile</NavItem>
             </Nav>
           </Col>
           <Col sm={8}>

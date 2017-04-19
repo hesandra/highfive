@@ -1,3 +1,27 @@
+.profile .profile-section {
+  font-size: 20px; }
+
+.profile .profile-info {
+  margin: 10px; }
+
+.jobpost-btn.dropdown {
+  width: 120px; }
+
+.company-nav #tabs-with-dropdown-tab-3 {
+  padding-left: 30px; }
+
+.fa {
+  margin-right: 5px; }
+
+a:hover {
+  color: #333; }
+
+.glyphicon.glyphicon-pushpin {
+  position: absolute;
+  margin-top: 14px;
+  z-index: 1;
+  margin-left: 13px; }
+
 .background-img {
   background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
@@ -94,7 +118,6 @@ a {
   height: 300px;
   width: 300px; }
 
-
 .react-selectize.root-node {
   width: 100%; }
 
@@ -172,4 +195,5 @@ canvas:nth-of-type(2) {
 
 .dropzone {
   padding-left: 250px; }
+
 /*# sourceMappingURL=main.css.map */

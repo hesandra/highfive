@@ -145,9 +145,8 @@ class UserProfile extends Component {
                 <Image className="user-profile-img text-center" src={profileImage} circle />
                 <hr />
               </div>
-              <div className="text-center">
-                <i className="fa fa-globe" aria-hidden="true" />
-                <br />
+              <div className="text-center profile-section">
+                <div className="profile-info fa fa-globe" />
                 <small className="text-center"> {location} </small>
                 { industries ?
                   <IndustryList
