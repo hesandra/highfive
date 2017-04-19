@@ -9,7 +9,7 @@ export const COMPANY_LOGIN_ERROR = 'COMPANY_LOGIN_ERROR';
 export const COMPANY_LOGOUT_SUCCESS = 'COMPANY_LOGOUT_SUCCESS';
 export const COMPANY_TOKEN_RETRIEVED = 'COMPANY_TOKEN_RETRIEVED';
 
-const authService = new CompanyAuthService(COMPANIES_AUTH0_CLIENT_ID, 'teamhighfive.auth0.com', 'Companies Sign-In');
+const authService = new CompanyAuthService(process.env.COMPANIES_AUTH0_ID, 'teamhighfive.auth0.com', 'Companies Sign-In');
 // Listen to authenticated event from AuthService and get the profile of the company
 // Done on every page startup
 export function checkCompanyLogin() {
