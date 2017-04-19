@@ -14,6 +14,9 @@ const router = require('./routes');
 
 const port = process.env.PORT || 3000;
 dotenv.load();
+console.log('db config', process.env.RDS_HOSTNAME, process.env.RDS_DB_NAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, process.env.RDS_PORT)
+
+
 const knex = Knex(knexConfig.production);
 Model.knex(knex);
 
