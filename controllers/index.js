@@ -21,7 +21,6 @@ module.exports = {
     post: (req, res, next) => {
       const { name, email, auth0_id, profile_img, github_url } = req.body;
       const user = req.body;
-
       models.users.post(user, (err, fetchedUser) => {
         const payload = {
           success: err ? true : false,
