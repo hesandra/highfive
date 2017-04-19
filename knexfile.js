@@ -24,6 +24,9 @@ module.exports = {
       password: process.env.RDS_PASSWORD,
       port: process.env.RDS_PORT
     },
+    seeds: {
+      directory: `${__dirname}/seeds`
+    },
     pool: {
       min: 5,
       max: 20
