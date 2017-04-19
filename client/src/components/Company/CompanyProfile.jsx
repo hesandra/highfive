@@ -107,7 +107,7 @@ class CompanyProfile extends React.Component {
   handleSubmit(event) {
     const { addNotification } = this.props;
     event.preventDefault();
-    this.props.submitProfile({ updatedProfile: this.state, companyId: this.props.profile.companyAuth.company_backend_profile.id });
+    this.props.submitProfile({ updatedProfile: this.state, companyId: this.props.profile.companyAuth.company_backend_profile[0].id });
     this.addNotification();
   }
 
@@ -163,7 +163,7 @@ class CompanyProfile extends React.Component {
               <Col sm={8}>
                 <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
                   <option value="select">select</option>
-                  {this.props.profile.companyProfile.industries.map((item) =>
+                  {this.props.profile.companyAuth.industries.map((item) =>
                     <option value={item.id}>{item.name}</option>
                   )}
                 </FormControl>
@@ -181,7 +181,7 @@ class CompanyProfile extends React.Component {
               <Col sm={8}>
                 <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
                   <option value="select">select</option>
-                  {this.props.profile.companyProfile.locations.map((item) =>
+                  {this.props.profile.companyAuth.locations.map((item) =>
                     <option value={item.id}>{item.city}</option>
                   )}
                 </FormControl>
@@ -219,7 +219,8 @@ class CompanyProfile extends React.Component {
     )
   }
   render() {
-    if (this.props.profile.companyProfile.industries) {
+    console.log('props in companyprofile render', this.props)
+    if (this.props.profile.companyAuth.industries) {
       return (
         <div>
           {this.renderForm()}

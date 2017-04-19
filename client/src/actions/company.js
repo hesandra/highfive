@@ -9,7 +9,8 @@ export function updateCompany(profile) {
 }
 
 export function submitProfile(profile){
-  //console.log('submitProfile')
+  console.log('submitProfile')
+  console.log(profile)
   return (dispatch) => {
     const id = profile.companyId;
     //console.log('profile in sumbitProfile', profile)
@@ -273,6 +274,7 @@ export function getAllIndustries(industries){
 }
 
 export function getIndustries(){
+  console.log('in get Industries')
   return(dispatch) => {
   axios.get('http://localhost:3000/api/industries')
   .then((result) =>{

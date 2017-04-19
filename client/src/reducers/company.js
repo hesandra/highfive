@@ -19,11 +19,11 @@ export default function (state = initialState, action) {
         companyProfile: action.payload,
         profileEdited: true,
     });
-    case 'PROFILE_RELOAD':
+/*    case 'PROFILE_RELOAD':
       return Object.assign({}, state, {
         companyReload: action.payload,
         profileReload: true,
-    });
+    });*/
     case 'GET_POSITIONS':
       return Object.assign({}, state, {
         jobs: action.payload,
@@ -103,14 +103,14 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         createdJob: action.payload
     });
-    case 'GET_INDUSTRIES':
+/*    case 'GET_INDUSTRIES':
       return Object.assign({}, state, {
         industries: action.payload
     });
     case 'GET_LOCATIONS':
       return Object.assign({}, state, {
         locations: action.payload
-    });
+    });*/
     case 'UPDATE_PICTURE':
       return Object.assign({}, state, {
         picture: action.payload

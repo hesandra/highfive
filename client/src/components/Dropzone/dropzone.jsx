@@ -99,7 +99,7 @@ class myDropzone extends Component {
 
     upload.end((err, response) => {
       if (err) {
-        //console.error(err)
+        console.error(err)
       } else {
         //console.log(response.body.secure_url)
         this.props.updatePicture({ profile_img: response.body.secure_url, companyId: this.props.companyProfile.companyReload[0].id })
