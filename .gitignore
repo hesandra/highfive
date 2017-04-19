@@ -1,6 +1,5 @@
 node_modules
 npm-debug.log
-client/build/*
 .env
 *.webm
 .sass-cache
