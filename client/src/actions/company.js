@@ -28,6 +28,10 @@ export function submitProfile(profile){
         //console.log('result in company actions', company);
         dispatch(updateCompany(JSON.parse(company.config.data)));
       })
+      .then(() => {
+        console.log('before dispatch get company');
+        dispatch(getCompany(id));
+      })
       .catch((err) => {
         console.error(err);
       });
