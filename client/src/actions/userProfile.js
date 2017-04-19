@@ -25,7 +25,7 @@ export const updateProfile = (userId, data) => {
   return (dispatch) => {
     dispatch(requestProfileUpdate());
 
-    axios.put(`http://localhost:3000/api/users/${userId}`, data)
+    axios.put(`/api/users/${userId}`, data)
       .then((response) => {
         if (response.status === 201) {
           dispatch(requestProfileUpdateSuccess(response.data.user));

@@ -1,14 +1,11 @@
 import Auth0Lock from 'auth0-lock';
 import jwtDecode from 'jwt-decode';
 
-
-// import LogoImg from 'images/test-icon.png';
 export default class CompanyAuthService {
   constructor(companyId, domain, type) {
-    // Configure Auth0 lock
     this.lock = new Auth0Lock(companyId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:8080/',
+        redirectUrl: 'http://localhost:3000/',
         redirect: true,
         responseType: 'token'
       },
@@ -19,15 +16,9 @@ export default class CompanyAuthService {
         title: type
       }
     });
-    // binds login functions to keep this context
     this.login = this.login.bind(this);
   }
-
-  // ======================================================
-  // Public methods
-  // ======================================================
   login() {
-    // Call the show method to display the widget.
     this.lock.show();
   }
 
