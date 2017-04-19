@@ -90,8 +90,8 @@ class myDropzone extends Component {
 
   onDrop(acceptedFiles, rejectedFiles) {
 
-    //console.log('Accepted files: ', acceptedFiles);
-    //console.log('Rejected files: ', rejectedFiles);
+    console.log('Accepted files: ', acceptedFiles);
+    console.log('Rejected files: ', rejectedFiles);
 
     let upload = request.post('https://api.cloudinary.com/v1_1/dyggshpma/image/upload')
       .field('upload_preset', 'oqjbm809')
@@ -101,8 +101,8 @@ class myDropzone extends Component {
       if (err) {
         console.error(err)
       } else {
-        //console.log(response.body.secure_url)
-        this.props.updatePicture({ profile_img: response.body.secure_url, companyId: this.props.companyProfile.companyReload[0].id })
+        console.log('this.props in dropzone', this.props)
+        this.props.updatePicture({ profile_img: response.body.secure_url, companyId: this.props.companyProfile.companyAuth.company_backend_profile[0].id })
       }
     })
   }
@@ -127,7 +127,7 @@ class myDropzone extends Component {
 
 
   render() {
-    //console.log('this.props in dropzone', this.props.companyProfile.companyReload[0].id)
+    console.log('this.props in dropzone', this.props)
     return (
       
         <Dropzone onDrop={this.onDrop} config={componentConfig}>
@@ -144,7 +144,7 @@ class myDropzone extends Component {
 
 function mapStateToProps(state) {
   return {
-    companyProfile: state.companyProfile
+    companyProfile: state
   };
 }
 
