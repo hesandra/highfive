@@ -46,9 +46,6 @@ module.exports = {
         'COMPANIES_AUTH0_ID': JSON.stringify('7UaPvuy3YOxD71ls2EMR9R1iajCASSPI')
       }
     }),
-    new webpack.EnvironmentPlugin({
-      'BASE_URL': JSON.stringify('http:localhost')
-    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new CopyWebpackPlugin([{ from: PUBLIC_DIR }]),
