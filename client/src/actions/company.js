@@ -9,7 +9,8 @@ export function updateCompany(profile) {
 }
 
 export function submitProfile(profile){
-  //console.log('submitProfile')
+  console.log('submitProfile')
+  console.log(profile)
   return (dispatch) => {
     const id = profile.companyId;
     //console.log('profile in sumbitProfile', profile)
@@ -26,6 +27,10 @@ export function submitProfile(profile){
       .then((company) => {
         //console.log('result in company actions', company);
         dispatch(updateCompany(JSON.parse(company.config.data)));
+      })
+      .then(() => {
+        console.log('before dispatch get company');
+        dispatch(getCompany(id));
       })
       .catch((err) => {
         console.error(err);
@@ -273,6 +278,7 @@ export function getAllIndustries(industries){
 }
 
 export function getIndustries(){
+  console.log('in get Industries')
   return(dispatch) => {
   axios.get('http://localhost:3000/api/industries')
   .then((result) =>{
@@ -308,6 +314,7 @@ export function getLocations(){
 export function updateSubmission(data){
   //console.log('data in updateSubmission', data)
   const id = data.subId;
+  const jobPostId = data.jobPostId;
   return (dispatch) => {
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
     .then((result) => {
@@ -318,6 +325,9 @@ export function updateSubmission(data){
     .then(() => {
       console.log('before saveUpdate')
       dispatch(saveAppUpdate())
+    })
+    .then(() => {
+      dispatch(getSubmissions(jobPostId));
     })
   }
 }
@@ -344,13 +354,13 @@ export function dropPic(picture){
 }
 
 export function updatePicture(data) {
-  //console.log('data in updatePicture actions handler', data)
+  console.log('data in updatePicture actions handler', data)
   const id = data.companyId;
   return (dispatch) => {
-    //console.log('after dispatch');
+    console.log('after dispatch in updatePicture');
     axios.put('http://localhost:3000/api/companies/picture/' + id, data)
     .then((result) => {
-      //console.log('result in company', JSON.parse(result.config.data));
+      console.log('result in company', JSON.parse(result.config.data));
        dispatch(dropPic(JSON.parse(result.config.data)))
     })
     .catch((err) => {
@@ -358,6 +368,13 @@ export function updatePicture(data) {
     });
    }
   }
+
+
+export function hidePostModal(){
+  return {
+    type: 'HIDE_POST_MODAL',
+  }
+}
 
 /*export function addNotification() {
   if (this.notificationSystem) {

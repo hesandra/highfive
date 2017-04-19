@@ -10,11 +10,11 @@ class PositionsLevel extends React.Component {
     this.props.getPositions();
   }
   renderJobs() {
-    //console.log('props in positionslevel', this.props.companyProfile.jobs);
+   
     return (
       <div>
-        {this.props.companyProfile.jobs.map((item, idx) => {
-          if (this.props.companyProfile.level === item.level && this.props.companyProfile.companyReload[0].id === item.company_id) {
+        {this.props.companyProfile.companyProfile.jobs.map((item, idx) => {
+          if (this.props.companyProfile.companyProfile.level === item.level && this.props.companyProfile.companyAuth.company_backend_profile[0].id === item.company_id) {
             /*const cDate = new Date(item.created_at);
             const cDateString = `${cDate.getMonth()}/${cDate.getDay()}/${cDate.getFullYear()}`;
 
@@ -53,13 +53,14 @@ class PositionsLevel extends React.Component {
     );
   }
   render() {
-    if (this.props.companyProfile.jobs !== undefined) {
+     console.log('props in positionslevel', this.props);
+    if (this.props.companyProfile.companyProfile.jobs !== undefined) {
       return (
         <div className="positionsHeading">
           <div className="spaceQ"></div>
-          {this.props.companyProfile.level === 0?
+          {this.props.companyProfile.companyProfile.level === 0?
           <h2 className="panel panel-default panel-heading">Junior Positions</h2>:
-          this.props.companyProfile.level === 1?
+          this.props.companyProfile.companyProfile.level === 1?
           <h2 className="panel panel-default panel-heading">Mid-level Positions</h2>:
           <h2 className="panel panel-default panel-heading">Senior Positions</h2>}
           <div>{this.renderJobs()}</div>
@@ -73,7 +74,7 @@ class PositionsLevel extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    companyProfile: state.companyProfile
+    companyProfile: state
   };
 }
 

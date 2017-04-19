@@ -7,6 +7,7 @@ import { Component } from 'react';
 import { updatePicture } from '../../actions/company';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import NotificationSystem from 'react-notification-system';
 
 const componentConfig = {
   previewTemplate: ReactDOMServer.renderToStaticMarkup(
@@ -78,20 +79,34 @@ class myDropzone extends Component {
     this.state = {
       files: []
     }
+
     this.onDrop = this.onDrop.bind(this)
     this.onSending = this.onSending.bind(this);
     this.notificationSystem = null;
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addNotification = this.addNotification.bind(this);
   }
 
+  addNotification() {
+    if (this.notificationSystem) {
+      this.notificationSystem.addNotification({
+        message: 'your profile picture has been updated',
+        level: 'success',
+        position: 'tr',
+        autoDismiss: 5
+      });
+    }
+  }
+  handleSubmit() {
+    const { addNotification } = this.props;
+    this.addNotification();
+  }
 
 
   onDrop(acceptedFiles, rejectedFiles) {
 
-    //console.log('Accepted files: ', acceptedFiles);
-    //console.log('Rejected files: ', rejectedFiles);
+    console.log('Accepted files: ', acceptedFiles);
+    console.log('Rejected files: ', rejectedFiles);
 
     let upload = request.post('https://api.cloudinary.com/v1_1/dyggshpma/image/upload')
       .field('upload_preset', 'oqjbm809')
@@ -99,10 +114,11 @@ class myDropzone extends Component {
 
     upload.end((err, response) => {
       if (err) {
-        //console.error(err)
+        console.error(err)
       } else {
-        //console.log(response.body.secure_url)
-        this.props.updatePicture({ profile_img: response.body.secure_url, companyId: this.props.companyProfile.companyReload[0].id })
+        this.handleSubmit();
+        console.log('this.props in dropzone', this.props)
+        this.props.updatePicture({ profile_img: response.body.secure_url, companyId: this.props.companyProfile.companyAuth.company_backend_profile[0].id })
       }
     })
   }
@@ -113,38 +129,27 @@ class myDropzone extends Component {
     file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
   }
 
-  addNotification() {
-    if (this.notificationSystem) {
-      this.notificationSystem.addNotification({
-        message: 'profile updated',
-        level: 'success',
-        position: 'tr',
-        autoDismiss: 5
-      });
-    }
-  }
-
-
 
   render() {
-    //console.log('this.props in dropzone', this.props.companyProfile.companyReload[0].id)
+    console.log('this.props in dropzone', this.props)
     return (
-      
+      <div>
         <Dropzone onDrop={this.onDrop} config={componentConfig}>
-         <form action="/api/upload" className="dropzone dz-progress"><span className="dz-upload" data-dz-uploadprogress id="dropzone"></span>
-                <div className="dz-default dz-message text-center">
-                    <i className="fa fa-cloud-upload fa-4x"></i></div>         
-                    </form>
+          <form action="/api/upload" className="dropzone dz-progress"><span className="dz-upload" data-dz-uploadprogress id="dropzone"></span>
+            <div className="dz-default dz-message text-center">
+              <i className="fa fa-cloud-upload fa-4x"></i></div>
+          </form>
           <div>Drag and drop a picture here, or click to select files to upload.</div>
         </Dropzone>
+        <NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>
     );
   }
-  
 }
+
 
 function mapStateToProps(state) {
   return {
-    companyProfile: state.companyProfile
+    companyProfile: state
   };
 }
 

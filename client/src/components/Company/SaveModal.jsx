@@ -60,12 +60,14 @@ class SaveModal extends React.Component {
           onHide={()=>{this.props.closeApplModal()}}
           //container={this}
           aria-labelledby="contained-modal-title"
-        >
+          >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title"><h3>Applicant Interview Review</h3></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>You have assessed the applicant's interview performance. The status of this application will be updated and the applicant will be informed about your decision.</h4> 
+            <h4>You have assessed the applicant's interview performance and saved your update. The status of this application will be updated and the applicant will be informed about your decision. 
+            
+            If you're not happy with your decision or feedback you can simply redo it. The applicant will always see the latest status</h4> 
           </Modal.Body>
           <Modal.Footer>
             {<Button onClick={()=>{this.props.closeApplModal()}}>Ok</Button>}

@@ -37,7 +37,7 @@ exports.seed = function (knex, Promise) {
           {
             id: 5,
             href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
-            answer: 'video answers',
+            answer: '',
             submission_id: 2,
             question_id: 2
           },

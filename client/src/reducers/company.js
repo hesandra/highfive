@@ -19,11 +19,11 @@ export default function (state = initialState, action) {
         companyProfile: action.payload,
         profileEdited: true,
     });
-    case 'PROFILE_RELOAD':
+/*    case 'PROFILE_RELOAD':
       return Object.assign({}, state, {
         companyReload: action.payload,
         profileReload: true,
-    });
+    });*/
     case 'GET_POSITIONS':
       return Object.assign({}, state, {
         jobs: action.payload,
@@ -103,21 +103,21 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         createdJob: action.payload
     });
-    case 'GET_INDUSTRIES':
+/*    case 'GET_INDUSTRIES':
       return Object.assign({}, state, {
         industries: action.payload
     });
     case 'GET_LOCATIONS':
       return Object.assign({}, state, {
         locations: action.payload
-    });
+    });*/
     case 'UPDATE_PICTURE':
       return Object.assign({}, state, {
         picture: action.payload
     });
     case 'OPEN_MODAL':
       return Object.assign({}, state, {
-        applUpdate: true
+        applUpdate: true, 
     });
     case 'CLOSE_APPL_MODAL':
       return Object.assign({}, state, {
@@ -125,9 +125,15 @@ export default function (state = initialState, action) {
         renderStatus: true,
     });
     case 'UPDATE_STATUS':
+    console.log('action payload in update status in company reducers', action.payload)
       return Object.assign({}, state, {
         status: action.payload,
     });
+    case 'HIDE_POST_MODAL':
+      return Object.assign({}, state, {
+        createButton: false,
+        showJobModal: false,
+    }); 
   }
   return state;
 }
