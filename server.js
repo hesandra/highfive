@@ -18,7 +18,7 @@ console.log('look for db info', process.env);
 
 dotenv.load();
 
-const knex = Knex(knexConfig.development);
+const knex = Knex(knexConfig.production);
 Model.knex(knex);
 
 const app = express()
