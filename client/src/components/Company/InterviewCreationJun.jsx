@@ -36,7 +36,7 @@ class InterviewFormJun extends React.Component {
   renderAll() {
     return (
       <div>
-        <h3>Algorithm Questions</h3>
+        <h3 className="google-red">Algorithm Questions</h3>
         <div className="scroll">
           <div className="questions" >
             {this.props.companyProfile.questions.map((item, idx) => {
@@ -53,7 +53,7 @@ class InterviewFormJun extends React.Component {
             }
           </div>
         </div>
-        <h3>System Design Questions</h3>
+        <h3 className="google-green">System Design Questions</h3>
         <div className="scroll">
           <div className="questions">
             {this.props.companyProfile.questions.map((item, idx) => {
@@ -66,7 +66,7 @@ class InterviewFormJun extends React.Component {
             }
           </div>
         </div>
-        <h3>Behavioral Questions</h3>
+        <h3 className="google-blue">Behavioral Questions</h3>
         <div className="scroll">
           <div className="questions" >
             {this.props.companyProfile.questions.map((item, idx) => {
