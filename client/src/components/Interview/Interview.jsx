@@ -104,7 +104,6 @@ class Interview extends Component {
     let answer = 'n/a';
     if (this.state.selectedQuestionIdx === 2) {
       answer = this.state.answer;
-      console.log(' this is the answer', answer);
     }
     this.setState({
       answer: ''
@@ -114,11 +113,10 @@ class Interview extends Component {
         videoData,
         name: backend_profile.name + this.state.selectedQuestionIdx,
         id: Math.floor(Math.random() * 90000) + 10000,
-        answer,
+        answer: `${answer}`,
         question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
         submission_id: this.props.submission.id
       };
-      console.log('this is payload', payload);
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
       setTimeout(() => {
@@ -134,7 +132,6 @@ class Interview extends Component {
   }
   listenForS3Link() {
     this.props.socket.on('ready', (url) => {
-      console.log(url);
     });
   }
   showNextQuestion() {

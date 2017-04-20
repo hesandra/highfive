@@ -14,7 +14,6 @@ class Video extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: [],
       properties: {
         id:                { type: 'integer' },
         href:              { type: 'string' },
