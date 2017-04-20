@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { removeQuestion, saveInterview } from '../../actions/company';
 import NotificationSystem from 'react-notification-system';
+import { Card } from 'semantic-ui-react';
 
 const defaultColors = {
   success: {
@@ -82,33 +83,36 @@ class InterviewForm extends React.Component {
   render() {
     return (
       <div>
-        <h3>Saved Questions</h3>
-        <div className="intPreviewPadd">
-          <div className="intPreview"><h5 className="google-red">Selected Algorithm Question</h5>
-            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
-              return (
-                <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
-              );
-            })}
-            </div>
-            <h5 className="google-green">Selected System Design Question</h5>
-            <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'System Design').map((item) => {
-              return (
-                <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
-              );
-            })}
-            </div>
-            <h5 className="google-blue">Selected Behavioral Question</h5>
-            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Behavioral').map((item) => {
-              return (
-                <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
-              );
-            })}
-              <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() } }}>Save</Button>
-            </div>
-          </div>
-          <div><NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>
-        </div>
+        <Card color="teal">
+          <Card.Content>
+            <Card.Header>Saved Questions</Card.Header>
+            <Card.Description>
+              <h5 className="google-red">Selected Algorithm Question</h5>
+              <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
+                return (
+                  <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
+                );
+              })}
+              </div>
+              <h5 className="google-green">Selected System Design Question</h5>
+              <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'System Design').map((item) => {
+                return (
+                  <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
+                );
+              })}
+              </div>
+              <h5 className="google-blue">Selected Behavioral Question</h5>
+              <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Behavioral').map((item) => {
+                return (
+                  <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
+                );
+              })}
+                <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() } }}>Save</Button>
+              </div>
+              <div><NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>
+            </Card.Description>
+          </Card.Content>
+        </Card>
       </div>
     );
   }

@@ -31,7 +31,7 @@ class CompanyDetails extends React.Component {
             <span><i className="fa fa-industry" aria-hidden="true"></i>{'  '}<span>{item.name}</span></span>)}</div>
           <div className="spaceQ"></div>
           <div>{this.props.companyAuth.companyAuth.locations.filter((item) => item.id === this.props.location_id).map(item =>
-            <span><i className="fa fa-globe" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
+            <span><i className="fa fa-map-marker" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
           <div className="spaceQ"></div>
           <div><span><i className="fa fa-envelope" aria-hidden="true"></i>{'  '}<span>{this.props.email}</span></span></div>
           <div className="spaceQ"></div>
@@ -49,7 +49,7 @@ class CompanyDetails extends React.Component {
             <span><i className="fa fa-industry" aria-hidden="true"></i>{'  '}<span>{item.name}</span></span>)}</div>
           <div className="spaceQ"></div>
           <div>{this.props.companyAuth.companyProfile.locations.filter((item) => item.id === this.props.companyAuth.companyProfile.companyReload[0].location_id).map(item =>
-            <span><i className="fa fa-globe" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
+            <span><i className="fa fa-map-marker" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
           <div className="spaceQ"></div>
           <div><span><i className="fa fa-envelope" aria-hidden="true"></i>{'  '}<span>{this.props.companyAuth.companyProfile.companyReload[0].email}</span></span></div>
           <div className="spaceQ"></div>
@@ -68,7 +68,7 @@ class CompanyDetails extends React.Component {
             <span><i className="fa fa-industry" aria-hidden="true"></i>{'  '}<span>{item.name}</span></span>)}</div>
           <div className="spaceQ"></div>
           <div>{this.props.companyAuth.companyAuth.locations.filter((item) => item.id === this.props.companyAuth.companyAuth.company_backend_profile[0].location_id).map(item =>
-            <span><i className="fa fa-globe" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
+            <span><i className="fa fa-map-marker" aria-hidden="true"></i>{'  '}<span>{item.city}</span></span>)}</div>
           <div className="spaceQ"></div>
           <div><span><i className="fa fa-envelope" aria-hidden="true"></i>{'  '}<span>{this.props.companyAuth.companyAuth.company_backend_profile[0].email}</span></span></div>
           <div className="spaceQ"></div>

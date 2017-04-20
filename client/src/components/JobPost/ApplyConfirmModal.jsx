@@ -35,7 +35,7 @@ class ApplyConfirm extends Component {
           <Modal.Body>
             <div className="text-center">
               <h1>Notice!</h1>
-              <p>You are about to enter an immutable communication experience! Once activated,
+              <p className="text-center" style={{ width: '70%', margin: 'auto' }}>You are about to enter an immutable communication experience! Once activated,
               your submission will be recorded and submitted to the company. Please make sure you are ready to continue</p>
               <hr />
 
