@@ -16,19 +16,19 @@ class Dashboard extends React.Component {
     };
 
     this.chartConfig = this.chartConfig.bind(this);
+    this.chartOptions = this.chartOptions.bind(this);
     this.getStats = this.getStats.bind(this);
   }
 
   componentDidMount() {
-    const { companyId } = this.props.company.companyAuth.company_backend_profile;
-    this.getStats(companyId);
+    const { id } = this.props.company.companyAuth.company_backend_profile;
+    this.getStats(id);
   }
 
   getStats(id) {
     axios.get(`http://localhost:3000/api/companies/${id}/stats`)
       .then((res) => {
         const { jobpost, submission, user } = res.data.stats;
-
         this.setState({
           users: user[0]['count(`id`)'],
           jobs: jobpost[0]['count(`id`)'],
@@ -36,6 +36,18 @@ class Dashboard extends React.Component {
         });
       })
       .catch((e) => { console.log(e); });
+  }
+
+  chartOptions() {
+    return {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    };
   }
 
   chartConfig() {
@@ -46,6 +58,7 @@ class Dashboard extends React.Component {
       datasets: [
         {
           label: 'Company Stats',
+          fill: false,
           data: [users, jobs, subs],
           backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
         }
@@ -56,7 +69,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="stats-chart">
-        <Bar data={this.chartConfig()} />
+        <Bar data={this.chartConfig()} options={this.chartOptions()} />
       </div>
     );
   }

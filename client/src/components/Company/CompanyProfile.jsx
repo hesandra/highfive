@@ -125,7 +125,7 @@ class CompanyProfile extends React.Component {
               <FormGroup controlId="formControlsSelect">
                 <Col>
                   <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
-                    <option value="select">select</option>
+                    <option value="select">Select</option>
                     {this.props.profile.companyAuth.industries.map((item) =>
                       <option value={item.id}>{item.name}</option>
                     )}
@@ -140,7 +140,7 @@ class CompanyProfile extends React.Component {
             <FormGroup controlId="formControlsSelect">
               <Col>
                 <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
-                  <option value="select">select</option>
+                  <option value="select">Select</option>
                   {this.props.profile.companyAuth.locations.map((item) =>
                     <option value={item.id}>{item.city}</option>
                   )}
