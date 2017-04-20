@@ -17,7 +17,7 @@ const SubmissionsList = ({ submissions }) => {
             { submissionList.reverse() }
           </div>
           :
-          'no submissions, get out there and start applying!'
+          'No submissions!'
         }
       </List>
     </div>

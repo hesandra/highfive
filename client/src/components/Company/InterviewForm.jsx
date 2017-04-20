@@ -131,32 +131,30 @@ class InterviewForm extends React.Component {
        this.renderAll()*/
     return (
       <div className="intPreviewPadd">
-        <div className="intPreview" ><h3 className="selectedQ">Selected algorithm question</h3>
+        <div className="intPreview" ><h3>Selected algorithm question</h3>
           <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
             return (
               <div onClick={() => this.props.removeQuestion(item)}>
-                <h4>{item.title}</h4>
+                <h3>{item.title}</h3>
                 {item.question}</div>)
           })}
           </div>
-          <h3 className="selectedQ">Selected system design question</h3>
+          <h3>Selected system design question</h3>
           <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'System Design').map((item) => {
             return (
               <div onClick={() => this.props.removeQuestion(item)}>
-                <h4>{item.title}</h4>
+                <h3>{item.title}</h3>
                 {item.question}</div>)
           })}
           </div>
-          <h3 className="selectedQ">Selected behavioral question</h3>
+          <h3>Selected behavioral question</h3>
           <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Behavioral').map((item) => {
             return (
               <div onClick={() => this.props.removeQuestion(item)}>
-                <h4>{item.title}</h4>
+                <h3>{item.title}</h3>
                 {item.question}</div>)
           })}
-            <div className="space"></div>
             <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() } }}>Save</Button>
-            <div className="space"></div>
           </div>
         </div>
         <div><NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>

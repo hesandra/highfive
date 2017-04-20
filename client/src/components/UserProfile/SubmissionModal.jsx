@@ -89,7 +89,7 @@ class SubmissionModal extends Component {
               </code>
             </div>
             <VideoPlayer {...videoOptions} />
-            { videoList }
+            <div className="text-center">{ videoList }</div>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>

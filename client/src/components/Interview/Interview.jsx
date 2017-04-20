@@ -219,7 +219,7 @@ class Interview extends Component {
           <Col xs={6}>
             { this.state.stream ?
               <div>
-                <h5 className="text-center">Smile, your on camera</h5>
+                <h5 className="text-center">Smile, you're on camera :)</h5>
                 <VideoPlayer {...videoOptions} />
               </div>
               : '' }

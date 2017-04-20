@@ -123,15 +123,8 @@ a {
 }
 
 .scroll {
-  background-color: #A5A5AF;
-  color: white;
   width: 400px;
-  height: 200px;
-  overflow: scroll;
-  text-align: center;
-  border-radius: 25px;
-  position: relative; 
-  text-align: center;
+  overflow: hidden;
 }
 
 .dropzone.dz-progress {
@@ -150,10 +143,11 @@ a {
 }
 
 .questions {
-  border: 2px;
-  border-color: white;
-  margin: 30px;
-  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.questions p:hover {
+  cursor: pointer;
 }
 
 .spaceQ {
@@ -167,10 +161,6 @@ a {
 
 .react-selectize.root-node {
   width: 100%
-}
-
-.selectedQ {
-  color: white
 }
 
 .space {
@@ -239,21 +229,6 @@ canvas:nth-of-type(2) {
   padding-bottom: 18px !important
 }
 
-.intPreviewPadd {
-  padding-top: 310px;
-}
-
-.intPreview {
-  background-color:#57BC90;
-  border-radius: 25px;
-  padding: 20px;
-  border: inset;
-}
-
-.saveButtonForm {
-  text-align: center
-}
-
 .compDetails {
   padding-left: 25px;
   font-size: 16px;
@@ -282,6 +257,7 @@ canvas:nth-of-type(2) {
 
 .glyphicon.glyphicon-remove {
   margin-left: 10px;
+  top: 3px;
   color: #999;
 }
 
@@ -297,4 +273,13 @@ canvas:nth-of-type(2) {
 
 .btn.btn-primary {
   border-radius: 0;
+}
+
+.video-js {
+  margin: auto;
+}
+
+.video-js .vjs-big-play-button {
+  margin-top: 170px;
+  margin-left: 200px;
 }
