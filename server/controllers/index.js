@@ -23,7 +23,6 @@ module.exports = {
       const user = req.body;
 
       models.users.post(user, (err, fetchedUser) => {
-        console.log(fetchedUser, 'this was fetched');
         const payload = {
           success: err ? true : false,
           fetchedUser,
@@ -42,7 +41,6 @@ module.exports = {
         linkedin_url
       };
       models.users.updateById(data, (err, user) => {
-        console.log(user, ' this is user');
         const payload = {
           success: err ? false : true,
           user,
@@ -52,7 +50,6 @@ module.exports = {
       });
     },
     deleteIndustryById: (req, res, next) => {
-      console.log(req.params);
       models.users.deleteIndustryById(req.params, (err, user) => {
         const payload = {
           success: err ? false : true,
@@ -103,9 +100,7 @@ module.exports = {
       });
     },
     updatePicture: (req, res, next) => {
-      console.log('req in index controllers', req)
       const { id } = req.params;
-      console.log('req.body in index controllers', req.body)
       models.companies.updatePicture(id, req.body, (err, picture) => {
         const payload = {
           success: err ? false : true,

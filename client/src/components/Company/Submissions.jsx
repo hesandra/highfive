@@ -50,7 +50,6 @@ class PositionsLevel extends React.Component {
                 <Card key={item.id} >
                   <Image
                     height={200}
-                    //label={{ color: 'blue', icon: 'globe', ribbon: true }}
                     src={item.user.profile_img}
                   />
                   <Card.Content className="cardSize">
@@ -73,23 +72,18 @@ class PositionsLevel extends React.Component {
                         </a>
                       </List>
                     </Card.Description>
-
-                    <div className="spaceQ"></div>
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
                       <div>current status: {this.props.companyProfile.status.status}</div> :
                       <div>current status: {item.status}</div>}
-                    <div className="spaceQ"></div>
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
                       <div>feedback:{this.props.companyProfile.status.notes}</div> :
                       <div>feedback: {item.notes}</div>}
-                    <div className="spaceQ"></div>
                     <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>
                     <Form>
                       <TextArea className="form-control notesField" placeholder="Give instant feedback to the applicant" name="notes" onChange={this.handleChange} autoHeight />
                     </Form>
-                    <div className="spaceQ"></div>
                     <FormGroup controlId="formControlsSelect">
                       <FormControl componentClass="select" placeholder="select" name="status" onChange={this.handleChange} >
                         <option value="select">select</option>
@@ -127,7 +121,7 @@ class PositionsLevel extends React.Component {
         </div> )
       }
     else if (this.props.companyProfile.submissions === undefined){
-      return (<h4>Please go through jobposts to look at submissions</h4>)
+      return (<h1 style={{ 'margin-top': 20 }} className="text-center">No Submissions!</h1>);
     }
   }
 }

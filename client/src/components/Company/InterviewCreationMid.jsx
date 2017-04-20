@@ -53,8 +53,7 @@ class InterviewFormMid extends React.Component {
               </FormGroup>
             </Form>
             <Button onClick={() => this.props.createJobPost({ company_id: this.props.companyProfile.companyReload[0].id, level: this.props.companyProfile.level, description: this.props.companyProfile.jobDescription.description, industry_id: this.props.companyProfile.companyReload[0].industry_id, location_id: this.props.companyProfile.companyReload[0].location_id })}>New job position</Button>*/}
-            <div className="spaceQ"></div>
-            <h4>Select 1 Algorithm Question</h4>
+            <h3>Algorithm Questions</h3>
             <div className="scroll">
               <div className="questions">
                 {this.props.companyProfile.questions.map((item, idx) => {
@@ -67,8 +66,7 @@ class InterviewFormMid extends React.Component {
                 }
               </div>
             </div>
-            <div className="spaceQ"></div>
-            <h4>Select 1 System Design Question</h4>
+            <h3>System Design Questions</h3>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {
@@ -81,8 +79,7 @@ class InterviewFormMid extends React.Component {
                 }
               </div>
             </div>
-            <div className="spaceQ"></div>
-            <h4>Select 1 Behavioral Question</h4>
+            <h3>Behavioral Questions</h3>
             <div className="scroll">
               <div className="questions" >
                 {this.props.companyProfile.questions.map((item, idx) => {

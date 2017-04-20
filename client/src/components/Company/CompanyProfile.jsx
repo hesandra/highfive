@@ -112,75 +112,35 @@ class CompanyProfile extends React.Component {
   }
 
   renderForm() {
-    //console.log('this.props in companyprofile', this.props)
     return (
-      <Form horizontal onSubmit={this.handleSubmit}>
-        <br />
-        <div className="dropzone">
-          <Dropzone />
-        </div>
-        <br />
+      <Form horizontal onSubmit={this.handleSubmit} className="col-xs-8">
+        <Dropzone />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={1}>
-            Name
-        </Col>
-          <Col sm={8}>
-            <FormControl name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+          <Col componentClass={ControlLabel}>Name</Col>
+          <Col><FormControl name="name" type="text" value={this.state.name} onChange={this.handleChange} /></Col>
+        </FormGroup>
+        <FormGroup>
+          <Col>
+            <Col componentClass={ControlLabel}>Industry</Col>
+              <FormGroup controlId="formControlsSelect">
+                <Col>
+                  <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
+                    <option value="select">Select</option>
+                    {this.props.profile.companyAuth.industries.map((item) =>
+                      <option value={item.id}>{item.name}</option>
+                    )}
+                  </FormControl>
+                </Col>
+              </FormGroup>
           </Col>
         </FormGroup>
-        {/* <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={1}>
-            Profile Video
-        </Col>
-          <Col sm={8}>
-            <FormControl name="profile_img" type="text" value={this.state.profile_img} onChange={this.handleChange} />
-          </Col>
-        </FormGroup>*/}
-        <br />
-        <FormGroup>
-          <Col componentClass={ControlLabel} sm={1}>
-            Industry
-        </Col>
-          <Col sm={8}>
-            {/*<SimpleSelect
-        theme="bootstrap"
-        placeholder="Select industry"
-        onValueChange={this.handleChange}
-        name="industry_id"
-        onValueChange={(selection) => {
-          if (selection) {
-            return {
-              property: 'industry_id',
-              data: this.state.industry_id }
-          }
-        }}
-      >{this.props.profile.companyProfile.industries.map((item) => 
-                <option value={item.id}>{item.name}</option>
-                )} 
-      </SimpleSelect>*/}
+          <Col componentClass={ControlLabel}>Location</Col>
+          <Col>
             <FormGroup controlId="formControlsSelect">
-              <Col sm={8}>
-                <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
-                  <option value="select">select</option>
-                  {this.props.profile.companyAuth.industries.map((item) =>
-                    <option value={item.id}>{item.name}</option>
-                  )}
-                </FormControl>
-              </Col>
-            </FormGroup>
-          </Col>
-        </FormGroup>
-        <br />
-        <FormGroup>
-          <Col componentClass={ControlLabel} sm={1}>
-            Location
-        </Col>
-          <Col sm={8}>
-            <FormGroup controlId="formControlsSelect">
-              <Col sm={8}>
+              <Col>
                 <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
-                  <option value="select">select</option>
+                  <option value="select">Select</option>
                   {this.props.profile.companyAuth.locations.map((item) =>
                     <option value={item.id}>{item.city}</option>
                   )}
@@ -189,32 +149,15 @@ class CompanyProfile extends React.Component {
             </FormGroup>
           </Col>
         </FormGroup>
-        <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={1}>
-            Email
-        </Col>
-          <Col sm={8}>
-            <FormControl name="email" type="text" value={this.state.email} onChange={this.handleChange} />
-          </Col>
+          <Col componentClass={ControlLabel}>Email</Col>
+          <Col><FormControl name="email" type="text" value={this.state.email} onChange={this.handleChange} /></Col>
         </FormGroup>
-        <br />
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={1}>
-            Address
-        </Col>
-          <Col sm={8}>
-            <FormControl name="address" type="text" value={this.state.address} onChange={this.handleChange} />
-          </Col>
+          <Col componentClass={ControlLabel}>Address</Col>
+          <Col><FormControl name="address" type="text" value={this.state.address} onChange={this.handleChange} /></Col>
         </FormGroup>
-        <br />
-        <FormGroup>
-          <Col smOffset={3} sm={8}>
-            <Button type="submit" value="Submit">
-              Submit
-        </Button>
-          </Col>
-        </FormGroup>
+        <FormGroup><Col><Button type="submit" value="Submit" className="btn btn-primary">Submit</Button></Col></FormGroup>
       </Form>
     )
   }
