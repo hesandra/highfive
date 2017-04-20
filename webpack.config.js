@@ -16,7 +16,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR
-
   },
   module: {
     rules: [
