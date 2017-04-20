@@ -5,10 +5,6 @@ import { bindActionCreators } from 'redux';
 import { removeQuestion, saveInterview } from '../../actions/company';
 import NotificationSystem from 'react-notification-system';
 
-/*let algorithm = [];
-let system = [];
-let behavioral = [];*/
-
 const defaultColors = {
   success: {
     rgb: '33, 133, 208',
@@ -58,7 +54,6 @@ const style = {
   }
 };
 
-
 class InterviewForm extends React.Component {
   constructor(props) {
     super(props);
@@ -83,83 +78,39 @@ class InterviewForm extends React.Component {
     const { addNotification } = this.props;
     this.addNotification();
   }
-  /*renderAll() {*/
-  /*system = [];
-  algorithm = [];
-  behavioral = [];
-  return this.props.companyProfile.selectedQuestion.map((item) => {
-    //console.log('in render all map', algorithm, 'selected questions', this.props.companyProfile.selectedQuestion, 'item', item)
-    if (item.type === 'algorithm') {
-      algorithm.push(item)
-    }
-    if (item.type === 'data structure') {
-      system.push(item)
-    }
-    if (item.type === 'behavioral') {
-    if (item.type === 'Algorithm' && (algorithm.findIndex((el) => el.id === item.id)) === -1) {
-      algorithm.push(item)
-    }
-    if (item.type === 'System Design' && (system.findIndex((el) => el.id === item.id)) === -1) {
-      system.push(item)
-    }
-    if (item.type === 'Algorithm' && (algorithm.findIndex((el) => el.id === item.id)) === -1) {
-      algorithm.push(item)
-    }
-    if (item.type === 'System Design' && (system.findIndex((el) => el.id === item.id)) === -1) {
-      system.push(item)
-    }
-    if (item.type === 'Behavioral' && (behavioral.findIndex((el) => el.id === item.id)) === -1) {
-      behavioral.push(item)
-    }
-  })
-}*/
 
-  /*  shouldComponentUpdate(nextProps, nextState) {
-      console.log('nextPropsCompanyprofile', nextProps.companyProfile)
-      console.log('thispropscompanyprofile', this.props.companyProfile)
-      if (this.props.companyProfile.selectedQuestion) {
-        console.log('in shold UPDATE after if statement')
-        if (this.props.companyProfile.selectedQuestion.length < nextProps.companyProfile.selectedQuestion.length) {
-          return true;
-        }
-      }
-      return false;
-    }*/
   render() {
-    /* console.log('this.props.companyProfile in Interview Form', this.props.companyProfile, 'szstem questions', system);
-     if (this.props.companyProfile.selectedQuestion) {
-       this.renderAll()*/
     return (
-      <div className="intPreviewPadd">
-        <div className="intPreview" ><h3>Selected algorithm question</h3>
-          <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
-            return (
-              <div onClick={() => this.props.removeQuestion(item)}>
-                <h3>{item.title}</h3>
-                {item.question}</div>)
-          })}
+      <div>
+        <h3>Saved Questions</h3>
+        <div className="intPreviewPadd">
+          <div className="intPreview"><h5 className="google-red">Selected Algorithm Question</h5>
+            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Algorithm').map((item) => {
+              return (
+                <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
+              );
+            })}
+            </div>
+            <h5 className="google-green">Selected System Design Question</h5>
+            <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'System Design').map((item) => {
+              return (
+                <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
+              );
+            })}
+            </div>
+            <h5 className="google-blue">Selected Behavioral Question</h5>
+            <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Behavioral').map((item) => {
+              return (
+                <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
+              );
+            })}
+              <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() } }}>Save</Button>
+            </div>
           </div>
-          <h3>Selected system design question</h3>
-          <div>{this.props.companyProfile.selectedQuestion.filter((question) => question.type === 'System Design').map((item) => {
-            return (
-              <div onClick={() => this.props.removeQuestion(item)}>
-                <h3>{item.title}</h3>
-                {item.question}</div>)
-          })}
-          </div>
-          <h3>Selected behavioral question</h3>
-          <div>{this.props.companyProfile.selectedQuestion.filter(question => question.type === 'Behavioral').map((item) => {
-            return (
-              <div onClick={() => this.props.removeQuestion(item)}>
-                <h3>{item.title}</h3>
-                {item.question}</div>)
-          })}
-            <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() } }}>Save</Button>
-          </div>
+          <div><NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>
         </div>
-        <div><NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>
       </div>
-    )
+    );
   }
 }
 

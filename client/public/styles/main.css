@@ -1,3 +1,15 @@
+.google-green {
+  color: #3cba54; }
+
+.google-red {
+  color: #db3236; }
+
+.google-blue {
+  color: #4885ed; }
+
+.google-yellow {
+  color: #f4c20d; }
+
 .company-nav .nav-tabs {
   margin-bottom: 15px; }
 
@@ -115,7 +127,11 @@ a {
   height: 100px; }
 
 .questions {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  padding: 10px;
+  overflow-y: scroll;
+  height: 200px;
+  border: 1px solid #333; }
 
 .questions p:hover {
   cursor: pointer; }
@@ -223,5 +239,12 @@ canvas:nth-of-type(2) {
 .video-js .vjs-big-play-button {
   margin-top: 170px;
   margin-left: 200px; }
+
+.intPreviewPadd {
+  border: 1px solid black;
+  padding: 10px; }
+
+.saveButtonForm {
+  margin-top: 25px; }
 
 /*# sourceMappingURL=main.css.map */
