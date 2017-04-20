@@ -15,8 +15,10 @@ const router = require('./routes');
 const port = process.env.PORT || 3000;
 dotenv.load();
 
-const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
+
+const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+console.log(env);
 const knex = Knex(knexConfig[env]);
 Model.knex(knex);
 
