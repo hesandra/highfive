@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode';
 const redirectURL = process.env.NODE_ENV === 'production' ?
   'http://highfive-dev.us-west-2.elasticbeanstalk.com/' :
   'http://localhost:8080/';
-  
+
 export default class CompanyAuthService {
   constructor(companyId, domain, type) {
     this.lock = new Auth0Lock(companyId, domain, {

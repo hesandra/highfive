@@ -101,10 +101,10 @@ class Interview extends Component {
   }
   processRecording() {
     const { backend_profile } = this.props;
-    let answer = '';
+    let answer = 'n/a';
     if (this.state.selectedQuestionIdx === 2) {
       answer = this.state.answer;
-      console.log(answer);
+      console.log(' this is the answer', answer);
     }
     this.setState({
       answer: ''
@@ -118,6 +118,7 @@ class Interview extends Component {
         question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
         submission_id: this.props.submission.id
       };
+      console.log('this is payload', payload);
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
       setTimeout(() => {
