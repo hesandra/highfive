@@ -34,32 +34,25 @@ class PositionsLevel extends React.Component {
                     <tr>
                       <td>{item.id}</td><td>{item.description}</td><td>{item.created_at}</td>
                       <tb><Button onClick={() => { this.props.getSubmissions(item.id); document.getElementById('tabs-with-dropdown-tab-second').click(); }}>See Submissions</Button></tb>
-                      <tb><Button onClick={() => { this.props.deleteJob(item.id); document.getElementById(item.id).remove(); }}>Delete</Button></tb>
+                      <tb><span className="glyphicon glyphicon-remove" onClick={() => { this.props.deleteJob(item.id); document.getElementById(item.id).remove(); }} /></tb>
                     </tr>
                   </tbody>
                 </Table>
              )
           }
         })}
-        <FormGroup>
-          <Col smOffset={5} sm={6}>
-            <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button>
-          </Col>
-        </FormGroup>
       </div>
     );
   }
   render() {
-     console.log('props in positionslevel', this.props);
     if (this.props.companyProfile.companyProfile.jobs !== undefined) {
       return (
         <div className="positionsHeading">
-          <div className="spaceQ"></div>
           {this.props.companyProfile.companyProfile.level === 0?
-          <h2 className="panel panel-default panel-heading">Junior Positions</h2>:
+          <h2 className="panel panel-default panel-heading">Junior Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2>:
           this.props.companyProfile.companyProfile.level === 1?
-          <h2 className="panel panel-default panel-heading">Mid-level Positions</h2>:
-          <h2 className="panel panel-default panel-heading">Senior Positions</h2>}
+          <h2 className="panel panel-default panel-heading">Mid-level Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2>:
+          <h2 className="panel panel-default panel-heading">Senior Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2>}
           <div>{this.renderJobs()}</div>
         </div>
       )

@@ -271,3 +271,30 @@ canvas:nth-of-type(2) {
   margin-top: 10px;
   float: right;
 }
+
+.panel.panel-default.panel-heading {
+  border: none;
+}
+
+.table>tbody>tr>td {
+  width: 165px;
+}
+
+.glyphicon.glyphicon-remove {
+  margin-left: 10px;
+  color: #999;
+}
+
+.glyphicon.glyphicon-remove:hover {
+  color: #777;
+  cursor: pointer;
+}
+
+.positionsHeading .btn.btn-primary {
+  margin-bottom: 5px;
+  margin-left: 330px;
+}
+
+.btn.btn-primary {
+  border-radius: 0;
+}
