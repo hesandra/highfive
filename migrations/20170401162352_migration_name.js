@@ -60,7 +60,7 @@ exports.up = function(knex, Promise) {
           table.increments('id').primary();
           table.string('type');
           table.string('title');
-          table.string('question');
+          table.text('question', 'longtext');
           table.integer('level');
         })
         .createTable('video', (table) => {

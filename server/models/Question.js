@@ -13,7 +13,7 @@ class Question extends Model {
         id:               { type: 'integer' },
         level:            { type: 'integer' },
         type:             { type: 'string' },
-        question:         { type: 'string' },
+        question:         { type: 'text' },
         title:            { type: 'string' }
       }
     };
