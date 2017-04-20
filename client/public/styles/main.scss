@@ -22,17 +22,27 @@
     }
 }
 
-.google-green {
-  color: #3cba54;
-}
-.google-red {
-  color: #db3236;
-}
-.google-blue {
-  color: #4885ed;
-}
-.google-yellow {
-  color: #f4c20d;
+.ui.card {
+  margin: 25px 0;
+  height: 250px;
+  width: 360px;
+  overflow-y: scroll;
+
+  .header {
+    text-decoration: underline;
+  }
+
+  .description {
+    margin-top: 15px;
+
+    p {
+      margin-top: 15px;
+    }
+
+    p:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .company-nav .nav-tabs {
@@ -340,10 +350,6 @@ canvas:nth-of-type(2) {
   margin: auto;
 }
 
-// .extra.content form {
-//   margin: 10px 0;
-// }
-
 .extra.content {
   form {
     margin: 10px 0;
@@ -353,3 +359,4 @@ canvas:nth-of-type(2) {
     min-height: 35px;
   }
 }
+
