@@ -23,7 +23,12 @@ class PositionsLevel extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.clearNotes = this.clearNotes.bind(this);
   }
+
+  clearNotes(idx) {
+    document.getElementById('notes' + idx).value = "";
+  };
 
   handleChange(event) {
     const target = event.target;
@@ -36,10 +41,8 @@ class PositionsLevel extends React.Component {
     });
   }
 
-
   renderSubmissions() {
     console.log('PROPS IN SUBMISSIONS', this.props.companyProfile.submissions);
-
     //console.log('state in submissions', this.state);
     return (
       <div className="ui stackable twelve column grid">
@@ -82,7 +85,7 @@ class PositionsLevel extends React.Component {
                   </Card.Content>
                   <Card.Content extra>
                     <Form>
-                      <TextArea className="form-control notesField" placeholder="Give instant feedback to the applicant" name="notes" onChange={this.handleChange} autoHeight />
+                      <TextArea className="form-control notesField" placeholder="Give your feedback to the applicant" id={"notes" + idx} name="notes" onChange={this.handleChange} autoHeight />
                     </Form>
                     <FormGroup controlId="formControlsSelect">
                       <FormControl componentClass="select" placeholder="select" name="status" onChange={this.handleChange} >
@@ -94,10 +97,10 @@ class PositionsLevel extends React.Component {
                       </FormControl>
                     </FormGroup>
                     <Popup trigger={
-                    <Button color="purple" size="mini" onClick={() => this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id })}>Save</Button>}
-                    content='Clicking here will inform the applicant right away'
-                    style={style}
-                    inverted
+                      <Button color="purple" size="mini" onClick={() => { this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id }); { () => { this.state.notes = '' } }; this.clearNotes(idx) }}>Save</Button>}
+                      content='Clicking here will inform the applicant'
+                      style={style}
+                      inverted
                     />
                   </Card.Content>
                 </Card>

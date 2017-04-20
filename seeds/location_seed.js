@@ -55,7 +55,42 @@ exports.seed = function (knex, Promise) {
             id: 10,
             city: 'Irvine',
             state: 'CA'
-          }
+          },
+          {
+            id: 11,
+            city: 'Washington',
+            state: 'DC'
+          },
+          {
+            id: 12,
+            city: 'Seattle',
+            state: 'WA'
+          },
+          {
+            id: 13,
+            city: 'Houston',
+            state: 'TX'
+          },
+          {
+            id: 14,
+            city: 'St. Louis',
+            state: 'MO'
+          },
+          {
+            id: 15,
+            city: 'Miami',
+            state: 'FL'
+          },
+          {
+            id: 16,
+            city: 'Philadelphia',
+            state: 'PA'
+          },
+          {
+            id: 17,
+            city: 'San Francisco',
+            state: 'CA'
+          },
         ]);
       });
   })

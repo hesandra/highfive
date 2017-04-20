@@ -44,7 +44,35 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 10,
-            name: 'Fishing'
+            name: 'Travel'
+          },
+          {
+            id: 11,
+            name: 'Transportion'
+          },
+          {
+            id: 12,
+            name: 'Space Aviation'
+          },
+          {
+            id: 13,
+            name: 'Beauty'
+          },
+          {
+            id: 14,
+            name: 'Fitness'
+          },
+          {
+            id: 15,
+            name: 'Social Media'
+          },
+          {
+            id: 16,
+            name: 'Healthcare'
+          },
+          {
+            id: 17,
+            name: 'Arts'
           }
         ]);
       });

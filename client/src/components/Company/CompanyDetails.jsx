@@ -13,8 +13,8 @@ class CompanyDetails extends React.Component {
     }
   }
   componentDidMount(){
-    this.props.getIndustries();
-    this.props.getLocations();
+  /*  this.props.getIndustries();
+    this.props.getLocations();*/
     this.props.getCompany(this.props.companyAuth.companyAuth.company_backend_profile.id);
 }
 

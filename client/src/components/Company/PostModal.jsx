@@ -40,6 +40,7 @@ class PostModal extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     this.props.submitDescription(this.state);
     // console.log('companyProfile++++++', this.props.companyProfile.companyProfile)
     setTimeout(() => {
@@ -54,7 +55,6 @@ class PostModal extends React.Component {
         })
       }
     }, 0)
-    event.preventDefault();
   }
   render() {
     console.log('this.props in PostModal', this.props)
@@ -71,7 +71,7 @@ class PostModal extends React.Component {
                 <Modal.Title>Create open position for Senior Software Engineer</Modal.Title>}
           </Modal.Header>
           <Modal.Body>
-            <Form horizontal >
+            <Form horizontal onSubmit={this.handleSubmit} >
               <br />
               <FormGroup>
                 <Col componentClass={ControlLabel} sm={2}>
@@ -81,14 +81,14 @@ class PostModal extends React.Component {
                   <FormControl name="name" type="text" value={this.state.description} onChange={this.handleChange} 
                    />
                 </Col>
+                 <Popup trigger={
+            <Button type="submit" >New job position</Button>}
+            content="This will bring you to the interview section for this jobpost"
+            style={style} />
               </FormGroup>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-         <Popup trigger={
-            <Button onClick={this.handleSubmit}>New job position</Button>}
-            content="This will bring you to the interview section for this jobpost"
-            style={style} />
           </Modal.Footer>
         </Modal>
       </div>

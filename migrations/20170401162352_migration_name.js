@@ -60,13 +60,13 @@ exports.up = function(knex, Promise) {
           table.increments('id').primary();
           table.string('type');
           table.string('title');
-          table.string('question');
+          table.text('question', 'longtext');
           table.integer('level');
         })
         .createTable('video', (table) => {
           table.increments('id').primary();
           table.string('href');
-          table.string('answer');
+          table.text('answer', 'longtext');
           table.integer('question_id').unsigned().references('id').inTable('question');
           table.integer('submission_id').unsigned().references('id').inTable('submission');
           table.string('created_at').notNullable().defaultTo(moment().format('LL'));
