@@ -8,10 +8,12 @@ export const COMPANY_LOGIN_SUCCESS = 'COMPANY_LOGIN_SUCCESS';
 export const COMPANY_LOGIN_ERROR = 'COMPANY_LOGIN_ERROR';
 export const COMPANY_LOGOUT_SUCCESS = 'COMPANY_LOGOUT_SUCCESS';
 export const COMPANY_TOKEN_RETRIEVED = 'COMPANY_TOKEN_RETRIEVED';
+import { BASE_URL } from '../utils/constants';
 
-const authService = new CompanyAuthService(process.env.COMPANIES_AUTH0_ID, 'teamhighfive.auth0.com', 'Companies Sign-In');
-// Listen to authenticated event from AuthService and get the profile of the company
-// Done on every page startup
+
+const idToUse = process.env.NODE_ENV === 'production' ? process.env.COMPANIES_AUTH0_ID : COMPANIES_AUTH0_CLIENT_ID;
+
+const authService = new CompanyAuthService(idToUse, 'teamhighfive.auth0.com', 'Companies Sign-In');
 export function checkCompanyLogin() {
   return (dispatch) => {
     // Add callback for lock's `authenticated` event
@@ -22,7 +24,7 @@ export function checkCompanyLogin() {
         }
         CompanyAuthService.setToken(authResult.idToken);
         CompanyAuthService.setProfile(profile);
-        return axios.post(`${process.env.BASE_URL}/api/companies`, {
+        return axios.post(`${BASE_URL}/api/companies`, {
           name: profile.nickname,
           email: profile.email,
           auth0_id: profile.user_id,
@@ -35,7 +37,6 @@ export function checkCompanyLogin() {
           }
         })
         .catch((err) => {
-          console.log('company login error');
           console.log(err);
         });
       });

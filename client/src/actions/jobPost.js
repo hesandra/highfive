@@ -1,5 +1,6 @@
 import { hashHistory, browserHistory } from 'react-router';
 import axios from 'axios';
+import { BASE_URL } from '../utils/constants';
 
 export const REQUEST_JOB_POST = 'REQUEST_JOB_POST';
 export const REQUEST_JOB_POST_SUCCESS = 'REQUEST_JOB_POST_SUCCESS';
@@ -20,7 +21,7 @@ export function initJobInterview(id) {
 export const fetchJobPostData = (id) => {
   return (dispatch) => {
     dispatch(requestJobPostData());
-    axios.get(`http://localhost:8081/api/jobposts/${id}`)
+    axios.get(`${BASE_URL}/api/jobposts/${id}`)
       .then((response) => {
         if (response.status === 200 || response.status === 304) {
           dispatch(requestJobPostDataSuccess(response.data.jobpost));

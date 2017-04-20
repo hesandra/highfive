@@ -44,6 +44,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development'),
+      }
+    }),
     new CopyWebpackPlugin([{ from: PUBLIC_DIR }]),
     new webpack.HotModuleReplacementPlugin(),
     new DashboardPlugin(),
