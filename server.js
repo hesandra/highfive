@@ -14,9 +14,7 @@ const router = require('./routes');
 
 const port = process.env.PORT || 3000;
 dotenv.load();
-
-
-
+console.log(process.env.NODE_ENV);
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 console.log(env);
 console.log(process.env.RDS_HOSTNAME);
