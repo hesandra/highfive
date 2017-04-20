@@ -4,7 +4,6 @@ exports.seed = function (knex, Promise) {
     .then(() => {
       return knex('user_industry').del()
         .then(() => {
-          // Inserts seed entries
           return knex('user_industry').insert([
             {
               id: 1,

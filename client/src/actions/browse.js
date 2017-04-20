@@ -4,7 +4,6 @@ export const REQUEST_USERS_DATA = 'REQUEST_USERS_DATA';
 export const REQUEST_USERS_DATA_SUCCESS = 'REQUEST_USERS_DATA_SUCCESS';
 export const REQUEST_USERS_DATA_ERROR = 'REQUEST_USERS_DATA_ERROR';
 
-
 export const fetchUsersData = () => {
   return (dispatch) => {
     dispatch(requestUserData());
