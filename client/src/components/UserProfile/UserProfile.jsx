@@ -146,7 +146,7 @@ class UserProfile extends Component {
                 <hr />
               </div>
               <div className="profile-section">
-                <div className="profile-info fa fa-globe" />
+                <div className="profile-info fa fa-map-marker" />
                 <small className="text-center"> {location} </small>
                 { industries ?
                   <IndustryList
