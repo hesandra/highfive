@@ -60,7 +60,7 @@ class Dashboard extends React.Component {
           label: 'Company Stats',
           fill: false,
           data: [users, jobs, subs],
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+          backgroundColor: ['#30415d', '#cf6766', '#8eaebd']
         }
       ]
     };
