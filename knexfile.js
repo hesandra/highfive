@@ -14,11 +14,11 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      host: process.env.RDS_HOSTNAME,
-      database: process.env.RDS_DB_NAME,
+      host: "aaqg7rdv187q13.cw5klf3vrg1i.us-west-2.rds.amazonaws.com",
+      database: "ebdb",
       user: 'highfive',
-      password: process.env.RDS_PASSWORD,
-      port: process.env.RDS_PORT
+      password: "highfive",
+      port: "3306"
     },
     seeds: {
       directory: `${__dirname}/seeds`

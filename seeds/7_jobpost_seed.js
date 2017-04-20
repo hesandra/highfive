@@ -6,18 +6,18 @@ exports.seed = function (knex, Promise) {
           const seedArray = [];
           let id, company_id, title, level, description, industry_id, location_id;
           let counterToTen = 1;
-          let counterToFifteen = 1;
+          let companyCounter = 1;
 
           for (let i = 1; i <= 160; i += 1) {
             id = i;
-            counterToTen++;
-            counterToFifteen++;
+            counterToTen += 1;
+            companyCounter += 1;
 
             if (counterToTen / 11 === 1) {
               counterToTen = 1;
             }
-            if (counterToFifteen / 16 === 1) {
-              counterToFifteen = 1;
+            if (companyCounter / 17 === 1) {
+              companyCounter = 1;
             }
 
             if (i % 10 === 1 || i % 10 === 2 || i % 10 === 3 || i % 10 === 4) {
@@ -38,7 +38,7 @@ exports.seed = function (knex, Promise) {
 
             const newObj = {
               id,
-              company_id: counterToFifteen,
+              company_id: companyCounter,
               title,
               level,
               description,

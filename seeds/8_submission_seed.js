@@ -1,6 +1,6 @@
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('SET foreign_key_checks = 0;')
+  return knex.raw('SET FOREIGN_KEY_CHECKS = 0;')
   .then(() => {
     return knex('submission').del()
       .then(() => {
@@ -456,6 +456,7 @@ exports.seed = function (knex, Promise) {
             notes: ''
           },*/
 
+<<<<<<< HEAD
           //submission for jobposts being created
         /*  {
             id: 56,
@@ -593,6 +594,145 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },*/
+=======
+          // //submission for jobposts being created
+          // {
+          //   id: 56,
+          //   user_id: 1,
+          //   jobpost_id: 161,
+          //   status: null,
+          //   completed: 0,
+          //   notes: ''
+          // },
+          // {
+          //   id: 57,
+          //   user_id: 2,
+          //   jobpost_id: 161,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 58,
+          //   user_id: 3,
+          //   jobpost_id: 161,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 59,
+          //   user_id: 4,
+          //   jobpost_id: 161,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 60,
+          //   user_id: 5,
+          //   jobpost_id: 161,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 61,
+          //   user_id: 6,
+          //   jobpost_id: 161,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 62,
+          //   user_id: 7,
+          //   jobpost_id: 162,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 63,
+          //   user_id: 8,
+          //   jobpost_id: 162,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 64,
+          //   user_id: 9,
+          //   jobpost_id: 162,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 65,
+          //   user_id: 10,
+          //   jobpost_id: 162,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          //   {
+          //   id: 66,
+          //   user_id: 1,
+          //   jobpost_id: 162,
+          //   status: null,
+          //   completed: 0,
+          //   notes: ''
+          // },
+          // {
+          //   id: 67,
+          //   user_id: 2,
+          //   jobpost_id: 162,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 68,
+          //   user_id: 3,
+          //   jobpost_id: 163,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 69,
+          //   user_id: 4,
+          //   jobpost_id: 163,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 70,
+          //   user_id: 5,
+          //   jobpost_id: 163,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 71,
+          //   user_id: 6,
+          //   jobpost_id: 163,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+          // {
+          //   id: 72,
+          //   user_id: 7,
+          //   jobpost_id: 163,
+          //   status: null,
+          //   completed: 1,
+          //   notes: ''
+          // },
+>>>>>>> added ssl links
         ]);
     });
   });

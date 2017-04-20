@@ -2,7 +2,7 @@ import Auth0Lock from 'auth0-lock';
 import jwtDecode from 'jwt-decode';
 
 const redirectURL = process.env.NODE_ENV === 'production' ?
-  'http://hifivela.com/' :
+  'https://hifivela.com/' :
   'http://localhost:8080/';
 
 export default class UserAuthService {
