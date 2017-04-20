@@ -52,8 +52,6 @@ class JobPosts extends Component {
     const filters = backend_profile.industry.map((obj) => {
       return obj.name;
     });
-    console.log(filters);
-    console.log(jobPosts);
     return (
       <Grid>
         <Row>

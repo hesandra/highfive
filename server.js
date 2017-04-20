@@ -16,9 +16,6 @@ const port = process.env.PORT || 3000;
 dotenv.load();
 console.log(process.env.NODE_ENV);
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-console.log(env);
-console.log(process.env.RDS_HOSTNAME);
-console.log(process.env.RDS_USERNAME);
 const knex = Knex(knexConfig[env]);
 Model.knex(knex);
 
