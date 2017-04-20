@@ -5,7 +5,7 @@ import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 import { getUserMedia, createSubmission } from '../actions/interview';
 
-const socket = io();
+const socket = io(`127.0.0.1:3001`);
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, backend_profile } = state.userAuth;
   const { stream, submission, isCreatingSubmission } = state.interview;
