@@ -14,6 +14,7 @@
     }
 
     .navbar-brand {
+      font-size: 20px;
       position: absolute;
       left: 0;
       right: 0;
@@ -266,7 +267,8 @@ canvas:nth-of-type(2) {
 }
 
 .notesField {
-  padding-bottom: 18px !important
+  padding-bottom: 18px !important;
+  height: 35px !important;
 }
 
 .compDetails {
@@ -331,4 +333,23 @@ canvas:nth-of-type(2) {
 
 .saveButtonForm {
   margin-top: 25px;
+}
+
+.modal-body .blue.buttom.button {
+  width: 80%;
+  margin: auto;
+}
+
+// .extra.content form {
+//   margin: 10px 0;
+// }
+
+.extra.content {
+  form {
+    margin: 10px 0;
+  }
+
+  textarea {
+    min-height: 35px;
+  }
 }
