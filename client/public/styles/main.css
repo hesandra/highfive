@@ -1,3 +1,20 @@
+@media screen and (max-width: 550px) {
+  .navbar-header {
+    margin: auto;
+    text-align: center; }
+
+  #app .signup-box {
+    border: none;
+    width: 100%; }
+
+  #app .signup-box .btn-primary {
+    width: 200px; }
+
+  .navbar-brand {
+    position: absolute;
+    left: 0;
+    right: 0;
+    float: none; } }
 .google-green {
   color: #3cba54; }
 
