@@ -5,7 +5,7 @@ import { checkUserLogin } from '../actions/userAuth';
 import { checkCompanyLogin } from '../actions/companyAuth';
 import { getUserMedia, createSubmission } from '../actions/interview';
 
-const socket = io('https://highfivela.com/ws');
+const socket = io('wss://highfivela.com/');
 const mapStateToProps = (state) => {
   const { isAuthenticated, profile, backend_profile } = state.userAuth;
   const { stream, submission, isCreatingSubmission } = state.interview;
