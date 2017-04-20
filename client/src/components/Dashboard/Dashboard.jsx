@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
     const { users, jobs, subs } = this.state;
 
     return {
-      labels: ['Users', 'Jobs Posted', 'Submissions'],
+      labels: ['Total number of potential applicants', 'Job Posts by Company', 'Submissions by Company'],
       datasets: [
         {
           label: 'Company Stats',

@@ -138,7 +138,7 @@ class myDropzone extends Component {
             <span className="dz-upload" data-dz-uploadprogress id="dropzone"></span>
             <div className="dz-default dz-message text-center">
               <i className="fa fa-cloud-upload fa-4x"></i>
-              <div className="text-center">Upload Profile Image</div>
+              <div className="text-center">Upload Image that represents your Culture</div>
             </div>
           </form>
         </Dropzone>

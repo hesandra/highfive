@@ -14,7 +14,7 @@ exports.seed = function (knex, Promise) {
             location_id: 1,
             profile_img: 'https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAllAAAAJDk0NTNhYzIxLTlhY2ItNDkwNi04NGNiLWNjNDcxM2JmYjhhNQ.jpg',
             github_url: 'https://github.com/andrewjyi',
-            linkedin_url: 'https://www.linkedin.com/in/josh-hickman-3b6a2051/'
+            linkedin_url: 'https://www.linkedin.com/in/andrewjyi/'
           },
           {
             id: 7,
@@ -33,9 +33,9 @@ exports.seed = function (knex, Promise) {
             email: 's@s.com',
             auth0_id: '',
             location_id: 3,
-            profile_img: 'https://www.linkedin.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAQsAAAAJDNlY2MwM2IwLWVjZjAtNGYzZi1hMmJjLTQxNzhlZjNjOThiYw.jpg',
+            profile_img: 'https://avatars1.githubusercontent.com/u/18369270?v=3&s=460',
             github_url: 'https://github.com/hesandra',
-            linkedin_url: 'https://www.linkedin.com/in/josh-hickman-3b6a2051/'
+            linkedin_url: 'https://www.linkedin.com/in/henkelsandra/'
           },
           {
             id: 4,
@@ -43,7 +43,7 @@ exports.seed = function (knex, Promise) {
             email: 'r@r.com',
             auth0_id: '',
             location_id: 5,
-            profile_img: 'https://scontent-dft4-2.xx.fbcdn.net/v/t31.0-8/12307554_10156232129465263_3626907393769208400_o.jpg?oh=35f58eb2fb2c8ec8722f80ba3ce4a161&oe=597F5E66',
+            profile_img: 'https://scontent-dft4-2.xx.fbcdn.net/v/t31.0-8/17358980_10158361295515263_363005577058082924_o.jpg?oh=c2d7a5b6ee38658a439c3e739829fab2&oe=594D0D7D',
             github_url: 'https://github.com/reginavlee',
             linkedin_url: 'https://www.linkedin.com/in/reginavlee/'
           },

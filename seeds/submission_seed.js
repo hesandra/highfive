@@ -219,7 +219,7 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-          {
+    /*      {
             id: 27,
             user_id: 1,
             jobpost_id: 15,
@@ -266,7 +266,7 @@ exports.seed = function (knex, Promise) {
             status: null,
             completed: 1,
             notes: ''
-          },
+          },*/
           {
             id: 32,
             user_id: 7,
@@ -379,14 +379,14 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-          {
+        /*  {
             id: 46,
             user_id: 1,
             jobpost_id: 79,
             status: null,
             completed: 0,
             notes: ''
-          },
+          },*/
           {
             id: 47,
             user_id: 2,
@@ -395,14 +395,14 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-          {
+         /* {
             id: 48,
             user_id: 3,
             jobpost_id: 79,
             status: null,
             completed: 1,
             notes: ''
-          },
+          },*/
           {
             id: 49,
             user_id: 4,
@@ -419,7 +419,7 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-          {
+         /* {
             id: 51,
             user_id: 6,
             jobpost_id: 79,
@@ -434,34 +434,34 @@ exports.seed = function (knex, Promise) {
             status: null,
             completed: 1,
             notes: ''
-          },
-          {
+          },*/
+         /* {
             id: 53,
             user_id: 8,
             jobpost_id: 79,
             status: null,
             completed: 1,
             notes: ''
-          },
-          {
+          },*/
+          /*{
             id: 54,
             user_id: 9,
             jobpost_id: 79,
             status: null,
             completed: 1,
             notes: ''
-          },
-          {
+          },*/
+         /* {
             id: 55,
             user_id: 10,
             jobpost_id: 79,
             status: null,
             completed: 1,
             notes: ''
-          },
+          },*/
 
           //submission for jobposts being created
-          {
+        /*  {
             id: 56,
             user_id: 1,
             jobpost_id: 161,
@@ -596,7 +596,7 @@ exports.seed = function (knex, Promise) {
             status: null,
             completed: 1,
             notes: ''
-          },
+          },*/
         ]);
     });
   });

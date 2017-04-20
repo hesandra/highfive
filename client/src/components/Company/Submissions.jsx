@@ -84,8 +84,8 @@ class PositionsLevel extends React.Component {
                     <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>
-                    <Form>
-                      <TextArea className="form-control notesField" placeholder="Give your feedback to the applicant" id={"notes" + idx} name="notes" onChange={this.handleChange} autoHeight />
+                    <Form className="feedback">
+                      <TextArea className="form-control notesField"  placeholder="Give your feedback to the applicant" id={"notes" + idx} name="notes" onChange={this.handleChange} autoHeight />
                     </Form>
                     <FormGroup controlId="formControlsSelect">
                       <FormControl componentClass="select" placeholder="select" name="status" onChange={this.handleChange} >
@@ -97,7 +97,7 @@ class PositionsLevel extends React.Component {
                       </FormControl>
                     </FormGroup>
                     <Popup trigger={
-                      <Button color="purple" size="mini" onClick={() => { this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id }); { () => { this.state.notes = '' } }; this.clearNotes(idx) }}>Save</Button>}
+                      <Button color="purple" size="mini" onClick={() => { this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id }); { () => { this.state.notes = '' }}; this.clearNotes(idx) }}>Save</Button>}
                       content='Clicking here will inform the applicant'
                       style={style}
                       inverted
