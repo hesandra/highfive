@@ -1,17 +1,15 @@
 import Auth0Lock from 'auth0-lock';
 import jwtDecode from 'jwt-decode';
 
-let redirectURL;
-if (process.env.NODE_ENV === 'production') {
-  redirectURL = 'http://highfive-dev.us-west-2.elasticbeanstalk.com/';
-} else if (process.env.NODE_ENV === 'development') {
-  redirectURL = 'http://localhost:3000/';
-}
+const redirectURL = process.env.NODE_ENV === 'production' ?
+  'http://highfive-dev.us-west-2.elasticbeanstalk.com/' :
+  'http://localhost:8080/';
+  
 export default class CompanyAuthService {
   constructor(companyId, domain, type) {
     this.lock = new Auth0Lock(companyId, domain, {
       auth: {
-        redirectUrl:redirectURL,
+        redirectUrl: redirectURL,
         redirect: true,
         responseType: 'token'
       },

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { BASE_URL } from '../utils/constants';
 /**
  * Actions Responsible for Interview logic
  */
@@ -67,7 +68,7 @@ export function createSubmissionError(error) {
 export function createSubmission(submissionData) {
   return (dispatch) => {
     dispatch(createSubmissionRequest());
-    axios.post('http://localhost:8081/api/submissions', submissionData)
+    axios.post(`${BASE_URL}/api/submissions`, submissionData)
       .then((response) => {
         if (response.status === 201) {
           dispatch(createSubmissionSuccess(response.data.submission));
