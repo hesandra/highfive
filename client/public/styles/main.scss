@@ -202,6 +202,20 @@ a {
   cursor: pointer;
 }
 
+/*.questions:hover #remove{
+  display:block;
+}
+
+#remove {
+  border: 1px solid #ccc;
+  display: none;
+  font-size: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  text-transform: uppercase;
+}*/
+
+
 .spaceQ {
   height: 15px
 }
@@ -279,7 +293,6 @@ canvas:nth-of-type(2) {
 
 .notesField {
   padding-bottom: 18px !important;
-  height: 35px !important;
 }
 
 .compDetails {
@@ -368,4 +381,12 @@ canvas:nth-of-type(2) {
     margin: 20px auto 0;
     width: 500px;
   }
+}
+.feedback {
+  padding-bottom: 15px;
+}
+
+.status {
+  padding-bottom: 15px;
+  padding-top: 15px;
 }

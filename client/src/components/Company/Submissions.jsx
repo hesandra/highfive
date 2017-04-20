@@ -76,16 +76,16 @@ class PositionsLevel extends React.Component {
                       </List>
                     </Card.Description>
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
-                      <div>current status: {this.props.companyProfile.status.status}</div> :
-                      <div>current status: {item.status}</div>}
+                      <div className="status">current status: {this.props.companyProfile.status.status}</div> :
+                      <div className="status">current status: {item.status}</div>}
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
-                      <div>feedback:{this.props.companyProfile.status.notes}</div> :
-                      <div>feedback: {item.notes}</div>}
-                    <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
+                      <div className="feedback">feedback:{this.props.companyProfile.status.notes}</div> :
+                      <div className="feedback">feedback: {item.notes}</div>}
+                    <Button className="watch-btn" inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>
-                    <Form className="feedback">
-                      <TextArea className="form-control notesField"  placeholder="Give your feedback to the applicant" id={"notes" + idx} name="notes" onChange={this.handleChange} autoHeight />
+                    <Form>
+                      <TextArea className="form-control notesField" placeholder="Give your feedback to the applicant" id={"notes" + idx} name="notes" onChange={this.handleChange} autoHeight />
                     </Form>
                     <FormGroup controlId="formControlsSelect">
                       <FormControl componentClass="select" placeholder="select" name="status" onChange={this.handleChange} >

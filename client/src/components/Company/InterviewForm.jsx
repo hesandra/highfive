@@ -108,7 +108,8 @@ class InterviewForm extends React.Component {
                   <div className="selected-question" onClick={() => this.props.removeQuestion(item)}>{item.question}</div>
                 );
               })}
-                <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() }; this.props.hidePostModal() }}>Save</Button>
+                <Button className="saveButtonForm" onClick={() => { this.props.saveInterview({ postId: this.props.companyProfile.createdJob.data.jobposts.id, questions: this.props.companyProfile.selectedQuestion }); { this.handleSubmit() }; setTimeout(() => {
+                  this.props.hidePostModal()}, 3000)}}>Save Interview</Button>
               </div>
               <div><NotificationSystem ref={n => this.notificationSystem = n} style={style} /></div>
             </Card.Description>
@@ -130,3 +131,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewForm);
+
+
+
+
