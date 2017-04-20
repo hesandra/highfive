@@ -13,11 +13,15 @@ const socketController = require('./socketController');
 
 const app = express();
 const port = process.env.PORT || 3001;
+const corsOptions = {
+  origin: 'https:hifivela.com'
+};
 
 app.use(morgan('dev'));
 app.use(helmet());
 app.use('/', router);
-app.use(cors('*'));
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 
 /*
  * Setup Http Server w/ express
