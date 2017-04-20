@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const path = require('path');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 dotenv.load();
 
@@ -16,6 +17,7 @@ const port = process.env.PORT || 3001;
 app.use(morgan('dev'));
 app.use(helmet());
 app.use('/', router);
+app.use(cors('*'));
 
 /*
  * Setup Http Server w/ express
