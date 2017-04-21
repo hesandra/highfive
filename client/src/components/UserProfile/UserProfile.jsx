@@ -148,6 +148,7 @@ class UserProfile extends Component {
                 <small className="text-center"> { !location ? 'select a location' : location } </small>
                 { industries ?
                   <IndustryList
+                    addNotification={this.addNotification}
                     industries={industries}
                     onUserDeleteIndustry={this.deleteUserIndustry}
                   /> : '' }

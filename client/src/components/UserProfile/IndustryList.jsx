@@ -1,13 +1,14 @@
 import React from 'react';
 import IndustryListView from './IndustryListView';
 
-const IndustryList = ({ onUserDeleteIndustry, industries }) => {
+const IndustryList = ({ onUserDeleteIndustry, industries, addNotification }) => {
   const renderIndustries = industries.map((industry, i) => {
     return (
       <IndustryListView
         key={industry.id}
         industry={industry}
         onUserDeleteIndustry={onUserDeleteIndustry}
+        addNotification={addNotification}
       />
     );
   });

@@ -20,7 +20,6 @@ class CardList extends Component {
   }
   render() {
     let { userSubmissions, filter } = this.props;
-    console.log(filter);
     if (!userSubmissions) {
       userSubmissions = [];
     }
@@ -81,8 +80,8 @@ class CardList extends Component {
       <div>
         { filter.length ?
           <div>
-            <h2 className="text-center">Potential Match { cardList.length }</h2>
-            <Card.Group className="single-card-show" itemsPerRow={'one'}>
+            <h2 className="text-center">Match Found</h2>
+            <Card.Group id="single-card-show" itemsPerRow={'one'}>
               { cardList }
             </Card.Group>
           </div>

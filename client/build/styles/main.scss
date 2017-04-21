@@ -280,7 +280,12 @@ canvas:nth-of-type(2) {
 }
 
 .position-matchings {
-  margin-top: 25px;
+  margin-top: 100px;
+  font-size: 19px;
+}
+
+#jobpost-stat {
+  margin-right: 150px;
 }
 
 .apply-now a {
@@ -435,4 +440,10 @@ canvas:nth-of-type(2) {
   width: 100px;
   margin-top:-35px; 
   margin-left: -100px;
+}
+
+#single-card-show {
+  height: 400px;
+  width: 500px;
+  margin: 20px auto;
 }
