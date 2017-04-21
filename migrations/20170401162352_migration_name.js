@@ -66,7 +66,7 @@ exports.up = function(knex, Promise) {
         .createTable('video', (table) => {
           table.increments('id').primary();
           table.string('href');
-          table.text('answer', 'longtext');
+          table.string('answer');
           table.integer('question_id').unsigned().references('id').inTable('question');
           table.integer('submission_id').unsigned().references('id').inTable('submission');
           table.string('created_at').notNullable().defaultTo(moment().format('LL'));

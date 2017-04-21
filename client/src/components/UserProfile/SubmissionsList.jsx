@@ -12,13 +12,7 @@ const SubmissionsList = ({ submissions }) => {
     <div>
       <List divided className="submissions-list">
         { submissionList.length ?
-          <div>
-            ({ submissions.length })
-            { submissionList.reverse() }
-          </div>
-          :
-          'No submissions!'
-        }
+          <div><span style={{ fontSize: 18 }}>{submissions.length} Submissions</span>{submissionList.reverse()}</div> : <h3>No submissions!</h3>}
       </List>
     </div>
   );

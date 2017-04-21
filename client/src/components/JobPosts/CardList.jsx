@@ -41,7 +41,7 @@ class CardList extends Component {
       const industry = getIndustryName(jobPost.industry_id);
       const position = getPositionName(jobPost.level);
       return (
-        <Card key={jobPost.id} href={`/jobposts/${jobPost.id}`} color="red" link>
+        <Card key={jobPost.id} href={`/jobposts/${jobPost.id}`} link>
           <Image
             height={200}
             label={{ color: 'blue', content: industry, icon: 'globe', ribbon: true }}
