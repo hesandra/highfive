@@ -7,7 +7,6 @@ import { Link } from 'react-router';
 const Signup = (props) => {
   return (
     <Grid>
-      <h2> simplifying technical recruiting </h2>
       <Row className="signup-box col-xs-6 col-sm-5 col-md-4 col-lg-3">
         <div className="text-center">
           <Col>

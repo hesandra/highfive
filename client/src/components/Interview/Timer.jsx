@@ -14,7 +14,7 @@ class Timer extends Component {
     };
   }
   componentDidMount() {
-    const timeInMinutes = .2;
+    const timeInMinutes = .5;
     const currentTime = Date.parse(new Date());
     const deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
     this.initializeTimer('clockdiv', deadline);
@@ -26,7 +26,7 @@ class Timer extends Component {
       this.setState({
         round1: true
       })
-      const timeInMinutes = .2;
+      const timeInMinutes = .5;
       const currentTime = Date.parse(new Date());
       const deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
       setTimeout(() => {
@@ -38,7 +38,7 @@ class Timer extends Component {
       this.setState({
         round2: true
       });
-      const timeInMinutes = .2;
+      const timeInMinutes = .5;
       const currentTime = Date.parse(new Date());
       const deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
       setTimeout(() => {

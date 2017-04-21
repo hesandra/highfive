@@ -16,6 +16,14 @@
     left: 0;
     right: 0;
     float: none; } }
+.home-banner {
+  margin-top: 0px;
+  padding-top: 60px;
+  text-align: center;
+  color: white;
+  font-size: 28px;
+  font-weight: 500; }
+
 .show-grid .ui.card {
   margin: 25px 0;
   height: 250px;
@@ -60,6 +68,7 @@ a:hover {
   margin-left: 13px; }
 
 .background-img {
+  z-index: -1;
   background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
