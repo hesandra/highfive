@@ -17,6 +17,7 @@ import VideoPlayer from './VideoPlayer';
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
   navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
+let idx = 0;
 class Interview extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,8 @@ class Interview extends Component {
       submissionCreated: false,
       done: false,
       interviewOver: false,
-      answer: ''
+      answer: '',
+      firstDone: false
     };
     this.startInterview = this.startInterview.bind(this);
     this.endInterview = this.endInterview.bind(this);
@@ -115,16 +117,16 @@ class Interview extends Component {
         name: backend_profile.name + this.state.selectedQuestionIdx,
         id: Math.floor(Math.random() * 90000) + 10000,
         answer: `${answer}`,
-        question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
+        question_id: this.props.jobPost.question[idx].id,
         submission_id: this.props.submission.id
       };
+      idx += 1;
       console.log('fired', payload);
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
       setTimeout(() => {
         this.video.resume();
       }, 3000);
-      this.listenForS3Link();
     });
   }
   startInterview() {
@@ -132,19 +134,14 @@ class Interview extends Component {
       startTimer: true
     });
   }
-  listenForS3Link() {
-    this.props.socket.on('ready', (url) => {
-    });
-  }
   showNextQuestion() {
+    this.stopRecording();
     const currentIdx = this.state.selectedQuestionIdx;
-    if (currentIdx < 2) {
+    if (currentIdx < 2 && this.state.firstDone) {
       this.setState({
         selectedQuestionIdx: this.state.selectedQuestionIdx + 1
       });
     }
-    console.log('fired', currentIdx);
-    this.stopRecording();
   }
   endInterview() {
     this.setState({

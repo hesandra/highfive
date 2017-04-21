@@ -22,7 +22,7 @@
     }
 }
 
-.ui.card {
+.show-grid .ui.card {
   margin: 25px 0;
   height: 250px;
   width: 360px;
@@ -363,3 +363,9 @@ canvas:nth-of-type(2) {
   }
 }
 
+.submissions-list {
+  .ui.blue.card {
+    margin: 20px auto 0;
+    width: 500px;
+  }
+}
