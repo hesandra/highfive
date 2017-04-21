@@ -370,6 +370,19 @@ module.exports = {
         };
         res.send(payload);
       });
+    },
+
+    getUserStats: (req, res, next) => {
+      const { id } = req.params;
+
+      models.dashboard.getUserStats(id, (err, stats) => {
+        const payload = {
+          success: err ? false : true,
+          err: JSON.stringify(err),
+          stats
+        };
+        res.send(payload);
+      });
     }
   }
 };
