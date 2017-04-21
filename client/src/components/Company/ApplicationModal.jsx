@@ -27,7 +27,7 @@ class ApplicationModal extends React.Component {
                       return (
                         <div>
                         {item.jobpost.question.filter((question) => question.id === video.question_id).map(question =>
-                        <h4>Question:{'    '}{question.question}</h4>)}
+                        <h4 className="appl-font">Question:{'    '}{question.question}</h4>)}
                           <video width="600" controls
                             src={video.href} type="video/webm">
                           </video>
@@ -74,3 +74,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(ApplicationModal);
 
 //<Button onClick={}>Close</Button>
+
+
+

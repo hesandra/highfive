@@ -65,7 +65,7 @@ class PositionsLevel extends React.Component {
                     </Card.Meta>
                     <Card.Description>
                       <List>
-                        <List.Item icon="user" content={item.user.name} />
+                        <List.Item icon="user" className="appl-name" content={item.user.name} />
                         <a href={item.user.github_url}>
                           <i className="fa fa-github" aria-hidden="true" />
                         </a>
@@ -76,11 +76,11 @@ class PositionsLevel extends React.Component {
                       </List>
                     </Card.Description>
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
-                      <div className="status">status: {this.props.companyProfile.status.status}</div> :
-                      <div className="status">status: {item.status}</div>}
+                      <div className="status status-font">status: {this.props.companyProfile.status.status}</div> :
+                      <div className="status status-font">status: {item.status}</div>}
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
-                      <div className="feedback">feedback:{this.props.companyProfile.status.notes}</div> :
-                      <div className="feedback">feedback: {item.notes}</div>}
+                      <div className="feedback status-font">feedback:{this.props.companyProfile.status.notes}</div> :
+                      <div className="feedback status-font">feedback: {item.notes}</div>}
                     <Button bsStyle="success" fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>
