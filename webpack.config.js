@@ -59,12 +59,12 @@ module.exports = {
   watch: true,
   stats: { colors: true },
   devtool: 'eval',
-  devServer: {
-    host: 'localhost',
-    port: 8080,
-    historyApiFallback: true,
-    contentBase: './',
-  },
+  // devServer: {
+  //   host: 'localhost',
+  //   port: 8080,
+  //   historyApiFallback: true,
+  //   contentBase: './',
+  // },
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },

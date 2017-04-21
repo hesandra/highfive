@@ -1,5 +1,4 @@
 exports.seed = function (knex, Promise) {
-  // Deletes ALL existing entries
   return knex.raw('SET foreign_key_checks = 0;')
     .then(() => {
       return knex('jobpost_question').del()
@@ -126,9 +125,9 @@ exports.seed = function (knex, Promise) {
             { id: 91, jobpost_id: 30, question_id: 20 },
             { id: 92, jobpost_id: 30, question_id: 30 },
 
-            { id: 93, jobpost_id: 31, question_id: 21 },
-            { id: 94, jobpost_id: 31, question_id: 2 },
-            { id: 95, jobpost_id: 31, question_id: 12 },
+            { id: 93, jobpost_id: 31, question_id: 11 },
+            { id: 94, jobpost_id: 31, question_id: 22 },
+            { id: 95, jobpost_id: 31, question_id: 6 },
 
             { id: 96, jobpost_id: 32, question_id: 22 },
             { id: 97, jobpost_id: 32, question_id: 3 },
@@ -404,7 +403,248 @@ exports.seed = function (knex, Promise) {
 
             { id: 301, jobpost_id: 100, question_id: 10 },
             { id: 302, jobpost_id: 100, question_id: 20 },
-            { id: 303, jobpost_id: 100, question_id: 30 }
+            { id: 303, jobpost_id: 100, question_id: 30 },
+            
+            //added these for test reasons
+            { id: 304, jobpost_id: 101, question_id: 10 },
+            { id: 305, jobpost_id: 101, question_id: 20 },
+            { id: 306, jobpost_id: 101, question_id: 30 },
+
+            { id: 307, jobpost_id: 102, question_id: 10 },
+            { id: 308, jobpost_id: 102, question_id: 20 },
+            { id: 309, jobpost_id: 102, question_id: 30 },
+
+            { id: 310, jobpost_id: 103, question_id: 10 },
+            { id: 311, jobpost_id: 103, question_id: 1 },
+            { id: 312, jobpost_id: 103, question_id: 11 },
+
+            { id: 313, jobpost_id: 104, question_id: 21 },
+            { id: 314, jobpost_id: 104, question_id: 2 },
+            { id: 315, jobpost_id: 104, question_id: 12 },
+
+            { id: 316, jobpost_id: 105, question_id: 22 },
+            { id: 317, jobpost_id: 105, question_id: 3 },
+            { id: 318, jobpost_id: 105, question_id: 13 },
+
+            { id: 319, jobpost_id: 106, question_id: 23 },
+            { id: 320, jobpost_id: 106, question_id: 4 },
+            { id: 321, jobpost_id: 106, question_id: 14 },
+
+            { id: 322, jobpost_id: 107, question_id: 24 },
+            { id: 323, jobpost_id: 107, question_id: 5 },
+            { id: 324, jobpost_id: 107, question_id: 15 },
+
+            { id: 325, jobpost_id: 108, question_id: 25 },
+            { id: 326, jobpost_id: 108, question_id: 6 },
+            { id: 327, jobpost_id: 108, question_id: 16 },
+
+            { id: 328, jobpost_id: 109, question_id: 26 },
+            { id: 329, jobpost_id: 109, question_id: 7 },
+            { id: 330, jobpost_id: 109, question_id: 17 },
+
+            { id: 331, jobpost_id: 110, question_id: 27 },
+            { id: 332, jobpost_id: 110, question_id: 8 },
+            { id: 333, jobpost_id: 110, question_id: 18 },
+
+            { id: 334, jobpost_id: 111, question_id: 28 },
+            { id: 335, jobpost_id: 111, question_id: 9 },
+            { id: 336, jobpost_id: 111, question_id: 19 },
+
+            { id: 337, jobpost_id: 112, question_id: 29 },
+            { id: 338, jobpost_id: 112, question_id: 10 },
+            { id: 339, jobpost_id: 112, question_id: 20 },
+
+            { id: 340, jobpost_id: 113, question_id: 30 },
+            { id: 341, jobpost_id: 113, question_id: 1 },
+            { id: 342, jobpost_id: 113, question_id: 11 },
+
+            { id: 343, jobpost_id: 114, question_id: 21 },
+            { id: 344, jobpost_id: 114, question_id: 2 },
+            { id: 345, jobpost_id: 114, question_id: 12 },
+
+            { id: 346, jobpost_id: 115, question_id: 22 },
+            { id: 347, jobpost_id: 115, question_id: 3 },
+            { id: 348, jobpost_id: 115, question_id: 13 },
+
+            { id: 349, jobpost_id: 116, question_id: 23 },
+            { id: 350, jobpost_id: 116, question_id: 4 },
+            { id: 351, jobpost_id: 116, question_id: 14 },
+
+            { id: 352, jobpost_id: 117, question_id: 24 },
+            { id: 353, jobpost_id: 117, question_id: 5 },
+            { id: 354, jobpost_id: 117, question_id: 15 },
+
+            { id: 355, jobpost_id: 118, question_id: 25 },
+            { id: 356, jobpost_id: 118, question_id: 6 },
+            { id: 357, jobpost_id: 118, question_id: 16 },
+
+            { id: 358, jobpost_id: 119, question_id: 26 },
+            { id: 359, jobpost_id: 119, question_id: 7 },
+            { id: 360, jobpost_id: 119, question_id: 17 },
+
+            { id: 361, jobpost_id: 120, question_id: 27 },
+            { id: 362, jobpost_id: 120, question_id: 8 },
+            { id: 363, jobpost_id: 120, question_id: 18 },
+
+            { id: 364, jobpost_id: 121, question_id: 28 },
+            { id: 365, jobpost_id: 121, question_id: 9 },
+            { id: 366, jobpost_id: 121, question_id: 19 },
+
+            { id: 367, jobpost_id: 122, question_id: 29 },
+            { id: 368, jobpost_id: 122, question_id: 10 },
+            { id: 369, jobpost_id: 122, question_id: 20 },
+
+            { id: 370, jobpost_id: 123, question_id: 30 },
+            { id: 371, jobpost_id: 123, question_id: 10 },
+            { id: 372, jobpost_id: 123, question_id: 20 },
+
+            { id: 373, jobpost_id: 124, question_id: 30 },
+            { id: 374, jobpost_id: 124, question_id: 10 },
+            { id: 375, jobpost_id: 124, question_id: 20 },
+
+            { id: 376, jobpost_id: 125, question_id: 30 },
+            { id: 377, jobpost_id: 125, question_id: 1 },
+            { id: 378, jobpost_id: 125, question_id: 11 },
+
+            { id: 379, jobpost_id: 126, question_id: 21 },
+            { id: 380, jobpost_id: 126, question_id: 2 },
+            { id: 381, jobpost_id: 126, question_id: 12 },
+
+            { id: 382, jobpost_id: 127, question_id: 22 },
+            { id: 383, jobpost_id: 127, question_id: 3 },
+            { id: 384, jobpost_id: 127, question_id: 13 },
+
+            { id: 385, jobpost_id: 128, question_id: 23 },
+            { id: 386, jobpost_id: 128, question_id: 4 },
+            { id: 387, jobpost_id: 128, question_id: 14 },
+
+            { id: 388, jobpost_id: 129, question_id: 24 },
+            { id: 389, jobpost_id: 129, question_id: 5 },
+            { id: 390, jobpost_id: 129, question_id: 15 },
+
+            { id: 391, jobpost_id: 130, question_id: 25 },
+            { id: 392, jobpost_id: 130, question_id: 6 },
+            { id: 393, jobpost_id: 130, question_id: 16 },
+            
+            { id: 394, jobpost_id: 131, question_id: 26 },
+            { id: 395, jobpost_id: 131, question_id: 7 },
+            { id: 396, jobpost_id: 131, question_id: 17 },
+
+            { id: 397, jobpost_id: 132, question_id: 27 },
+            { id: 398, jobpost_id: 132, question_id: 8 },
+            { id: 399, jobpost_id: 132, question_id: 18 },
+
+            { id: 400, jobpost_id: 133, question_id: 28 },
+            { id: 401, jobpost_id: 133, question_id: 9 },
+            { id: 402, jobpost_id: 133, question_id: 19 },
+
+            { id: 403, jobpost_id: 134, question_id: 29 },
+            { id: 404, jobpost_id: 134, question_id: 10 },
+            { id: 405, jobpost_id: 134, question_id: 10 },
+
+            { id: 406, jobpost_id: 135, question_id: 20 },
+            { id: 407, jobpost_id: 135, question_id: 30 },
+            { id: 408, jobpost_id: 135, question_id: 1 },
+
+            { id: 409, jobpost_id: 136, question_id: 1 },
+            { id: 410, jobpost_id: 136, question_id: 11 },
+            { id: 411, jobpost_id: 136, question_id: 21 },
+
+            { id: 412, jobpost_id: 137, question_id: 2 },
+            { id: 413, jobpost_id: 137, question_id: 12 },
+            { id: 414, jobpost_id: 137, question_id: 22 },
+
+            { id: 415, jobpost_id: 138, question_id: 3 },
+            { id: 416, jobpost_id: 138, question_id: 13 },
+            { id: 417, jobpost_id: 138, question_id: 23 },
+
+            { id: 418, jobpost_id: 139, question_id: 4 },
+            { id: 419, jobpost_id: 139, question_id: 14 },
+            { id: 420, jobpost_id: 139, question_id: 24 },
+
+            { id: 421, jobpost_id: 140, question_id: 5 },
+            { id: 422, jobpost_id: 140, question_id: 15 },
+            { id: 423, jobpost_id: 140, question_id: 25 },
+
+            { id: 424, jobpost_id: 141, question_id: 6 },
+            { id: 425, jobpost_id: 141, question_id: 16 },
+            { id: 426, jobpost_id: 141, question_id: 26 },
+
+            { id: 427, jobpost_id: 142, question_id: 7 },
+            { id: 428, jobpost_id: 142, question_id: 17 },
+            { id: 429, jobpost_id: 142, question_id: 27 },
+
+            { id: 430, jobpost_id: 143, question_id: 8 },
+            { id: 431, jobpost_id: 143, question_id: 18 },
+            { id: 432, jobpost_id: 143, question_id: 28 },
+
+            { id: 433, jobpost_id: 144, question_id: 9 },
+            { id: 434, jobpost_id: 144, question_id: 19 },
+            { id: 435, jobpost_id: 144, question_id: 29 },
+
+            { id: 436, jobpost_id: 145, question_id: 4 },
+            { id: 437, jobpost_id: 145, question_id: 14 },
+            { id: 438, jobpost_id: 145, question_id: 24 },
+
+            { id: 439, jobpost_id: 146, question_id: 5 },
+            { id: 440, jobpost_id: 146, question_id: 15 },
+            { id: 441, jobpost_id: 146, question_id: 25 },
+
+            { id: 442, jobpost_id: 147, question_id: 6 },
+            { id: 443, jobpost_id: 147, question_id: 16 },
+            { id: 444, jobpost_id: 147, question_id: 26 },
+
+            { id: 445, jobpost_id: 148, question_id: 7 },
+            { id: 446, jobpost_id: 148, question_id: 17 },
+            { id: 447, jobpost_id: 148, question_id: 27 },
+
+            { id: 448, jobpost_id: 149, question_id: 8 },
+            { id: 449, jobpost_id: 149, question_id: 18 },
+            { id: 450, jobpost_id: 149, question_id: 28 },
+
+            { id: 451, jobpost_id: 150, question_id: 9 },
+            { id: 452, jobpost_id: 150, question_id: 19 },
+            { id: 453, jobpost_id: 150, question_id: 29 },
+
+            { id: 454, jobpost_id: 151, question_id: 10 },
+            { id: 455, jobpost_id: 151, question_id: 20 },
+            { id: 456, jobpost_id: 151, question_id: 30 },
+
+            { id: 457, jobpost_id: 152, question_id: 1 },
+            { id: 458, jobpost_id: 152, question_id: 11 },
+            { id: 459, jobpost_id: 152, question_id: 21 },
+
+            { id: 460, jobpost_id: 153, question_id: 2 },
+            { id: 461, jobpost_id: 153, question_id: 12 },
+            { id: 462, jobpost_id: 153, question_id: 22 },
+
+            { id: 463, jobpost_id: 154, question_id: 3 },
+            { id: 464, jobpost_id: 154, question_id: 13 },
+            { id: 465, jobpost_id: 154, question_id: 23 },
+
+            { id: 466, jobpost_id: 155, question_id: 4 },
+            { id: 467, jobpost_id: 155, question_id: 14 },
+            { id: 468, jobpost_id: 155, question_id: 24 },
+
+            { id: 469, jobpost_id: 156, question_id: 5 },
+            { id: 470, jobpost_id: 156, question_id: 15 },
+            { id: 471, jobpost_id: 156, question_id: 25 },
+
+            { id: 472, jobpost_id: 157, question_id: 6 },
+            { id: 473, jobpost_id: 157, question_id: 16 },
+            { id: 474, jobpost_id: 157, question_id: 26 },
+
+            { id: 475, jobpost_id: 158, question_id: 7 },
+            { id: 476, jobpost_id: 158, question_id: 17 },
+            { id: 477, jobpost_id: 158, question_id: 27 },
+
+            { id: 478, jobpost_id: 159, question_id: 8 },
+            { id: 479, jobpost_id: 159, question_id: 18 },
+            { id: 480, jobpost_id: 159, question_id: 28 },
+
+            { id: 481, jobpost_id: 160, question_id: 9 },
+            { id: 482, jobpost_id: 160, question_id: 19 },
+            { id: 483, jobpost_id: 160, question_id: 29 }
 
           ]);
         });

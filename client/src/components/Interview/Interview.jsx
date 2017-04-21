@@ -17,7 +17,6 @@ import VideoPlayer from './VideoPlayer';
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
   navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
-let idx = 0;
 class Interview extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +40,7 @@ class Interview extends Component {
    * Setup submission on back-end server
    */
   componentDidMount() {
+    this.idx = 0;
     const { requestUserMedia, createSubmission, backend_profile, jobPost } = this.props;
     if (!hasGetUserMedia) {
       // use sweetalert here
@@ -103,10 +103,7 @@ class Interview extends Component {
   }
   processRecording() {
     const { backend_profile } = this.props;
-    let answer = 'n/a';
-    if (this.state.selectedQuestionIdx === 2) {
-      answer = this.state.answer;
-    }
+    const answer = this.state.answer;
     this.setState({
       answer: ''
     });
@@ -116,10 +113,10 @@ class Interview extends Component {
         name: backend_profile.name + this.state.selectedQuestionIdx,
         id: Math.floor(Math.random() * 90000) + 10000,
         answer: `${answer}`,
-        question_id: this.props.jobPost.question[idx].id,
+        question_id: this.props.jobPost.question[this.idx].id,
         submission_id: this.props.submission.id
       };
-      idx += 1;
+      this.idx += 1;
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
       setTimeout(() => {
@@ -135,7 +132,7 @@ class Interview extends Component {
   showNextQuestion() {
     this.stopRecording();
     const currentIdx = this.state.selectedQuestionIdx;
-    if (currentIdx < 2 && this.state.firstDone) {
+    if (currentIdx < 2) {
       this.setState({
         selectedQuestionIdx: this.state.selectedQuestionIdx + 1
       });

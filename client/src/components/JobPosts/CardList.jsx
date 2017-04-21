@@ -57,7 +57,7 @@ class CardList extends Component {
             </Card.Meta>
             <Card.Description>
               <List>
-                <List.Item icon="globe" content={industry} />
+                <List.Item icon="industry" content={industry} />
                 <List.Item icon="marker" content={location} />
                 <List.Item icon="user" content={position} />
               </List>

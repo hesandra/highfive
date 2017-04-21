@@ -13,7 +13,7 @@ const IndustryList = ({ onUserDeleteIndustry, industries }) => {
   });
   return (
     <div className="profile-info">
-      <i className="fa fa-industry" aria-hidden="true"></i>{ renderIndustries }
+      <i className="fa fa-industry" aria-hidden="true"></i>{ !renderIndustries.length ? <small>select industries</small> : renderIndustries }
     </div>
   );
 };

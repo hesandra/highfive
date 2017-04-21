@@ -72,8 +72,7 @@ exports.seed = function (knex, Promise) {
           {
             id: 10,
             href: 'https://s3-us-west-1.amazonaws.com/highfivehrla13/Sandra+Jayasingha2_24418.webm',
-            answer: 'asdsads',
-            // 'function isPrime(number) {\n if (number < 2) {\n return false;\n}\n if (number ===2) {\n return true;\n } else if (number % 2 === 0) { \n return false;\n} \n for (var i = 3; i*i <= number; i += 2) { \n if (number % i === 0) { \n return false;\n }\n}\n return true;\n}',
+            answer:'function isPrime(number) {\n if (number < 2) {\n return false;\n}\n if (number ===2) {\n return true;\n } else if (number % 2 === 0) { \n return false;\n} \n for (var i = 3; i*i <= number; i += 2) { \n if (number % i === 0) { \n return false;\n }\n}\n return true;\n}',
             submission_id: 8,
             question_id: 11
           },
@@ -323,12 +322,6 @@ exports.seed = function (knex, Promise) {
             question_id: 6
           }
         ]);
-      })
-  })
+      });
+  });
 };
-
-
-
-
-
- //'function isPrime(number) { \n if (typeof number !== "number" || !Number.isInteger(number)) {\n return false;\n}\n if (number < 2) {\n return false;\n}\n if (number ===2) {\n return true;\n } else if (number % 2 === 0) { \n return false;\n} \n for (var i = 3; i*i <= number; i += 2) { \n if (number % i === 0) { \n return false;\n }\n}\n return true;\n}'
