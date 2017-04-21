@@ -111,7 +111,6 @@ class Interview extends Component {
       answer: ''
     });
     const url = this.video.getDataURL((videoData) => {
-      console.log('this is index', this.state.selectedQuestionIdx);
       const payload = {
         videoData,
         name: backend_profile.name + this.state.selectedQuestionIdx,
@@ -121,7 +120,6 @@ class Interview extends Component {
         submission_id: this.props.submission.id
       };
       idx += 1;
-      console.log('fired', payload);
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
       setTimeout(() => {

@@ -11,9 +11,9 @@ const locationToIdMappings = {
   'Irvine, CA': 10,
   'Washington, DC': 11,
   'Seattle, WA': 12,
-  'Houston, TX': 13, 
+  'Houston, TX': 13,
   'St. Louis, MO': 14,
-  'Miami, FL': 15, 
+  'Miami, FL': 15,
   'Philadelphia, PA': 16,
   'San Francisco, CA': 17
 };

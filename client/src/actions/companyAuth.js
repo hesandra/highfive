@@ -2,17 +2,16 @@ import { hashHistory, browserHistory } from 'react-router';
 import axios from 'axios';
 import CompanyAuthService from '../utils/companyAuthService';
 import { COMPANIES_AUTH0_CLIENT_ID } from '../../../config';
+import { BASE_URL } from '../utils/constants';
 
 export const COMPANY_LOGIN_REQUEST = 'COMPANY_LOGIN_REQUEST';
 export const COMPANY_LOGIN_SUCCESS = 'COMPANY_LOGIN_SUCCESS';
 export const COMPANY_LOGIN_ERROR = 'COMPANY_LOGIN_ERROR';
 export const COMPANY_LOGOUT_SUCCESS = 'COMPANY_LOGOUT_SUCCESS';
 export const COMPANY_TOKEN_RETRIEVED = 'COMPANY_TOKEN_RETRIEVED';
-import { BASE_URL } from '../utils/constants';
 
 
 const idToUse = process.env.NODE_ENV === 'production' ? process.env.COMPANIES_AUTH0_ID : COMPANIES_AUTH0_CLIENT_ID;
-
 const authService = new CompanyAuthService(idToUse, 'teamhighfive.auth0.com', 'Companies Sign-In');
 export function checkCompanyLogin() {
   return (dispatch) => {
