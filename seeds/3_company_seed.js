@@ -163,7 +163,7 @@ exports.seed = function (knex, Promise) {
             name: 'airbnb',
             profile_img: '',
             email: 'airbnb@gmail.com',
-            address: 'http://www.kombitz.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png',
+            address: '',
             auth0_id: 'auth0|58f7a50abef25408f66aa180'
           }
         ]);
