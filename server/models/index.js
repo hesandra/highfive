@@ -438,6 +438,25 @@ module.exports = {
       stats.user = userCount;
 
       cb(null, stats);
+    },
+
+    getUserStats: async (id, cb) => {
+      const stats = {};
+
+      const jobpostCount = await Jobpost
+        .query()
+        .count('id')
+        .catch((e) => { return cb(e, null); });
+      stats.jobpost = jobpostCount;
+
+      const submissionCount = await Submission
+        .query()
+        .count('id')
+        .where('user_id', id)
+        .catch((e) => { return cb(e, null); });
+      stats.submission = submissionCount;
+
+      cb(null, stats);
     }
   }
 };
