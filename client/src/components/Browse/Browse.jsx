@@ -12,7 +12,6 @@ class Browse extends Component {
     this.state = {
 
     };
-    console.log(this.props);
   }
   componentDidMount() {
     this.props.fetchUsers();

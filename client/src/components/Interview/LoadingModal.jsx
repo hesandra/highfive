@@ -17,10 +17,8 @@ class LoadingModal extends Component {
     this.show();
   }
   show() {
-    console.log('fired');
     this.setState({ showModal: true });
     setTimeout(() => {
-      console.log('close!');
       this.handleClose();
     }, 3000);
   }
