@@ -114,7 +114,10 @@ class PositionsLevel extends React.Component {
   }
 
   render() {
-    if (this.props.companyProfile.submissions !== undefined) {
+    if (this.props.companyProfile.submissions && this.props.companyProfile.submissions.length === 0){
+      return (<h2 style={{ 'margin-top': 20 }} className="text-center">No submissions yet</h2>);
+    }
+    else if (this.props.companyProfile.submissions !== undefined) {
       return (
         <div>
           <div>{this.renderSubmissions()}
@@ -124,7 +127,7 @@ class PositionsLevel extends React.Component {
         </div> )
       }
     else if (this.props.companyProfile.submissions === undefined){
-      return (<h1 style={{ 'margin-top': 20 }} className="text-center">Find submissions through a jobpost</h1>);
+      return (<h2 style={{ 'margin-top': 20 }} className="text-center">Find submissions through a jobpost</h2>);
     }
   }
 }
