@@ -1,10 +1,8 @@
 exports.seed = function (knex, Promise) {
-  // Deletes ALL existing entries
   return knex.raw('SET foreign_key_checks = 0;')
   .then(() => {
     return knex('video').del()
       .then(function () {
-        // Inserts seed entries
         return knex('video').insert([
           {
             id: 1,
