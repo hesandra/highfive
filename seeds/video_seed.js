@@ -301,7 +301,7 @@ exports.seed = function (knex, Promise) {
             submission_id: 49,
             question_id: 6
           },
-           {
+          {
             id: 43,
             href: 'https://s3-us-west-1.amazonaws.com/highfivehrla13/Sandra+Jayasingha2_24418.webm',
             answer: 'function isPrime(number) {\n if (number < 2) {\n return false;\n}\n if (number ===2) {\n return true;\n } else if (number % 2 === 0) { \n return false;\n} \n for (var i = 3; i*i <= number; i += 2) { \n if (number % i === 0) { \n return false;\n }\n}\n return true;\n}',
