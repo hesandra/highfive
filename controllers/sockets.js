@@ -31,9 +31,7 @@ module.exports = {
             console.log(err);
             return;
           }
-          console.log(data);
-          console.log('video saved');
-          axios.post(`http://localhost:3000/api/videos`, {
+          axios.post(`/api/videos`, {
             href: data.Location,
             answer,
             submission_id,
