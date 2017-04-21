@@ -116,7 +116,6 @@ class UserProfile extends Component {
         if (githubIndex) {
           profileImage = `${profile.identities[githubIndex].profileData.picture}&s=460`;
           name = profile.identities[githubIndex].profileData.name;
-          // location = profile.identities[githubIndex].profileData.location;
           githubLink = profile.identities[githubIndex].profileData.html_url;
         } else {
           if (linkedinIndex) {
@@ -125,7 +124,6 @@ class UserProfile extends Component {
             location = `${profile.location.name} ${profile.location.country.code}`;
             linkedinLink = profile.publicProfileUrl;
           } else {
-            // use e-mail info if avail
             profileImage = profile.picture;
             name = profile.name;
             githubLink = profile.html_url;

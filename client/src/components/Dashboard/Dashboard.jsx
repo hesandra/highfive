@@ -1,9 +1,9 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
+import { BASE_URL } from '../../utils/constants';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
   }
 
   getStats(id) {
-    axios.get(`http://localhost:3000/api/companies/${id}/stats`)
+    axios.get(`${BASE_URL}/api/companies/${id}/stats`)
       .then((res) => {
         const { jobpost, submission, user } = res.data.stats;
         this.setState({
