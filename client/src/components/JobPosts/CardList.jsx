@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { Card, Image, Icon, Rating, List, Popup, Button } from 'semantic-ui-react';
 
 import { getLocationName } from '../../utils/Mappings/locationMappings';
@@ -18,15 +19,16 @@ class CardList extends Component {
     return '4';
   }
   render() {
-    let { userSubmissions, filters } = this.props;
+    let { userSubmissions, filter } = this.props;
+    console.log(filter);
     if (!userSubmissions) {
       userSubmissions = [];
     }
-    if (!filters) {
-      filters = [];
+    if (!filter) {
+      filter = [];
     }
     let jobPosts;
-    if (!this.props.filter.length) {
+    if (!filter.length) {
       jobPosts = this.props.jobPosts;
     } else {
       jobPosts = this.props.jobPosts.filter((jobpost) => {
@@ -41,7 +43,7 @@ class CardList extends Component {
       const industry = getIndustryName(jobPost.industry_id);
       const position = getPositionName(jobPost.level);
       return (
-        <Card key={jobPost.id} href={`/jobposts/${jobPost.id}`} link>
+        <Card key={jobPost.id}>
           <Image
             height={200}
             label={{ color: 'blue', content: industry, icon: 'globe', ribbon: true }}
@@ -67,17 +69,20 @@ class CardList extends Component {
             <Icon name="user" />
             { jobPost.submission.length } applicants
               <br />
+            <Link to={`/jobposts/${jobPost.id}`}>
             { userSubmissions.includes(jobPost.id) ? <Button disabled fluid> Already Applied</Button> : <Button color="green" fluid>Apply!</Button>
             }
+            </Link>
           </Card.Content>
         </Card>
       );
     });
     return (
       <div>
-        { filters.length ?
-          <div>found positions { cardList.length }
-            <Card.Group>
+        { filter.length ?
+          <div>
+            <h2 className="text-center">Potential Match { cardList.length }</h2>
+            <Card.Group className="single-card-show" itemsPerRow={'one'}>
               { cardList }
             </Card.Group>
           </div>

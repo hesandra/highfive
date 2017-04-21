@@ -29,19 +29,17 @@ const IndustriesMultiSelect = ({ onSelectChange, industries }) => {
         <option value="Fashion">Fashion</option>
         <option value="Gaming">Gaming</option>
         <option value="Entertainment">Entertainment</option>
-        <option value="Electronic">Electronics</option>
+        <option value="Electronic">Electronic</option>
         <option value="Aviation">Aviation</option>
         <option value="Food">Food</option>
         <option value="Travel">Travel</option>
-        <option value="Transportation">Transporation</option>
-        <option value="Space Aviation">Space</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Space Aviation">Space Aviation</option>
         <option value="Beauty">Beauty</option>
         <option value="Fitness">Fitness</option>
         <option value="Social Media">Social Media</option>
         <option value="Healthcare">Healthcare</option>
         <option value="Arts">Arts</option>
-        
-        
       </MultiSelect>
     </div>
   );

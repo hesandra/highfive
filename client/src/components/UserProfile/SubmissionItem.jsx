@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { List } from 'semantic-ui-react';
+import { Card, Icon, Label, List } from 'semantic-ui-react';
 import SubmissionModal from './SubmissionModal';
 import { getPositionName } from '../../utils/Mappings/positionMappings';
-import { Card, Icon } from 'semantic-ui-react';
+import { getIndustryName } from '../../utils/Mappings/industryMappings';
 
 const Submission = ({ submission }) => {
   return (
@@ -17,11 +17,13 @@ const Submission = ({ submission }) => {
             <span>{ submission.created_at }</span>
           </Card.Meta>
           <Card.Description>
+            <i className="fa fa-industry" aria-hidden="true" /><span><Label>{ getIndustryName(submission.jobpost.industry_id) }</Label></span>
+            <br />
             { getPositionName(submission.jobpost.level) }
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <SubmissionModal questions={submission.jobpost.question} videos={submission.video} />
+          <SubmissionModal submission={submission} questions={submission.jobpost.question} videos={submission.video} />
         </Card.Content>
       </Card>
     </div>

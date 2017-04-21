@@ -20,10 +20,10 @@ class JobPosts extends Component {
   componentDidMount() {
     const { jobPosts, backend_profile, requestJobPosts } = this.props;
     const { page } = this.props.params;
-    if (!jobPosts.length) {
-
+    if (!jobPosts.results.length) {
+      requestJobPosts(page);
+      console.log('going to get jobpost');
     }
-    requestJobPosts(page);
   }
   componentDidUpdate(prevProps) {
     const { requestJobPosts } = this.props;
@@ -32,7 +32,6 @@ class JobPosts extends Component {
     }
   }
   handlePageClick(data) {
-    console.log(data);
     const { requestJobPosts } = this.props;
     const selected = data.selected;
     requestJobPosts(data.selected);
@@ -62,7 +61,7 @@ class JobPosts extends Component {
                 <Icon link name="briefcase" circular />
               </Header>
               <div className="text-center">
-                { jobPosts.total ?
+                { jobPosts.total && !filters.length ?
                   <Statistic>
                     <Statistic.Value>{`${jobPosts.results.length * this.props.params.page} out of ${jobPosts.total}`}</Statistic.Value>
                     <Statistic.Label>Job Postings </Statistic.Label>

@@ -48,19 +48,19 @@ export const userLoginRequest = () => {
     type: USER_LOGIN_REQUEST,
   };
 };
+export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
+const userLoginError = (error) => {
+  return {
+    type: USER_LOGIN_ERROR,
+    error
+  };
+};
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 const userLoginSuccess = (profile) => {
   browserHistory.push('/profile');
   return {
     type: USER_LOGIN_SUCCESS,
     profile
-  };
-};
-export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
-const userLoginError = (error) => {
-  return {
-    type: USER_LOGIN_ERROR,
-    error
   };
 };
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';

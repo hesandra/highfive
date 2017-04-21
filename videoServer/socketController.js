@@ -30,12 +30,13 @@ module.exports = {
             console.log(err);
             return;
           }
-          axios.post('/api/videos', {
+          axios.post('http://localhost:3000/api/videos', {
             href: data.Location,
             answer,
             submission_id,
             question_id
-          });
+          })
+          .catch((e) => console.log(e));
         });
       });
     });

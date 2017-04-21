@@ -17,7 +17,6 @@ const socketController = require('./controllers/sockets');
 
 const port = process.env.PORT || 3000;
 dotenv.load();
-console.log(process.env.NODE_ENV);
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const knex = Knex(knexConfig[env]);
 Model.knex(knex);
@@ -38,6 +37,7 @@ const server = http.createServer(app).listen(port, () => {
 });
 
 const io = require('socket.io')(server);
+
 socketController.init(io);
 
 

@@ -2,9 +2,25 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 
 export const REQUEST_JOB_POSTS = 'REQUEST_JOB_POSTS';
-export const REQUEST_JOB_POSTS_SUCCESS = 'REQUEST_JOB_POSTS_SUCCESS';
+export const requestJobPostsData = () => {
+  return {
+    type: REQUEST_JOB_POSTS
+  };
+};
 export const REQUEST_JOB_POSTS_ERROR = 'REQUEST_JOB_POSTS_ERROR';
-
+export const requestJobPostsDataError = (error) => {
+  return {
+    type: REQUEST_JOB_POSTS_ERROR,
+    error
+  };
+};
+export const REQUEST_JOB_POSTS_SUCCESS = 'REQUEST_JOB_POSTS_SUCCESS';
+export const requestJobPostsDataSuccess = (jobposts) => {
+  return {
+    type: REQUEST_JOB_POSTS_SUCCESS,
+    jobposts
+  };
+};
 export const fetchJobPosts = (page) => {
   return (dispatch) => {
     dispatch(requestJobPostsData());
@@ -18,24 +34,5 @@ export const fetchJobPosts = (page) => {
   };
 };
 
-export const requestJobPostsData = () => {
-  return {
-    type: REQUEST_JOB_POSTS
-  };
-};
-
-export const requestJobPostsDataSuccess = (jobposts) => {
-  return {
-    type: REQUEST_JOB_POSTS_SUCCESS,
-    jobposts
-  };
-};
-
-export const requestJobPostsDataError = (error) => {
-  return {
-    type: REQUEST_JOB_POSTS_ERROR,
-    error
-  };
-};
 
 

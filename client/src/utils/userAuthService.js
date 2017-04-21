@@ -62,7 +62,7 @@ export default class UserAuthService {
     if (!decoded.exp) {
       return null;
     }
-    const date = new Date(0); // The 0 here is the key, which sets the date to the epoch
+    const date = new Date(0);
     date.setUTCSeconds(decoded.exp);
     return date;
   }

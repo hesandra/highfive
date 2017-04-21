@@ -31,7 +31,7 @@ class SubmissionModal extends Component {
     video.load();
   }
   render() {
-    const { questions, videos } = this.props;
+    const { questions, videos, submission } = this.props;
     const videoList = videos.map((video, i) => {
       return (<Button key={video.id} onClick={() => {
         this.changeVideo(i);
@@ -82,7 +82,7 @@ class SubmissionModal extends Component {
             <h4 className="text-center">ANSWER:</h4>
             <div className="text-center">
               <code>
-                { this.props.videos[this.state.index].answer ? 
+                { this.props.videos[this.state.index].answer ?
                   <p> {this.props.videos[this.state.index].answer } </p>
                   : 'no answer given'
                 }
@@ -90,6 +90,8 @@ class SubmissionModal extends Component {
             </div>
             <VideoPlayer {...videoOptions} />
             <div className="text-center">{ videoList }</div>
+            <h4 className="text-center">FEEDBACK:</h4>
+            <p className="text-center"> { submission.notes ? submission.notes : 'no feedback recieved yet.' } </p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
