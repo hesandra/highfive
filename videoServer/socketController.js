@@ -36,7 +36,6 @@ module.exports = {
             submission_id,
             question_id
           });
-          socket.emit('ready', data.Location);
         });
       });
     });

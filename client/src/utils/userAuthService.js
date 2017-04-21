@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 const redirectURL = process.env.NODE_ENV === 'production' ?
   'https://hifivela.com/' :
-  'http://localhost:8080/';
+  'http://localhost:3000/';
 
 
 export default class UserAuthService {

@@ -109,6 +109,7 @@ class Interview extends Component {
       answer: ''
     });
     const url = this.video.getDataURL((videoData) => {
+      console.log('this is index', this.state.selectedQuestionIdx);
       const payload = {
         videoData,
         name: backend_profile.name + this.state.selectedQuestionIdx,
@@ -117,6 +118,7 @@ class Interview extends Component {
         question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
         submission_id: this.props.submission.id
       };
+      console.log('fired', payload);
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
       setTimeout(() => {
@@ -135,17 +137,18 @@ class Interview extends Component {
     });
   }
   showNextQuestion() {
-    this.stopRecording();
     const currentIdx = this.state.selectedQuestionIdx;
     if (currentIdx < 2) {
       this.setState({
         selectedQuestionIdx: this.state.selectedQuestionIdx + 1
       });
     }
+    console.log('fired', currentIdx);
+    this.stopRecording();
   }
   endInterview() {
     this.setState({
-      interviewOver: true
+      interviewOver: true,
     });
     this.stopRecording();
     this.props.stream.stop();
