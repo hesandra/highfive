@@ -54,7 +54,7 @@ class JobPost extends Component {
             { jobPost ?
               <div>
                 <Card.Group itemsPerRow={'one'}>
-                  <Card color="red" centered>
+                  <Card centered>
                     <Image
                       height={200}
                       src={jobPost.company.profile_img}
@@ -89,7 +89,6 @@ class JobPost extends Component {
                     }
                   </Card>
                 </Card.Group>
-                <p className="text-center">please review our terms and conditions</p>
               </div>
             : <JobPostLoader /> }
           </Col>

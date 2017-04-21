@@ -42,13 +42,10 @@ class ApplyConfirm extends Component {
               <h4>What to expect?</h4>
               <StepInfo />
               <hr />
-
-              last but not least...
-              <br />
               <iframe src="//giphy.com/embed/yoJC2K6rCzwNY2EngA" width="480" height="300.47999999999996" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
             </div>
             <hr />
-            <Button onClick={() => { onJobInterviewClick(id); }} color="blue" attached="bottom">GO!</Button>
+            <Button style={{ width: '65%', margin: 'auto' }} onClick={() => { onJobInterviewClick(id); }} color="blue" attached="bottom">GO!</Button>
           </Modal.Body>
         </Modal>
       </div>

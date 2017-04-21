@@ -37,7 +37,7 @@ const UserProfileNav = (props) => {
         <Row className="clearfix">
           <Col sm={8}>
             <Nav bsStyle="tabs">
-              <NavItem eventKey="1"><i className="fa fa-envelope-open-o" aria-hidden="true" />Notifications</NavItem>
+              <NavItem eventKey="1"><i className="fa fa fa-pie-chart" aria-hidden="true" />Dashboard</NavItem>
               <NavItem eventKey="2" onClick={() => { onSubmissionsClick(id); }}><i className="fa fa-folder-open" aria-hidden="true" />Submissions</NavItem>
               <NavItem onClick={onJobPostsClick} eventKey="3"><i className="fa fa-laptop" aria-hidden="true" />JobPosts</NavItem>
               <NavItem eventKey="4"><i className="fa fa-user" aria-hidden="true" />Edit Profile</NavItem>
@@ -49,16 +49,11 @@ const UserProfileNav = (props) => {
                 <div className="position-matchings">
                   <Statistic>
                     <Statistic.Value>
-                      <Icon name="computer" size="huge" /><br />
+                      <Icon style={{ fontSize: 80 }} name="computer" size="huge" />
                     </Statistic.Value>
-                    <Statistic.Label>Position Matchings Found</Statistic.Label>
-                    <Link className="apply-now" to="/jobposts/page/1">apply now</Link>
+                    <Statistic.Label style={{ fontSize: 20, 'text-transform': 'none', 'font-weight': 400, 'margin-bottom': 15 }}> {5} Position Matchings Found </Statistic.Label>
                   </Statistic>
                 </div>
-                <br />
-                { backend_profile.industry.length ?
-                  "5"
-                : '0 positions found, select some industries!' }
               </Tab.Pane>
               <Tab.Pane eventKey="2">
                 <SubmissionsList submissions={submissions} />
