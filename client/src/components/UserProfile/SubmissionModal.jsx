@@ -74,7 +74,7 @@ class SubmissionModal extends Component {
         </Button>
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Your Submission</Modal.Title>
+            <Modal.Title className="text-center">Your Submission</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <h4 className="text-center">QUESTION:</h4>

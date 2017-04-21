@@ -420,8 +420,8 @@ module.exports = {
 
       const jobpostCount = await Jobpost
         .query()
-        .where('company_id', companyId)
         .count('id')
+        .where('company_id', companyId)
         .catch((e) => { return cb(e, null); });
       stats.jobpost = jobpostCount;
 
