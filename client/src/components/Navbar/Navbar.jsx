@@ -26,7 +26,7 @@ const NavigationBar = (props) => {
         <Navbar.Brand>
           <Link to="/">
             <div>
-              <img src={'../../../../public/images/hifivelogo2.png'} />
+             <img className="logo-nav" src={'http://i.imgur.com/SaMFTwf.png'} />
             </div>
           </Link>
         </Navbar.Brand>
