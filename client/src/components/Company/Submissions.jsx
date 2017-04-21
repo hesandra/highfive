@@ -2,8 +2,8 @@ import React from 'react';
 import { } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, Image, Icon, Rating, List, Popup, Button, Label, Segment, TextArea } from 'semantic-ui-react';
-import { Form, Col, FormGroup, ControlLabel, FormControl, DropdownButton, MenuItem, Modal } from 'react-bootstrap';
+import { Card, Image, Icon, Rating, List, Popup, Label, Segment, TextArea } from 'semantic-ui-react';
+import { Form, Col, FormGroup, ControlLabel, FormControl, DropdownButton, MenuItem, Modal, Button } from 'react-bootstrap';
 import { showVideos, updateSubmission } from '../../actions/company';
 import ApplicationModal from './ApplicationModal';
 import SaveModal from './SaveModal';
@@ -76,12 +76,12 @@ class PositionsLevel extends React.Component {
                       </List>
                     </Card.Description>
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
-                      <div>current status: {this.props.companyProfile.status.status}</div> :
-                      <div>current status: {item.status}</div>}
+                      <div className="status">status: {this.props.companyProfile.status.status}</div> :
+                      <div className="status">status: {item.status}</div>}
                     {this.props.companyProfile.renderStatus && this.props.companyProfile.status.subId === item.id ?
-                      <div>feedback:{this.props.companyProfile.status.notes}</div> :
-                      <div>feedback: {item.notes}</div>}
-                    <Button inverted color='violet' fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
+                      <div className="feedback">feedback:{this.props.companyProfile.status.notes}</div> :
+                      <div className="feedback">feedback: {item.notes}</div>}
+                    <Button bsStyle="success" fluid onClick={() => this.props.showVideos({ videolink: item.video[0].href, submissionId: item.id })}>Watch application</Button>
                   </Card.Content>
                   <Card.Content extra>
                     <Form>
@@ -89,7 +89,7 @@ class PositionsLevel extends React.Component {
                     </Form>
                     <FormGroup controlId="formControlsSelect">
                       <FormControl componentClass="select" placeholder="select" name="status" onChange={this.handleChange} >
-                        <option value="select">select</option>
+                        <option value="select">select status</option>
                         <option >viewed</option>
                         <option >undecided</option>
                         <option >passed</option>
@@ -97,7 +97,7 @@ class PositionsLevel extends React.Component {
                       </FormControl>
                     </FormGroup>
                     <Popup trigger={
-                      <Button color="purple" size="mini" onClick={() => { this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id }); { () => { this.state.notes = '' } }; this.clearNotes(idx) }}>Save</Button>}
+                      <Button className="btn btn-primary" onClick={() => { this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id }); { () => { this.state.notes = '' }}; this.clearNotes(idx) }}>Save</Button>}
                       content='Clicking here will inform the applicant'
                       style={style}
                       inverted
@@ -124,7 +124,7 @@ class PositionsLevel extends React.Component {
         </div> )
       }
     else if (this.props.companyProfile.submissions === undefined){
-      return (<h1 style={{ 'margin-top': 20 }} className="text-center">No Submissions!</h1>);
+      return (<h1 style={{ 'margin-top': 20 }} className="text-center">Find submissions through a jobpost</h1>);
     }
   }
 }

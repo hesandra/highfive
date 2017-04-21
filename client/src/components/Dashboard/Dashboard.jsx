@@ -54,13 +54,13 @@ class Dashboard extends React.Component {
     const { users, jobs, subs } = this.state;
 
     return {
-      labels: ['Users', 'Jobs Posted', 'Submissions'],
+      labels: ['Total number of potential applicants', 'Job Posts by Company', 'Submissions by Company'],
       datasets: [
         {
           label: 'Company Stats',
           fill: false,
           data: [users, jobs, subs],
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+          backgroundColor: ['#30415d', '#cf6766', '#8eaebd']
         }
       ]
     };

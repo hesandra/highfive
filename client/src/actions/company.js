@@ -258,7 +258,7 @@ export function createJobPost(jobpost){
 }
 
 export function saveInterview(data){
-  //console.log('in saveInterview')
+  console.log('in saveInterview')
   return (dispatch) => {
     const postId = data.postId;
     axios.put('http://localhost:3000/api/jobposts/' + postId, data.questions)
@@ -266,7 +266,7 @@ export function saveInterview(data){
       console.log('jobpost in saveInterview', jobpost)
     })
     .catch((err) => {
-        console.error(err);
+      console.error(err);
       });
   }
 }
