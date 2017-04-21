@@ -379,12 +379,12 @@ module.exports = {
   },
   videos: {
     createOne: (body, cb) => {
-      console.log(body);
+      console.log('this is body', body);
       Video
         .query()
         .insertAndFetch(body)
         .then((video) => { cb(null, video) })
-        .catch( err => { console.log(err) })
+        .catch((err) => { cb(err, null); });
     }
   },
 

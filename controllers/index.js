@@ -1,4 +1,9 @@
 const models = require('../models');
+const AWS = require('aws-sdk');
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});
 
 module.exports = {
   users: {
@@ -309,6 +314,7 @@ module.exports = {
   videos: {
     createOne: (req, res, next) => {
       models.videos.createOne(req.body, (err, video) => {
+        console.log(video, err);
         const payload = {
           success: err ? false : true,
           err: JSON.stringify(err),

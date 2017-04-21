@@ -1,4 +1,5 @@
 const Knex = require('knex');
+const http = require('http');
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -11,6 +12,8 @@ const Model = require('objection').Model;
 const cors = require('cors');
 const paths = require('path');
 const router = require('./routes');
+
+const socketController = require('./controllers/sockets');
 
 const port = process.env.PORT || 3000;
 dotenv.load();
@@ -29,7 +32,15 @@ const app = express()
   .set('json spaces', 2);
 app.options('*', cors());
 
-// pass all request to router
+
+const server = http.createServer(app).listen(port, () => {
+  console.log('server running on port:', port)
+});
+
+const io = require('socket.io')(server);
+socketController.init(io);
+
+
 app.use('/', router);
 
 app.get('*', (request, response) => {
@@ -44,8 +55,8 @@ app.use((err, req, res, next) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Listening on ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Listening on ${port}`);
+// });
 
 module.exports = app;

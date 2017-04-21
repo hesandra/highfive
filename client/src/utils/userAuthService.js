@@ -1,15 +1,19 @@
 import Auth0Lock from 'auth0-lock';
 import jwtDecode from 'jwt-decode';
 
+console.log(process.env);
+
 const redirectURL = process.env.NODE_ENV === 'production' ?
   'https://hifivela.com/' :
   'http://localhost:8080/';
+
+  console.log(redirectURL);
 
 export default class UserAuthService {
   constructor(clientId, domain, type) {
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: redirectURL,
+        redirectUrl: 'http://localhost:3000/',
         redirect: true,
         responseType: 'token'
       },
