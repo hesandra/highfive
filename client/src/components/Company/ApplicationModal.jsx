@@ -8,7 +8,7 @@ import { closeModal } from '../../actions/company';
 class ApplicationModal extends React.Component {
 
   renderVideos() {
-    console.log('props in ApplicatoinModal', this.props);
+    //console.log('props in ApplicatoinModal', this.props);
     return (
       <div>
         {this.props.companyProfile.submissions.map((item, idx) => {

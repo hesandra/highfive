@@ -81,7 +81,7 @@ class InterviewForm extends React.Component {
   }
 
   render() {
-    console.log('this.props in interviewform', this.props)
+    //console.log('this.props in interviewform', this.props)
     return (
       <div>
         <Card color="teal">

@@ -125,7 +125,7 @@ export default function (state = initialState, action) {
         renderStatus: true,
     });
     case 'UPDATE_STATUS':
-    console.log('action payload in update status in company reducers', action.payload)
+    //console.log('action payload in update status in company reducers', action.payload)
       return Object.assign({}, state, {
         status: action.payload,
     });
