@@ -44,7 +44,7 @@ class PostModal extends React.Component {
     this.props.submitDescription(this.state);
     // console.log('companyProfile++++++', this.props.companyProfile.companyProfile)
     setTimeout(() => {
-      console.log('hai setTimeouttttttttttttttt', this.props.companyProfile.companyProfile.jobDescription)
+      //console.log('hai setTimeouttttttttttttttt', this.props.companyProfile.companyProfile.jobDescription)
       if (this.props.companyProfile.companyProfile.jobDescription) {
         this.props.createJobPost({ 
           company_id: this.props.companyProfile.companyAuth.company_backend_profile[0].id,
@@ -57,7 +57,7 @@ class PostModal extends React.Component {
     }, 0)
   }
   render() {
-    console.log('this.props in PostModal', this.props)
+    //console.log('this.props in PostModal', this.props)
     return (
       <div >
         <Modal

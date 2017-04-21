@@ -57,7 +57,7 @@ class CompanyDetails extends React.Component {
         </div>)}*/
     
     else {
-    console.log('props in companyDetails', this.props)
+    //console.log('props in companyDetails', this.props)
       return (
         <div><div className="spaceQ"></div>
           {this.props.companyAuth.companyProfile.picture ?

@@ -9,8 +9,8 @@ export function updateCompany(profile) {
 }
 
 export function submitProfile(profile){
-  console.log('submitProfile')
-  console.log(profile)
+  //console.log('submitProfile')
+  //console.log(profile)
   return (dispatch) => {
     const id = profile.companyId;
     //console.log('profile in sumbitProfile', profile)
@@ -29,7 +29,7 @@ export function submitProfile(profile){
         dispatch(updateCompany(JSON.parse(company.config.data)));
       })
       .then(() => {
-        console.log('before dispatch get company');
+        //console.log('before dispatch get company');
         dispatch(getCompany(id));
       })
       .catch((err) => {
@@ -258,7 +258,7 @@ export function createJobPost(jobpost){
 }
 
 export function saveInterview(data){
-  console.log('in saveInterview')
+  //console.log('in saveInterview')
   return (dispatch) => {
     const postId = data.postId;
     axios.put('http://localhost:3000/api/jobposts/' + postId, data.questions)
@@ -278,7 +278,7 @@ export function getAllIndustries(industries){
 }
 
 export function getIndustries(){
-  console.log('in get Industries')
+  //console.log('in get Industries')
   return(dispatch) => {
   axios.get('http://localhost:3000/api/industries')
   .then((result) =>{
@@ -318,12 +318,12 @@ export function updateSubmission(data){
   return (dispatch) => {
     axios.put('http://localhost:3000/api/submissions/'+ id, data)
     .then((result) => {
-      console.log('result in updateSubmission', JSON.parse(result.config.data))
+      //console.log('result in updateSubmission', JSON.parse(result.config.data))
       const status = JSON.parse(result.config.data)
       dispatch(updateStatus(status))
     })
     .then(() => {
-      console.log('before saveUpdate')
+      //console.log('before saveUpdate')
       dispatch(saveAppUpdate())
     })
     .then(() => {
@@ -354,13 +354,13 @@ export function dropPic(picture){
 }
 
 export function updatePicture(data) {
-  console.log('data in updatePicture actions handler', data)
+  //console.log('data in updatePicture actions handler', data)
   const id = data.companyId;
   return (dispatch) => {
-    console.log('after dispatch in updatePicture');
+    //console.log('after dispatch in updatePicture');
     axios.put('http://localhost:3000/api/companies/picture/' + id, data)
     .then((result) => {
-      console.log('result in company', JSON.parse(result.config.data));
+      //console.log('result in company', JSON.parse(result.config.data));
        dispatch(dropPic(JSON.parse(result.config.data)))
     })
     .catch((err) => {

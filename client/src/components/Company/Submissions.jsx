@@ -42,7 +42,7 @@ class PositionsLevel extends React.Component {
   }
 
   renderSubmissions() {
-    console.log('PROPS IN SUBMISSIONS', this.props.companyProfile.submissions);
+    //console.log('PROPS IN SUBMISSIONS', this.props.companyProfile.submissions);
     //console.log('state in submissions', this.state);
     return (
       <div className="ui stackable twelve column grid">

@@ -52,7 +52,7 @@ import { updateSubmission, closeApplModal } from '../../actions/company';
 class SaveModal extends React.Component {
  
   render() {
-     console.log('this.props', this.props)
+     //console.log('this.props', this.props)
     return (
       <div className="modal-container" style={{ height: 200 }}> 
         <Modal
