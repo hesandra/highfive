@@ -9,8 +9,8 @@ export default class UserAuthService {
         redirect: true,
         responseType: 'token'
       },
-      theme: {
-        primaryColor: '#FFFFF'
+     theme: {
+        logo: 'http://i.imgur.com/KTZ8vA2.png'
       },
       languageDictionary: {
         title: type

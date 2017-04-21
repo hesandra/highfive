@@ -13,7 +13,7 @@ export default class CompanyAuthService {
         responseType: 'token'
       },
       theme: {
-        primaryColor: '#FFFFF'
+        logo: 'http://i.imgur.com/KTZ8vA2.png'
       },
       languageDictionary: {
         title: type
