@@ -24,7 +24,11 @@ const NavigationBar = (props) => {
     <Navbar inverse>
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">Hi-Five</Link>
+          <Link to="/">
+            <div>
+              <img src={'../../../../public/images/hifivelogo2.png'} />
+            </div>
+          </Link>
         </Navbar.Brand>
       </Navbar.Header>
       <Nav pullRight>

@@ -302,4 +302,20 @@ canvas:nth-of-type(2) {
   padding-bottom: 15px;
   padding-top: 15px; }
 
+.event-button {
+  background-color: #031424; }
+
+.comp-btn {
+  background-color: #30415D; }
+
+.infotext {
+  margin: 20px;
+  font-size: 15px; }
+
+.modal-header {
+  background-color: #8eaebd; }
+
+.modal-footer {
+  background-color: #8eaebd; }
+
 /*# sourceMappingURL=main.css.map */
