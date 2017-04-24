@@ -15,10 +15,6 @@ io.on('connection', (socket) => {
     io.sockets.emit('message', msg)
   })
 })
-
-
-// require('../videoServer/index')(app, express, io);
-
 const port = process.env.PORT || 3003;
 
 http.listen(port, function() {
