@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @media screen and (max-width: 550px) {
   .navbar-header {
     margin: auto;
@@ -48,6 +49,13 @@
 
 .profile .profile-info {
   margin: 10px 0px; }
+=======
+.profile .profile-section {
+  font-size: 20px; }
+
+.profile .profile-info {
+  margin: 10px; }
+>>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715
 
 .jobpost-btn.dropdown {
   width: 120px; }
@@ -68,7 +76,10 @@ a:hover {
   margin-left: 13px; }
 
 .background-img {
+<<<<<<< HEAD
   z-index: -1;
+=======
+>>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715
   background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -141,6 +152,7 @@ a {
   width: 90%; }
 
 .scroll {
+<<<<<<< HEAD
   width: 400px;
   overflow: hidden; }
 
@@ -178,16 +190,45 @@ a {
   padding: 5px;
   text-transform: uppercase;
 }*/
+=======
+  background-color: #A5A5AF;
+  color: white;
+  width: 400px;
+  height: 200px;
+  overflow: scroll;
+  text-align: center;
+  border-radius: 25px;
+  position: relative;
+  text-align: center; }
+
+.questions {
+  border: 2px;
+  border-color: white;
+  margin: 30px;
+  padding-bottom: 30px; }
+
+>>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715
 .spaceQ {
   height: 15px; }
 
 .company-img {
+<<<<<<< HEAD
   height: 250px;
   width: 250px; }
+=======
+  height: 300px;
+  width: 300px; }
+>>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715
 
 .react-selectize.root-node {
   width: 100%; }
 
+<<<<<<< HEAD
+=======
+.selectedQ {
+  color: white; }
+
+>>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715
 .space {
   height: 50px; }
 
@@ -228,11 +269,15 @@ canvas:nth-of-type(2) {
   background-color: black !important; }
 
 .position-matchings {
+<<<<<<< HEAD
   margin-top: 100px;
   font-size: 19px; }
 
 #jobpost-stat {
   margin-right: 150px; }
+=======
+  margin-top: 25px; }
+>>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715
 
 .apply-now a {
   color: "#337ab7"; }
@@ -243,6 +288,7 @@ canvas:nth-of-type(2) {
 .notesField {
   padding-bottom: 18px !important; }
 
+<<<<<<< HEAD
 .compDetails {
   padding-left: 25px;
   font-size: 16px; }
@@ -356,5 +402,27 @@ canvas:nth-of-type(2) {
   height: 400px;
   width: 500px;
   margin: 20px auto; }
+=======
+.intPreviewPadd {
+  padding-top: 310px; }
+
+.intPreview {
+  background-color: #57BC90;
+  border-radius: 25px;
+  padding: 20px;
+  border: inset; }
+
+.saveButtonForm {
+  text-align: center; }
+
+.compDetails {
+  padding-left: 25px; }
+
+.cardStyle {
+  padding-top: 50px; }
+
+.dropzone {
+  padding-left: 250px; }
+>>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715
 
 /*# sourceMappingURL=main.css.map */

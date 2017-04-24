@@ -5,7 +5,6 @@ const redirectURL = process.env.NODE_ENV === 'production' ?
   'https://hifivela.com/' :
   'http://localhost:3000/';
 
-
 export default class UserAuthService {
   constructor(clientId, domain, type) {
     this.lock = new Auth0Lock(clientId, domain, {
@@ -14,7 +13,7 @@ export default class UserAuthService {
         redirect: true,
         responseType: 'token'
       },
-     theme: {
+      theme: {
         logo: 'http://i.imgur.com/KTZ8vA2.png'
       },
       languageDictionary: {

@@ -23,7 +23,7 @@ export const requestUserDataSuccess = (users) => {
 export const fetchUsersData = () => {
   return (dispatch) => {
     dispatch(requestUserData());
-    axios.get(`http://localhost:3000/api/users`)
+    axios.get('http://localhost:3000/api/users')
       .then((response) => {
         if (response.status === 200 || response.status === 304) {
           dispatch(requestUserDataSuccess(response.data.users));

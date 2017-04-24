@@ -379,7 +379,6 @@ module.exports = {
   },
   videos: {
     createOne: (body, cb) => {
-      console.log('this is body', body);
       Video
         .query()
         .insertAndFetch(body)

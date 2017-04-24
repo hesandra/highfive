@@ -69,8 +69,6 @@ class Interview extends Component {
         text: 'If you navigate away your submission will be recorded as incomplete',
         type: 'error'
       });
-      // delete submission on navigate away;
-      // or set submission status to notFinished
     }
     this.props.stream.stop();
   }
