@@ -355,12 +355,10 @@ export function dropPic(picture){
 }
 
 export function updatePicture(data) {
-  //console.log('data in updatePicture actions handler', data)
   const id = data.companyId;
   return (dispatch) => {
     axios.put(`${BASE_URL}/api/companies/picture/` + id, data)
     .then((result) => {
-      //console.log('result in company', JSON.parse(result.config.data));
        dispatch(dropPic(JSON.parse(result.config.data)))
     })
     .catch((err) => {

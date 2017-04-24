@@ -14,11 +14,11 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      host: "aaqg7rdv187q13.cw5klf3vrg1i.us-west-2.rds.amazonaws.com",
-      database: "ebdb",
-      user: 'highfive',
-      password: "highfive",
-      port: "3306"
+      host: process.env.MYSQL_PROD_URI,
+      database: process.env.MYSQL_PROD_DB,
+      user: process.env.MYSQL_PROD_USER,
+      password: process.env.MYSQL_PROD_PASS,
+      port: process.env.MYSQL_PROD_PORT
     },
     seeds: {
       directory: `${__dirname}/seeds`
