@@ -1,7 +1,5 @@
 /* eslint-disable */
 "use strict";
-
-
 const io = require('socket.io-client');
 const expect = require('chai').expect;
 const app = require('./index');
@@ -31,7 +29,6 @@ describe('', function() {
   });
 });
 
-
 describe('Sockets', function() {
   it('clients should recieve a message when the mesage', function(done) { 
     connection1.emit('message', 'test');
@@ -42,22 +39,3 @@ describe('Sockets', function() {
   });
 });
 
-
-
-
-// const app = require('../videoServer/index');
-
-// const socketUrl = 'http:://localhost:3001';
-
-// const options = {
-//   transports: ['websocket'],
-//   'force new connection': true
-// };
-
-// const room = 'global';
-
-// describe('Sockets', function () {
-//   it('should exist', function () {
-//     expect(1).to.equal(1);
-//   });
-// });

@@ -7,7 +7,6 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const knexConfig = require('./knexfile');
 const path = require('path');
-
 const Model = require('objection').Model;
 const cors = require('cors');
 const paths = require('path');
@@ -30,16 +29,12 @@ const app = express()
   .set('json spaces', 2);
 app.options('*', cors());
 
-
 const server = http.createServer(app).listen(port, () => {
-  console.log('server running on port:', port)
+  console.log('server running on port:', port);
 });
-
 const io = require('socket.io')(server);
 
 socketController.init(io);
-
-
 app.use('/', router);
 
 app.get('*', (request, response) => {
@@ -53,9 +48,5 @@ app.use((err, req, res, next) => {
     next();
   }
 });
-
-// app.listen(port, () => {
-//   console.log(`Listening on ${port}`);
-// });
 
 module.exports = app;
