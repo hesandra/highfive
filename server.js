@@ -12,17 +12,10 @@ const Model = require('objection').Model;
 const cors = require('cors');
 const paths = require('path');
 const router = require('./routes');
-
-<<<<<<< HEAD:server.js
 const socketController = require('./controllers/sockets');
 
 const port = process.env.PORT || 3000;
 dotenv.load();
-=======
-const port = process.env.PORT || 3000;
-dotenv.load();
-console.log(process.env.NODE_ENV);
->>>>>>> e3f68b7b206b7e8cc6106f04a0cb43c288919715:server.js
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const knex = Knex(knexConfig[env]);
 Model.knex(knex);
