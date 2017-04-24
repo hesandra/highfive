@@ -2,8 +2,11 @@ import { hashHistory, browserHistory } from 'react-router';
 import axios from 'axios';
 import UserAuthService from '../utils/userAuthService';
 import { USERS_AUTH0_CLIENT_ID } from '../../../config';
+import { BASE_URL } from '../utils/constants';
 
-const authService = new UserAuthService(USERS_AUTH0_CLIENT_ID, 'teamhighfive.auth0.com', 'Applicant Sign-In');
+const idToUse = process.env.NODE_ENV === 'production' ? process.env.USERS_AUTH0_ID : USERS_AUTH0_CLIENT_ID;
+
+const authService = new UserAuthService(idToUse, 'teamhighfive.auth0.com', 'Applicant Sign-In');
 export function checkUserLogin() {
   return (dispatch) => {
     authService.lock.on('authenticated', (authResult) => {
@@ -13,7 +16,7 @@ export function checkUserLogin() {
         }
         UserAuthService.setToken(authResult.idToken);
         UserAuthService.setProfile(profile);
-        return axios.post('http://localhost:3000/api/users', {
+        return axios.post(`${BASE_URL}/api/users`, {
           name: profile.name,
           email: profile.email,
           auth0_id: profile.user_id,
@@ -45,19 +48,19 @@ export const userLoginRequest = () => {
     type: USER_LOGIN_REQUEST,
   };
 };
+export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
+const userLoginError = (error) => {
+  return {
+    type: USER_LOGIN_ERROR,
+    error
+  };
+};
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 const userLoginSuccess = (profile) => {
   browserHistory.push('/profile');
   return {
     type: USER_LOGIN_SUCCESS,
     profile
-  };
-};
-export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
-const userLoginError = (error) => {
-  return {
-    type: USER_LOGIN_ERROR,
-    error
   };
 };
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';

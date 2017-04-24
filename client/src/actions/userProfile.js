@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { updateUserProfile } from './userAuth';
+import { BASE_URL } from '../utils/constants';
 
 export const REQUEST_PROFILE_UPDATE = 'REQUEST_PROFILE_UPDATE';
 const requestProfileUpdate = () => {
@@ -25,7 +26,7 @@ export const updateProfile = (userId, data) => {
   return (dispatch) => {
     dispatch(requestProfileUpdate());
 
-    axios.put(`http://localhost:3000/api/users/${userId}`, data)
+    axios.put(`${BASE_URL}/api/users/${userId}`, data)
       .then((response) => {
         if (response.status === 201) {
           dispatch(requestProfileUpdateSuccess(response.data.user));
@@ -60,7 +61,7 @@ export const fetchJobSubmissions = (id) => {
   return (dispatch) => {
     dispatch(requestJobSubmissions());
 
-    axios.get(`http://localhost:3000/api/submissions/user/${id}`)
+    axios.get(`${BASE_URL}/api/submissions/user/${id}`)
       .then((response) => {
         if (response.status === 200) {
           dispatch(requestJobSubmissionsSuccess(response.data.submissions.submission));
@@ -95,7 +96,7 @@ const deleteIndustryError = (error) => {
 export const deleteUserIndustry = (userId, industryId) => {
   return (dispatch) => {
     dispatch(deleteIndustryRequest());
-    axios.delete(`http://localhost:3000/api/users/${userId}/industry/${industryId}`)
+    axios.delete(`${BASE_URL}/api/users/${userId}/industry/${industryId}`)
       .then((response) => {
         if (response.status === 201) {
           dispatch(deleteIndustrySuccess(response.data.user));

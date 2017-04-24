@@ -16,7 +16,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR
-
   },
   module: {
     rules: [
@@ -44,6 +43,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development'),
+      }
+    }),
     new CopyWebpackPlugin([{ from: PUBLIC_DIR }]),
     new webpack.HotModuleReplacementPlugin(),
     new DashboardPlugin(),
@@ -55,12 +59,12 @@ module.exports = {
   watch: true,
   stats: { colors: true },
   devtool: 'eval',
-  devServer: {
-    host: 'localhost',
-    port: 8080,
-    historyApiFallback: true,
-    contentBase: './',
-  },
+  // devServer: {
+  //   host: 'localhost',
+  //   port: 8080,
+  //   historyApiFallback: true,
+  //   contentBase: './',
+  // },
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },

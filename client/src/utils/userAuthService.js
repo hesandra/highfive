@@ -1,15 +1,19 @@
 import Auth0Lock from 'auth0-lock';
 import jwtDecode from 'jwt-decode';
 
+const redirectURL = process.env.NODE_ENV === 'production' ?
+  'https://hifivela.com/' :
+  'http://localhost:3000/';
+
 export default class UserAuthService {
   constructor(clientId, domain, type) {
     this.lock = new Auth0Lock(clientId, domain, {
       auth: {
-        redirectUrl: 'http://localhost:8080/',
+        redirectUrl: redirectURL,
         redirect: true,
         responseType: 'token'
       },
-     theme: {
+      theme: {
         logo: 'http://i.imgur.com/KTZ8vA2.png'
       },
       languageDictionary: {
@@ -57,7 +61,7 @@ export default class UserAuthService {
     if (!decoded.exp) {
       return null;
     }
-    const date = new Date(0); // The 0 here is the key, which sets the date to the epoch
+    const date = new Date(0);
     date.setUTCSeconds(decoded.exp);
     return date;
   }

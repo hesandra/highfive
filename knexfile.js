@@ -1,8 +1,6 @@
-// Update with your config settings.
 const dotenv = require('dotenv');
 
 dotenv.load();
-
 module.exports = {
   development: {
     client: 'mysql',
@@ -12,24 +10,21 @@ module.exports = {
       user: process.env.MYSQL_MASTER_USER,
       password: process.env.MYSQL_MASTER_PASS
     },
-    pool: {
-      max: 1,
-      min: 1
+  },
+  production: {
+    client: 'mysql',
+    connection: {
+      host: process.env.MYSQL_PROD_URI,
+      database: process.env.MYSQL_PROD_DB,
+      user: process.env.MYSQL_PROD_USER,
+      password: process.env.MYSQL_PROD_PASS,
+      port: process.env.MYSQL_PROD_PORT
+    },
+    seeds: {
+      directory: `${__dirname}/seeds`
+    },
+    migrations: {
+      tableName: 'knex_migrations'
     }
   }
-  // production: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'my_db',
-  //     user: 'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 5,
-  //     max: 20
-  //   },
-  //   migrations: {
-  //     tableName: 'knex_migrations'
-  //   }
-  // }
 };

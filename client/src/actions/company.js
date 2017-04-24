@@ -1,5 +1,6 @@
 import axios from 'axios';
 import NotificationSystem from 'react-notification-system';
+import { BASE_URL } from '../utils/constants';
 
 export function updateCompany(profile) {
   return {
@@ -23,7 +24,7 @@ export function submitProfile(profile){
     //console.log('updatedProfile', profile.updatedProfile);
     //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
     //console.log('parseInt', parseInt(profile.updatedProfile.industry_id))
-    axios.put('http://localhost:3000/api/companies/' + id, updatedProfile)
+    axios.put(`${BASE_URL}/api/companies/` + id, updatedProfile)
       .then((company) => {
         //console.log('result in company actions', company);
         dispatch(updateCompany(JSON.parse(company.config.data)));
@@ -50,7 +51,7 @@ export function getCompany(companyId){
   //console.log('in GET COMPANY')
   const id = companyId;
   return (dispatch) => {
-    axios.get('http://localhost:3000/api/companies/' + id)
+    axios.get(`${BASE_URL}/api/companies/` + id)
       .then((company) => {
         //console.log('company in actions getcompany', company)
         dispatch(refreshCompany(company.data.company));
@@ -72,7 +73,7 @@ export function getPositions(){
   //console.log('in get positions');
   //const company_id = companyId; 
   return (dispatch) => {
-    axios.get('http://localhost:3000/api/jobposts')
+    axios.get(`${BASE_URL}/api/jobposts`)
     .then((jobposts) => {
       //console.log('jobposts in getPostiions', jobposts)
       dispatch(getJobs(jobposts.data.jobposts))
@@ -118,7 +119,7 @@ export function getSubs(submissions){
 
 export function getSubmissions(postId){
   return (dispatch) => {
-    axios.get('http://localhost:3000/api/submissions/jobpost/' + postId)
+    axios.get(`${BASE_URL}/api/submissions/jobpost/` + postId)
     .then((submission) => {
       //console.log('submissions in getSubmissions', submission);
       dispatch(getSubs(submission.data.submission))
@@ -185,7 +186,7 @@ export function getAll(questions) {
 
 export function getQuestions(){
   return (dispatch) => {
-    axios.get('http://localhost:3000/api/questions')
+    axios.get(`${BASE_URL}/api/questions`)
       .then((result) => {
         dispatch(getAll(result.data.questions));
       })
@@ -217,7 +218,7 @@ export function deleteJob(jobId){
   return (dispatch) => {
     //console.log("delete clicked", jobId);
     axios
-      .delete(`http://localhost:3000/api/jobposts/${jobId}`)
+      .delete(`${BASE_URL}/api/jobposts/${jobId}`)
       .then((res) => { console.log('res', res); })
       .catch((e) => { console.log(e); });
   };
@@ -242,7 +243,7 @@ export function createJobPost(jobpost){
   //console.log('JOBPOST IN CREATE JOBPOST', jobpost)
  return (dispatch) => {
    //console.log('after dispatch')
-    axios.post('http://localhost:3000/api/jobposts', jobpost)
+    axios.post(`${BASE_URL}/api/jobposts`, jobpost)
       .then((result) => {
         //console.log('result', result)
         dispatch(createJob(result));
@@ -261,7 +262,7 @@ export function saveInterview(data){
   //console.log('in saveInterview')
   return (dispatch) => {
     const postId = data.postId;
-    axios.put('http://localhost:3000/api/jobposts/' + postId, data.questions)
+    axios.put(`${BASE_URL}/api/jobposts/` + postId, data.questions)
     .then((jobpost) => {
       console.log('jobpost in saveInterview', jobpost)
     })
@@ -280,7 +281,7 @@ export function getAllIndustries(industries){
 export function getIndustries(){
   //console.log('in get Industries')
   return(dispatch) => {
-  axios.get('http://localhost:3000/api/industries')
+  axios.get(`${BASE_URL}/api/industries`)
   .then((result) =>{
     //console.log('industries in getIndustries', result)
     dispatch(getAllIndustries(result.data.industries))
@@ -300,7 +301,7 @@ export function getAllLocations(locations){
 
 export function getLocations(){
   return(dispatch) => {
-  axios.get('http://localhost:3000/api/locations')
+  axios.get(`${BASE_URL}/api/locations`)
   .then((result) =>{
     //console.log('industries in getIndustries', result)
     dispatch(getAllLocations(result.data.locations))
@@ -316,7 +317,7 @@ export function updateSubmission(data){
   const id = data.subId;
   const jobPostId = data.jobPostId;
   return (dispatch) => {
-    axios.put('http://localhost:3000/api/submissions/'+ id, data)
+    axios.put(`${BASE_URL}/api/submissions/`+ id, data)
     .then((result) => {
       //console.log('result in updateSubmission', JSON.parse(result.config.data))
       const status = JSON.parse(result.config.data)
@@ -354,13 +355,10 @@ export function dropPic(picture){
 }
 
 export function updatePicture(data) {
-  //console.log('data in updatePicture actions handler', data)
   const id = data.companyId;
   return (dispatch) => {
-    //console.log('after dispatch in updatePicture');
-    axios.put('http://localhost:3000/api/companies/picture/' + id, data)
+    axios.put(`${BASE_URL}/api/companies/picture/` + id, data)
     .then((result) => {
-      //console.log('result in company', JSON.parse(result.config.data));
        dispatch(dropPic(JSON.parse(result.config.data)))
     })
     .catch((err) => {

@@ -29,7 +29,6 @@ const requireCompanyAuth = (nextState, replace) => {
 };
 
 const NotFoundPage = () => ((<p>not found</p>));
-
 export default function createRoutes() {
   return (
     <Route path="/" component={AppContainer}>

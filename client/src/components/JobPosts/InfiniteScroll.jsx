@@ -10,7 +10,6 @@ class InfiniteScroll extends Component {
       elements: this.buildElements(0, 10),
       isInfiniteLoading: false
     };
-    console.log(props, 'infiniteScroll');
     this.buildElements = this.buildElements.bind(this);
     this.handleInfiniteLoad = this.handleInfiniteLoad.bind(this);
   }

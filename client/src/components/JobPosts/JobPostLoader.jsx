@@ -1,8 +1,8 @@
-import React from 'react'
-import { Loader } from 'semantic-ui-react'
+import React from 'react';
+import { Loader } from 'semantic-ui-react';
 
 const JobPostLoader = () => (
-  <Loader active inline='centered' />
-)
+  <Loader active inline="centered" />
+);
 
 export default JobPostLoader;

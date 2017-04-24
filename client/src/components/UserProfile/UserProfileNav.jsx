@@ -11,12 +11,13 @@ import {
 import { Icon, Statistic } from 'semantic-ui-react';
 import { Link, hashHistory } from 'react-router';
 import NotificationSystem from 'react-notification-system';
+import axios from 'axios';
 
 import SettingsForm from './SettingsForm';
 import EditProfileForm from './EditProfileForm';
 import SubmissionsList from './SubmissionsList';
 import SubmissionModal from './SubmissionModal';
-import axios from 'axios';
+import { BASE_URL } from '../../utils/constants';
 
 class UserProfileNav extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class UserProfileNav extends Component {
   }
 
   getStats(id) {
-    axios.get(`http://localhost:3000/api/user/${id}/stats`)
+    axios.get(`${BASE_URL}/api/user/${id}/stats`)
       .then((res) => {
         const { jobpost, submission } = res.data.stats;
 
@@ -79,13 +80,13 @@ class UserProfileNav extends Component {
               <Tab.Content animation>
                 <Tab.Pane eventKey="1">
                   <div className="position-matchings">
-                    <Statistic>
+                    <Statistic size="huge" id="jobpost-stat" className="jobpost-stat">
                       <Statistic.Value>
                         <Icon name="pin" />{this.state.jobpost}
                       </Statistic.Value>
                       <Statistic.Label>Job Postings</Statistic.Label>
                     </Statistic>
-                    <Statistic>
+                    <Statistic size="huge" className="submission-stat">
                       <Statistic.Value>
                         <Icon name="edit" />{this.state.submission}
                       </Statistic.Value>

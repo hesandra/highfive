@@ -20,9 +20,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     checkUserLogin: () => dispatch(checkUserLogin()),
-    // fetch JobPosts here
     onJobPostsClick: () => {
-      // dispatch(fetchJobPosts());
       browserHistory.push('/jobposts/page/1');
     },
     onUpdateUserProfile: (id, data) => {

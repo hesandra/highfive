@@ -10,19 +10,18 @@ const Home = (props) => {
     onAuthedUserLoginClick,
     onAuthedCompanyLoginClick
   } = props;
-
   return (
     <div>
       <div className="background-img col-xs-12" />
       <h2 className="home-banner">Simplifying Technical Recruiting</h2>
-        <Signup
-          onUserLoginClick={onUserLoginClick}
-          onCompanyLoginClick={onCompanyLoginClick}
-          onAuthedUserLoginClick={onAuthedUserLoginClick}
-          onAuthedCompanyLoginClick={onAuthedCompanyLoginClick}
-          isUserAuthed={isUserAuthenticated}
-          isCompanyAuthed={isCompanyAuthenticated}
-        />
+      <Signup
+        onUserLoginClick={onUserLoginClick}
+        onCompanyLoginClick={onCompanyLoginClick}
+        onAuthedUserLoginClick={onAuthedUserLoginClick}
+        onAuthedCompanyLoginClick={onAuthedCompanyLoginClick}
+        isUserAuthed={isUserAuthenticated}
+        isCompanyAuthed={isCompanyAuthenticated}
+      />
     </div>
   );
 };

@@ -5,8 +5,9 @@ export function captureUserMedia(callback) {
   };
 
   navigator.mediaDevices.getUserMedia(params)
-    .then(function (mediaStream) {
+    .then((mediaStream) => {
       callback(mediaStream);
-    });
+    })
+    .catch((e) => console.log(e));
 }
 

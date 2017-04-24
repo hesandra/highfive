@@ -28,7 +28,8 @@ class Interview extends Component {
       submissionCreated: false,
       done: false,
       interviewOver: false,
-      answer: ''
+      answer: '',
+      firstDone: false
     };
     this.startInterview = this.startInterview.bind(this);
     this.endInterview = this.endInterview.bind(this);
@@ -39,6 +40,7 @@ class Interview extends Component {
    * Setup submission on back-end server
    */
   componentDidMount() {
+    this.idx = 0;
     const { requestUserMedia, createSubmission, backend_profile, jobPost } = this.props;
     if (!hasGetUserMedia) {
       // use sweetalert here
@@ -67,8 +69,6 @@ class Interview extends Component {
         text: 'If you navigate away your submission will be recorded as incomplete',
         type: 'error'
       });
-      // delete submission on navigate away;
-      // or set submission status to notFinished
     }
     this.props.stream.stop();
   }
@@ -101,11 +101,7 @@ class Interview extends Component {
   }
   processRecording() {
     const { backend_profile } = this.props;
-    let answer = '';
-    if (this.state.selectedQuestionIdx === 2) {
-      answer = this.state.answer;
-      console.log(answer);
-    }
+    const answer = this.state.answer;
     this.setState({
       answer: ''
     });
@@ -114,26 +110,21 @@ class Interview extends Component {
         videoData,
         name: backend_profile.name + this.state.selectedQuestionIdx,
         id: Math.floor(Math.random() * 90000) + 10000,
-        answer,
-        question_id: this.props.jobPost.question[this.state.selectedQuestionIdx].id,
+        answer: `${answer}`,
+        question_id: this.props.jobPost.question[this.idx].id,
         submission_id: this.props.submission.id
       };
+      this.idx += 1;
       this.props.socket.emit('video', payload);
       this.video.clearRecordedData();
       setTimeout(() => {
         this.video.resume();
       }, 3000);
-      this.listenForS3Link();
     });
   }
   startInterview() {
     this.setState({
       startTimer: true
-    });
-  }
-  listenForS3Link() {
-    this.props.socket.on('ready', (url) => {
-      console.log(url);
     });
   }
   showNextQuestion() {
@@ -147,7 +138,7 @@ class Interview extends Component {
   }
   endInterview() {
     this.setState({
-      interviewOver: true
+      interviewOver: true,
     });
     this.stopRecording();
     this.props.stream.stop();

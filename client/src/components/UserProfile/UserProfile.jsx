@@ -116,7 +116,6 @@ class UserProfile extends Component {
         if (githubIndex) {
           profileImage = `${profile.identities[githubIndex].profileData.picture}&s=460`;
           name = profile.identities[githubIndex].profileData.name;
-          // location = profile.identities[githubIndex].profileData.location;
           githubLink = profile.identities[githubIndex].profileData.html_url;
         } else {
           if (linkedinIndex) {
@@ -125,7 +124,6 @@ class UserProfile extends Component {
             location = `${profile.location.name} ${profile.location.country.code}`;
             linkedinLink = profile.publicProfileUrl;
           } else {
-            // use e-mail info if avail
             profileImage = profile.picture;
             name = profile.name;
             githubLink = profile.html_url;
@@ -146,10 +144,11 @@ class UserProfile extends Component {
                 <hr />
               </div>
               <div className="profile-section">
-                <div className="profile-info fa fa-map-marker" />
-                <small className="text-center"> {location} </small>
+                <div className="profile-info fa fa-globe" />
+                <small className="text-center"> { !location ? 'select a location' : location } </small>
                 { industries ?
                   <IndustryList
+                    addNotification={this.addNotification}
                     industries={industries}
                     onUserDeleteIndustry={this.deleteUserIndustry}
                   /> : '' }
