@@ -25,9 +25,9 @@ const NavigationBar = (props) => {
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
-            <div>
-             <img className="logo-nav" src={'http://i.imgur.com/SaMFTwf.png'} />
-            </div>
+            <nav>
+              <img className="logo-nav" src={'http://i.imgur.com/SaMFTwf.png'} />
+            </nav>
           </Link>
         </Navbar.Brand>
       </Navbar.Header>
