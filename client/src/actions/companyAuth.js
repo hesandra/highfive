@@ -15,7 +15,6 @@ const idToUse = process.env.NODE_ENV === 'production' ? process.env.COMPANIES_AU
 const authService = new CompanyAuthService(idToUse, 'teamhighfive.auth0.com', 'Companies Sign-In');
 export function checkCompanyLogin() {
   return (dispatch) => {
-    // Add callback for lock's `authenticated` event
     authService.lock.on('authenticated', (authResult) => {
       authService.lock.getProfile(authResult.idToken, (error, profile) => {
         if (error) {
@@ -40,7 +39,6 @@ export function checkCompanyLogin() {
         });
       });
     });
-    // Add callback for lock's `authorization_error` event
     authService.lock.on('authorization_error', error => dispatch(companyLoginError(error)));
   };
 }

@@ -6,39 +6,31 @@ import { createInterview, getQuestions, getPositions, getSubmissions, deleteJob 
 
 class PositionsLevel extends React.Component {
   componentDidMount() {
-    //this.props.getQuestions();
     this.props.getPositions();
   }
   renderJobs() {
-   
     return (
       <div>
         {this.props.companyProfile.companyProfile.jobs.map((item, idx) => {
           if (this.props.companyProfile.companyProfile.level === item.level && this.props.companyProfile.companyAuth.company_backend_profile[0].id === item.company_id) {
-            /*const cDate = new Date(item.created_at);
-            const cDateString = `${cDate.getMonth()}/${cDate.getDay()}/${cDate.getFullYear()}`;
-
-            const uDate = new Date(item.updated_at);
-            const uDateString = `${uDate.getMonth()}/${uDate.getDay()}/${uDate.getFullYear()}`;*/
-
             return (
-                <Table id={item.id} responsive>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Description</th>
-                      <th>Created at</th>                 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{item.id}</td><td>{item.description}</td><td>{item.created_at}</td>
-                      <tb><Button onClick={() => { this.props.getSubmissions(item.id); document.getElementById('tabs-with-dropdown-tab-second').click(); }}>See Submissions</Button></tb>
-                      <tb><span className="glyphicon glyphicon-remove" onClick={() => { this.props.deleteJob(item.id); document.getElementById(item.id).remove(); }} /></tb>
-                    </tr>
-                  </tbody>
-                </Table>
-             )
+              <Table id={item.id} responsive>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Description</th>
+                    <th>Created at</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{item.id}</td><td>{item.description}</td><td>{item.created_at}</td>
+                    <tb><Button onClick={() => { this.props.getSubmissions(item.id); document.getElementById('tabs-with-dropdown-tab-second').click(); }}>See Submissions</Button></tb>
+                    <tb><span className="glyphicon glyphicon-remove" onClick={() => { this.props.deleteJob(item.id); document.getElementById(item.id).remove(); }} /></tb>
+                  </tr>
+                </tbody>
+              </Table>
+            );
           }
         })}
       </div>
@@ -48,17 +40,16 @@ class PositionsLevel extends React.Component {
     if (this.props.companyProfile.companyProfile.jobs !== undefined) {
       return (
         <div className="positionsHeading">
-          {this.props.companyProfile.companyProfile.level === 0?
-          <h2 className="panel panel-default panel-heading">Junior Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2>:
-          this.props.companyProfile.companyProfile.level === 1?
-          <h2 className="panel panel-default panel-heading">Mid-level Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2>:
-          <h2 className="panel panel-default panel-heading">Senior Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2>}
+          {this.props.companyProfile.companyProfile.level === 0 ?
+            <h2 className="panel panel-default panel-heading">Junior Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2> :
+            this.props.companyProfile.companyProfile.level === 1 ?
+              <h2 className="panel panel-default panel-heading">Mid-level Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2> :
+              <h2 className="panel panel-default panel-heading">Senior Positions <Button className="btn btn-primary" onClick={() => this.props.createInterview()} type="submit" value="Submit">Create New</Button></h2>}
           <div>{this.renderJobs()}</div>
         </div>
-      )
-    } else {
-      return (<div>{}</div>)
+      );
     }
+    return (<div>{}</div>);
   }
 }
 
@@ -73,30 +64,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PositionsLevel);
-
-/*
-this.props.getPositions(this.props.companyProfile.companyReload[0].id)
-
-
-renderJobs(){
-    console.log('props in positionslevel', this.props)
-    return (
-      <div>
-       {this.props.companyProfile.jobs.data.jobposts.map((item, idx) => {
-        if (this.props.companyProfile.level === item.level){
-          return (
-            <div>{item.title}</div>
-          )}
-      })}  
-      <div>
-          <FormGroup>
-          <Col smOffset={3} sm={8}>
-            <Button onClick={() => this.props.createInterview()} type="submit" value="Submit">
-              Create new Interview
-            </Button>
-          </Col>
-        </FormGroup>
-      </div>
-      </div>
-    );
-  }*/

@@ -1,5 +1,4 @@
 import React from 'react';
-import { } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Card, Image, Icon, Rating, List, Popup, Label, Segment, TextArea } from 'semantic-ui-react';
@@ -12,7 +11,7 @@ const style = {
   borderRadius: 0,
   opacity: 0.7,
   padding: '2em',
-}
+};
 
 class PositionsLevel extends React.Component {
   constructor(props) {
@@ -27,8 +26,8 @@ class PositionsLevel extends React.Component {
   }
 
   clearNotes(idx) {
-    document.getElementById('notes' + idx).value = "";
-  };
+    document.getElementById(`notes${idx}`).value = '';
+  }
 
   handleChange(event) {
     const target = event.target;
@@ -36,14 +35,10 @@ class PositionsLevel extends React.Component {
     const name = target.name;
     this.setState({
       [name]: value,
-      //industry: value,
-      //location: value,
     });
   }
 
   renderSubmissions() {
-    //console.log('PROPS IN SUBMISSIONS', this.props.companyProfile.submissions);
-    //console.log('state in submissions', this.state);
     return (
       <div className="ui stackable twelve column grid">
         {this.props.companyProfile.submissions.map((item, idx) => {
@@ -56,8 +51,7 @@ class PositionsLevel extends React.Component {
                     src={item.user.profile_img}
                   />
                   <Card.Content className="cardSize">
-                    <Card.Header>
-                    </Card.Header>
+                    <Card.Header />
                     <Card.Meta>
                       <span className="date posted_on">
                         applied on : {item.created_at}
@@ -85,7 +79,7 @@ class PositionsLevel extends React.Component {
                   </Card.Content>
                   <Card.Content extra>
                     <Form>
-                      <TextArea className="form-control notesField" placeholder="Give your feedback to the applicant" id={"notes" + idx} name="notes" onChange={this.handleChange} autoHeight />
+                      <TextArea className="form-control notesField" placeholder="Give your feedback to the applicant" id={`notes${idx}`} name="notes" onChange={this.handleChange} autoHeight />
                     </Form>
                     <FormGroup controlId="formControlsSelect">
                       <FormControl componentClass="select" placeholder="select" name="status" onChange={this.handleChange} >
@@ -96,9 +90,10 @@ class PositionsLevel extends React.Component {
                         <option >failed</option>
                       </FormControl>
                     </FormGroup>
-                    <Popup trigger={
-                      <Button className="btn btn-primary" onClick={() => { this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id }); { () => { this.state.notes = '' }}; this.clearNotes(idx) }}>Save</Button>}
-                      content='Clicking here will inform the applicant'
+                    <Popup
+                      trigger={
+                        <Button className="btn btn-primary" onClick={() => { this.props.updateSubmission({ subId: item.id, status: this.state.status, notes: this.state.notes, jobPostId: item.jobpost_id }); { () => { this.state.notes = ''; }; } this.clearNotes(idx); }}>Save</Button>}
+                      content="Clicking here will inform the applicant"
                       style={style}
                       inverted
                     />
@@ -106,27 +101,25 @@ class PositionsLevel extends React.Component {
                 </Card>
               </Card.Group>
             </div>
-          )
+          );
         }
         )}
       </div>
-    )
+    );
   }
 
   render() {
-    if (this.props.companyProfile.submissions && this.props.companyProfile.submissions.length === 0){
+    if (this.props.companyProfile.submissions && this.props.companyProfile.submissions.length === 0) {
       return (<h2 style={{ 'margin-top': 20 }} className="text-center">No submissions yet</h2>);
-    }
-    else if (this.props.companyProfile.submissions !== undefined) {
+    } else if (this.props.companyProfile.submissions !== undefined) {
       return (
         <div>
           <div>{this.renderSubmissions()}
             <ApplicationModal />
             <SaveModal />
           </div>
-        </div> )
-      }
-    else if (this.props.companyProfile.submissions === undefined){
+        </div>);
+    } else if (this.props.companyProfile.submissions === undefined) {
       return (<h2 style={{ 'margin-top': 20 }} className="text-center">Find submissions through a jobpost</h2>);
     }
   }
@@ -143,6 +136,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PositionsLevel);
-
-
 
