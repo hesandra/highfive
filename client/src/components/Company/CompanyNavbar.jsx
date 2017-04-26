@@ -1,14 +1,14 @@
 import React from 'react';
 import { Tab, Row, Col, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Icon, Statistic } from 'semantic-ui-react';
+import { Link, hashHistory } from 'react-router';
+import NotificationSystem from 'react-notification-system';
 import CompanyProfile from './CompanyProfile';
 import Positions from './Positions';
 import Submissions from './Submissions';
 import Dashboard from '../Dashboard/Dashboard';
-import { Icon, Statistic } from 'semantic-ui-react';
-import { Link, hashHistory } from 'react-router';
-import NotificationSystem from 'react-notification-system';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { junPos, senPos, midPos, getJunQuestions } from '../../actions/company';
 
 

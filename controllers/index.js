@@ -68,7 +68,6 @@ module.exports = {
 
   companies: {
     createOne: async (req, res, next) => {
-      // creates a company
       const { name, email, auth0_id, profile_img } = req.body;
 
       models.companies.createOne(req.body, (err, fetchedCompany) => {
@@ -211,30 +210,6 @@ module.exports = {
     }
   },
 
-  // submissions: {
-    // createOne: (req, res, next) => {
-    //   models.submissions.createOne(req.body, (err, submission) => {
-    //     const payload = {
-    //       success: err ? false : true,
-    //       err: JSON.stringify(err),
-    //       submission
-    //     }
-    //     res.send(payload)
-    //   });
-    // },
-    // getByUserId: (req, res, next) => {
-    //   const { user_id } = req.params;
-
-    //   models.submissions.getByUserId(user_id, (err, submission) => {
-    //     const payload = {
-    //       success: err ? false : true,
-    //       err: JSON.stringify(err),
-    //       submission
-    //     }
-    //     res.send(payload)
-    //   });
-    // }
-  // },
   submissions: {
     getAllByCompanyId: (req, res, next) => {
       models.submissions.getAllByCompanyId((err, submissions) => {

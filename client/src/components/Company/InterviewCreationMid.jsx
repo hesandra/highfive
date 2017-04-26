@@ -2,13 +2,12 @@ import React from 'react';
 import { Grid, Row, Col, Image, Button, FormGroup, Form, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ScrollArea from 'react-scrollbar';
-import ScrollbarWrapper from 'react-scrollbar';
+import { ScrollArea, ScrollbarWrapper } from 'react-scrollbar';
+import { Card } from 'semantic-ui-react';
 import ReactDOM from 'react-dom';
 import { submitDescription, saveQuestion, createJobPost } from '../../actions/company';
 import InterviewForm from './InterviewForm';
 import PostModal from './PostModal';
-import { Card } from 'semantic-ui-react';
 
 class InterviewFormMid extends React.Component {
   constructor(props) {
@@ -39,75 +38,74 @@ class InterviewFormMid extends React.Component {
     return (
       <div>
         <Card color="red">
-            <Card.Content>
-              <Card.Header>Algorithm Questions</Card.Header>
-              <Card.Description>
-                {
-                  this.props.companyProfile.questions.map((item, idx) => {
+          <Card.Content>
+            <Card.Header>Algorithm Questions</Card.Header>
+            <Card.Description>
+              {
+                this.props.companyProfile.questions.map((item, idx) => {
                   if (item.type === 'Algorithm' && item.level === this.props.companyProfile.level) {
                     return (
-                      <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>
+                      <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex(el => el.id === item.id)) === -1) { this.props.saveQuestion(item); } }}>
                         {item.question}
                       </p>
                     );
                   }
-                  })
-                }
-              </Card.Description>
-            </Card.Content>
-          </Card>
-          <Card color="red">
-            <Card.Content>
-              <Card.Header>System Design Questions</Card.Header>
-              <Card.Description>
-                {this.props.companyProfile.questions.map((item, idx) => {
+                })
+              }
+            </Card.Description>
+          </Card.Content>
+        </Card>
+        <Card color="red">
+          <Card.Content>
+            <Card.Header>System Design Questions</Card.Header>
+            <Card.Description>
+              {this.props.companyProfile.questions.map((item, idx) => {
                 if (item.type === 'System Design' && item.level === this.props.companyProfile.level) {
                   return (
-                    <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>{item.question}</p>
-                  )
+                    <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex(el => el.id === item.id)) === -1) { this.props.saveQuestion(item); } }}>{item.question}</p>
+                  );
                 }
               })
               }
-              </Card.Description>
-            </Card.Content>
-          </Card>
-          <Card color="red">
-            <Card.Content>
-              <Card.Header>Behavioral Questions</Card.Header>
-              <Card.Description>
-                {this.props.companyProfile.questions.map((item, idx) => {
+            </Card.Description>
+          </Card.Content>
+        </Card>
+        <Card color="red">
+          <Card.Content>
+            <Card.Header>Behavioral Questions</Card.Header>
+            <Card.Description>
+              {this.props.companyProfile.questions.map((item, idx) => {
                 if (item.type === 'Behavioral' && item.level === this.props.companyProfile.level) {
                   return (
-                    <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>{item.question}</p>
-                  )
+                    <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex(el => el.id === item.id)) === -1) { this.props.saveQuestion(item); } }}>{item.question}</p>
+                  );
                 }
               })
               }
-              </Card.Description>
-            </Card.Content>
-          </Card>
+            </Card.Description>
+          </Card.Content>
+        </Card>
       </div>
-    )
+    );
   }
 
   render() {
-    //console.log(this.props, 'INTERVIEWCREATION Mid-level COMPANYPROFILE');
-    if (this.props.companyProfile.showJobModal){
+    if (this.props.companyProfile.showJobModal) {
       return (
         <div><PostModal /></div>
-      )} else if (this.props.companyProfile.showJobModal === false){
-    return (
-      <Grid>
+      );
+    } else if (this.props.companyProfile.showJobModal === false) {
+      return (
+        <Grid>
           <Row className="show-grid">
             <Col xs={6} md={5} >{this.renderAll()}</Col>
             <Col xs={6} md={4} ><InterviewForm /></Col>
           </Row>
         </Grid>
-    )}
-    else {
-      return (<div>{}</div>)
+      );
     }
-}
+    return (<div>{}</div>);
+  }
 }
 
 function mapStateToProps(state) {

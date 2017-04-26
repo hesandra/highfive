@@ -11,15 +11,11 @@ import { getJunQuestions } from '../../actions/company';
 
 
 class Positions extends React.Component {
-  //renderPositions() {
-  //map over get and render all positions for company id and position id
-  // }
-
   render() {
     return (
       <div>
         <div>
-        {this.props.companyProfile.createButton === false ?
+          { this.props.companyProfile.createButton === false ?
             <PositionsLevel /> : ''}
         </div>
         <div>

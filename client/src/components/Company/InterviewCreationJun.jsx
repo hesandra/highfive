@@ -1,13 +1,13 @@
 import React from 'react';
+import { Card } from 'semantic-ui-react';
 import { Grid, Row, Col, Image, Button, FormGroup, Form, ControlLabel, FormControl, Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { submitDescription, saveQuestion, createJobPost } from '../../actions/company';
-import InterviewForm from './InterviewForm';
 import ReactDOM from 'react-dom';
-import { closeModal } from '../../actions/company';
+import { bindActionCreators } from 'redux';
+import { submitDescription, saveQuestion, createJobPost, closeModal } from '../../actions/company';
+import InterviewForm from './InterviewForm';
 import PostModal from './PostModal';
-import { Card } from 'semantic-ui-react';
+
 
 class InterviewFormJun extends React.Component {
   constructor(props) {
@@ -43,13 +43,13 @@ class InterviewFormJun extends React.Component {
             <Card.Description>
               {
                 this.props.companyProfile.questions.map((item, idx) => {
-                if (item.type === 'Algorithm' && item.level === this.props.companyProfile.level) {
-                  return (
-                    <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>
-                      {item.question}
-                    </p>
-                  );
-                }
+                  if (item.type === 'Algorithm' && item.level === this.props.companyProfile.level) {
+                    return (
+                      <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex(el => el.id === item.id)) === -1) { this.props.saveQuestion(item); } }}>
+                        { item.question}
+                      </p>
+                    );
+                  }
                 })
               }
             </Card.Description>
@@ -60,12 +60,12 @@ class InterviewFormJun extends React.Component {
             <Card.Header>System Design Questions</Card.Header>
             <Card.Description>
               {this.props.companyProfile.questions.map((item, idx) => {
-              if (item.type === 'System Design' && item.level === this.props.companyProfile.level) {
-                return (
-                  <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>{item.question}</p>
-                )
-              }
-            })
+                if (item.type === 'System Design' && item.level === this.props.companyProfile.level) {
+                  return (
+                    <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex(el => el.id === item.id)) === -1) { this.props.saveQuestion(item); } }}>{item.question}</p>
+                  );
+                }
+              })
             }
             </Card.Description>
           </Card.Content>
@@ -75,12 +75,12 @@ class InterviewFormJun extends React.Component {
             <Card.Header>Behavioral Questions</Card.Header>
             <Card.Description>
               {this.props.companyProfile.questions.map((item, idx) => {
-              if (item.type === 'Behavioral' && item.level === this.props.companyProfile.level) {
-                return (
-                  <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex((el) => el.id === item.id)) === -1) { this.props.saveQuestion(item) } }}>{item.question}</p>
-                )
-              }
-            })
+                if (item.type === 'Behavioral' && item.level === this.props.companyProfile.level) {
+                  return (
+                    <p key={idx} onClick={(question) => { if ((this.props.companyProfile.selectedQuestion.findIndex(el => el.id === item.id)) === -1) { this.props.saveQuestion(item); } }}>{item.question}</p>
+                  );
+                }
+              })
             }
             </Card.Description>
           </Card.Content>
@@ -93,7 +93,7 @@ class InterviewFormJun extends React.Component {
     if (this.props.companyProfile.showJobModal) {
       return (
         <div><PostModal /></div>
-      )
+      );
     } else if (this.props.companyProfile.showJobModal === false) {
       return (
         <Grid>
@@ -103,11 +103,10 @@ class InterviewFormJun extends React.Component {
           </Row>
         </Grid>
 
-      )
+      );
     }
-    else {
-      return (<div>{}</div>)
-    }
+
+    return (<div>{}</div>);
   }
 }
 

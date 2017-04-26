@@ -1,19 +1,13 @@
 import React from 'react';
-import CompanyNavbar from './CompanyNavbar';
+import NotificationSystem from 'react-notification-system';
+import { Form, Col, FormGroup, ControlLabel, FormControl, Button, DropdownButton, MenuItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { submitProfile } from '../../actions/company';
-import { Form, Col, FormGroup, ControlLabel, FormControl, Button, DropdownButton, MenuItem } from 'react-bootstrap';
-const $ = require('jquery');
-window.jQuery = $;
-React.Bootstrap = require('react-bootstrap');
-React.Bootstrap.Select = require('react-bootstrap-select');
+import { submitProfile, getCompany, getIndustries, getLocations } from '../../actions/company';
 import CompanyAuthService from '../../utils/companyAuthService';
 import Dropzone from '../Dropzone/dropzone';
-import ReactSelectize from 'react-selectize';
-const SimpleSelect = ReactSelectize.SimpleSelect;
-import NotificationSystem from 'react-notification-system';
-import { getCompany, getIndustries, getLocations } from '../../actions/company';
+import CompanyNavbar from './CompanyNavbar';
+
 
 const defaultColors = {
   success: {
@@ -47,9 +41,9 @@ const style = {
       backgroundColor: 'black',
       color: 'white',
       marginTop: '75px',
-      WebkitBoxShadow: '0 0 1px rgba(' + defaultColors.success.rgb + ',' + defaultShadowOpacity + ')',
-      MozBoxShadow: '0 0 1px rgba(' + defaultColors.success.rgb + ',' + defaultShadowOpacity + ')',
-      boxShadow: '0 0 1px rgba(' + defaultColors.success.rgb + ',' + defaultShadowOpacity + ')'
+      WebkitBoxShadow: `0 0 1px rgba(${defaultColors.success.rgb},${defaultShadowOpacity})`,
+      MozBoxShadow: `0 0 1px rgba(${defaultColors.success.rgb},${defaultShadowOpacity})`,
+      boxShadow: `0 0 1px rgba(${defaultColors.success.rgb},${defaultShadowOpacity})`
     },
     Dismiss: {
       DefaultStyle: {
@@ -63,8 +57,6 @@ const style = {
     }
   }
 };
-
-
 
 class CompanyProfile extends React.Component {
   constructor(props) {
@@ -83,15 +75,9 @@ class CompanyProfile extends React.Component {
     this.addNotification = this.addNotification.bind(this);
   }
 
-  addNotification() {
-    if (this.notificationSystem) {
-      this.notificationSystem.addNotification({
-        message: 'profile updated',
-        level: 'success',
-        position: 'tr',
-        autoDismiss: 5
-      });
-    }
+  componentDidMount() {
+    this.props.getIndustries();
+    this.props.getLocations();
   }
 
   handleChange(event) {
@@ -100,8 +86,6 @@ class CompanyProfile extends React.Component {
     const name = target.name;
     this.setState({
       [name]: value,
-      //industry: value,
-      //location: value,
     });
   }
 
@@ -112,10 +96,17 @@ class CompanyProfile extends React.Component {
     this.addNotification();
   }
 
-  componentDidMount(){
-    this.props.getIndustries();
-    this.props.getLocations();
-}
+
+  addNotification() {
+    if (this.notificationSystem) {
+      this.notificationSystem.addNotification({
+        message: 'profile updated',
+        level: 'success',
+        position: 'tr',
+        autoDismiss: 5
+      });
+    }
+  }
 
   renderForm() {
     return (
@@ -128,16 +119,16 @@ class CompanyProfile extends React.Component {
         <FormGroup>
           <Col>
             <Col componentClass={ControlLabel}>Industry</Col>
-              <FormGroup controlId="formControlsSelect">
-                <Col>
-                  <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
-                    <option value="select">Select</option>
-                    {this.props.profile.companyAuth.industries.map((item) =>
-                      <option value={item.id}>{item.name}</option>
+            <FormGroup controlId="formControlsSelect">
+              <Col>
+                <FormControl componentClass="select" placeholder="select" name="industry_id" value={this.state.industry_id} onChange={this.handleChange}>
+                  <option value="select">Select</option>
+                  {this.props.profile.companyAuth.industries.map(item =>
+                    <option value={item.id}>{item.name}</option>
                     )}
-                  </FormControl>
-                </Col>
-              </FormGroup>
+                </FormControl>
+              </Col>
+            </FormGroup>
           </Col>
         </FormGroup>
         <FormGroup>
@@ -147,7 +138,7 @@ class CompanyProfile extends React.Component {
               <Col>
                 <FormControl componentClass="select" placeholder="select" name="location_id" value={this.state.location_id} onChange={this.handleChange}>
                   <option value="select">Select</option>
-                  {this.props.profile.companyAuth.locations.map((item) =>
+                  {this.props.profile.companyAuth.locations.map(item =>
                     <option value={item.id}>{item.city}</option>
                   )}
                 </FormControl>
@@ -165,22 +156,20 @@ class CompanyProfile extends React.Component {
         </FormGroup>
         <FormGroup><Col><Button type="submit" value="Submit" className="btn btn-primary">Submit</Button></Col></FormGroup>
       </Form>
-    )
+    );
   }
   render() {
-    //console.log('props in companyprofile render', this.props)
     if (this.props.profile.companyAuth.industries && this.props.profile.companyAuth.locations) {
       return (
         <div>
           {this.renderForm()}
           <NotificationSystem ref={n => this.notificationSystem = n} style={style} />
         </div>
-      )
-    } else {
-      return (
-        <div></div>
-      )
+      );
     }
+    return (
+      <div />
+    );
   }
 }
 
