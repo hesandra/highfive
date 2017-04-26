@@ -35,8 +35,6 @@ router.get('/api/submissions/jobpost/:jobpost_id', controller.submissions.getAll
 router.put('/api/submissions/:id', controller.submissions.updateSubmission);
 router.get('/api/submissions/user/:id', controller.submissions.getAllByUserId);
 router.post('/api/submissions', controller.submissions.createOne);
-// router.get('/api/submissions/user/:user_id', controller.submissions.getByUserId);
-// router.post('/api/submissions', controller.submissions.createOne);
 
 // questions
 router.get('/api/questions', controller.questions.getAll);
