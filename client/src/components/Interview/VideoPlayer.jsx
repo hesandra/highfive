@@ -16,6 +16,7 @@ class VideoPlayer extends Component {
   componentWillUnmount() {
     if (this.player) {
       this.player.dispose();
+      player.recorder.destroy();
     }
   }
   render() {
