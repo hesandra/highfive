@@ -1,6 +1,8 @@
 const dotenv = require('dotenv');
 
 dotenv.load();
+console.log('this is db uri', process.env.MYSQL_PROD_URI);
+console.log('this is db name', process.env.MYSQL_PROD_DB);
 module.exports = {
   development: {
     client: 'mysql',

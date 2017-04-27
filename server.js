@@ -16,7 +16,6 @@ const socketController = require('./controllers/sockets');
 const port = process.env.PORT || 3000;
 dotenv.load();
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-console.log('this is env', env);
 const knex = Knex(knexConfig[env]);
 Model.knex(knex);
 
