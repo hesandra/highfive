@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
-import CompanyAuth from './CompanyAuth';
 import { getCompany, getIndustries, getLocations } from '../../actions/company';
 
 class CompanyDetails extends React.Component {
