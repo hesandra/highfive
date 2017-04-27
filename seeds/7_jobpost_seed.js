@@ -15,7 +15,7 @@ exports.seed = function (knex, Promise) {
             if (counterToTen / 11 === 1) {
               counterToTen = 1;
             }
-            if (companyCounter / 16 === 1) {
+            if (companyCounter / 17 === 1) {
               companyCounter = 1;
             }
 
