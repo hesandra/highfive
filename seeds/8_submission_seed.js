@@ -215,54 +215,6 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-    /*      {
-            id: 27,
-            user_id: 1,
-            jobpost_id: 15,
-            status: null,
-            completed: 0,
-            notes: ''
-          },
-          {
-            id: 28,
-            user_id: 2,
-            jobpost_id: 15,
-            status: null,
-            completed: 1,
-            notes: ''
-          },
-          {
-            id: 73,
-            user_id: 3,
-            jobpost_id: 15,
-            status: null,
-            completed: 1,
-            notes: ''
-          },
-          {
-            id: 29,
-            user_id: 4,
-            jobpost_id: 15,
-            status: null,
-            completed: 1,
-            notes: ''
-          },
-          {
-            id: 30,
-            user_id: 5,
-            jobpost_id: 15,
-            status: null,
-            completed: 1,
-            notes: ''
-          },
-          {
-            id: 31,
-            user_id: 6,
-            jobpost_id: 15,
-            status: null,
-            completed: 1,
-            notes: ''
-          },*/
           {
             id: 32,
             user_id: 7,
@@ -375,14 +327,6 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-        /*  {
-            id: 46,
-            user_id: 1,
-            jobpost_id: 79,
-            status: null,
-            completed: 0,
-            notes: ''
-          },*/
           {
             id: 47,
             user_id: 2,
@@ -391,14 +335,6 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-         /* {
-            id: 48,
-            user_id: 3,
-            jobpost_id: 79,
-            status: null,
-            completed: 1,
-            notes: ''
-          },*/
           {
             id: 49,
             user_id: 4,
@@ -415,183 +351,6 @@ exports.seed = function (knex, Promise) {
             completed: 1,
             notes: ''
           },
-         /* {
-            id: 51,
-            user_id: 6,
-            jobpost_id: 79,
-            status: null,
-            completed: 1,
-            notes: ''
-          },
-          {
-            id: 52,
-            user_id: 7,
-            jobpost_id: 79,
-            status: null,
-            completed: 1,
-            notes: ''
-          },*/
-         /* {
-            id: 53,
-            user_id: 8,
-            jobpost_id: 79,
-            status: null,
-            completed: 1,
-            notes: ''
-          },*/
-          /*{
-            id: 54,
-            user_id: 9,
-            jobpost_id: 79,
-            status: null,
-            completed: 1,
-            notes: ''
-          },*/
-         /* {
-            id: 55,
-            user_id: 10,
-            jobpost_id: 79,
-            status: null,
-            completed: 1,
-            notes: ''
-          },*/
-          // //submission for jobposts being created
-          // {
-          //   id: 56,
-          //   user_id: 1,
-          //   jobpost_id: 161,
-          //   status: null,
-          //   completed: 0,
-          //   notes: ''
-          // },
-          // {
-          //   id: 57,
-          //   user_id: 2,
-          //   jobpost_id: 161,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 58,
-          //   user_id: 3,
-          //   jobpost_id: 161,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 59,
-          //   user_id: 4,
-          //   jobpost_id: 161,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 60,
-          //   user_id: 5,
-          //   jobpost_id: 161,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 61,
-          //   user_id: 6,
-          //   jobpost_id: 161,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 62,
-          //   user_id: 7,
-          //   jobpost_id: 162,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 63,
-          //   user_id: 8,
-          //   jobpost_id: 162,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 64,
-          //   user_id: 9,
-          //   jobpost_id: 162,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 65,
-          //   user_id: 10,
-          //   jobpost_id: 162,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          //   {
-          //   id: 66,
-          //   user_id: 1,
-          //   jobpost_id: 162,
-          //   status: null,
-          //   completed: 0,
-          //   notes: ''
-          // },
-          // {
-          //   id: 67,
-          //   user_id: 2,
-          //   jobpost_id: 162,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 68,
-          //   user_id: 3,
-          //   jobpost_id: 163,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 69,
-          //   user_id: 4,
-          //   jobpost_id: 163,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 70,
-          //   user_id: 5,
-          //   jobpost_id: 163,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 71,
-          //   user_id: 6,
-          //   jobpost_id: 163,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
-          // {
-          //   id: 72,
-          //   user_id: 7,
-          //   jobpost_id: 163,
-          //   status: null,
-          //   completed: 1,
-          //   notes: ''
-          // },
         ]);
     });
   });

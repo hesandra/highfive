@@ -19,15 +19,14 @@ const NavigationBar = (props) => {
     logText = 'Logout';
     logType = onCompanyLogoutClick;
   }
-
   return (
     <Navbar inverse>
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
-            <nav>
-              <img className="logo-nav" src={'http://i.imgur.com/SaMFTwf.png'} />
-            </nav>
+            <div>
+              <img className="logo-nav" src={'https://s3-us-west-1.amazonaws.com/highfivestatic/hifivelogoblacksmall2_160.png'} />
+            </div>
           </Link>
         </Navbar.Brand>
       </Navbar.Header>

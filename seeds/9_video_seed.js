@@ -48,8 +48,6 @@ exports.seed = function (knex, Promise) {
             submission_id: 3,
             question_id: 3
           },
-
-          //below is Sandra's input
           {
             id: 7,
             href: 'https://highfivehrla13.s3.amazonaws.com/blah1.webm',
@@ -74,8 +72,7 @@ exports.seed = function (knex, Promise) {
           {
             id: 10,
             href: 'https://s3-us-west-1.amazonaws.com/highfivehrla13/Sandra+Jayasingha2_24418.webm',
-            answer: 
-            'function isPrime(number) { \n if (typeof number !== "number" || !Number.isInteger(number)) {\n return false;\n}\n if (number < 2) {\n return false;\n}\n if (number ===2) {\n return true;\n } else if (number % 2 === 0) { \n return false;\n} \n for (var i = 3; i*i <= number; i += 2) { \n if (number % i === 0) { \n return false;\n }\n}\n return true;\n}',
+            answer: '',
             submission_id: 8,
             question_id: 11
           },
@@ -115,6 +112,6 @@ exports.seed = function (knex, Promise) {
             question_id: 3
           }
         ]);
-      })
-  })
+      });
+  });
 };
