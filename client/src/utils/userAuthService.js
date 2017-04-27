@@ -14,7 +14,7 @@ export default class UserAuthService {
         responseType: 'token'
       },
       theme: {
-        logo: 'http://i.imgur.com/KTZ8vA2.png'
+        logo: 'https://s3-us-west-1.amazonaws.com/highfivestatic/hifive_logo.png'
       },
       languageDictionary: {
         title: type
