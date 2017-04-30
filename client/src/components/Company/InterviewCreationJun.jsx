@@ -102,10 +102,8 @@ class InterviewFormJun extends React.Component {
             <Col xs={6} md={4} ><InterviewForm /></Col>
           </Row>
         </Grid>
-
       );
     }
-
     return (<div>{}</div>);
   }
 }
