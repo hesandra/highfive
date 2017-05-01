@@ -4,8 +4,6 @@ import recordRTC from 'recordrtc';
 import { captureUserMedia } from '../../utils/recordRTCUtils';
 import { NavBarContainer } from '../../containers';
 
-console.log(process.env);
-
 class App extends Component {
   constructor(props) {
     super(props);
