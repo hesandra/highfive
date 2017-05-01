@@ -48,7 +48,7 @@ router.get('/api/locations', controller.locations.getAll);
 // industries
 router.get('/api/industries', controller.industries.getAll);
 
-//dashboard
+// dashboard
 router.get('/api/companies/:id/stats', controller.dashboard.getAllStats);
 router.get('/api/user/:id/stats', controller.dashboard.getUserStats);
 
