@@ -12,9 +12,9 @@
     "start_dev": "nodemon server.js",
     "dev": "webpack-dashboard webpack-dev-server --config ./webpack.config.js --progress --colors",
     "seed_db": "NODE_ENV=production knex seed:run",
+    "build_dev": "webpack --config ./webpack.config.js --progress",
     "build_prod": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress",
-    "postinstall": "knex migrate:latest",
-    "knex": "knex"
+    "postinstall": "knex migrate:latest"
   },
   "repository": {
     "type": "git",

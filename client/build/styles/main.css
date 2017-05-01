@@ -350,11 +350,11 @@ canvas:nth-of-type(2) {
   height: 100px;
   width: 100px;
   margin-top: -35px;
-  margin-left: -75px; }
+  margin-left: -100px; }
 
 #single-card-show {
   height: 400px;
   width: 500px;
-  margin: 20px auto;
-  margin-left: -75px; }
+  margin: 20px auto; }
+
 /*# sourceMappingURL=main.css.map */

@@ -4,17 +4,16 @@ import recordRTC from 'recordrtc';
 import { captureUserMedia } from '../../utils/recordRTCUtils';
 import { NavBarContainer } from '../../containers';
 
+console.log(process.env);
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
-
-    // check login status here
     this.props.checkUserLogin();
     this.props.checkCompanyLogin();
   }
-
   render() {
     return (
       <div>
