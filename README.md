@@ -16,8 +16,6 @@ HIFIVE is a platform for technical recruitment of software engineers. Companies 
 
 3. [Development](#development)
  
-4. [Team](#team)
-
 ## Usage
 
 # Company
@@ -29,30 +27,28 @@ HIFIVE is a platform for technical recruitment of software engineers. Companies 
  
  4.[Submissions] >> By clicking on 'see submissions' in jobpost view, all submissions will be shown for that specific jobpost. Clicking on watch applicatin will show all videos and code by the applicant. After the review comments and status can be updated. Save will inform the applicant about the decision.
 
- # Applicants
+ # Applicant
  1. [Login/Signup] >> Authenticate via Github Auth0 provider strategy
  2. [Edit Profile] >> Add location, and select industries of interest
  3. [Jobposts] >> Explore suggested jobpost matched to you via our state-of-the-art matching algorithim :)
  4. [Interview] >> Take interviews from companies and wait to hear back
  5. [Submissions] >> Watch previous interviews and see where you could of improved in certain areas, you may also recieve feedback from the company here.  
  
-
 ## Requirements
-
 - Node version v7.7.4
+- Knex installed globally,
 
 ## Development
-npm run "buid_dev" starts webpack development compiler
-npm run "sass" starts sass file watching
-npm run "start_dev" starts node server listening on port : 3000
+1. npm run "buid_dev" starts webpack development compiler
+2. npm run "sass" starts sass file watching
+3. npm run "start_dev" starts node server listening on port : 3000
 
 ### Installing Dependencies
-npm install -g knex - knex is needed to run seed & migration files
-npm install - installs project's dependencies
+1. npm install -g knex - knex is needed to run seed & migration files
+2. npm install - installs project's dependencies
 
 ## How to build project for Production
-Production:
-npm run "build_prod" compiles minified bundle for production
-npm start starts node server listening on port 3000 in production mode.
+1. npm run "build_prod" compiles minified bundle for production
+2. npm start starts node server listening on port 3000 in production mode.
 
 
