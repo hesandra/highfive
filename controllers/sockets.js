@@ -1,10 +1,9 @@
 const fs = require('fs');
 const AWS = require('aws-sdk');
 const axios = require('axios');
+
 const s3 = new AWS.S3();
-
 const BASE_URL = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
-
 
 module.exports = {
   init(io) {
@@ -13,12 +12,9 @@ module.exports = {
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     });
     io.on('connection', (socket) => {
-      console.log('connection!');
-      console.log(process.env.NODE_ENV);
       socket.on('video', ({ videoData, name, id, answer, question_id, submission_id }) => {
         const dataURL = videoData.split(',').pop();
         const fileBuffer = new Buffer(dataURL, 'base64');
-        console.log(name, id, question_id, submission_id, 'data rec');
         const s3Params = {
           Bucket: process.env.S3_BUCKET,
           Key: `${name}_${id}.webm`,
