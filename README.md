@@ -19,13 +19,11 @@ HIFIVE is a platform for technical recruitment of software engineers. Companies 
 ## Usage
 
 # Company
- 1.[Login/Signup] >> Enter email address and password to create or login to an existing account. 
- 
- 2.[Edit Profile] >> Edit Profile and provide industry and location, as well as upload picture that represents culture
- 
- 3.[Jobposts] >> Click on jobposts for the category junior, mid or senior to find all jobposts or delete them. Create new will create a jobpost in the respective category and bring user to the interview section where questions with the respective difficulty level can be chosen. By clicking save, the interview will be attached to the new jobpost. 
- 
- 4.[Submissions] >> By clicking on 'see submissions' in jobpost view, all submissions will be shown for that specific jobpost. Clicking on watch applicatin will show all videos and code by the applicant. After the review comments and status can be updated. Save will inform the applicant about the decision.
+ 1. [Login/Signup] >> Enter email address and password to create or login to an existing account. 
+ 2. [Edit Profile] >> Edit Profile and provide industry, location and picture that represents culture, which is needed to enable matches with applicants' preferences
+ 3. [Jobposts] >> Click on jobposts for the category junior, mid or senior to find all jobposts or delete them.
+ 4. [Interview] >> Creating a new jobpost in the respective category will bring users to the interview section where questions with the respective difficulty level can be chosen. By clicking save, the interview will be attached to the new jobpost and applicants will be able to find the jobpost on their end.  
+ 5. [Submissions] >> By clicking on 'see submissions' in jobpost view, all submissions will be shown for that specific jobpost. Clicking on watch applicatin will show all videos and code by the applicant. After reviewing the submission, comments and status can be updated. Saving it will inform the applicant about the decision.
 
  # Applicant
  1. [Login/Signup] >> Authenticate via Github Auth0 provider strategy
@@ -37,9 +35,9 @@ HIFIVE is a platform for technical recruitment of software engineers. Companies 
 ## Requirements
 - Node version v7.7.4
 - Knex installed globally,
-
+  
 ## Development
-1. npm run "buid_dev" starts webpack development compiler
+1. npm run "build_dev" starts webpack development compiler
 2. npm run "sass" starts sass file watching
 3. npm run "start_dev" starts node server listening on port : 3000
 
