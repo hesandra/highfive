@@ -22,7 +22,6 @@ class JobPosts extends Component {
     const { page } = this.props.params;
     if (!jobPosts.results.length) {
       requestJobPosts(page);
-      console.log('going to get jobpost');
     }
   }
   componentDidUpdate(prevProps) {
