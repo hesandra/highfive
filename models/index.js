@@ -19,12 +19,6 @@ module.exports = {
         .then((users) => cb(null, users))
         .catch((err) => cb(err, null));
     },
-    getById: () => {
-
-    },
-    put: () => {
-      // update user here
-    },
     /**
      * Posts a user to the db using async/await (Ready for Testing)
      */
@@ -58,7 +52,6 @@ module.exports = {
       }
     },
     updateById: async ({ location, linkedin_url, id, industries }, cb) => {
-      console.log(linkedin_url, 'linked', industries, 'industries');
       const industriesLength = industries.length;
       /* Patch User (async/await) */
       if (!linkedin_url) {
@@ -92,7 +85,6 @@ module.exports = {
             .findById(industryId);
 
           if (!industry) {
-            console.log('no industry under that name');
             return;
           }
           const relationExists = await industry
@@ -103,8 +95,6 @@ module.exports = {
 
           if (relationExists) {
             if (index === industriesLength - 1) {
-              console.log('already related, skip');
-              console.log(index, industriesLength);
               const userToReturn = await User
                 .query()
                 .findById(id)
@@ -186,11 +176,8 @@ module.exports = {
           .query()
           .insertAndFetch(body)
           .catch((err) => { cb(err, null); });
-
-        console.log("creating new");
         cb(null, newCompany);
       } else {
-        console.log('returning existing');
         cb(null, getCompany);
       }
     },
@@ -211,14 +198,13 @@ module.exports = {
         .catch((err) => { console.log(err); });
     },
     updatePicture: (id, body, cb) => {
-      console.log('body in index models', body)
       Company
         .query()
         .update(body)
         .where('id', id)
         .skipUndefined()
         .then((result) => { cb(null, result) })
-        .catch(err => { console.log(err) });
+        .catch((err) => { console.log(err); });
     }
   },
   jobposts: {
@@ -275,57 +261,33 @@ module.exports = {
         .query()
         .first()
         .where('id', id)
-        // .update(body)
-        // .then((job) => { cb(null, job); })
         .catch((err) => { cb(err, null); });
-        const questions = body;
+      const questions = body;
 
-       let count = 0;
-       console.log('QUESTIONS IN INDEX MODELS', jobpost)
-       questions.forEach((question) => {
-         jobpost
-           .$relatedQuery('question')
-             .relate(question.id)
-             .catch((e) => {
-               cb(e, null);
-             });
-         count++;
-         if(count === questions.length){
-           cb(null, jobpost);
-          }
-       });
+      let count = 0;
+      questions.forEach((question) => {
+        jobpost
+          .$relatedQuery('question')
+            .relate(question.id)
+            .catch((e) => {
+              cb(e, null);
+            });
+        count++;
+        if(count === questions.length){
+          cb(null, jobpost);
+        }
+      });
     },
 
     deleteJobPost: (postId, cb) => {
       Jobpost
         .query()
         .skipUndefined()
-        // .allowEager('[question]')
-        // .eager('[question]')
         .deleteById(postId)
         .then((jobs) => { cb(null, jobs); })
-        .catch( err => { console.log(err); });
+        .catch((err) => { console.log(err); });
     }
   },
-
-  // submissions: {
-    // createOne: (body, cb) => {
-    //   Submission
-    //     .query()
-    //     .insertAndFetch(body)
-    //     .then((result) => { cb(null, result) })
-    //     .catch( err => { console.log(err) })
-    // },
-    // getByUserId: (user_id, cb) => {
-    //   Submission
-    //     .query()
-    //     .allowEager('[video]')
-    //     .eager('[video]')
-    //     .where('user_id', user_id)
-    //     .then((submission) => { cb(null, submission) })
-    //     .catch((err) => { cb(err, null); });
-    // }
-  // },
   submissions: {
     getAll: async (cb) => {
       const submissions = await Submission
@@ -361,7 +323,6 @@ module.exports = {
     getAllForJobPost: (jobpost_id, cb) => {
       Submission
         .query()
-        //.allowEager('[video, user, jobpost, jobpost.question]')
         .eager('[video, user, jobpost.question]')
         .where('jobpost_id', jobpost_id)
         .then((result) => { cb(null, result) })
@@ -374,7 +335,7 @@ module.exports = {
         .where('id', id)
         .skipUndefined()
         .then((result) => { cb(null, result) })
-        .catch( err => { console.log(err) })
+        .catch((err) => { console.log(err); });
     }
   },
   videos: {
@@ -386,7 +347,6 @@ module.exports = {
         .catch((err) => { cb(err, null); });
     }
   },
-
   questions: { 
     getAll: (cb) => {
       Question
@@ -395,7 +355,6 @@ module.exports = {
         .catch(err => { console.log(err) })
     }
   },
-
   locations: {
     getAll: (cb) => {
       Location
@@ -404,7 +363,6 @@ module.exports = {
         .catch( err => { console.log(err) })
     }
   },
-
   industries: {
     getAll: (cb) => {
       Industry
@@ -413,7 +371,6 @@ module.exports = {
         .catch((err) => { console.log(err); });
     }
   },
-
   dashboard: {
     getAllStats: async (companyId, cb) => {
       const stats = {};
@@ -439,7 +396,6 @@ module.exports = {
 
       cb(null, stats);
     },
-
     getUserStats: async (id, cb) => {
       const stats = {};
 
